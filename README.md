@@ -75,7 +75,7 @@ This repo follows the City of Grand Junction widget-publishing convention (see t
 
 Discussion, screenshots, and downloadable zip attachments live on the Esri Community thread:
 
-> *Link to be added when the post goes up.*
+https://community.esri.com/t5/experience-builder-custom-widgets/csv-geocoder-widget/ba-p/1708724
 
 ## License
 

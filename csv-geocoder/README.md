@@ -76,7 +76,9 @@ This widget runs entirely in the browser. The file you upload is never sent anyw
 
 ## Feedback
 
-Open an issue on this repository, or comment on the Esri Community post linked from the parent repository README.
+Open an issue on this repository, or reply on the Esri Community thread:
+
+https://community.esri.com/t5/experience-builder-custom-widgets/csv-geocoder-widget/ba-p/1708724
 
 ## Troubleshooting: `<name> is duplicated`
 
