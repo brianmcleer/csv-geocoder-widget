@@ -1,0 +1,15 @@
+{
+  "geocoderUrl": "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer",
+  "apiKey": "",
+  "batchSize": 100,
+  "minScore": 80,
+  "useProxy": false,
+  "symbol": {
+    "color": "#e84c4c",
+    "size": 10,
+    "outlineColor": "#ffffff",
+    "outlineWidth": 1.5
+  },
+  "zoomToResults": true,
+  "defaultAddressMode": "multi"
+}

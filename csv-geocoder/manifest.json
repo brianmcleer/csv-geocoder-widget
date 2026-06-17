@@ -1,0 +1,20 @@
+{
+  "name": "csv-geocoder",
+  "type": "widget",
+  "version": "1.0.0",
+  "exbVersion": "1.20.0",
+  "author": "Brian McLeer",
+  "description": "Upload CSV or Excel files of addresses, map columns to address fields, geocode against a configurable locator service, display matched points on a connected Map widget, and export the results as GeoJSON, KML, or Shapefile.",
+  "copyright": "Copyright 2026 City of Grand Junction, CO",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {
+    "supportMultipleInstances": true,
+    "hasLocale": true,
+    "isController": false
+  },
+  "dependency": ["jimu-arcgis"],
+  "translatedLocales": ["en"],
+  "i18nMessages": {
+    "_widgetLabel": "CSV Geocoder"
+  }
+}

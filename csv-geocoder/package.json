@@ -1,0 +1,40 @@
+{
+  "name": "csv-geocoder",
+  "version": "1.0.0",
+  "description": "Upload CSV or Excel files of addresses, map columns to address fields, geocode against a configurable locator service, display matched points on a connected Map widget, and export the results as GeoJSON, KML, or Shapefile.",
+  "author": "Brian McLeer",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/brianmcleer/csv-geocoder-widget",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brianmcleer/csv-geocoder-widget.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brianmcleer/csv-geocoder-widget/issues"
+  },
+  "keywords": [
+    "exb-widget",
+    "experience-builder",
+    "exb",
+    "arcgis",
+    "geocoding",
+    "geocoder",
+    "csv",
+    "excel",
+    "address",
+    "batch-geocode",
+    "shapefile",
+    "kml",
+    "geojson",
+    "import",
+    "export"
+  ],
+  "dependencies": {
+    "papaparse": "^5.4.1",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
+    "@mapbox/shp-write": "^0.4.3"
+  },
+  "devDependencies": {
+    "@types/papaparse": "^5.3.14"
+  }
+}
