@@ -1,13 +1,11 @@
 /**
  * Thin wrapper around Esri's Locator REST endpoints.
  *
- * We deliberately call the REST endpoints directly with esri/request so we can:
+ * We deliberately call the REST endpoints directly with fetch so we can:
  *   - send batches larger than what addressToLocations() allows,
  *   - control the token and proxy behaviour from widget settings, and
  *   - report per-record failures (score < threshold, out-of-quota, etc.).
  */
-import esriRequest from '@arcgis/core/request'
-import Point from '@arcgis/core/geometry/Point'
 import { type AddressRole } from '../../config'
 
 export interface GeocodeInput {
@@ -17,9 +15,17 @@ export interface GeocodeInput {
   address: string | Partial<Record<AddressRole, string>>
 }
 
+export interface GeocodePoint {
+  x: number
+  y: number
+  longitude: number
+  latitude: number
+  spatialReference: { wkid: number }
+}
+
 export interface GeocodeResult {
   objectId: number
-  point: Point | null
+  point: GeocodePoint | null
   score: number
   matchAddress: string
   /** Reason the record failed, if any. */
@@ -90,14 +96,17 @@ export async function geocodeBatch (
     }
     if (apiKey) query.token = apiKey
 
-    let resp: { data: GeocodeAddressesResponse }
+    let data: GeocodeAddressesResponse
     try {
-      resp = await esriRequest(endpoint, {
-        method: 'post',
-        responseType: 'json',
-        query,
+      const body = new URLSearchParams(query)
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body,
         signal
       })
+      if (!response.ok) throw new Error(`Locator request failed with HTTP ${response.status}`)
+      data = await response.json() as GeocodeAddressesResponse
     } catch (e) {
       // Whole-batch failure -> mark every record in the batch as errored.
       const msg = e instanceof Error ? e.message : String(e)
@@ -111,7 +120,6 @@ export async function geocodeBatch (
       continue
     }
 
-    const data = resp.data
     if (data.error) {
       for (const i of batch) {
         out.push({
@@ -127,7 +135,8 @@ export async function geocodeBatch (
       continue
     }
 
-    const byId = new Map<number, GeocodeAddressesResponse['locations'][number]>()
+    type GeocodeLocation = NonNullable<GeocodeAddressesResponse['locations']>[number]
+    const byId = new Map<number, GeocodeLocation>()
     for (const loc of data.locations ?? []) {
       byId.set(loc.attributes.ResultID as number, loc)
     }
@@ -148,11 +157,13 @@ export async function geocodeBatch (
       }
       out.push({
         objectId: i.objectId,
-        point: new Point({
+        point: {
           x: loc.location.x,
           y: loc.location.y,
+          longitude: loc.location.x,
+          latitude: loc.location.y,
           spatialReference: { wkid: 4326 }
-        }),
+        },
         score: loc.score,
         matchAddress: loc.address
       })

@@ -1,3 +1,4 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
 import { React, jsx, css } from 'jimu-core'
 import { type AddressMode, type AddressRole } from '../../config'

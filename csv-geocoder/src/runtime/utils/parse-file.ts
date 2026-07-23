@@ -2,7 +2,7 @@
  * Lightweight file parser that returns a uniform {fields, rows} structure
  * regardless of whether the input is CSV, TSV or an Excel workbook.
  *
- * Dependencies (declared as widget dependencies; installed via npm in the widget folder):
+ * Dependencies (declared in package.json; installed by the Experience Builder client workspace):
  *   - papaparse    for delimited text
  *   - xlsx (SheetJS Community Edition) for .xlsx / .xls / .ods
  */
@@ -114,8 +114,8 @@ async function parseWorkbook(file: File): Promise<ParsedTable> {
  */
 export async function parseAddressFile(file: File): Promise<ParsedTable> {
     const ext = getExt(file.name)
-    if (DELIMITED_EXTS.includes(ext)) return await parseDelimited(file)
-    if (SHEET_EXTS.includes(ext)) return await parseWorkbook(file)
+    if (DELIMITED_EXTS.indexOf(ext) >= 0) return await parseDelimited(file)
+    if (SHEET_EXTS.indexOf(ext) >= 0) return await parseWorkbook(file)
     // Fallback: try CSV — many "address exports" use unusual extensions but are still CSV.
     return await parseDelimited(file)
 }
@@ -133,7 +133,7 @@ export function guessAddressMapping(fields: string[]): {
 } {
     const lower = fields.map(f => ({ raw: f, key: f.toLowerCase().replace(/[\s_\-/]+/g, '') }))
     const find = (...needles: string[]): string | undefined =>
-        lower.find(f => needles.some(n => f.key === n || f.key.includes(n)))?.raw
+        lower.find(f => needles.some(n => f.key === n || f.key.indexOf(n) >= 0))?.raw
 
     const single = find('fulladdress', 'singlelineaddress', 'singleline', 'address') // weakest hit, used only if multi is empty
     return {

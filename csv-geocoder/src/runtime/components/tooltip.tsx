@@ -1,6 +1,6 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
 import { React, jsx, css } from 'jimu-core'
-import ReactDOM from 'react-dom'
 
 interface TooltipProps {
   text: string
@@ -17,16 +17,15 @@ interface Pos { top: number, left: number, below: boolean }
  *
  *  Visible behaviour:
  *    - Hover OR keyboard focus opens the bubble (SC 1.4.13 hoverable/persistent).
- *    - Click toggles for touch devices that have no hover and no focus state.
+ *    - Click opens the bubble for touch devices that have no hover state.
  *    - Escape dismisses (SC 1.4.13 dismissable).
  *    - Outside click dismisses on touch devices.
  *  Screen-reader behaviour:
  *    - The bubble has role='tooltip' and an id matching aria-describedby on
- *      the related input. The hidden description is rendered with
- *      `aria-hidden` set conditionally so the SAME text isn't double-announced;
- *      it's available via aria-describedby even when the visual bubble is hidden.
+ *      the related input. A visually hidden copy keeps the description
+ *      available through aria-describedby while the visual bubble is closed.
  *  Visual behaviour:
- *    - Rendered into a portal at document.body so no parent overflow can clip it.
+ *    - Rendered as a fixed-position descendant, avoiding a direct react-dom dependency.
  *    - Auto-flips below the trigger when too close to the viewport top.
  *    - Horizontally clamped inside the viewport.
  *    - Respects prefers-reduced-motion (transitions disabled).
@@ -134,7 +133,7 @@ const Tooltip: React.FC<TooltipProps> = ({ text, describedById, triggerLabel }) 
     text-align: left;
     box-shadow: 0 4px 14px rgba(0,0,0,0.22);
     z-index: 2147483646;
-    pointer-events: none;
+    pointer-events: auto;
     white-space: normal;
     word-wrap: break-word;
 
@@ -170,7 +169,11 @@ const Tooltip: React.FC<TooltipProps> = ({ text, describedById, triggerLabel }) 
 
   return (
     <React.Fragment>
-      <span css={triggerStyles}>
+      <span
+        css={triggerStyles}
+        onMouseEnter={() => { setOpen(true) }}
+        onMouseLeave={() => { setOpen(false) }}
+      >
         <button
           ref={triggerRef}
           type='button'
@@ -178,32 +181,28 @@ const Tooltip: React.FC<TooltipProps> = ({ text, describedById, triggerLabel }) 
           aria-label={triggerLabel ?? 'Show help'}
           aria-expanded={open}
           aria-describedby={tipId}
-          onMouseEnter={() => { setOpen(true) }}
-          onMouseLeave={() => { setOpen(false) }}
           onFocus={() => { setOpen(true) }}
           onBlur={() => { setOpen(false) }}
           onClick={e => {
-            // Touch devices fire focus + click; toggle here so a tap also works.
+            // Stop the document listener from immediately dismissing a touch click.
             e.stopPropagation()
-            setOpen(prev => !prev)
+            setOpen(true)
           }}
         >?</button>
+
+        {open && (
+          <span
+            id={tipId}
+            role='tooltip'
+            css={bubbleStyles}
+            className={pos.below ? 'below' : 'above'}
+            style={{ top: pos.top, left: pos.left }}
+          >{text}</span>
+        )}
       </span>
 
-      {/* Always-rendered hidden copy so aria-describedby is valid even when
-          the visual bubble isn't open. Hidden from sighted users via sr-only. */}
+      {/* Keep aria-describedby valid while the visual tooltip is closed. */}
       {!open && <span id={tipId} style={srOnly}>{text}</span>}
-
-      {open && typeof document !== 'undefined' && ReactDOM.createPortal(
-        <span
-          id={tipId}
-          role='tooltip'
-          css={bubbleStyles}
-          className={pos.below ? 'below' : 'above'}
-          style={{ top: pos.top, left: pos.left }}
-        >{text}</span>,
-        document.body
-      )}
     </React.Fragment>
   )
 }

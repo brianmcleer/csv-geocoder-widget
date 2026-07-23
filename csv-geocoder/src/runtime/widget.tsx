@@ -1,14 +1,10 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
 import {
   React, jsx, css, type AllWidgetProps, hooks
 } from 'jimu-core'
-import { JimuMapViewComponent, type JimuMapView } from 'jimu-arcgis'
+import { JimuMapViewComponent, loadArcGISJSAPIModules, type JimuMapView } from 'jimu-arcgis'
 
-import Graphic from '@arcgis/core/Graphic'
-import GraphicsLayer from '@arcgis/core/layers/GraphicsLayer'
-import SimpleMarkerSymbol from '@arcgis/core/symbols/SimpleMarkerSymbol'
-import PopupTemplate from '@arcgis/core/PopupTemplate'
-import * as reactiveUtils from '@arcgis/core/core/reactiveUtils'
 
 import type { IMConfig, AddressRole } from '../config'
 import { parseAddressFile, guessAddressMapping, type ParsedTable } from './utils/parse-file'
@@ -18,6 +14,7 @@ import FileUpload from './components/file-upload'
 import FieldMapper, { type FieldMapping, validateMapping } from './components/field-mapper'
 import Tooltip from './components/tooltip'
 import ExportBar from './components/export-bar'
+import FailureReviewPanel from './components/failure-review-panel'
 
 type Phase = 'idle' | 'parsing' | 'mapping' | 'geocoding' | 'done' | 'error'
 
@@ -27,6 +24,7 @@ interface State {
   mapping: FieldMapping
   progress: { completed: number, total: number }
   results: GeocodeResult[] | null
+  resultMapping: FieldMapping | null
   error: string | null
   jmv: JimuMapView | null
 }
@@ -176,7 +174,16 @@ const StatCard: React.FC<{
 // =============================================================================
 // Widget
 // =============================================================================
-const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
+type WidgetProps = AllWidgetProps<IMConfig> & { useMapWidgetIds?: string[] }
+
+type ArcGISConstructors = {
+  Graphic: any
+  GraphicsLayer: any
+  SimpleMarkerSymbol: any
+  PopupTemplate: any
+}
+
+const Widget = (props: WidgetProps): React.ReactElement => {
   const { useMapWidgetIds, config } = props
 
   const [state, setState] = React.useState<State>({
@@ -185,20 +192,40 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
     mapping: { ...initialMapping(), mode: config?.defaultAddressMode ?? 'multi' },
     progress: { completed: 0, total: 0 },
     results: null,
+    resultMapping: null,
     error: null,
     jmv: null
   })
 
-  const layerRef = React.useRef<GraphicsLayer | null>(null)
-  const abortRef = React.useRef<AbortController | null>(null)
+  const [isFailureReviewOpen, setFailureReviewOpen] = React.useState(false)
 
-  const ensureLayer = React.useCallback((jmv: JimuMapView): GraphicsLayer => {
+  const layerRef = React.useRef<any>(null)
+  const arcgisRef = React.useRef<ArcGISConstructors | null>(null)
+  const abortRef = React.useRef<AbortController | null>(null)
+  const reviewTriggerRef = React.useRef<HTMLButtonElement>(null)
+  const failurePanelId = React.useId()
+
+  const loadArcGIS = React.useCallback(async (): Promise<ArcGISConstructors> => {
+    if (arcgisRef.current) return arcgisRef.current
+    const [Graphic, GraphicsLayer, SimpleMarkerSymbol, PopupTemplate] =
+      await loadArcGISJSAPIModules([
+        'esri/Graphic',
+        'esri/layers/GraphicsLayer',
+        'esri/symbols/SimpleMarkerSymbol',
+        'esri/PopupTemplate'
+      ])
+    arcgisRef.current = { Graphic, GraphicsLayer, SimpleMarkerSymbol, PopupTemplate }
+    return arcgisRef.current
+  }, [])
+
+  const ensureLayer = React.useCallback(async (jmv: JimuMapView): Promise<any> => {
     if (layerRef.current) return layerRef.current
+    const { GraphicsLayer } = await loadArcGIS()
     const layer = new GraphicsLayer({ title: 'Geocoded addresses', listMode: 'show' })
     jmv.view.map.add(layer)
     layerRef.current = layer
     return layer
-  }, [])
+  }, [loadArcGIS])
 
   hooks.useUnmount(() => {
     abortRef.current?.abort()
@@ -211,7 +238,8 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
 
   // -- File handling ---------------------------------------------------------
   const onFile = async (file: File): Promise<void> => {
-    setState(s => ({ ...s, phase: 'parsing', error: null, results: null }))
+    setFailureReviewOpen(false)
+    setState(s => ({ ...s, phase: 'parsing', error: null, results: null, resultMapping: null }))
     try {
       const table = await parseAddressFile(file)
       if (table.rows.length === 0) {
@@ -251,6 +279,7 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
 
   const onRunGeocode = async (): Promise<void> => {
     if (!state.table) return
+    setFailureReviewOpen(false)
     const validationError = validateMapping(state.mapping)
     if (validationError) {
       setState(s => ({ ...s, error: validationError }))
@@ -261,7 +290,11 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
       return
     }
 
-    const inputs = buildInputs(state.table, state.mapping)
+    const runMapping: FieldMapping = {
+      ...state.mapping,
+      multi: { ...state.mapping.multi }
+    }
+    const inputs = buildInputs(state.table, runMapping)
     const ac = new AbortController()
     abortRef.current = ac
 
@@ -269,6 +302,8 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
       ...s,
       phase: 'geocoding',
       progress: { completed: 0, total: inputs.length },
+      results: null,
+      resultMapping: null,
       error: null
     }))
 
@@ -283,8 +318,8 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
           setState(s => ({ ...s, progress: { completed, total } }))
         }
       })
-      renderResultsOnMap(results)
-      setState(s => ({ ...s, phase: 'done', results }))
+      await renderResultsOnMap(results)
+      setState(s => ({ ...s, phase: 'done', results, resultMapping: runMapping }))
     } catch (e) {
       if ((e as Error).name === 'AbortError') {
         setState(s => ({ ...s, phase: 'mapping', error: 'Geocoding cancelled.' }))
@@ -298,12 +333,13 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
     }
   }
 
-  const renderResultsOnMap = (results: GeocodeResult[]): void => {
+  const renderResultsOnMap = async (results: GeocodeResult[]): Promise<void> => {
     const jmv = state.jmv
     const table = state.table
     if (!jmv || !table) return
 
-    const layer = ensureLayer(jmv)
+    const { Graphic, SimpleMarkerSymbol, PopupTemplate } = await loadArcGIS()
+    const layer = await ensureLayer(jmv)
     layer.removeAll()
 
     const symbol = new SimpleMarkerSymbol({
@@ -320,7 +356,7 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
       content: [{ type: 'fields', fieldInfos }]
     })
 
-    const graphics: Graphic[] = []
+    const graphics: any[] = []
     for (const r of results) {
       if (!r.point) continue
       const row = table.rows[r.objectId]
@@ -334,25 +370,36 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
     layer.addMany(graphics)
 
     if (config.zoomToResults && graphics.length > 0) {
-      void reactiveUtils.whenOnce(() => jmv.view.ready)
+      void Promise.resolve(jmv.view.when())
         .then(async () => { await jmv.view.goTo(graphics, { animate: true }) })
         .catch(() => { /* ignore goTo edge cases */ })
     }
   }
 
   const onClear = (): void => {
+    setFailureReviewOpen(false)
     layerRef.current?.removeAll()
     setState(s => ({
       ...s,
       phase: 'idle',
       table: null,
       results: null,
+      resultMapping: null,
       error: null,
       progress: { completed: 0, total: 0 },
       mapping: { ...initialMapping(), mode: config?.defaultAddressMode ?? 'multi' }
     }))
   }
   const onCancel = (): void => { abortRef.current?.abort() }
+
+  const openFailureReview = React.useCallback((): void => {
+    setFailureReviewOpen(true)
+  }, [])
+
+  const closeFailureReview = React.useCallback((): void => {
+    setFailureReviewOpen(false)
+    window.setTimeout(() => { reviewTriggerRef.current?.focus() }, 0)
+  }, [])
 
   // -- Derived ---------------------------------------------------------------
   const successCount = (state.results ?? []).filter(r => r.point).length
@@ -368,11 +415,18 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
   // -- Styles ---------------------------------------------------------------
   const wrap = css`
     height: 100%; width: 100%; box-sizing: border-box;
-    display: flex; flex-direction: column;
-    padding: 14px; gap: 12px; overflow: auto;
+    position: relative;
+    overflow: hidden;
     font-family: inherit;
     color: var(--ref-palette-neutral-1100, #1a1a1a);
     background: var(--ref-palette-neutral-100, #fff);
+
+    .widget-scroll {
+      height: 100%; width: 100%; box-sizing: border-box;
+      display: flex; flex-direction: column;
+      padding: 14px; gap: 12px; overflow: auto;
+    }
+    .widget-scroll[hidden] { display: none; }
 
     .card {
       background: var(--ref-palette-neutral-200, #fafafa);
@@ -414,6 +468,10 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
     }
 
     .stats { display: flex; gap: 10px; flex-wrap: wrap; }
+    .review-actions {
+      display: flex; justify-content: flex-end;
+      padding-top: 2px;
+    }
 
     .actions {
       display: flex; gap: 8px; justify-content: flex-end;
@@ -539,6 +597,11 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
   // -- Render ----------------------------------------------------------------
   return (
     <main css={wrap} aria-label='Address geocoder'>
+      <div
+        className='widget-scroll'
+        hidden={isFailureReviewOpen}
+        aria-hidden={isFailureReviewOpen ? true : undefined}
+      >
       {/* Polite live region — invisible, announces phase transitions. */}
       <span
         role='status'
@@ -691,6 +754,24 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
               }
             />
           </div>
+          {failureCount > 0 && (
+            <div className='review-actions'>
+              <button
+                ref={reviewTriggerRef}
+                type='button'
+                className='btn secondary'
+                aria-haspopup='dialog'
+                aria-controls={failurePanelId}
+                aria-expanded={isFailureReviewOpen}
+                onClick={openFailureReview}
+              >
+                <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
+                  <path d='M4 5h16M4 12h16M4 19h10' stroke='currentColor' strokeWidth='2' strokeLinecap='round'/>
+                </svg>
+                Review failures ({failureCount.toLocaleString()})
+              </button>
+            </div>
+          )}
         </section>
       )}
 
@@ -750,6 +831,17 @@ const Widget = (props: AllWidgetProps<IMConfig>): React.ReactElement => {
           overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0
         }}
       >Connect a map widget in settings to enable geocoding.</span>
+      </div>
+
+      {isFailureReviewOpen && state.table && state.results && (
+        <FailureReviewPanel
+          panelId={failurePanelId}
+          table={state.table}
+          results={state.results}
+          mapping={state.resultMapping ?? state.mapping}
+          onClose={closeFailureReview}
+        />
+      )}
     </main>
   )
 }

@@ -1,3 +1,4 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
 import { React, jsx, Immutable } from 'jimu-core'
 import type { AllWidgetSettingProps } from 'jimu-for-builder'
@@ -14,7 +15,12 @@ import { type IMConfig, type Config, type SymbolConfig, DEFAULT_CONFIG } from '.
  * If this version loads and the previous one did not, the issue was
  * one of: Switch / NumericInput / Select / SettingSection / SettingRow.
  */
-const Setting = (props: AllWidgetSettingProps<IMConfig>): React.ReactElement => {
+type SettingProps = AllWidgetSettingProps<IMConfig> & {
+    id: string
+    useMapWidgetIds?: string[]
+}
+
+const Setting = (props: SettingProps): React.ReactElement => {
     const { config, onSettingChange, id, useMapWidgetIds } = props
 
     // For reads we treat config as a plain Config — the runtime shape is
