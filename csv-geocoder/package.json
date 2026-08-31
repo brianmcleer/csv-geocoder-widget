@@ -31,8 +31,13 @@
   ],
   "dependencies": {
     "papaparse": "^5.4.1",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
-    "@mapbox/shp-write": "^0.4.3",
-    "@types/papaparse": "^5.3.14"
+    "xlsx": "file:vendor/xlsx-0.20.3.tgz",
+    "@mapbox/shp-write": "^0.4.3"
+  },
+  "devDependencies": {
+    "@types/papaparse": "^5.3.14",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@emotion/react": "^11.14.0"
   }
 }

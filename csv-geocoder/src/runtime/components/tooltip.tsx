@@ -1,13 +1,11 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
 import { React, jsx, css } from 'jimu-core'
 
 interface TooltipProps {
-  text: string
-  /** Pair with the related input's aria-describedby so AT users hear help on focus. */
-  describedById?: string
-  /** Optional label for the trigger button. Defaults to 'Show help'. */
-  triggerLabel?: string
+    text: string
+    /** Pair with the related input's aria-describedby so AT users hear help on focus. */
+    describedById?: string
+    /** Optional label for the trigger button. Defaults to 'Show help'. */
+    triggerLabel?: string
 }
 
 interface Pos { top: number, left: number, below: boolean }
@@ -32,58 +30,58 @@ interface Pos { top: number, left: number, below: boolean }
  *    - Forced-colors mode uses CanvasText / Canvas tokens for system contrast.
  */
 const Tooltip: React.FC<TooltipProps> = ({ text, describedById, triggerLabel }) => {
-  const [open, setOpen] = React.useState(false)
-  const [pos, setPos] = React.useState<Pos>({ top: 0, left: 0, below: false })
-  const triggerRef = React.useRef<HTMLButtonElement>(null)
-  const reactId = React.useId()
-  const tipId = describedById ?? `tip-${reactId}`
+    const [open, setOpen] = React.useState(false)
+    const [pos, setPos] = React.useState<Pos>({ top: 0, left: 0, below: false })
+    const triggerRef = React.useRef<HTMLButtonElement>(null)
+    const reactId = React.useId()
+    const tipId = describedById ?? `tip-${reactId}`
 
-  const MAX_WIDTH = 260
-  const HALF = MAX_WIDTH / 2
-  const MARGIN = 8
-  const GAP = 8
-  const FLIP_THRESHOLD = 80
+    const MAX_WIDTH = 260
+    const HALF = MAX_WIDTH / 2
+    const MARGIN = 8
+    const GAP = 8
+    const FLIP_THRESHOLD = 80
 
-  const updatePosition = React.useCallback((): void => {
-    const el = triggerRef.current
-    if (!el) return
-    const r = el.getBoundingClientRect()
-    const below = r.top < FLIP_THRESHOLD
-    let left = r.left + r.width / 2
-    const minLeft = HALF + MARGIN
-    const maxLeft = window.innerWidth - HALF - MARGIN
-    if (left < minLeft) left = minLeft
-    else if (left > maxLeft) left = maxLeft
-    setPos({ top: below ? r.bottom + GAP : r.top - GAP, left, below })
-  }, [])
+    const updatePosition = React.useCallback((): void => {
+        const el = triggerRef.current
+        if (!el) return
+        const r = el.getBoundingClientRect()
+        const below = r.top < FLIP_THRESHOLD
+        let left = r.left + r.width / 2
+        const minLeft = HALF + MARGIN
+        const maxLeft = window.innerWidth - HALF - MARGIN
+        if (left < minLeft) left = minLeft
+        else if (left > maxLeft) left = maxLeft
+        setPos({ top: below ? r.bottom + GAP : r.top - GAP, left, below })
+    }, [])
 
-  React.useEffect(() => {
-    if (!open) return
-    updatePosition()
-    const onKey = (e: KeyboardEvent): void => {
-      if (e.key === 'Escape') {
-        setOpen(false)
-        triggerRef.current?.focus()
-      }
-    }
-    const onMove = (): void => { updatePosition() }
-    const onDocClick = (e: MouseEvent): void => {
-      const t = e.target as Node | null
-      if (t && triggerRef.current && !triggerRef.current.contains(t)) setOpen(false)
-    }
-    window.addEventListener('keydown', onKey)
-    window.addEventListener('scroll', onMove, true)
-    window.addEventListener('resize', onMove)
-    document.addEventListener('click', onDocClick)
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      window.removeEventListener('scroll', onMove, true)
-      window.removeEventListener('resize', onMove)
-      document.removeEventListener('click', onDocClick)
-    }
-  }, [open, updatePosition])
+    React.useEffect(() => {
+        if (!open) return
+        updatePosition()
+        const onKey = (e: KeyboardEvent): void => {
+            if (e.key === 'Escape') {
+                setOpen(false)
+                triggerRef.current?.focus()
+            }
+        }
+        const onMove = (): void => { updatePosition() }
+        const onDocClick = (e: MouseEvent): void => {
+            const t = e.target as Node | null
+            if (t && triggerRef.current && !triggerRef.current.contains(t)) setOpen(false)
+        }
+        window.addEventListener('keydown', onKey)
+        window.addEventListener('scroll', onMove, true)
+        window.addEventListener('resize', onMove)
+        document.addEventListener('click', onDocClick)
+        return () => {
+            window.removeEventListener('keydown', onKey)
+            window.removeEventListener('scroll', onMove, true)
+            window.removeEventListener('resize', onMove)
+            document.removeEventListener('click', onDocClick)
+        }
+    }, [open, updatePosition])
 
-  const triggerStyles = css`
+    const triggerStyles = css`
     display: inline-flex;
     align-items: center;
 
@@ -119,7 +117,7 @@ const Tooltip: React.FC<TooltipProps> = ({ text, describedById, triggerLabel }) 
     }
   `
 
-  const bubbleStyles = css`
+    const bubbleStyles = css`
     position: fixed;
     width: max-content;
     max-width: 260px;
@@ -162,49 +160,49 @@ const Tooltip: React.FC<TooltipProps> = ({ text, describedById, triggerLabel }) 
     }
   `
 
-  const srOnly: React.CSSProperties = {
-    position: 'absolute', width: 1, height: 1, padding: 0, margin: -1,
-    overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0
-  }
+    const srOnly: React.CSSProperties = {
+        position: 'absolute', width: 1, height: 1, padding: 0, margin: -1,
+        overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0
+    }
 
-  return (
-    <React.Fragment>
-      <span
-        css={triggerStyles}
-        onMouseEnter={() => { setOpen(true) }}
-        onMouseLeave={() => { setOpen(false) }}
-      >
-        <button
-          ref={triggerRef}
-          type='button'
-          className='tt-trigger'
-          aria-label={triggerLabel ?? 'Show help'}
-          aria-expanded={open}
-          aria-describedby={tipId}
-          onFocus={() => { setOpen(true) }}
-          onBlur={() => { setOpen(false) }}
-          onClick={e => {
-            // Stop the document listener from immediately dismissing a touch click.
-            e.stopPropagation()
-            setOpen(true)
-          }}
-        >?</button>
+    return (
+        <React.Fragment key='tooltip-root'>
+            <span
+                css={triggerStyles}
+                onMouseEnter={() => { setOpen(true) }}
+                onMouseLeave={() => { setOpen(false) }}
+            >
+                <button
+                    ref={triggerRef}
+                    type='button'
+                    className='tt-trigger'
+                    aria-label={triggerLabel ?? 'Show help'}
+                    aria-expanded={open}
+                    aria-describedby={tipId}
+                    onFocus={() => { setOpen(true) }}
+                    onBlur={() => { setOpen(false) }}
+                    onClick={e => {
+                        // Stop the document listener from immediately dismissing a touch click.
+                        e.stopPropagation()
+                        setOpen(true)
+                    }}
+                >?</button>
 
-        {open && (
-          <span
-            id={tipId}
-            role='tooltip'
-            css={bubbleStyles}
-            className={pos.below ? 'below' : 'above'}
-            style={{ top: pos.top, left: pos.left }}
-          >{text}</span>
-        )}
-      </span>
+                {open && (
+                    <span
+                        id={tipId}
+                        role='tooltip'
+                        css={bubbleStyles}
+                        className={pos.below ? 'below' : 'above'}
+                        style={{ top: pos.top, left: pos.left }}
+                    >{text}</span>
+                )}
+            </span>
 
-      {/* Keep aria-describedby valid while the visual tooltip is closed. */}
-      {!open && <span id={tipId} style={srOnly}>{text}</span>}
-    </React.Fragment>
-  )
+            {/* Keep aria-describedby valid while the visual tooltip is closed. */}
+            {!open && <span id={tipId} style={srOnly}>{text}</span>}
+        </React.Fragment>
+    )
 }
 
 export default Tooltip

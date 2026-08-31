@@ -1,5 +1,3 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
 import { React, jsx, css } from 'jimu-core'
 import { type AddressRole } from '../../config'
 import { type ParsedTable } from '../utils/parse-file'
@@ -7,91 +5,91 @@ import { type GeocodeResult } from '../utils/geocoder'
 import { type FieldMapping } from './field-mapper'
 
 interface Props {
-  panelId: string
-  table: ParsedTable
-  mapping: FieldMapping
-  results: GeocodeResult[]
-  onClose: () => void
+    panelId: string
+    table: ParsedTable
+    mapping: FieldMapping
+    results: GeocodeResult[]
+    onClose: () => void
 }
 
 type SourceRow = ParsedTable['rows'][number]
 
 const ADDRESS_ROLES: AddressRole[] = [
-  'Address',
-  'Address2',
-  'City',
-  'Region',
-  'Postal',
-  'Country'
+    'Address',
+    'Address2',
+    'City',
+    'Region',
+    'Postal',
+    'Country'
 ]
 
-function cleanValue (value: string | undefined): string {
-  return value?.trim() ?? ''
+function cleanValue(value: string | undefined): string {
+    return value?.trim() ?? ''
 }
 
-function formatSubmittedAddress (
-  row: SourceRow | undefined,
-  mapping: FieldMapping
+function formatSubmittedAddress(
+    row: SourceRow | undefined,
+    mapping: FieldMapping
 ): string {
-  if (!row) return '(source row unavailable)'
+    if (!row) return '(source row unavailable)'
 
-  if (mapping.mode === 'single') {
-    const value = mapping.singleField ? cleanValue(row[mapping.singleField]) : ''
-    return value || '(blank address)'
-  }
+    if (mapping.mode === 'single') {
+        const value = mapping.singleField ? cleanValue(row[mapping.singleField]) : ''
+        return value || '(blank address)'
+    }
 
-  const parts: string[] = []
-  for (const role of ADDRESS_ROLES) {
-    const field = mapping.multi[role]
-    const value = field ? cleanValue(row[field]) : ''
-    if (value) parts.push(value)
-  }
-  return parts.join(', ') || '(blank address)'
+    const parts: string[] = []
+    for (const role of ADDRESS_ROLES) {
+        const field = mapping.multi[role]
+        const value = field ? cleanValue(row[field]) : ''
+        if (value) parts.push(value)
+    }
+    return parts.join(', ') || '(blank address)'
 }
 
-function failureReason (result: GeocodeResult): string {
-  if (result.error) return result.error
-  if (result.score > 0) return 'The locator candidate did not meet the minimum match score.'
-  return 'No locator candidate was returned.'
+function failureReason(result: GeocodeResult): string {
+    if (result.error) return result.error
+    if (result.score > 0) return 'The locator candidate did not meet the minimum match score.'
+    return 'No locator candidate was returned.'
 }
 
 const FailureReviewPanel = (props: Props): React.ReactElement => {
-  const { panelId, table, mapping, results, onClose } = props
-  const [query, setQuery] = React.useState('')
-  const headingRef = React.useRef<HTMLHeadingElement>(null)
-  const titleId = React.useId()
-  const searchId = React.useId()
+    const { panelId, table, mapping, results, onClose } = props
+    const [query, setQuery] = React.useState('')
+    const headingRef = React.useRef<HTMLHeadingElement>(null)
+    const titleId = React.useId()
+    const searchId = React.useId()
 
-  React.useEffect(() => {
-    headingRef.current?.focus()
-  }, [])
+    React.useEffect(() => {
+        headingRef.current?.focus()
+    }, [])
 
-  const failures = React.useMemo(
-    () => results.filter(result => !result.point),
-    [results]
-  )
+    const failures = React.useMemo(
+        () => results.filter(result => !result.point),
+        [results]
+    )
 
-  const filteredFailures = React.useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase()
-    if (!normalizedQuery) return failures
+    const filteredFailures = React.useMemo(() => {
+        const normalizedQuery = query.trim().toLowerCase()
+        if (!normalizedQuery) return failures
 
-    return failures.filter(result => {
-      const row = table.rows[result.objectId]
-      const rowValues = table.fields.map(field => row?.[field] ?? '')
-      const searchableText = [
-        String(result.objectId + 1),
-        String(result.objectId + 2),
-        formatSubmittedAddress(row, mapping),
-        failureReason(result),
-        result.matchAddress,
-        ...rowValues
-      ].join(' ').toLowerCase()
+        return failures.filter(result => {
+            const row = table.rows[result.objectId]
+            const rowValues = table.fields.map(field => row?.[field] ?? '')
+            const searchableText = [
+                String(result.objectId + 1),
+                String(result.objectId + 2),
+                formatSubmittedAddress(row, mapping),
+                failureReason(result),
+                result.matchAddress,
+                ...rowValues
+            ].join(' ').toLowerCase()
 
-      return searchableText.indexOf(normalizedQuery) >= 0
-    })
-  }, [failures, mapping, query, table.fields, table.rows])
+            return searchableText.indexOf(normalizedQuery) >= 0
+        })
+    }, [failures, mapping, query, table.fields, table.rows])
 
-  const styles = css`
+    const styles = css`
     position: absolute;
     inset: 0;
     z-index: 10;
@@ -401,148 +399,148 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
     }
   `
 
-  const onPanelKeyDown = (event: React.KeyboardEvent<HTMLElement>): void => {
-    if (event.key === 'Escape') {
-      event.preventDefault()
-      onClose()
+    const onPanelKeyDown = (event: React.KeyboardEvent<HTMLElement>): void => {
+        if (event.key === 'Escape') {
+            event.preventDefault()
+            onClose()
+        }
     }
-  }
 
-  return (
-    <section
-      id={panelId}
-      css={styles}
-      role='region'
-      aria-labelledby={titleId}
-      onKeyDown={onPanelKeyDown}
-    >
-      <header className='panel-header'>
-        <button
-          type='button'
-          className='back-button'
-          aria-label='Back to geocoding results'
-          onClick={onClose}
+    return (
+        <section
+            id={panelId}
+            css={styles}
+            role='region'
+            aria-labelledby={titleId}
+            onKeyDown={onPanelKeyDown}
         >
-          <svg width='18' height='18' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
-            <path d='M19 12H5m7-7l-7 7 7 7' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/>
-          </svg>
-        </button>
-        <div>
-          <h2
-            ref={headingRef}
-            id={titleId}
-            className='panel-title'
-            tabIndex={-1}
-          >Review failures</h2>
-          <p className='panel-subtitle'>
-            {failures.length.toLocaleString()} {failures.length === 1 ? 'record did' : 'records did'} not produce an accepted match.
-          </p>
-        </div>
-      </header>
-
-      <div className='search-section'>
-        <label className='search-label' htmlFor={searchId}>Search failed records</label>
-        <div className='search-box'>
-          <svg className='search-icon' width='15' height='15' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
-            <circle cx='11' cy='11' r='7' stroke='currentColor' strokeWidth='2'/>
-            <path d='M20 20l-4-4' stroke='currentColor' strokeWidth='2' strokeLinecap='round'/>
-          </svg>
-          <input
-            id={searchId}
-            className='search-input'
-            type='search'
-            value={query}
-            placeholder='Address, row number, reason, or field value'
-            onChange={event => { setQuery(event.currentTarget.value) }}
-          />
-          {query && (
-            <button
-              type='button'
-              className='clear-search'
-              aria-label='Clear failure search'
-              onClick={() => { setQuery('') }}
-            >
-              <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
-                <path d='M6 6l12 12M18 6L6 18' stroke='currentColor' strokeWidth='2' strokeLinecap='round'/>
-              </svg>
-            </button>
-          )}
-        </div>
-      </div>
-
-      <p className='filter-summary' role='status' aria-live='polite'>
-        Showing {filteredFailures.length.toLocaleString()} of {failures.length.toLocaleString()} failed {failures.length === 1 ? 'record' : 'records'}.
-      </p>
-
-      {filteredFailures.length > 0
-        ? (
-          <ol className='failure-list'>
-            {filteredFailures.map(result => {
-              const row = table.rows[result.objectId]
-              const submittedAddress = formatSubmittedAddress(row, mapping)
-              const hasCandidate = cleanValue(result.matchAddress).length > 0
-
-              return (
-                <li className='failure-card' key={result.objectId}>
-                  <div className='failure-meta'>
-                    <span className='row-number'>
-                      Record {(result.objectId + 1).toLocaleString()} · source row {(result.objectId + 2).toLocaleString()}
-                    </span>
-                    <span className='score'>
-                      {result.score > 0 ? `Score ${Math.round(result.score)}` : 'No score'}
-                    </span>
-                  </div>
-
-                  <div className='submitted-address'>
-                    <span className='field-label'>Submitted address</span>
-                    {submittedAddress}
-                  </div>
-
-                  <div className='reason'>
-                    <svg width='15' height='15' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
-                      <circle cx='12' cy='12' r='9' stroke='currentColor' strokeWidth='2'/>
-                      <path d='M12 7v6m0 4h.01' stroke='currentColor' strokeWidth='2' strokeLinecap='round'/>
+            <header className='panel-header'>
+                <button
+                    type='button'
+                    className='back-button'
+                    aria-label='Back to geocoding results'
+                    onClick={onClose}
+                >
+                    <svg width='18' height='18' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
+                        <path d='M19 12H5m7-7l-7 7 7 7' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
                     </svg>
-                    <span>{failureReason(result)}</span>
-                  </div>
+                </button>
+                <div className='panel-head-text'>
+                    <h2
+                        ref={headingRef}
+                        id={titleId}
+                        className='panel-title'
+                        tabIndex={-1}
+                    >Review failures</h2>
+                    <p className='panel-subtitle'>
+                        {failures.length.toLocaleString()} {failures.length === 1 ? 'record did' : 'records did'} not produce an accepted match.
+                    </p>
+                </div>
+            </header>
 
-                  {hasCandidate && (
-                    <div className='candidate-address'>
-                      <span className='field-label'>Closest locator candidate</span>
-                      {result.matchAddress}
+            <div className='search-section'>
+                <label className='search-label' htmlFor={searchId}>Search failed records</label>
+                <div className='search-box'>
+                    <svg className='search-icon' width='15' height='15' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
+                        <circle cx='11' cy='11' r='7' stroke='currentColor' strokeWidth='2' />
+                        <path d='M20 20l-4-4' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
+                    </svg>
+                    <input
+                        id={searchId}
+                        className='search-input'
+                        type='search'
+                        value={query}
+                        placeholder='Address, row number, reason, or field value'
+                        onChange={event => { setQuery(event.currentTarget.value) }}
+                    />
+                    {query && (
+                        <button
+                            type='button'
+                            className='clear-search'
+                            aria-label='Clear failure search'
+                            onClick={() => { setQuery('') }}
+                        >
+                            <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
+                                <path d='M6 6l12 12M18 6L6 18' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
+                            </svg>
+                        </button>
+                    )}
+                </div>
+            </div>
+
+            <p className='filter-summary' role='status' aria-live='polite'>
+                Showing {filteredFailures.length.toLocaleString()} of {failures.length.toLocaleString()} failed {failures.length === 1 ? 'record' : 'records'}.
+            </p>
+
+            {filteredFailures.length > 0
+                ? (
+                    <ol className='failure-list'>
+                        {filteredFailures.map(result => {
+                            const row = table.rows[result.objectId]
+                            const submittedAddress = formatSubmittedAddress(row, mapping)
+                            const hasCandidate = cleanValue(result.matchAddress).length > 0
+
+                            return (
+                                <li className='failure-card' key={result.objectId}>
+                                    <div className='failure-meta'>
+                                        <span className='row-number'>
+                                            Record {(result.objectId + 1).toLocaleString()} · source row {(result.objectId + 2).toLocaleString()}
+                                        </span>
+                                        <span className='score'>
+                                            {result.score > 0 ? `Score ${Math.round(result.score)}` : 'No score'}
+                                        </span>
+                                    </div>
+
+                                    <div className='submitted-address'>
+                                        <span className='field-label'>Submitted address</span>
+                                        {submittedAddress}
+                                    </div>
+
+                                    <div className='reason'>
+                                        <svg width='15' height='15' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
+                                            <circle cx='12' cy='12' r='9' stroke='currentColor' strokeWidth='2' />
+                                            <path d='M12 7v6m0 4h.01' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
+                                        </svg>
+                                        <span className='reason-text'>{failureReason(result)}</span>
+                                    </div>
+
+                                    {hasCandidate && (
+                                        <div className='candidate-address'>
+                                            <span className='field-label'>Closest locator candidate</span>
+                                            {result.matchAddress}
+                                        </div>
+                                    )}
+
+                                    <details className='row-details'>
+                                        <summary className='row-summary'>Original row fields</summary>
+                                        <dl className='row-fields'>
+                                            {table.fields.map(field => {
+                                                const value = cleanValue(row?.[field])
+                                                return (
+                                                    <React.Fragment key={field}>
+                                                        <dt className='row-field-name'>{field}</dt>
+                                                        <dd className='row-field-value'>{value || <span className='empty-value'>blank</span>}</dd>
+                                                    </React.Fragment>
+                                                )
+                                            })}
+                                        </dl>
+                                    </details>
+                                </li>
+                            )
+                        })}
+                    </ol>
+                )
+                : (
+                    <div className='empty-state' role='status'>
+                        No failed records match “{query}”. Clear the search to show all failures.
                     </div>
-                  )}
+                )}
 
-                  <details>
-                    <summary>Original row fields</summary>
-                    <dl className='row-fields'>
-                      {table.fields.map(field => {
-                        const value = cleanValue(row?.[field])
-                        return (
-                          <React.Fragment key={field}>
-                            <dt>{field}</dt>
-                            <dd>{value || <span className='empty-value'>blank</span>}</dd>
-                          </React.Fragment>
-                        )
-                      })}
-                    </dl>
-                  </details>
-                </li>
-              )
-            })}
-          </ol>
-          )
-        : (
-          <div className='empty-state' role='status'>
-            No failed records match “{query}”. Clear the search to show all failures.
-          </div>
-          )}
-
-      <footer className='panel-footer'>
-        <button type='button' className='footer-button' onClick={onClose}>Back to results</button>
-      </footer>
-    </section>
-  )
+            <footer className='panel-footer'>
+                <button type='button' className='footer-button' onClick={onClose}>Back to results</button>
+            </footer>
+        </section>
+    )
 }
 
 export default FailureReviewPanel

@@ -11,16 +11,15 @@ importers:
       '@mapbox/shp-write':
         specifier: ^0.4.3
         version: 0.4.3
+      '@types/papaparse':
+        specifier: ^5.3.14
+        version: 5.5.2
       papaparse:
         specifier: ^5.4.1
         version: 5.5.3
       xlsx:
         specifier: https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz
         version: https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz
-    devDependencies:
-      '@types/papaparse':
-        specifier: ^5.3.14
-        version: 5.5.2
 
 packages:
 

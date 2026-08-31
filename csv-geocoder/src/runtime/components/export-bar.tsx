@@ -1,5 +1,3 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
 import { React, jsx, css } from 'jimu-core'
 import type { ParsedTable } from '../utils/parse-file'
 import type { GeocodeResult } from '../utils/geocoder'
@@ -196,8 +194,8 @@ const ExportBar = (props: Props): React.ReactElement => {
     return (
         <div css={styles}>
             <div className='summary'>
-                <span>
-                    <strong>{matched.length.toLocaleString()}</strong> matched point{matched.length === 1 ? '' : 's'} ready to export
+                <span className='summary-text'>
+                    <strong className='summary-count'>{matched.length.toLocaleString()}</strong> matched point{matched.length === 1 ? '' : 's'} ready to export
                 </span>
                 <Tooltip text='Only matched points are included. Failed records (no candidate or below the score threshold) are skipped.' />
             </div>
@@ -237,7 +235,7 @@ const ExportBar = (props: Props): React.ReactElement => {
                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
                         <path d='M5 12l5 5L20 7' stroke='currentColor' strokeWidth='3' strokeLinecap='round' strokeLinejoin='round' />
                     </svg>
-                    <span>Downloaded <strong>{lastExport}</strong></span>
+                    <span className='status-text'>Downloaded <strong className='status-file'>{lastExport}</strong></span>
                 </div>
             )}
 
@@ -247,7 +245,7 @@ const ExportBar = (props: Props): React.ReactElement => {
                         <circle cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='2' />
                         <path d='M12 8v4m0 4h.01' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
                     </svg>
-                    <span>{error}</span>
+                    <span className='err-text'>{error}</span>
                 </div>
             )}
         </div>

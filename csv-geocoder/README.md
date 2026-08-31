@@ -57,7 +57,7 @@ Open the complete Experience Builder **`client` folder** in VS Code, not the iso
 - `Property 'useMapWidgetIds' does not exist ...`
 - `...d.ts is not a module` for `react-dom` or ArcGIS modules
 
-This release also removes the obsolete `/** @jsx jsx */` pragma required by older Experience Builder/Emotion builds and imports ArcGIS Maps SDK modules through Experience Builder's `esri/*` aliases.
+Each TSX file deliberately declares the classic `jimu-core` JSX factory with `/* @jsxRuntime classic */` and `/** @jsx jsx */`. This prevents an editor or parent client configuration from rewriting the widget to `@emotion/react/jsx-runtime`, while preserving Experience Builder's supported Emotion `css` prop behavior. ArcGIS Maps SDK modules are imported through Experience Builder's `esri/*` aliases.
 
 ## Configuration
 

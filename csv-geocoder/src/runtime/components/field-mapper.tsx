@@ -1,35 +1,33 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
 import { React, jsx, css } from 'jimu-core'
 import { type AddressMode, type AddressRole } from '../../config'
 import Tooltip from './tooltip'
 
 export interface FieldMapping {
-  mode: AddressMode
-  singleField?: string
-  multi: { [K in AddressRole]?: string }
+    mode: AddressMode
+    singleField?: string
+    multi: { [K in AddressRole]?: string }
 }
 
 interface Props {
-  fields: string[]
-  value: FieldMapping
-  onChange: (next: FieldMapping) => void
+    fields: string[]
+    value: FieldMapping
+    onChange: (next: FieldMapping) => void
 }
 
 interface RoleDef {
-  key: AddressRole
-  label: string
-  help: string
-  required?: boolean
+    key: AddressRole
+    label: string
+    help: string
+    required?: boolean
 }
 
 const MULTI_ROLES: RoleDef[] = [
-  { key: 'Address', label: 'Street', help: 'Number and street name. Example: "100 Main Street".', required: true },
-  { key: 'Address2', label: 'Line 2', help: 'Unit, suite, apartment, or floor.' },
-  { key: 'City', label: 'City', help: 'City, town, or locality.' },
-  { key: 'Region', label: 'State / Region', help: 'State, province, or administrative region.' },
-  { key: 'Postal', label: 'Postal code', help: 'ZIP, postcode, or equivalent.' },
-  { key: 'Country', label: 'Country', help: 'Country name or ISO code (e.g. "US", "USA").' }
+    { key: 'Address', label: 'Street', help: 'Number and street name. Example: "100 Main Street".', required: true },
+    { key: 'Address2', label: 'Line 2', help: 'Unit, suite, apartment, or floor.' },
+    { key: 'City', label: 'City', help: 'City, town, or locality.' },
+    { key: 'Region', label: 'State / Region', help: 'State, province, or administrative region.' },
+    { key: 'Postal', label: 'Postal code', help: 'ZIP, postcode, or equivalent.' },
+    { key: 'Country', label: 'Country', help: 'Country name or ISO code (e.g. "US", "USA").' }
 ]
 
 /**
@@ -46,49 +44,49 @@ const MULTI_ROLES: RoleDef[] = [
  *     'required' on a sr-only span so screen readers announce it once.
  */
 const FieldMapper = (props: Props): React.ReactElement => {
-  const { fields, value, onChange } = props
-  const multiBtnRef = React.useRef<HTMLButtonElement>(null)
-  const singleBtnRef = React.useRef<HTMLButtonElement>(null)
-  const firstSelectRef = React.useRef<HTMLSelectElement>(null)
-  const previousModeRef = React.useRef<AddressMode>(value.mode)
+    const { fields, value, onChange } = props
+    const multiBtnRef = React.useRef<HTMLButtonElement>(null)
+    const singleBtnRef = React.useRef<HTMLButtonElement>(null)
+    const firstSelectRef = React.useRef<HTMLSelectElement>(null)
+    const previousModeRef = React.useRef<AddressMode>(value.mode)
 
-  // Move focus into the appropriate first input whenever mode changes.
-  React.useEffect(() => {
-    if (previousModeRef.current !== value.mode) {
-      previousModeRef.current = value.mode
-      // Defer so the new select is mounted.
-      setTimeout(() => { firstSelectRef.current?.focus() }, 0)
+    // Move focus into the appropriate first input whenever mode changes.
+    React.useEffect(() => {
+        if (previousModeRef.current !== value.mode) {
+            previousModeRef.current = value.mode
+            // Defer so the new select is mounted.
+            setTimeout(() => { firstSelectRef.current?.focus() }, 0)
+        }
+    }, [value.mode])
+
+    const setMode = (mode: AddressMode): void => { onChange({ ...value, mode }) }
+    const setSingle = (f: string): void => { onChange({ ...value, singleField: f }) }
+    const setMulti = (role: AddressRole, f: string): void => {
+        onChange({ ...value, multi: { ...value.multi, [role]: f || undefined } })
     }
-  }, [value.mode])
 
-  const setMode = (mode: AddressMode): void => { onChange({ ...value, mode }) }
-  const setSingle = (f: string): void => { onChange({ ...value, singleField: f }) }
-  const setMulti = (role: AddressRole, f: string): void => {
-    onChange({ ...value, multi: { ...value.multi, [role]: f || undefined } })
-  }
-
-  // Arrow-key navigation across the radiogroup (WCAG/WAI-ARIA radio pattern).
-  const onModeKey = (e: React.KeyboardEvent<HTMLButtonElement>): void => {
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      e.preventDefault()
-      setMode('multi')
-      multiBtnRef.current?.focus()
-    } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-      e.preventDefault()
-      setMode('single')
-      singleBtnRef.current?.focus()
-    } else if (e.key === 'Home') {
-      e.preventDefault()
-      setMode('multi')
-      multiBtnRef.current?.focus()
-    } else if (e.key === 'End') {
-      e.preventDefault()
-      setMode('single')
-      singleBtnRef.current?.focus()
+    // Arrow-key navigation across the radiogroup (WCAG/WAI-ARIA radio pattern).
+    const onModeKey = (e: React.KeyboardEvent<HTMLButtonElement>): void => {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault()
+            setMode('multi')
+            multiBtnRef.current?.focus()
+        } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault()
+            setMode('single')
+            singleBtnRef.current?.focus()
+        } else if (e.key === 'Home') {
+            e.preventDefault()
+            setMode('multi')
+            multiBtnRef.current?.focus()
+        } else if (e.key === 'End') {
+            e.preventDefault()
+            setMode('single')
+            singleBtnRef.current?.focus()
+        }
     }
-  }
 
-  const styles = css`
+    const styles = css`
     display: flex; flex-direction: column; gap: 14px;
 
     .sr-only {
@@ -177,104 +175,104 @@ const FieldMapper = (props: Props): React.ReactElement => {
     }
   `
 
-  return (
-    <div css={styles} role='group' aria-label='Address field mapping'>
-      <div className='seg' role='radiogroup' aria-label='Address mapping mode'>
-        <button
-          ref={multiBtnRef}
-          type='button'
-          role='radio'
-          aria-checked={value.mode === 'multi'}
-          tabIndex={value.mode === 'multi' ? 0 : -1}
-          className='seg-btn'
-          onClick={() => { setMode('multi') }}
-          onKeyDown={onModeKey}
-        >Separate columns</button>
-        <button
-          ref={singleBtnRef}
-          type='button'
-          role='radio'
-          aria-checked={value.mode === 'single'}
-          tabIndex={value.mode === 'single' ? 0 : -1}
-          className='seg-btn'
-          onClick={() => { setMode('single') }}
-          onKeyDown={onModeKey}
-        >Single full address</button>
-      </div>
+    return (
+        <div css={styles} role='group' aria-label='Address field mapping'>
+            <div className='seg' role='radiogroup' aria-label='Address mapping mode'>
+                <button
+                    ref={multiBtnRef}
+                    type='button'
+                    role='radio'
+                    aria-checked={value.mode === 'multi'}
+                    tabIndex={value.mode === 'multi' ? 0 : -1}
+                    className='seg-btn'
+                    onClick={() => { setMode('multi') }}
+                    onKeyDown={onModeKey}
+                >Separate columns</button>
+                <button
+                    ref={singleBtnRef}
+                    type='button'
+                    role='radio'
+                    aria-checked={value.mode === 'single'}
+                    tabIndex={value.mode === 'single' ? 0 : -1}
+                    className='seg-btn'
+                    onClick={() => { setMode('single') }}
+                    onKeyDown={onModeKey}
+                >Single full address</button>
+            </div>
 
-      {value.mode === 'single' && (
-        <div className='field'>
-          <div className='field-head'>
-            <label htmlFor='csvg-single'>
-              Address column
-              <span className='req' aria-hidden='true'> *</span>
-              <span className='sr-only'> required</span>
-            </label>
-            <Tooltip
-              text='The column containing the complete address as one string, e.g. "100 Main St, Springfield, IL 62701".'
-              describedById='csvg-single-help'
-            />
-          </div>
-          <select
-            ref={firstSelectRef}
-            id='csvg-single'
-            aria-required='true'
-            aria-describedby='csvg-single-help'
-            value={value.singleField ?? ''}
-            onChange={e => { setSingle(e.currentTarget.value) }}
-          >
-            <option value=''>— select column —</option>
-            {fields.map(f => <option key={f} value={f}>{f}</option>)}
-          </select>
-        </div>
-      )}
-
-      {value.mode === 'multi' && (
-        <div className='grid'>
-          {MULTI_ROLES.map((r, idx) => {
-            const fieldId = `csvg-m-${r.key.toLowerCase()}`
-            const helpId = `${fieldId}-help`
-            return (
-              <div className='field' key={r.key}>
-                <div className='field-head'>
-                  <label htmlFor={fieldId}>
-                    {r.label}
-                    {r.required && (
-                      <React.Fragment>
-                        <span className='req' aria-hidden='true'> *</span>
-                        <span className='sr-only'> required</span>
-                      </React.Fragment>
-                    )}
-                  </label>
-                  <Tooltip text={r.help} describedById={helpId} />
+            {value.mode === 'single' && (
+                <div className='field'>
+                    <div className='field-head'>
+                        <label htmlFor='csvg-single'>
+                            Address column
+                            <span className='req' aria-hidden='true'> *</span>
+                            <span className='sr-only'> required</span>
+                        </label>
+                        <Tooltip
+                            text='The column containing the complete address as one string, e.g. "100 Main St, Springfield, IL 62701".'
+                            describedById='csvg-single-help'
+                        />
+                    </div>
+                    <select
+                        ref={firstSelectRef}
+                        id='csvg-single'
+                        aria-required='true'
+                        aria-describedby='csvg-single-help'
+                        value={value.singleField ?? ''}
+                        onChange={e => { setSingle(e.currentTarget.value) }}
+                    >
+                        <option value=''>— select column —</option>
+                        {fields.map(f => <option key={f} value={f}>{f}</option>)}
+                    </select>
                 </div>
-                <select
-                  ref={idx === 0 ? firstSelectRef : undefined}
-                  id={fieldId}
-                  aria-required={r.required ?? false}
-                  aria-describedby={helpId}
-                  value={value.multi[r.key] ?? ''}
-                  onChange={e => { setMulti(r.key, e.currentTarget.value) }}
-                >
-                  <option value=''>— none —</option>
-                  {fields.map(f => <option key={f} value={f}>{f}</option>)}
-                </select>
-              </div>
-            )
-          })}
+            )}
+
+            {value.mode === 'multi' && (
+                <div className='grid'>
+                    {MULTI_ROLES.map((r, idx) => {
+                        const fieldId = `csvg-m-${r.key.toLowerCase()}`
+                        const helpId = `${fieldId}-help`
+                        return (
+                            <div className='field' key={r.key}>
+                                <div className='field-head'>
+                                    <label htmlFor={fieldId}>
+                                        {r.label}
+                                        {r.required && (
+                                            <React.Fragment key='required-mark'>
+                                                <span className='req' aria-hidden='true'> *</span>
+                                                <span className='sr-only'> required</span>
+                                            </React.Fragment>
+                                        )}
+                                    </label>
+                                    <Tooltip text={r.help} describedById={helpId} />
+                                </div>
+                                <select
+                                    ref={idx === 0 ? firstSelectRef : undefined}
+                                    id={fieldId}
+                                    aria-required={r.required ?? false}
+                                    aria-describedby={helpId}
+                                    value={value.multi[r.key] ?? ''}
+                                    onChange={e => { setMulti(r.key, e.currentTarget.value) }}
+                                >
+                                    <option value=''>— none —</option>
+                                    {fields.map(f => <option key={f} value={f}>{f}</option>)}
+                                </select>
+                            </div>
+                        )
+                    })}
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  )
+    )
 }
 
 export default FieldMapper
 
-export function validateMapping (m: FieldMapping): string | null {
-  if (m.mode === 'single') {
-    if (!m.singleField) return 'Choose the column that contains the full address.'
+export function validateMapping(m: FieldMapping): string | null {
+    if (m.mode === 'single') {
+        if (!m.singleField) return 'Choose the column that contains the full address.'
+        return null
+    }
+    if (!m.multi.Address) return 'Map a column to "Street" — it is required.'
     return null
-  }
-  if (!m.multi.Address) return 'Map a column to "Street" — it is required.'
-  return null
 }

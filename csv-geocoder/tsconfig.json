@@ -1,11 +1,11 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "jsx": "react",
-    "jsxFactory": "jsx",
-    "jsxFragmentFactory": "React.Fragment",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     "noEmit": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noImplicitAny": false
   },
   "include": [
     "src/**/*.ts",

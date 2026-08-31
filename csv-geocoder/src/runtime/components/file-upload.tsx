@@ -1,13 +1,11 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
 import { React, jsx, css } from 'jimu-core'
 
 const ACCEPT = '.csv,.tsv,.txt,.xlsx,.xls,.xlsm,.ods'
 
 interface Props {
-  onFile: (file: File) => void
-  disabled?: boolean
-  fileName?: string
+    onFile: (file: File) => void
+    disabled?: boolean
+    fileName?: string
 }
 
 /**
@@ -26,19 +24,19 @@ interface Props {
  *    - prefers-reduced-motion disables the lift animation.
  */
 const FileUpload = (props: Props): React.ReactElement => {
-  const { onFile, disabled, fileName } = props
-  const [hover, setHover] = React.useState(false)
-  const inputRef = React.useRef<HTMLInputElement>(null)
+    const { onFile, disabled, fileName } = props
+    const [hover, setHover] = React.useState(false)
+    const inputRef = React.useRef<HTMLInputElement>(null)
 
-  const handleFiles = (files: FileList | null): void => {
-    if (!files || files.length === 0 || disabled) return
-    onFile(files[0])
-  }
-  const openPicker = (): void => {
-    if (!disabled) inputRef.current?.click()
-  }
+    const handleFiles = (files: FileList | null): void => {
+        if (!files || files.length === 0 || disabled) return
+        onFile(files[0])
+    }
+    const openPicker = (): void => {
+        if (!disabled) inputRef.current?.click()
+    }
 
-  const styles = css`
+    const styles = css`
     .wrap { position: relative; display: flex; flex-direction: column; gap: 8px; }
 
     .zone {
@@ -140,91 +138,91 @@ const FileUpload = (props: Props): React.ReactElement => {
     }
   `
 
-  const label = fileName
-    ? `Replace file. Current: ${fileName}. Press Enter or Space to choose a different file.`
-    : 'Drop a file here, or press Enter or Space to open the file picker.'
+    const label = fileName
+        ? `Replace file. Current: ${fileName}. Press Enter or Space to choose a different file.`
+        : 'Drop a file here, or press Enter or Space to open the file picker.'
 
-  return (
-    <div css={styles}>
-      <div className='wrap'>
-        <div
-          className={`zone ${hover ? 'dragging' : ''}`}
-          role='button'
-          tabIndex={disabled ? -1 : 0}
-          aria-disabled={disabled}
-          aria-label={label}
-          onClick={openPicker}
-          onKeyDown={e => {
-            if (disabled) return
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault()
-              openPicker()
-            }
-          }}
-          onDragOver={e => {
-            e.preventDefault()
-            if (!disabled) setHover(true)
-          }}
-          onDragLeave={() => { setHover(false) }}
-          onDrop={e => {
-            e.preventDefault()
-            setHover(false)
-            handleFiles(e.dataTransfer.files)
-          }}
-        >
-          <div className='icon' aria-hidden='true'>
-            <svg width='20' height='20' viewBox='0 0 24 24' fill='none' focusable='false'>
-              <path d='M12 4v12m0 0l-4-4m4 4l4-4M5 20h14'
-                stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/>
-            </svg>
-          </div>
-          <div className='title'>
-            {fileName ? 'Replace file' : 'Drop a file here'}
-          </div>
-          <div className='hint'>CSV · TSV · TXT · XLSX · XLS · ODS</div>
-          {fileName && (
-            <div className='file' aria-live='polite'>
-              <svg width='12' height='12' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
-                <path d='M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z'
-                  stroke='currentColor' strokeWidth='2' strokeLinejoin='round'/>
-                <path d='M13 2v7h7' stroke='currentColor' strokeWidth='2' strokeLinejoin='round'/>
-              </svg>
-              <span className='name'>{fileName}</span>
-            </div>
-          )}
-        </div>
+    return (
+        <div css={styles}>
+            <div className='wrap'>
+                <div
+                    className={`zone ${hover ? 'dragging' : ''}`}
+                    role='button'
+                    tabIndex={disabled ? -1 : 0}
+                    aria-disabled={disabled}
+                    aria-label={label}
+                    onClick={openPicker}
+                    onKeyDown={e => {
+                        if (disabled) return
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault()
+                            openPicker()
+                        }
+                    }}
+                    onDragOver={e => {
+                        e.preventDefault()
+                        if (!disabled) setHover(true)
+                    }}
+                    onDragLeave={() => { setHover(false) }}
+                    onDrop={e => {
+                        e.preventDefault()
+                        setHover(false)
+                        handleFiles(e.dataTransfer.files)
+                    }}
+                >
+                    <div className='icon' aria-hidden='true'>
+                        <svg width='20' height='20' viewBox='0 0 24 24' fill='none' focusable='false'>
+                            <path d='M12 4v12m0 0l-4-4m4 4l4-4M5 20h14'
+                                stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+                        </svg>
+                    </div>
+                    <div className='title'>
+                        {fileName ? 'Replace file' : 'Drop a file here'}
+                    </div>
+                    <div className='hint'>CSV · TSV · TXT · XLSX · XLS · ODS</div>
+                    {fileName && (
+                        <div className='file' aria-live='polite'>
+                            <svg width='12' height='12' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
+                                <path d='M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z'
+                                    stroke='currentColor' strokeWidth='2' strokeLinejoin='round' />
+                                <path d='M13 2v7h7' stroke='currentColor' strokeWidth='2' strokeLinejoin='round' />
+                            </svg>
+                            <span className='name'>{fileName}</span>
+                        </div>
+                    )}
+                </div>
 
-        {/* Visible, focusable Browse button so keyboard/AT users don't have
+                {/* Visible, focusable Browse button so keyboard/AT users don't have
             to rely on the drop-zone gesture metaphor. */}
-        <div className='browse-row'>
-          <button
-            type='button'
-            className='browse-btn'
-            onClick={openPicker}
-            disabled={disabled}
-          >
-            {fileName ? 'Choose a different file' : 'Browse for a file'}
-          </button>
+                <div className='browse-row'>
+                    <button
+                        type='button'
+                        className='browse-btn'
+                        onClick={openPicker}
+                        disabled={disabled}
+                    >
+                        {fileName ? 'Choose a different file' : 'Browse for a file'}
+                    </button>
+                </div>
+
+                {/* Polite drag-state announcement (silent unless dragging) */}
+                <span className='sr-only' role='status' aria-live='polite'>
+                    {hover ? 'File detected — drop to upload.' : ''}
+                </span>
+
+                <input
+                    ref={inputRef}
+                    type='file'
+                    accept={ACCEPT}
+                    className='sr-only'
+                    tabIndex={-1}
+                    aria-hidden='true'
+                    onChange={e => { handleFiles(e.target.files) }}
+                    onClick={e => { (e.target as HTMLInputElement).value = '' }}
+                />
+            </div>
         </div>
-
-        {/* Polite drag-state announcement (silent unless dragging) */}
-        <span className='sr-only' role='status' aria-live='polite'>
-          {hover ? 'File detected — drop to upload.' : ''}
-        </span>
-
-        <input
-          ref={inputRef}
-          type='file'
-          accept={ACCEPT}
-          className='sr-only'
-          tabIndex={-1}
-          aria-hidden='true'
-          onChange={e => { handleFiles(e.target.files) }}
-          onClick={e => { (e.target as HTMLInputElement).value = '' }}
-        />
-      </div>
-    </div>
-  )
+    )
 }
 
 export default FileUpload

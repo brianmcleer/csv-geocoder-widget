@@ -1,12 +1,10 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
 import {
-  React, jsx, css, type AllWidgetProps, hooks
+    React, jsx, css, type AllWidgetProps, hooks
 } from 'jimu-core'
 import { JimuMapViewComponent, loadArcGISJSAPIModules, type JimuMapView } from 'jimu-arcgis'
 
 
-import type { IMConfig, AddressRole } from '../config'
+import { type IMConfig, type Config, type AddressRole, DEFAULT_CONFIG } from '../config'
 import { parseAddressFile, guessAddressMapping, type ParsedTable } from './utils/parse-file'
 import { geocodeBatch, type GeocodeResult, type GeocodeInput } from './utils/geocoder'
 
@@ -19,14 +17,14 @@ import FailureReviewPanel from './components/failure-review-panel'
 type Phase = 'idle' | 'parsing' | 'mapping' | 'geocoding' | 'done' | 'error'
 
 interface State {
-  phase: Phase
-  table: ParsedTable | null
-  mapping: FieldMapping
-  progress: { completed: number, total: number }
-  results: GeocodeResult[] | null
-  resultMapping: FieldMapping | null
-  error: string | null
-  jmv: JimuMapView | null
+    phase: Phase
+    table: ParsedTable | null
+    mapping: FieldMapping
+    progress: { completed: number, total: number }
+    results: GeocodeResult[] | null
+    resultMapping: FieldMapping | null
+    error: string | null
+    jmv: JimuMapView | null
 }
 
 const initialMapping = (): FieldMapping => ({ mode: 'multi', multi: {} })
@@ -38,21 +36,21 @@ const initialMapping = (): FieldMapping => ({ mode: 'multi', multi: {} })
 // announce the active step. Icon + label so colour is not the sole signal.
 // =============================================================================
 const StepIndicator: React.FC<{ phase: Phase }> = ({ phase }) => {
-  const stepFor = (p: Phase): 1 | 2 | 3 | 4 => {
-    if (p === 'idle' || p === 'parsing') return 1
-    if (p === 'mapping') return 2
-    if (p === 'geocoding') return 3
-    return 4 // 'done' | 'error' after geocoding
-  }
-  const current = stepFor(phase)
-  const steps: Array<{ n: 1 | 2 | 3 | 4, label: string }> = [
-    { n: 1, label: 'Upload' },
-    { n: 2, label: 'Map' },
-    { n: 3, label: 'Geocode' },
-    { n: 4, label: 'Export' }
-  ]
+    const stepFor = (p: Phase): 1 | 2 | 3 | 4 => {
+        if (p === 'idle' || p === 'parsing') return 1
+        if (p === 'mapping') return 2
+        if (p === 'geocoding') return 3
+        return 4 // 'done' | 'error' after geocoding
+    }
+    const current = stepFor(phase)
+    const steps: Array<{ n: 1 | 2 | 3 | 4, label: string }> = [
+        { n: 1, label: 'Upload' },
+        { n: 2, label: 'Map' },
+        { n: 3, label: 'Geocode' },
+        { n: 4, label: 'Export' }
+    ]
 
-  const styles = css`
+    const styles = css`
     display: flex; align-items: center; gap: 0;
     padding: 4px 0 8px;
 
@@ -99,44 +97,44 @@ const StepIndicator: React.FC<{ phase: Phase }> = ({ phase }) => {
     }
   `
 
-  return (
-    <ol css={styles} aria-label='Workflow progress'>
-      {steps.map((s, i) => {
-        const isActive = s.n === current
-        const isDone = s.n < current || (phase === 'done' && s.n <= 3)
-        return (
-          <React.Fragment key={s.n}>
-            <li
-              className={`step ${isActive && !isDone ? 'active' : ''} ${isDone ? 'done' : ''}`}
-              aria-current={isActive ? 'step' : undefined}
-            >
-              <span className='dot' aria-hidden='true'>
-                {isDone
-                  ? (<svg width='12' height='12' viewBox='0 0 24 24' fill='none'>
-                      <path d='M5 12l5 5L20 7' stroke='currentColor' strokeWidth='3' strokeLinecap='round' strokeLinejoin='round'/>
-                    </svg>)
-                  : s.n}
-              </span>
-              <span className='label'>{s.label}</span>
-            </li>
-            {i < steps.length - 1 && <span className={`bar ${isDone ? 'filled' : ''}`} aria-hidden='true' />}
-          </React.Fragment>
-        )
-      })}
-    </ol>
-  )
+    return (
+        <ol css={styles} aria-label='Workflow progress'>
+            {steps.map((s, i) => {
+                const isActive = s.n === current
+                const isDone = s.n < current || (phase === 'done' && s.n <= 3)
+                return (
+                    <React.Fragment key={s.n}>
+                        <li
+                            className={`step ${isActive && !isDone ? 'active' : ''} ${isDone ? 'done' : ''}`}
+                            aria-current={isActive ? 'step' : undefined}
+                        >
+                            <span className='dot' aria-hidden='true'>
+                                {isDone
+                                    ? (<svg width='12' height='12' viewBox='0 0 24 24' fill='none'>
+                                        <path d='M5 12l5 5L20 7' stroke='currentColor' strokeWidth='3' strokeLinecap='round' strokeLinejoin='round' />
+                                    </svg>)
+                                    : s.n}
+                            </span>
+                            <span className='label'>{s.label}</span>
+                        </li>
+                        {i < steps.length - 1 && <span className={`bar ${isDone ? 'filled' : ''}`} aria-hidden='true' />}
+                    </React.Fragment>
+                )
+            })}
+        </ol>
+    )
 }
 
 // =============================================================================
 // Inline stat card – icon + number + label so meaning is not colour-only.
 // =============================================================================
 const StatCard: React.FC<{
-  value: React.ReactNode
-  label: string
-  tone: 'success' | 'error' | 'neutral'
-  icon: React.ReactNode
+    value: React.ReactNode
+    label: string
+    tone: 'success' | 'error' | 'neutral'
+    icon: React.ReactNode
 }> = ({ value, label, tone, icon }) => {
-  const styles = css`
+    const styles = css`
     flex: 1 1 120px;
     min-width: 0;
     display: flex; align-items: center; gap: 10px;
@@ -160,15 +158,15 @@ const StatCard: React.FC<{
     .v    { font-size: 18px; font-weight: 700; color: var(--ref-palette-neutral-1100, #1a1a1a); }
     .l    { font-size: 11px; color: var(--ref-palette-neutral-1000, #595959); }
   `
-  return (
-    <div css={styles} className={tone}>
-      <span className='icon' aria-hidden='true'>{icon}</span>
-      <span className='text'>
-        <span className='v'>{value}</span>
-        <span className='l'>{label}</span>
-      </span>
-    </div>
-  )
+    return (
+        <div css={styles} className={tone}>
+            <span className='icon' aria-hidden='true'>{icon}</span>
+            <span className='text'>
+                <span className='v'>{value}</span>
+                <span className='l'>{label}</span>
+            </span>
+        </div>
+    )
 }
 
 // =============================================================================
@@ -177,243 +175,258 @@ const StatCard: React.FC<{
 type WidgetProps = AllWidgetProps<IMConfig> & { useMapWidgetIds?: string[] }
 
 type ArcGISConstructors = {
-  Graphic: any
-  GraphicsLayer: any
-  SimpleMarkerSymbol: any
-  PopupTemplate: any
+    Graphic: any
+    GraphicsLayer: any
+    SimpleMarkerSymbol: any
+    PopupTemplate: any
 }
 
 const Widget = (props: WidgetProps): React.ReactElement => {
-  const { useMapWidgetIds, config } = props
+    const { useMapWidgetIds, config } = props
 
-  const [state, setState] = React.useState<State>({
-    phase: 'idle',
-    table: null,
-    mapping: { ...initialMapping(), mode: config?.defaultAddressMode ?? 'multi' },
-    progress: { completed: 0, total: 0 },
-    results: null,
-    resultMapping: null,
-    error: null,
-    jmv: null
-  })
-
-  const [isFailureReviewOpen, setFailureReviewOpen] = React.useState(false)
-
-  const layerRef = React.useRef<any>(null)
-  const arcgisRef = React.useRef<ArcGISConstructors | null>(null)
-  const abortRef = React.useRef<AbortController | null>(null)
-  const reviewTriggerRef = React.useRef<HTMLButtonElement>(null)
-  const failurePanelId = React.useId()
-
-  const loadArcGIS = React.useCallback(async (): Promise<ArcGISConstructors> => {
-    if (arcgisRef.current) return arcgisRef.current
-    const [Graphic, GraphicsLayer, SimpleMarkerSymbol, PopupTemplate] =
-      await loadArcGISJSAPIModules([
-        'esri/Graphic',
-        'esri/layers/GraphicsLayer',
-        'esri/symbols/SimpleMarkerSymbol',
-        'esri/PopupTemplate'
-      ])
-    arcgisRef.current = { Graphic, GraphicsLayer, SimpleMarkerSymbol, PopupTemplate }
-    return arcgisRef.current
-  }, [])
-
-  const ensureLayer = React.useCallback(async (jmv: JimuMapView): Promise<any> => {
-    if (layerRef.current) return layerRef.current
-    const { GraphicsLayer } = await loadArcGIS()
-    const layer = new GraphicsLayer({ title: 'Geocoded addresses', listMode: 'show' })
-    jmv.view.map.add(layer)
-    layerRef.current = layer
-    return layer
-  }, [loadArcGIS])
-
-  hooks.useUnmount(() => {
-    abortRef.current?.abort()
-    const layer = layerRef.current
-    const jmv = state.jmv
-    if (layer && jmv) {
-      try { jmv.view.map.remove(layer) } catch { /* view already gone */ }
-    }
-  })
-
-  // -- File handling ---------------------------------------------------------
-  const onFile = async (file: File): Promise<void> => {
-    setFailureReviewOpen(false)
-    setState(s => ({ ...s, phase: 'parsing', error: null, results: null, resultMapping: null }))
-    try {
-      const table = await parseAddressFile(file)
-      if (table.rows.length === 0) {
-        setState(s => ({ ...s, phase: 'error', error: 'File is empty or has no readable rows.' }))
-        return
-      }
-      const guess = guessAddressMapping(table.fields)
-      const mapping: FieldMapping = {
-        mode: config?.defaultAddressMode ?? 'multi',
-        singleField: guess.single,
-        multi: guess.multi
-      }
-      setState(s => ({ ...s, phase: 'mapping', table, mapping }))
-    } catch (e) {
-      setState(s => ({
-        ...s,
-        phase: 'error',
-        error: `Could not read file: ${e instanceof Error ? e.message : String(e)}`
-      }))
-    }
-  }
-
-  const buildInputs = (table: ParsedTable, m: FieldMapping): GeocodeInput[] => {
-    return table.rows.map((row, idx) => {
-      if (m.mode === 'single') {
-        const col = m.singleField ?? ''
-        return { objectId: idx, address: row[col] ?? '' }
-      }
-      const out: { [K in AddressRole]?: string } = {}
-      for (const role of Object.keys(m.multi) as AddressRole[]) {
-        const col = m.multi[role]
-        if (col) out[role] = row[col] ?? ''
-      }
-      return { objectId: idx, address: out }
-    })
-  }
-
-  const onRunGeocode = async (): Promise<void> => {
-    if (!state.table) return
-    setFailureReviewOpen(false)
-    const validationError = validateMapping(state.mapping)
-    if (validationError) {
-      setState(s => ({ ...s, error: validationError }))
-      return
-    }
-    if (!state.jmv) {
-      setState(s => ({ ...s, error: 'Select a map widget in the widget settings.' }))
-      return
-    }
-
-    const runMapping: FieldMapping = {
-      ...state.mapping,
-      multi: { ...state.mapping.multi }
-    }
-    const inputs = buildInputs(state.table, runMapping)
-    const ac = new AbortController()
-    abortRef.current = ac
-
-    setState(s => ({
-      ...s,
-      phase: 'geocoding',
-      progress: { completed: 0, total: inputs.length },
-      results: null,
-      resultMapping: null,
-      error: null
-    }))
-
-    try {
-      const results = await geocodeBatch(inputs, {
-        url: config.geocoderUrl,
-        apiKey: config.apiKey || undefined,
-        batchSize: config.batchSize,
-        minScore: config.minScore,
-        signal: ac.signal,
-        onProgress: (completed, total) => {
-          setState(s => ({ ...s, progress: { completed, total } }))
+    // Resolved config that ALWAYS has every field, even when `config` arrives
+    // undefined or as a partial ImmutableObject (which happens on the first
+    // render of a fresh widget instance in ExB 1.21). Reading any field on this
+    // is guaranteed to succeed, so downstream code can use `cfg.symbol.color`
+    // etc. without null checks.
+    const cfg: Config = React.useMemo(() => {
+        const src = (config as unknown as Partial<Config> | undefined) ?? {}
+        const srcSymbol = (src.symbol as Partial<Config['symbol']> | undefined) ?? {}
+        return {
+            ...DEFAULT_CONFIG,
+            ...src,
+            symbol: { ...DEFAULT_CONFIG.symbol, ...srcSymbol }
         }
-      })
-      await renderResultsOnMap(results)
-      setState(s => ({ ...s, phase: 'done', results, resultMapping: runMapping }))
-    } catch (e) {
-      if ((e as Error).name === 'AbortError') {
-        setState(s => ({ ...s, phase: 'mapping', error: 'Geocoding cancelled.' }))
-        return
-      }
-      setState(s => ({
-        ...s,
-        phase: 'error',
-        error: `Geocoding failed: ${e instanceof Error ? e.message : String(e)}`
-      }))
-    }
-  }
+    }, [config])
 
-  const renderResultsOnMap = async (results: GeocodeResult[]): Promise<void> => {
-    const jmv = state.jmv
-    const table = state.table
-    if (!jmv || !table) return
-
-    const { Graphic, SimpleMarkerSymbol, PopupTemplate } = await loadArcGIS()
-    const layer = await ensureLayer(jmv)
-    layer.removeAll()
-
-    const symbol = new SimpleMarkerSymbol({
-      color: config.symbol.color,
-      size: config.symbol.size,
-      outline: { color: config.symbol.outlineColor, width: config.symbol.outlineWidth }
+    const [state, setState] = React.useState<State>({
+        phase: 'idle',
+        table: null,
+        mapping: { ...initialMapping(), mode: cfg.defaultAddressMode },
+        progress: { completed: 0, total: 0 },
+        results: null,
+        resultMapping: null,
+        error: null,
+        jmv: null
     })
 
-    const fieldInfos = table.fields.map(f => ({ fieldName: f, label: f }))
-    fieldInfos.push({ fieldName: '__score', label: 'Match score' })
-    fieldInfos.push({ fieldName: '__match', label: 'Match address' })
-    const popupTemplate = new PopupTemplate({
-      title: '{__match}',
-      content: [{ type: 'fields', fieldInfos }]
+    const [isFailureReviewOpen, setFailureReviewOpen] = React.useState(false)
+
+    const layerRef = React.useRef<any>(null)
+    const arcgisRef = React.useRef<ArcGISConstructors | null>(null)
+    const abortRef = React.useRef<AbortController | null>(null)
+    const reviewTriggerRef = React.useRef<HTMLButtonElement>(null)
+    const failurePanelId = React.useId()
+
+    const loadArcGIS = React.useCallback(async (): Promise<ArcGISConstructors> => {
+        if (arcgisRef.current) return arcgisRef.current
+        const [Graphic, GraphicsLayer, SimpleMarkerSymbol, PopupTemplate] =
+            await loadArcGISJSAPIModules([
+                'esri/Graphic',
+                'esri/layers/GraphicsLayer',
+                'esri/symbols/SimpleMarkerSymbol',
+                'esri/PopupTemplate'
+            ])
+        arcgisRef.current = { Graphic, GraphicsLayer, SimpleMarkerSymbol, PopupTemplate }
+        return arcgisRef.current
+    }, [])
+
+    const ensureLayer = React.useCallback(async (jmv: JimuMapView): Promise<any> => {
+        if (layerRef.current) return layerRef.current
+        const { GraphicsLayer } = await loadArcGIS()
+        const layer = new GraphicsLayer({ title: 'Geocoded addresses', listMode: 'show' })
+        jmv.view.map.add(layer)
+        layerRef.current = layer
+        return layer
+    }, [loadArcGIS])
+
+    hooks.useUnmount(() => {
+        abortRef.current?.abort()
+        const layer = layerRef.current
+        const jmv = state.jmv
+        if (layer && jmv) {
+            try { jmv.view.map.remove(layer) } catch { /* view already gone */ }
+        }
     })
 
-    const graphics: any[] = []
-    for (const r of results) {
-      if (!r.point) continue
-      const row = table.rows[r.objectId]
-      graphics.push(new Graphic({
-        geometry: r.point,
-        symbol,
-        attributes: { ...row, __score: r.score, __match: r.matchAddress },
-        popupTemplate
-      }))
+    // -- File handling ---------------------------------------------------------
+    const onFile = async (file: File): Promise<void> => {
+        setFailureReviewOpen(false)
+        setState(s => ({ ...s, phase: 'parsing', error: null, results: null, resultMapping: null }))
+        try {
+            const table = await parseAddressFile(file)
+            if (table.rows.length === 0) {
+                setState(s => ({ ...s, phase: 'error', error: 'File is empty or has no readable rows.' }))
+                return
+            }
+            const guess = guessAddressMapping(table.fields)
+            const mapping: FieldMapping = {
+                mode: cfg.defaultAddressMode,
+                singleField: guess.single,
+                multi: guess.multi
+            }
+            setState(s => ({ ...s, phase: 'mapping', table, mapping }))
+        } catch (e) {
+            setState(s => ({
+                ...s,
+                phase: 'error',
+                error: `Could not read file: ${e instanceof Error ? e.message : String(e)}`
+            }))
+        }
     }
-    layer.addMany(graphics)
 
-    if (config.zoomToResults && graphics.length > 0) {
-      void Promise.resolve(jmv.view.when())
-        .then(async () => { await jmv.view.goTo(graphics, { animate: true }) })
-        .catch(() => { /* ignore goTo edge cases */ })
+    const buildInputs = (table: ParsedTable, m: FieldMapping): GeocodeInput[] => {
+        return table.rows.map((row, idx) => {
+            if (m.mode === 'single') {
+                const col = m.singleField ?? ''
+                return { objectId: idx, address: row[col] ?? '' }
+            }
+            const out: { [K in AddressRole]?: string } = {}
+            for (const role of Object.keys(m.multi) as AddressRole[]) {
+                const col = m.multi[role]
+                if (col) out[role] = row[col] ?? ''
+            }
+            return { objectId: idx, address: out }
+        })
     }
-  }
 
-  const onClear = (): void => {
-    setFailureReviewOpen(false)
-    layerRef.current?.removeAll()
-    setState(s => ({
-      ...s,
-      phase: 'idle',
-      table: null,
-      results: null,
-      resultMapping: null,
-      error: null,
-      progress: { completed: 0, total: 0 },
-      mapping: { ...initialMapping(), mode: config?.defaultAddressMode ?? 'multi' }
-    }))
-  }
-  const onCancel = (): void => { abortRef.current?.abort() }
+    const onRunGeocode = async (): Promise<void> => {
+        if (!state.table) return
+        setFailureReviewOpen(false)
+        const validationError = validateMapping(state.mapping)
+        if (validationError) {
+            setState(s => ({ ...s, error: validationError }))
+            return
+        }
+        if (!state.jmv) {
+            setState(s => ({ ...s, error: 'Select a map widget in the widget settings.' }))
+            return
+        }
 
-  const openFailureReview = React.useCallback((): void => {
-    setFailureReviewOpen(true)
-  }, [])
+        const runMapping: FieldMapping = {
+            ...state.mapping,
+            multi: { ...state.mapping.multi }
+        }
+        const inputs = buildInputs(state.table, runMapping)
+        const ac = new AbortController()
+        abortRef.current = ac
 
-  const closeFailureReview = React.useCallback((): void => {
-    setFailureReviewOpen(false)
-    window.setTimeout(() => { reviewTriggerRef.current?.focus() }, 0)
-  }, [])
+        setState(s => ({
+            ...s,
+            phase: 'geocoding',
+            progress: { completed: 0, total: inputs.length },
+            results: null,
+            resultMapping: null,
+            error: null
+        }))
 
-  // -- Derived ---------------------------------------------------------------
-  const successCount = (state.results ?? []).filter(r => r.point).length
-  const failureCount = (state.results?.length ?? 0) - successCount
-  const matchRate = state.results && state.results.length > 0
-    ? Math.round(100 * successCount / state.results.length)
-    : 0
-  const progressPct = state.progress.total > 0
-    ? Math.round((state.progress.completed / state.progress.total) * 100)
-    : 0
-  const isBusy = state.phase === 'parsing' || state.phase === 'geocoding'
+        try {
+            const results = await geocodeBatch(inputs, {
+                url: cfg.geocoderUrl,
+                apiKey: cfg.apiKey || undefined,
+                batchSize: cfg.batchSize,
+                minScore: cfg.minScore,
+                signal: ac.signal,
+                onProgress: (completed, total) => {
+                    setState(s => ({ ...s, progress: { completed, total } }))
+                }
+            })
+            await renderResultsOnMap(results)
+            setState(s => ({ ...s, phase: 'done', results, resultMapping: runMapping }))
+        } catch (e) {
+            if ((e as Error).name === 'AbortError') {
+                setState(s => ({ ...s, phase: 'mapping', error: 'Geocoding cancelled.' }))
+                return
+            }
+            setState(s => ({
+                ...s,
+                phase: 'error',
+                error: `Geocoding failed: ${e instanceof Error ? e.message : String(e)}`
+            }))
+        }
+    }
 
-  // -- Styles ---------------------------------------------------------------
-  const wrap = css`
+    const renderResultsOnMap = async (results: GeocodeResult[]): Promise<void> => {
+        const jmv = state.jmv
+        const table = state.table
+        if (!jmv || !table) return
+
+        const { Graphic, SimpleMarkerSymbol, PopupTemplate } = await loadArcGIS()
+        const layer = await ensureLayer(jmv)
+        layer.removeAll()
+
+        const symbol = new SimpleMarkerSymbol({
+            color: cfg.symbol.color,
+            size: cfg.symbol.size,
+            outline: { color: cfg.symbol.outlineColor, width: cfg.symbol.outlineWidth }
+        })
+
+        const fieldInfos = table.fields.map(f => ({ fieldName: f, label: f }))
+        fieldInfos.push({ fieldName: '__score', label: 'Match score' })
+        fieldInfos.push({ fieldName: '__match', label: 'Match address' })
+        const popupTemplate = new PopupTemplate({
+            title: '{__match}',
+            content: [{ type: 'fields', fieldInfos }]
+        })
+
+        const graphics: any[] = []
+        for (const r of results) {
+            if (!r.point) continue
+            const row = table.rows[r.objectId]
+            graphics.push(new Graphic({
+                geometry: r.point,
+                symbol,
+                attributes: { ...row, __score: r.score, __match: r.matchAddress },
+                popupTemplate
+            }))
+        }
+        layer.addMany(graphics)
+
+        if (cfg.zoomToResults && graphics.length > 0) {
+            void Promise.resolve(jmv.view.when())
+                .then(async () => { await jmv.view.goTo(graphics, { animate: true }) })
+                .catch(() => { /* ignore goTo edge cases */ })
+        }
+    }
+
+    const onClear = (): void => {
+        setFailureReviewOpen(false)
+        layerRef.current?.removeAll()
+        setState(s => ({
+            ...s,
+            phase: 'idle',
+            table: null,
+            results: null,
+            resultMapping: null,
+            error: null,
+            progress: { completed: 0, total: 0 },
+            mapping: { ...initialMapping(), mode: cfg.defaultAddressMode }
+        }))
+    }
+    const onCancel = (): void => { abortRef.current?.abort() }
+
+    const openFailureReview = React.useCallback((): void => {
+        setFailureReviewOpen(true)
+    }, [])
+
+    const closeFailureReview = React.useCallback((): void => {
+        setFailureReviewOpen(false)
+        window.setTimeout(() => { reviewTriggerRef.current?.focus() }, 0)
+    }, [])
+
+    // -- Derived ---------------------------------------------------------------
+    const successCount = (state.results ?? []).filter(r => r.point).length
+    const failureCount = (state.results?.length ?? 0) - successCount
+    const matchRate = state.results && state.results.length > 0
+        ? Math.round(100 * successCount / state.results.length)
+        : 0
+    const progressPct = state.progress.total > 0
+        ? Math.round((state.progress.completed / state.progress.total) * 100)
+        : 0
+    const isBusy = state.phase === 'parsing' || state.phase === 'geocoding'
+
+    // -- Styles ---------------------------------------------------------------
+    const wrap = css`
     height: 100%; width: 100%; box-sizing: border-box;
     position: relative;
     overflow: hidden;
@@ -566,284 +579,284 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     }
   `
 
-  // Human-readable phase summary for screen readers via a polite live region.
-  // Updates whenever phase changes so AT users hear "Reading file…",
-  // "Geocoding…", "Geocoding complete — 32 of 40 matched." etc.
-  const phaseAnnouncement = React.useMemo((): string => {
-    switch (state.phase) {
-      case 'parsing': return 'Reading file.'
-      case 'mapping':
-        return state.table
-          ? `File loaded. ${state.table.rows.length.toLocaleString()} rows ready to map.`
-          : ''
-      case 'geocoding':
-        return `Geocoding ${state.progress.completed.toLocaleString()} of ${state.progress.total.toLocaleString()}.`
-      case 'done':
-        return state.results
-          ? `Geocoding complete. ${successCount.toLocaleString()} of ${state.results.length.toLocaleString()} matched.`
-          : ''
-      case 'error': return state.error ?? 'An error occurred.'
-      default: return ''
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.phase, state.results, state.progress.completed, state.progress.total])
+    // Human-readable phase summary for screen readers via a polite live region.
+    // Updates whenever phase changes so AT users hear "Reading file…",
+    // "Geocoding…", "Geocoding complete — 32 of 40 matched." etc.
+    const phaseAnnouncement = React.useMemo((): string => {
+        switch (state.phase) {
+            case 'parsing': return 'Reading file.'
+            case 'mapping':
+                return state.table
+                    ? `File loaded. ${state.table.rows.length.toLocaleString()} rows ready to map.`
+                    : ''
+            case 'geocoding':
+                return `Geocoding ${state.progress.completed.toLocaleString()} of ${state.progress.total.toLocaleString()}.`
+            case 'done':
+                return state.results
+                    ? `Geocoding complete. ${successCount.toLocaleString()} of ${state.results.length.toLocaleString()} matched.`
+                    : ''
+            case 'error': return state.error ?? 'An error occurred.'
+            default: return ''
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [state.phase, state.results, state.progress.completed, state.progress.total])
 
-  // Focus the error banner when one appears so AT and keyboard users notice it.
-  const errorRef = React.useRef<HTMLDivElement>(null)
-  React.useEffect(() => {
-    if (state.error) errorRef.current?.focus()
-  }, [state.error])
+    // Focus the error banner when one appears so AT and keyboard users notice it.
+    const errorRef = React.useRef<HTMLDivElement>(null)
+    React.useEffect(() => {
+        if (state.error) errorRef.current?.focus()
+    }, [state.error])
 
-  // -- Render ----------------------------------------------------------------
-  return (
-    <main css={wrap} aria-label='Address geocoder'>
-      <div
-        className='widget-scroll'
-        hidden={isFailureReviewOpen}
-        aria-hidden={isFailureReviewOpen ? true : undefined}
-      >
-      {/* Polite live region — invisible, announces phase transitions. */}
-      <span
-        role='status'
-        aria-live='polite'
-        aria-atomic='true'
-        style={{
-          position: 'absolute', width: 1, height: 1, padding: 0, margin: -1,
-          overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0
-        }}
-      >{phaseAnnouncement}</span>
+    // -- Render ----------------------------------------------------------------
+    return (
+        <main css={wrap} aria-label='Address geocoder'>
+            <div
+                className='widget-scroll'
+                hidden={isFailureReviewOpen}
+                aria-hidden={isFailureReviewOpen ? true : undefined}
+            >
+                {/* Polite live region — invisible, announces phase transitions. */}
+                <span
+                    role='status'
+                    aria-live='polite'
+                    aria-atomic='true'
+                    style={{
+                        position: 'absolute', width: 1, height: 1, padding: 0, margin: -1,
+                        overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0
+                    }}
+                >{phaseAnnouncement}</span>
 
-      {/* Map widget binding (renders nothing visible). */}
-      {useMapWidgetIds && useMapWidgetIds.length > 0 && (
-        <JimuMapViewComponent
-          useMapWidgetId={useMapWidgetIds[0]}
-          onActiveViewChange={jmv => {
-            setState(s => ({ ...s, jmv: jmv ?? null }))
-          }}
-        />
-      )}
+                {/* Map widget binding (renders nothing visible). */}
+                {useMapWidgetIds && useMapWidgetIds.length > 0 && (
+                    <JimuMapViewComponent
+                        useMapWidgetId={useMapWidgetIds[0]}
+                        onActiveViewChange={jmv => {
+                            setState(s => ({ ...s, jmv: jmv ?? null }))
+                        }}
+                    />
+                )}
 
-      <StepIndicator phase={state.phase} />
+                <StepIndicator phase={state.phase} />
 
-      {/* ------- 1. Upload --------------------------------------------- */}
-      <section className='card' aria-labelledby='csvg-card-upload'>
-        <div className='card-head'>
-          <h3 id='csvg-card-upload' className='card-title'>1. Choose a file</h3>
-          <Tooltip text='Supported formats: CSV, TSV, TXT, XLSX, XLS, ODS. The first row is used as column headers.' />
-        </div>
-        <FileUpload
-          onFile={onFile}
-          disabled={isBusy}
-          fileName={state.table?.fileName}
-        />
-      </section>
+                {/* ------- 1. Upload --------------------------------------------- */}
+                <section className='card' aria-labelledby='csvg-card-upload'>
+                    <div className='card-head'>
+                        <h3 id='csvg-card-upload' className='card-title'>1. Choose a file</h3>
+                        <Tooltip text='Supported formats: CSV, TSV, TXT, XLSX, XLS, ODS. The first row is used as column headers.' />
+                    </div>
+                    <FileUpload
+                        onFile={onFile}
+                        disabled={isBusy}
+                        fileName={state.table?.fileName}
+                    />
+                </section>
 
-      {/* ------- 2. Map fields ----------------------------------------- */}
-      {state.table && (
-        <section className='card' aria-labelledby='csvg-card-map'>
-          <div className='card-head'>
-            <h3 id='csvg-card-map' className='card-title'>2. Map address fields</h3>
-            <Tooltip text='Pick which column(s) hold the address. Use "Single full address" if one column has the entire address, or "Separate columns" to map individual parts.' />
-          </div>
-          <div className='meta'>
-            {state.table.rows.length.toLocaleString()} rows · {state.table.fields.length} columns
-          </div>
-          <FieldMapper
-            fields={state.table.fields}
-            value={state.mapping}
-            onChange={m => {
-              setState(s => ({ ...s, mapping: m, error: null }))
-            }}
-          />
-        </section>
-      )}
+                {/* ------- 2. Map fields ----------------------------------------- */}
+                {state.table && (
+                    <section className='card' aria-labelledby='csvg-card-map'>
+                        <div className='card-head'>
+                            <h3 id='csvg-card-map' className='card-title'>2. Map address fields</h3>
+                            <Tooltip text='Pick which column(s) hold the address. Use "Single full address" if one column has the entire address, or "Separate columns" to map individual parts.' />
+                        </div>
+                        <div className='meta'>
+                            {state.table.rows.length.toLocaleString()} rows · {state.table.fields.length} columns
+                        </div>
+                        <FieldMapper
+                            fields={state.table.fields}
+                            value={state.mapping}
+                            onChange={m => {
+                                setState(s => ({ ...s, mapping: m, error: null }))
+                            }}
+                        />
+                    </section>
+                )}
 
-      {/* ------- Error / warning banner --------------------------------- */}
-      {state.error && (
-        <div
-          ref={errorRef}
-          className='banner error'
-          role='alert'
-          tabIndex={-1}
-        >
-          <svg className='banner-icon' width='16' height='16' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
-            <path d='M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/>
-          </svg>
-          <span>{state.error}</span>
-          <button
-            type='button'
-            className='close'
-            aria-label='Dismiss error message'
-            onClick={() => { setState(s => ({ ...s, error: null })) }}
-          >
-            <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
-              <path d='M6 6l12 12M18 6L6 18' stroke='currentColor' strokeWidth='2' strokeLinecap='round'/>
-            </svg>
-          </button>
-        </div>
-      )}
+                {/* ------- Error / warning banner --------------------------------- */}
+                {state.error && (
+                    <div
+                        ref={errorRef}
+                        className='banner error'
+                        role='alert'
+                        tabIndex={-1}
+                    >
+                        <svg className='banner-icon' width='16' height='16' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
+                            <path d='M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+                        </svg>
+                        <span className='banner-text'>{state.error}</span>
+                        <button
+                            type='button'
+                            className='close'
+                            aria-label='Dismiss error message'
+                            onClick={() => { setState(s => ({ ...s, error: null })) }}
+                        >
+                            <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
+                                <path d='M6 6l12 12M18 6L6 18' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
+                            </svg>
+                        </button>
+                    </div>
+                )}
 
-      {!useMapWidgetIds?.length && (
-        <div className='banner warn' role='status'>
-          <svg className='banner-icon' width='16' height='16' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
-            <circle cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='2'/>
-            <path d='M12 8v4m0 4h.01' stroke='currentColor' strokeWidth='2' strokeLinecap='round'/>
-          </svg>
-          <span>Open this widget’s settings and connect it to a Map widget to display geocoded points.</span>
-        </div>
-      )}
+                {!useMapWidgetIds?.length && (
+                    <div className='banner warn' role='status'>
+                        <svg className='banner-icon' width='16' height='16' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
+                            <circle cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='2' />
+                            <path d='M12 8v4m0 4h.01' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
+                        </svg>
+                        <span className='banner-text'>Open this widget’s settings and connect it to a Map widget to display geocoded points.</span>
+                    </div>
+                )}
 
-      {/* ------- Geocoding progress ------------------------------------ */}
-      {state.phase === 'geocoding' && (
-        <section className='card' aria-labelledby='csvg-card-progress'>
-          <div className='card-head'>
-            <h3 id='csvg-card-progress' className='card-title'>Geocoding…</h3>
-          </div>
-          <div
-            className='progress-track'
-            role='progressbar'
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-valuenow={progressPct}
-            aria-label='Geocoding progress'
-          >
-            <div className='progress-fill' style={{ width: `${progressPct}%` }} />
-          </div>
-          <div className='progress-text' aria-live='polite'>
-            <span>{state.progress.completed.toLocaleString()} of {state.progress.total.toLocaleString()}</span>
-            <span>{progressPct}%</span>
-          </div>
-        </section>
-      )}
+                {/* ------- Geocoding progress ------------------------------------ */}
+                {state.phase === 'geocoding' && (
+                    <section className='card' aria-labelledby='csvg-card-progress'>
+                        <div className='card-head'>
+                            <h3 id='csvg-card-progress' className='card-title'>Geocoding…</h3>
+                        </div>
+                        <div
+                            className='progress-track'
+                            role='progressbar'
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                            aria-valuenow={progressPct}
+                            aria-label='Geocoding progress'
+                        >
+                            <div className='progress-fill' style={{ width: `${progressPct}%` }} />
+                        </div>
+                        <div className='progress-text' aria-live='polite'>
+                            <span className='progress-count'>{state.progress.completed.toLocaleString()} of {state.progress.total.toLocaleString()}</span>
+                            <span className='progress-pct'>{progressPct}%</span>
+                        </div>
+                    </section>
+                )}
 
-      {/* ------- Results ------------------------------------------------ */}
-      {state.phase === 'done' && state.results && (
-        <section className='card' aria-labelledby='csvg-card-results'>
-          <div className='card-head'>
-            <h3 id='csvg-card-results' className='card-title'>3. Results</h3>
-          </div>
-          <div className='stats' role='group' aria-label='Geocoding results summary'>
-            <StatCard
-              tone='success'
-              value={successCount.toLocaleString()}
-              label='Matched'
-              icon={
-                <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>
-                  <path d='M5 12l5 5L20 7' stroke='currentColor' strokeWidth='3' strokeLinecap='round' strokeLinejoin='round'/>
-                </svg>
-              }
-            />
-            <StatCard
-              tone='error'
-              value={failureCount.toLocaleString()}
-              label='Failed'
-              icon={
-                <svg width='12' height='12' viewBox='0 0 24 24' fill='none'>
-                  <path d='M6 6l12 12M18 6L6 18' stroke='currentColor' strokeWidth='3' strokeLinecap='round'/>
-                </svg>
-              }
-            />
-            <StatCard
-              tone='neutral'
-              value={`${matchRate}%`}
-              label='Match rate'
-              icon={
-                <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>
-                  <path d='M3 17l6-6 4 4 8-8M14 7h7v7' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/>
-                </svg>
-              }
-            />
-          </div>
-          {failureCount > 0 && (
-            <div className='review-actions'>
-              <button
-                ref={reviewTriggerRef}
-                type='button'
-                className='btn secondary'
-                aria-haspopup='dialog'
-                aria-controls={failurePanelId}
-                aria-expanded={isFailureReviewOpen}
-                onClick={openFailureReview}
-              >
-                <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
-                  <path d='M4 5h16M4 12h16M4 19h10' stroke='currentColor' strokeWidth='2' strokeLinecap='round'/>
-                </svg>
-                Review failures ({failureCount.toLocaleString()})
-              </button>
+                {/* ------- Results ------------------------------------------------ */}
+                {state.phase === 'done' && state.results && (
+                    <section className='card' aria-labelledby='csvg-card-results'>
+                        <div className='card-head'>
+                            <h3 id='csvg-card-results' className='card-title'>3. Results</h3>
+                        </div>
+                        <div className='stats' role='group' aria-label='Geocoding results summary'>
+                            <StatCard
+                                tone='success'
+                                value={successCount.toLocaleString()}
+                                label='Matched'
+                                icon={
+                                    <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>
+                                        <path d='M5 12l5 5L20 7' stroke='currentColor' strokeWidth='3' strokeLinecap='round' strokeLinejoin='round' />
+                                    </svg>
+                                }
+                            />
+                            <StatCard
+                                tone='error'
+                                value={failureCount.toLocaleString()}
+                                label='Failed'
+                                icon={
+                                    <svg width='12' height='12' viewBox='0 0 24 24' fill='none'>
+                                        <path d='M6 6l12 12M18 6L6 18' stroke='currentColor' strokeWidth='3' strokeLinecap='round' />
+                                    </svg>
+                                }
+                            />
+                            <StatCard
+                                tone='neutral'
+                                value={`${matchRate}%`}
+                                label='Match rate'
+                                icon={
+                                    <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>
+                                        <path d='M3 17l6-6 4 4 8-8M14 7h7v7' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+                                    </svg>
+                                }
+                            />
+                        </div>
+                        {failureCount > 0 && (
+                            <div className='review-actions'>
+                                <button
+                                    ref={reviewTriggerRef}
+                                    type='button'
+                                    className='btn secondary'
+                                    aria-haspopup='dialog'
+                                    aria-controls={failurePanelId}
+                                    aria-expanded={isFailureReviewOpen}
+                                    onClick={openFailureReview}
+                                >
+                                    <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
+                                        <path d='M4 5h16M4 12h16M4 19h10' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
+                                    </svg>
+                                    Review failures ({failureCount.toLocaleString()})
+                                </button>
+                            </div>
+                        )}
+                    </section>
+                )}
+
+                {/* ------- 4. Export ---------------------------------------------- */}
+                {state.phase === 'done' && state.results && state.table && (
+                    <section className='card' aria-labelledby='csvg-card-export'>
+                        <div className='card-head'>
+                            <h3 id='csvg-card-export' className='card-title'>4. Export</h3>
+                            <Tooltip text='Download matched points as GeoJSON (web-friendly), KML (Google Earth / web maps), or a zipped Shapefile (GIS desktop tools).' />
+                        </div>
+                        <ExportBar
+                            table={state.table}
+                            results={state.results}
+                            symbolColor={cfg.symbol.color}
+                        />
+                    </section>
+                )}
+
+                {/* ------- Actions ------------------------------------------------ */}
+                <div className='actions'>
+                    {state.phase === 'geocoding'
+                        ? (
+                            <button type='button' className='btn danger' onClick={onCancel}>
+                                Cancel
+                            </button>
+                        )
+                        : (
+                            <React.Fragment key='idle-actions'>
+                                <button
+                                    type='button'
+                                    className='btn secondary'
+                                    onClick={onClear}
+                                    disabled={!state.table}
+                                >Clear</button>
+                                <button
+                                    type='button'
+                                    className='btn primary'
+                                    onClick={() => { void onRunGeocode() }}
+                                    disabled={!state.table || isBusy || !state.jmv}
+                                    aria-describedby={!state.jmv ? 'csvg-no-map-hint' : undefined}
+                                >
+                                    <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
+                                        <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z' stroke='currentColor' strokeWidth='2' />
+                                        <circle cx='12' cy='10' r='3' stroke='currentColor' strokeWidth='2' />
+                                    </svg>
+                                    Geocode
+                                </button>
+                            </React.Fragment>
+                        )}
+                </div>
+
+                {/* sr-only hint for the disabled state of Geocode */}
+                <span
+                    id='csvg-no-map-hint'
+                    style={{
+                        position: 'absolute', width: 1, height: 1, padding: 0, margin: -1,
+                        overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0
+                    }}
+                >Connect a map widget in settings to enable geocoding.</span>
             </div>
-          )}
-        </section>
-      )}
 
-      {/* ------- 4. Export ---------------------------------------------- */}
-      {state.phase === 'done' && state.results && state.table && (
-        <section className='card' aria-labelledby='csvg-card-export'>
-          <div className='card-head'>
-            <h3 id='csvg-card-export' className='card-title'>4. Export</h3>
-            <Tooltip text='Download matched points as GeoJSON (web-friendly), KML (Google Earth / web maps), or a zipped Shapefile (GIS desktop tools).' />
-          </div>
-          <ExportBar
-            table={state.table}
-            results={state.results}
-            symbolColor={config.symbol.color}
-          />
-        </section>
-      )}
-
-      {/* ------- Actions ------------------------------------------------ */}
-      <div className='actions'>
-        {state.phase === 'geocoding'
-          ? (
-            <button type='button' className='btn danger' onClick={onCancel}>
-              Cancel
-            </button>
-            )
-          : (
-            <React.Fragment>
-              <button
-                type='button'
-                className='btn secondary'
-                onClick={onClear}
-                disabled={!state.table}
-              >Clear</button>
-              <button
-                type='button'
-                className='btn primary'
-                onClick={() => { void onRunGeocode() }}
-                disabled={!state.table || isBusy || !state.jmv}
-                aria-describedby={!state.jmv ? 'csvg-no-map-hint' : undefined}
-              >
-                <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
-                  <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z' stroke='currentColor' strokeWidth='2'/>
-                  <circle cx='12' cy='10' r='3' stroke='currentColor' strokeWidth='2'/>
-                </svg>
-                Geocode
-              </button>
-            </React.Fragment>
+            {isFailureReviewOpen && state.table && state.results && (
+                <FailureReviewPanel
+                    panelId={failurePanelId}
+                    table={state.table}
+                    results={state.results}
+                    mapping={state.resultMapping ?? state.mapping}
+                    onClose={closeFailureReview}
+                />
             )}
-      </div>
-
-      {/* sr-only hint for the disabled state of Geocode */}
-      <span
-        id='csvg-no-map-hint'
-        style={{
-          position: 'absolute', width: 1, height: 1, padding: 0, margin: -1,
-          overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0
-        }}
-      >Connect a map widget in settings to enable geocoding.</span>
-      </div>
-
-      {isFailureReviewOpen && state.table && state.results && (
-        <FailureReviewPanel
-          panelId={failurePanelId}
-          table={state.table}
-          results={state.results}
-          mapping={state.resultMapping ?? state.mapping}
-          onClose={closeFailureReview}
-        />
-      )}
-    </main>
-  )
+        </main>
+    )
 }
 
 export default Widget
