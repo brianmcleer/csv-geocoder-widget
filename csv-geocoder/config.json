@@ -11,5 +11,7 @@
     "outlineWidth": 1.5
   },
   "zoomToResults": true,
-  "defaultAddressMode": "multi"
+  "defaultAddressMode": "multi",
+  "layerTitle": "",
+  "replacePreviousLayer": true
 }

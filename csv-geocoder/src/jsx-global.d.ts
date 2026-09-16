@@ -1,49 +1,18 @@
 /**
- * Global JSX namespace shim for @types/react v19 + Emotion css prop.
+ * Intentionally empty.
  *
- * ArcGIS Experience Builder 1.21 ships @types/react 19, which removed the
- * global `JSX` namespace (it now lives at `React.JSX`). This widget uses the
- * classic JSX factory (`@jsx jsx` from jimu-core / Emotion), and TypeScript
- * types classic-factory JSX against the GLOBAL `JSX` namespace. Without this
- * shim, every element reports:
+ * This widget compiles with jsx "react-jsx" and jsxImportSource "@emotion/react",
+ * matching client\tsconfig.json, so every JSX tag takes its types from
+ * @emotion/react/jsx-runtime. That module is declared in the shared master shim
+ * src/exb-editor-shims.d.ts, which re-exports the JSX namespace from its own
+ * `react` declaration.
  *
- *   "JSX element implicitly has type 'any' because no interface
- *    'JSX.IntrinsicElements' exists."
+ * A global `declare namespace JSX` here would only be needed under the classic
+ * factory (jsx "react"). Do not add one back without also adding the
+ * `/** @jsx jsx *\/` pragma to every .tsx file that uses the Emotion css prop,
+ * and do not do either on this install: ts-loader reads this widget's
+ * tsconfig.json, so a classic jsx setting changes what webpack emits.
  *
- * The `declare module 'react'` block re-applies Emotion's css-prop
- * augmentation to THIS widget's local copy of @types/react. jimu-core's
- * Emotion integration augments the client's copy, but ExB 1.21's pnpm
- * layout hides that copy from the IDE, so the widget carries its own
- * types (see package.json devDependencies) and needs its own augmentation.
- *
- * Safe to delete once jimu's jsx factory carries its own JSX namespace, or
- * if this widget migrates to the automatic JSX runtime.
+ * The file is kept rather than deleted so the name is not recreated by habit.
  */
-import type * as React from 'react'
-
-declare global {
-    namespace JSX {
-        type ElementType = React.JSX.ElementType
-        interface Element extends React.JSX.Element { }
-        interface ElementClass extends React.JSX.ElementClass { }
-        interface ElementAttributesProperty extends React.JSX.ElementAttributesProperty { }
-        interface ElementChildrenAttribute extends React.JSX.ElementChildrenAttribute { }
-        type LibraryManagedAttributes<C, P> = React.JSX.LibraryManagedAttributes<C, P>
-        interface IntrinsicAttributes extends React.JSX.IntrinsicAttributes { }
-        interface IntrinsicClassAttributes<T> extends React.JSX.IntrinsicClassAttributes<T> { }
-        interface IntrinsicElements extends React.JSX.IntrinsicElements { }
-    }
-}
-
-declare module 'react' {
-    interface Attributes {
-        /**
-         * Emotion css prop, provided at runtime by the `@jsx jsx` factory from
-         * jimu-core. Typed as `unknown` so any `css\`...\`` template result is
-         * accepted without pulling @emotion/react types into the widget.
-         */
-        css?: unknown
-    }
-}
-
-export { }
+export {}

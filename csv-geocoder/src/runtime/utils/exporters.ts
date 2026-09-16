@@ -5,7 +5,7 @@
  * the draw-advanced widget's export pipeline) which packages the .shp /
  * .shx / .dbf / .prj files into a ZIP.
  *
- * GeoJSON and KML are generated inline — geocoded points are always
+ * GeoJSON and KML are generated inline. Geocoded points are always
  * already in WGS84 (the geocoder asks for outSR=4326) so no reprojection
  * is needed.
  */
@@ -82,7 +82,7 @@ function escapeXml (s: string): string {
 }
 
 /**
- * KML colour format is `AABBGGRR` (alpha, then BGR — note the reverse).
+ * KML colour format is `AABBGGRR` (alpha, then BGR, note the reverse).
  * Input is a standard #RRGGBB hex string.
  */
 function hexToKmlColor (hex: string): string {
@@ -162,7 +162,7 @@ export async function exportShapefile (
   // Note: DBF (the .dbf attribute table inside a shapefile) limits field
   // names to 10 characters and field values to 254 characters. shp-write
   // truncates silently, so long column names will be cut. We don't pre-
-  // mangle here — leaving the truncation behaviour predictable for users
+  // mangle here, leaving the truncation behaviour predictable for users
   // familiar with the format.
   const out = await shpwrite.zip(fc, {
     folder: 'geocoded',

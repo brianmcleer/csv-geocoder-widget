@@ -1,5 +1,4 @@
 import { React, jsx, Immutable } from 'jimu-core'
-import type { AllWidgetSettingProps } from 'jimu-for-builder'
 import { MapWidgetSelector } from 'jimu-ui/advanced/setting-components'
 
 import { type IMConfig, type Config, type SymbolConfig, DEFAULT_CONFIG } from '../config'
@@ -13,15 +12,35 @@ import { type IMConfig, type Config, type SymbolConfig, DEFAULT_CONFIG } from '.
  * If this version loads and the previous one did not, the issue was
  * one of: Switch / NumericInput / Select / SettingSection / SettingRow.
  */
-type SettingProps = AllWidgetSettingProps<IMConfig> & {
+/**
+ * Local structural type rather than AllWidgetSettingProps<IMConfig>.
+ *
+ * Under the mode B editor setup (playbook Section 12 item 3) jimu-for-builder
+ * is declared as a shorthand ambient module, and a shorthand module cannot be
+ * used as a type: Visual Studio reports TS2709 "Cannot use namespace as a
+ * type". The master shim is shared by every widget and must not be edited, so
+ * the props are spelled out here instead. The shape is the same at runtime.
+ *
+ * Nothing under src/setting may import esri/*, directly or through a shared
+ * module: the settings bundle loads in the builder, which has no map, and a
+ * static esri import fails the whole bundle silently (Section 12 item 1).
+ */
+type SettingProps = {
     id: string
+    config: IMConfig
+    onSettingChange: (settings: any, ...rest: any[]) => void
     useMapWidgetIds?: string[]
+    useDataSources?: any
+    intl?: any
+    theme?: any
+    portalUrl?: string
+    [key: string]: any
 }
 
 const Setting = (props: SettingProps): React.ReactElement => {
     const { config, onSettingChange, id, useMapWidgetIds } = props
 
-    // For reads we treat config as a plain Config — the runtime shape is
+    // For reads we treat config as a plain Config, because the runtime shape is
     // identical and this avoids "K cannot index ImmutableObject<Config>".
     const cfgRead = config as unknown as Config | undefined
 
@@ -43,14 +62,14 @@ const Setting = (props: SettingProps): React.ReactElement => {
     // ---- writers -------------------------------------------------------------
     const update = <K extends keyof Config>(key: K, value: Config[K]): void => {
         const base = config ?? Immutable(DEFAULT_CONFIG)
-        onSettingChange({ id, config: base.set(key, value) })
+        onSettingChange({ id, config: base.set(key as any, value) })
     }
     const updateSym = <K extends keyof SymbolConfig>(
         key: K, value: SymbolConfig[K]
     ): void => {
         let base = config ?? Immutable(DEFAULT_CONFIG)
         if (!base.symbol) base = base.set('symbol', DEFAULT_CONFIG.symbol)
-        onSettingChange({ id, config: base.setIn(['symbol', key], value) })
+        onSettingChange({ id, config: base.setIn(['symbol', key as any], value) })
     }
     const onMapWidgetSelected = (ids: string[]): void => {
         onSettingChange({ id, useMapWidgetIds: ids })
@@ -63,6 +82,7 @@ const Setting = (props: SettingProps): React.ReactElement => {
     const row: React.CSSProperties = { display: 'flex', flexDirection: 'column', gap: 2 }
     const lab: React.CSSProperties = { fontSize: 12 }
     const input: React.CSSProperties = { width: '100%', padding: '4px 6px', fontSize: 13, boxSizing: 'border-box' }
+    const hint: React.CSSProperties = { display: 'block', fontSize: 11, opacity: 0.7, lineHeight: 1.4, marginTop: 2 }
 
     return (
         <div style={wrap}>
@@ -113,7 +133,7 @@ const Setting = (props: SettingProps): React.ReactElement => {
                 </div>
 
                 <div style={row}>
-                    <label style={lab}>Minimum match score (0–100)</label>
+                    <label style={lab}>Minimum match score (0 to 100)</label>
                     <input
                         type='number'
                         style={input}
@@ -151,6 +171,40 @@ const Setting = (props: SettingProps): React.ReactElement => {
                         onChange={e => { update('zoomToResults', e.target.checked) }}
                     />
                     Zoom to results
+                </label>
+            </div>
+
+            <div style={section}>
+                <div style={h}>Map layer</div>
+
+                <div style={row}>
+                    <label style={lab}>Layer title</label>
+                    <input
+                        type='text'
+                        style={input}
+                        defaultValue={get('layerTitle')}
+                        placeholder='Leave blank to use the file name'
+                        onBlur={e => { update('layerTitle', e.target.value) }}
+                    />
+                    <span style={hint}>
+                        Matched points are added to the connected map as a layer, so nobody has to
+                        download a file and bring it back in. Blank means the layer takes the name
+                        of the uploaded file.
+                    </span>
+                </div>
+
+                <label style={{ ...lab, display: 'flex', alignItems: 'flex-start', gap: 6 }}>
+                    <input
+                        type='checkbox'
+                        checked={get('replacePreviousLayer')}
+                        onChange={e => { update('replacePreviousLayer', e.target.checked) }}
+                    />
+                    <span>
+                        Replace the previous layer on a new run
+                        <span style={hint}>
+                            Off: every run adds another layer, numbered (2), (3) and so on.
+                        </span>
+                    </span>
                 </label>
             </div>
 

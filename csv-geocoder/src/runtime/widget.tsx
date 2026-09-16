@@ -1,20 +1,34 @@
 import {
     React, jsx, css, type AllWidgetProps, hooks
 } from 'jimu-core'
-import { JimuMapViewComponent, loadArcGISJSAPIModules, type JimuMapView } from 'jimu-arcgis'
-
+import { JimuMapViewComponent, type JimuMapView } from 'jimu-arcgis'
+import { Button } from 'jimu-ui'
+import { CalciteIcon } from 'calcite-components'
 
 import { type IMConfig, type Config, type AddressRole, DEFAULT_CONFIG } from '../config'
 import { parseAddressFile, guessAddressMapping, type ParsedTable } from './utils/parse-file'
 import { geocodeBatch, type GeocodeResult, type GeocodeInput } from './utils/geocoder'
+import {
+    createResultsLayer, removeOwnLayers, titleFromFileName, uniqueTitle, zoomToLayer
+} from './utils/feature-layer'
 
 import FileUpload from './components/file-upload'
 import FieldMapper, { type FieldMapping, validateMapping } from './components/field-mapper'
 import Tooltip from './components/tooltip'
 import ExportBar from './components/export-bar'
 import FailureReviewPanel from './components/failure-review-panel'
+import HelpPopup from './components/HelpPopup'
+import FirstRunHint from './components/FirstRunHint'
+import { buildHelpSections, type HelpFeatures } from './helpSections'
+import defaultMessages from './translations/default'
 
 type Phase = 'idle' | 'parsing' | 'mapping' | 'geocoding' | 'done' | 'error'
+
+/** What the current run put on the map, so the UI can name it and remove it. */
+interface LayerInfo {
+    title: string
+    count: number
+}
 
 interface State {
     phase: Phase
@@ -25,9 +39,13 @@ interface State {
     resultMapping: FieldMapping | null
     error: string | null
     jmv: JimuMapView | null
+    layerInfo: LayerInfo | null
 }
 
 const initialMapping = (): FieldMapping => ({ mode: 'multi', multi: {} })
+
+/** Esri's world locator. Used only to decide whether the guide mentions credits. */
+const WORLD_LOCATOR = 'geocode-api.arcgis.com'
 
 // =============================================================================
 // Step indicator (3 dots + labels)
@@ -126,7 +144,7 @@ const StepIndicator: React.FC<{ phase: Phase }> = ({ phase }) => {
 }
 
 // =============================================================================
-// Inline stat card – icon + number + label so meaning is not colour-only.
+// Inline stat card: icon plus number plus label so meaning is not colour-only.
 // =============================================================================
 const StatCard: React.FC<{
     value: React.ReactNode
@@ -172,17 +190,16 @@ const StatCard: React.FC<{
 // =============================================================================
 // Widget
 // =============================================================================
-type WidgetProps = AllWidgetProps<IMConfig> & { useMapWidgetIds?: string[] }
-
-type ArcGISConstructors = {
-    Graphic: any
-    GraphicsLayer: any
-    SimpleMarkerSymbol: any
-    PopupTemplate: any
+// `id` and `useMapWidgetIds` are spelled out because the pnpm-resolved typings
+// leave them off AllWidgetProps. See the playbook, Section 12 item 3.
+type WidgetProps = AllWidgetProps<IMConfig> & {
+    id: string
+    useMapWidgetIds?: string[]
+    intl?: any
 }
 
 const Widget = (props: WidgetProps): React.ReactElement => {
-    const { useMapWidgetIds, config } = props
+    const { useMapWidgetIds, config, id: widgetId } = props
 
     // Resolved config that ALWAYS has every field, even when `config` arrives
     // undefined or as a partial ImmutableObject (which happens on the first
@@ -207,46 +224,82 @@ const Widget = (props: WidgetProps): React.ReactElement => {
         results: null,
         resultMapping: null,
         error: null,
-        jmv: null
+        jmv: null,
+        layerInfo: null
     })
 
     const [isFailureReviewOpen, setFailureReviewOpen] = React.useState(false)
+    const [isHelpOpen, setHelpOpen] = React.useState(false)
 
-    const layerRef = React.useRef<any>(null)
-    const arcgisRef = React.useRef<ArcGISConstructors | null>(null)
     const abortRef = React.useRef<AbortController | null>(null)
     const reviewTriggerRef = React.useRef<HTMLButtonElement>(null)
+    const jmvRef = React.useRef<JimuMapView | null>(null)
     const failurePanelId = React.useId()
 
-    const loadArcGIS = React.useCallback(async (): Promise<ArcGISConstructors> => {
-        if (arcgisRef.current) return arcgisRef.current
-        const [Graphic, GraphicsLayer, SimpleMarkerSymbol, PopupTemplate] =
-            await loadArcGISJSAPIModules([
-                'esri/Graphic',
-                'esri/layers/GraphicsLayer',
-                'esri/symbols/SimpleMarkerSymbol',
-                'esri/PopupTemplate'
-            ])
-        arcgisRef.current = { Graphic, GraphicsLayer, SimpleMarkerSymbol, PopupTemplate }
-        return arcgisRef.current
-    }, [])
+    // Layer ids carry the widget id, so two copies of this widget in one app
+    // never remove each other's layers.
+    const layerIdPrefix = `csv-geocoder-${widgetId}-`
 
-    const ensureLayer = React.useCallback(async (jmv: JimuMapView): Promise<any> => {
-        if (layerRef.current) return layerRef.current
-        const { GraphicsLayer } = await loadArcGIS()
-        const layer = new GraphicsLayer({ title: 'Geocoded addresses', listMode: 'show' })
-        jmv.view.map.add(layer)
-        layerRef.current = layer
-        return layer
-    }, [loadArcGIS])
+    // -- Translation -----------------------------------------------------------
+    const intl = props.intl
+    const t = React.useCallback((key: string, values?: Record<string, string>): string => {
+        const fallback = (defaultMessages as any)[key] ?? key
+        try {
+            return intl ? intl.formatMessage({ id: key, defaultMessage: fallback }, values) : fallback
+        } catch {
+            return fallback
+        }
+    }, [intl])
 
+    // -- First-run hint --------------------------------------------------------
+    // Namespaced by widget id so two copies do not share one dismissal. Reads
+    // and writes are guarded because private browsing throws on both, and the
+    // guide is not worth breaking a widget over.
+    const hintKey = `csvGeocoder.helpHintDismissed.${widgetId}`
+    const [showFirstRunHint, setShowFirstRunHint] = React.useState<boolean>(() => {
+        try {
+            return window.localStorage.getItem(hintKey) !== '1'
+        } catch {
+            return true
+        }
+    })
+
+    const dismissHint = React.useCallback((): void => {
+        setShowFirstRunHint(false)
+        try {
+            window.localStorage.setItem(hintKey, '1')
+        } catch {
+            /* private browsing */
+        }
+    }, [hintKey])
+
+    // Opening the guide counts as answering the hint.
+    const openHelp = React.useCallback((): void => {
+        setHelpOpen(true)
+        dismissHint()
+    }, [dismissHint])
+
+    // -- Help content ----------------------------------------------------------
+    // Each flag is computed from the same check the UI itself uses, so the guide
+    // never describes a control that is not on screen.
+    const helpFeatures: HelpFeatures = React.useMemo(() => ({
+        mapConnected: !!useMapWidgetIds?.length,
+        zoomToResults: cfg.zoomToResults,
+        replaceLayer: cfg.replacePreviousLayer,
+        worldLocator: (cfg.geocoderUrl || '').indexOf(WORLD_LOCATOR) >= 0
+    }), [useMapWidgetIds, cfg.zoomToResults, cfg.replacePreviousLayer, cfg.geocoderUrl])
+
+    const helpSections = React.useMemo(
+        () => buildHelpSections(t, helpFeatures),
+        [t, helpFeatures]
+    )
+
+    // The layer is deliberately NOT removed on unmount. It is the deliverable:
+    // people close this widget's panel and keep working with the layer in the
+    // Layer List, the attribute table and the other widgets. Remove from map is
+    // the explicit way to take it off.
     hooks.useUnmount(() => {
         abortRef.current?.abort()
-        const layer = layerRef.current
-        const jmv = state.jmv
-        if (layer && jmv) {
-            try { jmv.view.map.remove(layer) } catch { /* view already gone */ }
-        }
     })
 
     // -- File handling ---------------------------------------------------------
@@ -290,6 +343,43 @@ const Widget = (props: WidgetProps): React.ReactElement => {
         })
     }
 
+    /**
+     * Put the matched points on the map as a real client-side FeatureLayer, so
+     * the results behave like any other layer in the app: Layer List entry,
+     * attribute table, popups, and usable by the Filter, Select, Chart and
+     * Table widgets. This is what replaced the download-and-Add-Data round trip.
+     */
+    const addResultsLayer = async (
+        results: GeocodeResult[],
+        table: ParsedTable
+    ): Promise<LayerInfo | null> => {
+        const jmv = jmvRef.current ?? state.jmv
+        const map = jmv?.view?.map
+        if (!map) return null
+
+        if (cfg.replacePreviousLayer) removeOwnLayers(map, layerIdPrefix)
+
+        const wanted = (cfg.layerTitle || '').trim() || titleFromFileName(table.fileName)
+        const title = cfg.replacePreviousLayer ? wanted : uniqueTitle(map, wanted)
+
+        const created = await createResultsLayer({
+            table,
+            results,
+            symbol: cfg.symbol,
+            title,
+            id: `${layerIdPrefix}${Date.now()}`
+        })
+        if (!created) return null
+
+        map.add(created.layer)
+
+        if (cfg.zoomToResults) {
+            void zoomToLayer(jmv.view, created.layer, created.count)
+        }
+
+        return { title: created.title, count: created.count }
+    }
+
     const onRunGeocode = async (): Promise<void> => {
         if (!state.table) return
         setFailureReviewOpen(false)
@@ -303,11 +393,12 @@ const Widget = (props: WidgetProps): React.ReactElement => {
             return
         }
 
+        const runTable = state.table
         const runMapping: FieldMapping = {
             ...state.mapping,
             multi: { ...state.mapping.multi }
         }
-        const inputs = buildInputs(state.table, runMapping)
+        const inputs = buildInputs(runTable, runMapping)
         const ac = new AbortController()
         abortRef.current = ac
 
@@ -331,8 +422,8 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                     setState(s => ({ ...s, progress: { completed, total } }))
                 }
             })
-            await renderResultsOnMap(results)
-            setState(s => ({ ...s, phase: 'done', results, resultMapping: runMapping }))
+            const layerInfo = await addResultsLayer(results, runTable)
+            setState(s => ({ ...s, phase: 'done', results, resultMapping: runMapping, layerInfo }))
         } catch (e) {
             if ((e as Error).name === 'AbortError') {
                 setState(s => ({ ...s, phase: 'mapping', error: 'Geocoding cancelled.' }))
@@ -346,52 +437,16 @@ const Widget = (props: WidgetProps): React.ReactElement => {
         }
     }
 
-    const renderResultsOnMap = async (results: GeocodeResult[]): Promise<void> => {
-        const jmv = state.jmv
-        const table = state.table
-        if (!jmv || !table) return
+    const onRemoveLayer = React.useCallback((): void => {
+        const map = jmvRef.current?.view?.map
+        removeOwnLayers(map, layerIdPrefix)
+        setState(s => ({ ...s, layerInfo: null }))
+    }, [layerIdPrefix])
 
-        const { Graphic, SimpleMarkerSymbol, PopupTemplate } = await loadArcGIS()
-        const layer = await ensureLayer(jmv)
-        layer.removeAll()
-
-        const symbol = new SimpleMarkerSymbol({
-            color: cfg.symbol.color,
-            size: cfg.symbol.size,
-            outline: { color: cfg.symbol.outlineColor, width: cfg.symbol.outlineWidth }
-        })
-
-        const fieldInfos = table.fields.map(f => ({ fieldName: f, label: f }))
-        fieldInfos.push({ fieldName: '__score', label: 'Match score' })
-        fieldInfos.push({ fieldName: '__match', label: 'Match address' })
-        const popupTemplate = new PopupTemplate({
-            title: '{__match}',
-            content: [{ type: 'fields', fieldInfos }]
-        })
-
-        const graphics: any[] = []
-        for (const r of results) {
-            if (!r.point) continue
-            const row = table.rows[r.objectId]
-            graphics.push(new Graphic({
-                geometry: r.point,
-                symbol,
-                attributes: { ...row, __score: r.score, __match: r.matchAddress },
-                popupTemplate
-            }))
-        }
-        layer.addMany(graphics)
-
-        if (cfg.zoomToResults && graphics.length > 0) {
-            void Promise.resolve(jmv.view.when())
-                .then(async () => { await jmv.view.goTo(graphics, { animate: true }) })
-                .catch(() => { /* ignore goTo edge cases */ })
-        }
-    }
-
+    // Clear empties the form only. Layers already on the map are left alone, so
+    // somebody can geocode a second file without losing the first one.
     const onClear = (): void => {
         setFailureReviewOpen(false)
-        layerRef.current?.removeAll()
         setState(s => ({
             ...s,
             phase: 'idle',
@@ -441,6 +496,12 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     }
     .widget-scroll[hidden] { display: none; }
 
+    .header-row {
+      display: flex; align-items: center; justify-content: flex-end;
+      min-height: 28px;
+      margin-bottom: -6px;
+    }
+
     .card {
       background: var(--ref-palette-neutral-200, #fafafa);
       border: 1px solid var(--ref-palette-neutral-500, #d0d0d0);
@@ -486,6 +547,30 @@ const Widget = (props: WidgetProps): React.ReactElement => {
       padding-top: 2px;
     }
 
+    /* Two rows, not one: a single flex row crushes the label to zero width at
+       narrow widget sizes and paints the button over it. */
+    .layer-note {
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 9px 11px;
+      border-radius: 8px;
+      font-size: 12px; line-height: 1.45;
+      background: color-mix(in srgb, var(--sys-color-primary-main, #0079c1) 8%, var(--ref-palette-neutral-100, #fff));
+      border: 1px solid var(--ref-palette-neutral-500, #d0d0d0);
+      border-left: 3px solid var(--sys-color-primary-main, #0079c1);
+      color: var(--ref-palette-neutral-1100, #1a1a1a);
+    }
+    .layer-note .layer-line {
+      display: flex; align-items: flex-start; gap: 8px;
+      min-width: 0;
+    }
+    .layer-note .layer-name {
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+    .layer-note .layer-actions {
+      display: flex; justify-content: flex-end;
+    }
+
     .actions {
       display: flex; gap: 8px; justify-content: flex-end;
       padding-top: 4px;
@@ -522,6 +607,11 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     }
     .btn.secondary:hover:not([disabled]) {
       background: var(--ref-palette-neutral-300, #f0f0f0);
+    }
+    .btn.small {
+      min-height: 28px;
+      padding: 4px 10px;
+      font-size: 12px;
     }
     .btn.danger {
       background: var(--sys-color-error-main, #d32f2f);
@@ -576,12 +666,13 @@ const Widget = (props: WidgetProps): React.ReactElement => {
       .progress-track { border: 1px solid CanvasText; }
       .progress-fill { background: Highlight; }
       .banner { border-color: CanvasText; }
+      .layer-note { border-color: CanvasText; }
     }
   `
 
     // Human-readable phase summary for screen readers via a polite live region.
     // Updates whenever phase changes so AT users hear "Reading file…",
-    // "Geocoding…", "Geocoding complete — 32 of 40 matched." etc.
+    // "Geocoding…", "Geocoding complete, 32 of 40 matched." etc.
     const phaseAnnouncement = React.useMemo((): string => {
         switch (state.phase) {
             case 'parsing': return 'Reading file.'
@@ -591,15 +682,18 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                     : ''
             case 'geocoding':
                 return `Geocoding ${state.progress.completed.toLocaleString()} of ${state.progress.total.toLocaleString()}.`
-            case 'done':
-                return state.results
-                    ? `Geocoding complete. ${successCount.toLocaleString()} of ${state.results.length.toLocaleString()} matched.`
-                    : ''
+            case 'done': {
+                if (!state.results) return ''
+                const base = `Geocoding complete. ${successCount.toLocaleString()} of ${state.results.length.toLocaleString()} matched.`
+                return state.layerInfo
+                    ? `${base} Added to the map as ${state.layerInfo.title}.`
+                    : base
+            }
             case 'error': return state.error ?? 'An error occurred.'
             default: return ''
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [state.phase, state.results, state.progress.completed, state.progress.total])
+    }, [state.phase, state.results, state.layerInfo, state.progress.completed, state.progress.total])
 
     // Focus the error banner when one appears so AT and keyboard users notice it.
     const errorRef = React.useRef<HTMLDivElement>(null)
@@ -615,7 +709,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                 hidden={isFailureReviewOpen}
                 aria-hidden={isFailureReviewOpen ? true : undefined}
             >
-                {/* Polite live region — invisible, announces phase transitions. */}
+                {/* Polite live region, invisible: announces phase transitions. */}
                 <span
                     role='status'
                     aria-live='polite'
@@ -631,8 +725,35 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                     <JimuMapViewComponent
                         useMapWidgetId={useMapWidgetIds[0]}
                         onActiveViewChange={jmv => {
+                            jmvRef.current = jmv ?? null
                             setState(s => ({ ...s, jmv: jmv ?? null }))
                         }}
+                    />
+                )}
+
+                {/* Help button, top right of the widget. */}
+                <div className='header-row'>
+                    <Button
+                        size='sm'
+                        type='tertiary'
+                        icon
+                        onClick={openHelp}
+                        title={t('helpTitle')}
+                        aria-label={t('helpTitle')}
+                        style={{ flexShrink: 0 }}
+                    >
+                        <CalciteIcon icon='question' scale='s' />
+                    </Button>
+                </div>
+
+                {showFirstRunHint && (
+                    <FirstRunHint
+                        title={t('firstRunTitle')}
+                        body={t('firstRunBody')}
+                        linkLabel={t('firstRunHelpLink')}
+                        dismissLabel={t('firstRunDismiss')}
+                        onOpenHelp={openHelp}
+                        onDismiss={dismissHint}
                     />
                 )}
 
@@ -767,6 +888,32 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                 }
                             />
                         </div>
+
+                        {/* The whole point of the FeatureLayer: say where the results
+                            went, in the words the Layer List uses. */}
+                        {state.layerInfo && (
+                            <div className='layer-note' role='status'>
+                                <div className='layer-line'>
+                                    <svg width='15' height='15' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false' style={{ flexShrink: 0, marginTop: 1 }}>
+                                        <path d='M12 2l9 5-9 5-9-5 9-5z' stroke='currentColor' strokeWidth='2' strokeLinejoin='round' />
+                                        <path d='M3 12l9 5 9-5M3 17l9 5 9-5' stroke='currentColor' strokeWidth='2' strokeLinejoin='round' />
+                                    </svg>
+                                    <span>
+                                        Added to the map as <span className='layer-name'>{state.layerInfo.title}</span>.
+                                        {' '}
+                                        Open it from the map’s layer list to see the table.
+                                    </span>
+                                </div>
+                                <div className='layer-actions'>
+                                    <button
+                                        type='button'
+                                        className='btn secondary small'
+                                        onClick={onRemoveLayer}
+                                    >Remove from map</button>
+                                </div>
+                            </div>
+                        )}
+
                         {failureCount > 0 && (
                             <div className='review-actions'>
                                 <button
@@ -793,7 +940,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                     <section className='card' aria-labelledby='csvg-card-export'>
                         <div className='card-head'>
                             <h3 id='csvg-card-export' className='card-title'>4. Export</h3>
-                            <Tooltip text='Download matched points as GeoJSON (web-friendly), KML (Google Earth / web maps), or a zipped Shapefile (GIS desktop tools).' />
+                            <Tooltip text='The points are already on the map as a layer. Export only when you need a file to keep or to hand to somebody: GeoJSON (web-friendly), KML (Google Earth), or a zipped Shapefile (GIS desktop tools).' />
                         </div>
                         <ExportBar
                             table={state.table}
@@ -855,6 +1002,17 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                     onClose={closeFailureReview}
                 />
             )}
+
+            <HelpPopup
+                open={isHelpOpen}
+                onClose={() => { setHelpOpen(false) }}
+                sections={helpSections}
+                title={t('helpTitle')}
+                intro={t('helpIntro')}
+                searchPlaceholder={t('helpSearchPlaceholder')}
+                noMatches={t('helpNoMatches')}
+                closeLabel={t('close')}
+            />
         </main>
     )
 }

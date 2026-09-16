@@ -30,7 +30,7 @@ export interface Config {
   apiKey: string
   /** Maximum addresses sent per geocodeAddresses request. */
   batchSize: number
-  /** Minimum score (0–100) to accept a match. Lower scores are reported as failures. */
+  /** Minimum score (0-100) to accept a match. Lower scores are reported as failures. */
   minScore: number
   /** When true, run requests through the proxy configured for the app. */
   useProxy: boolean
@@ -40,6 +40,18 @@ export interface Config {
   zoomToResults: boolean
   /** Default address mode users see when they open the widget. */
   defaultAddressMode: AddressMode
+  /**
+   * Layer title shown in the Layer List. Blank means the uploaded file name is
+   * used, which is what most people expect: upload "Fire Hydrants.csv" and the
+   * layer is called "Fire Hydrants".
+   */
+  layerTitle: string
+  /**
+   * True: a second geocode run replaces the layer the previous run added, so
+   * the map does not fill up while somebody iterates on one file.
+   * False: every run adds another layer, numbered "(2)", "(3)" and so on.
+   */
+  replacePreviousLayer: boolean
 }
 
 export type IMConfig = ImmutableObject<Config>
@@ -58,5 +70,7 @@ export const DEFAULT_CONFIG: Config = {
     outlineWidth: 1.5
   },
   zoomToResults: true,
-  defaultAddressMode: 'multi'
+  defaultAddressMode: 'multi',
+  layerTitle: '',
+  replacePreviousLayer: true
 }

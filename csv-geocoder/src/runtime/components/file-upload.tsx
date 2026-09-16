@@ -207,7 +207,7 @@ const FileUpload = (props: Props): React.ReactElement => {
 
                 {/* Polite drag-state announcement (silent unless dragging) */}
                 <span className='sr-only' role='status' aria-live='polite'>
-                    {hover ? 'File detected — drop to upload.' : ''}
+                    {hover ? 'File detected, drop to upload.' : ''}
                 </span>
 
                 <input

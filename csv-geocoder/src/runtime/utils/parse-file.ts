@@ -15,7 +15,7 @@
 import Papa from 'papaparse/papaparse.min.js'
 import * as XLSX from 'xlsx'
 
-/** Row shape used internally — index signatures keep eslint's
+/** Row shape used internally. Index signatures keep eslint's
  *  consistent-indexed-object-style rule happy. */
 type StringRow = { [key: string]: string }
 type UnknownRow = { [key: string]: unknown }
@@ -49,7 +49,7 @@ function cellToString(v: unknown): string {
     if (typeof v === 'object') {
         try { return JSON.stringify(v) } catch { return '' }
     }
-    // Primitives (symbol, bigint) — String() is well-defined here.
+    // Primitives (symbol, bigint): String() is well-defined here.
     return String(v).trim()
 }
 
@@ -116,11 +116,11 @@ export async function parseAddressFile(file: File): Promise<ParsedTable> {
     const ext = getExt(file.name)
     if (DELIMITED_EXTS.indexOf(ext) >= 0) return await parseDelimited(file)
     if (SHEET_EXTS.indexOf(ext) >= 0) return await parseWorkbook(file)
-    // Fallback: try CSV — many "address exports" use unusual extensions but are still CSV.
+    // Fallback: try CSV, because many "address exports" use unusual extensions but are still CSV.
     return await parseDelimited(file)
 }
 
-/** Roles used by guessAddressMapping — kept local to avoid a circular import on config.ts. */
+/** Roles used by guessAddressMapping, kept local to avoid a circular import on config.ts. */
 type GuessRole = 'Address' | 'Address2' | 'City' | 'Region' | 'Postal' | 'Country'
 
 /**

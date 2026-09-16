@@ -221,7 +221,7 @@ const FieldMapper = (props: Props): React.ReactElement => {
                         value={value.singleField ?? ''}
                         onChange={e => { setSingle(e.currentTarget.value) }}
                     >
-                        <option value=''>— select column —</option>
+                        <option value=''>(select column)</option>
                         {fields.map(f => <option key={f} value={f}>{f}</option>)}
                     </select>
                 </div>
@@ -254,7 +254,7 @@ const FieldMapper = (props: Props): React.ReactElement => {
                                     value={value.multi[r.key] ?? ''}
                                     onChange={e => { setMulti(r.key, e.currentTarget.value) }}
                                 >
-                                    <option value=''>— none —</option>
+                                    <option value=''>(none)</option>
                                     {fields.map(f => <option key={f} value={f}>{f}</option>)}
                                 </select>
                             </div>
@@ -273,6 +273,6 @@ export function validateMapping(m: FieldMapping): string | null {
         if (!m.singleField) return 'Choose the column that contains the full address.'
         return null
     }
-    if (!m.multi.Address) return 'Map a column to "Street" — it is required.'
+    if (!m.multi.Address) return 'Map a column to "Street". It is required.'
     return null
 }

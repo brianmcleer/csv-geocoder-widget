@@ -1,19 +1,32 @@
 {
-  "extends": "../../../tsconfig.json",
+  "//": "Visual Studio only. noEmit is set, but ts-loader DOES read this file on this",
+  "//2": "install (verified 2026-09-16 from the emitted bundle), so the jsx settings here",
+  "//3": "reach the build. They must therefore match client\\tsconfig.json exactly:",
+  "//4": "jsx react-jsx with jsxImportSource @emotion/react. Do not switch this widget to",
+  "//5": "classic jsx: it changes the emit and the css prop stops going through Emotion.",
+  "//6": "Everything else is mode B (playbook Section 12 item 3): no extends, no baseUrl,",
+  "//7": "no paths, types [], so VS never opens client\\node_modules or client\\jimu-core.",
+  "//8": "Same shape as print-advanced and property-report. Check with: npx tsc -p .",
   "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
-    "noEmit": true,
+    "types": [],
+    "typeRoots": [],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "noImplicitAny": false
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "noEmit": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
+  "exclude": ["node_modules", "dist", "Claude outputs"]
 }
