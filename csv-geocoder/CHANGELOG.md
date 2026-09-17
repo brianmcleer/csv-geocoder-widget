@@ -2,6 +2,10 @@
 
 All notable changes to the CSV Geocoder widget. Newest first.
 
+## 1.1.3 (2026-09-17)
+
+- Security: the world-locator check in `widget.tsx` now parses the geocoder URL and compares the hostname exactly instead of a substring match. Resolves CodeQL `js/incomplete-url-substring-sanitization`. The check only decides whether the help guide mentions credits; no behavior change for real configs.
+
 ## 1.1.2 (2026-09-17)
 
 - Packaging: `src/xlsx.d.ts` and `src/shp-write.d.ts` folded into the editor-only `src/vendor-shims.d.ts`, which the release zip leaves out, because ambient declarations of real packages (`xlsx`, `@mapbox/shp-write`) shadow the `@types` of neighbouring widgets.

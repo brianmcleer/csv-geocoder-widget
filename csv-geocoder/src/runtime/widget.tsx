@@ -47,6 +47,20 @@ const initialMapping = (): FieldMapping => ({ mode: 'multi', multi: {} })
 /** Esri's world locator. Used only to decide whether the guide mentions credits. */
 const WORLD_LOCATOR = 'geocode-api.arcgis.com'
 
+/**
+ * True only when the URL's host IS the world locator (or a subdomain of it).
+ * A substring check would also match "geocode-api.arcgis.com.evil.example",
+ * so the hostname is parsed and compared exactly. Unparseable input is false.
+ */
+const isWorldLocator = (url: string): boolean => {
+    try {
+        const host = new URL(url, window.location.href).hostname.toLowerCase()
+        return host === WORLD_LOCATOR || host.endsWith('.' + WORLD_LOCATOR)
+    } catch {
+        return false
+    }
+}
+
 // =============================================================================
 // Step indicator (3 dots + labels)
 // =============================================================================
@@ -286,7 +300,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
         mapConnected: !!useMapWidgetIds?.length,
         zoomToResults: cfg.zoomToResults,
         replaceLayer: cfg.replacePreviousLayer,
-        worldLocator: (cfg.geocoderUrl || '').indexOf(WORLD_LOCATOR) >= 0
+        worldLocator: isWorldLocator(cfg.geocoderUrl || '')
     }), [useMapWidgetIds, cfg.zoomToResults, cfg.replacePreviousLayer, cfg.geocoderUrl])
 
     const helpSections = React.useMemo(
