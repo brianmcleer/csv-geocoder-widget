@@ -12,6 +12,12 @@ Grab the latest release from the [Releases](https://github.com/brianmcleer/csv-g
 
 The same `.zip` is also attached to the Esri Community post linked below.
 
+### The release zip and the editor shims
+
+The zip is the widget only. The Visual Studio type shims in the repo (`csv-geocoder/src/exb-editor-shims.d.ts`) are left out on purpose: their ambient `declare module` blocks are not file-scoped and would rewrite the react, jimu and esri types for every other widget in your `your-extensions` folder.
+
+If you clone the repository instead of using the zip, delete `csv-geocoder/src/exb-editor-shims.d.ts` before building; nothing else depends on it.
+
 ## Repository layout
 
 ```
@@ -46,9 +52,9 @@ Full steps are in [`csv-geocoder/README.md`](csv-geocoder/README.md), including 
 This repo follows the City of Grand Junction widget-publishing convention (see the GIS team handoff playbook). The `publish.ps1` script automates the workflow:
 
 1. Edit the three variables at the top of `publish.ps1`:
-   - `$WidgetName` — the widget folder name (default `csv-geocoder`)
-   - `$RepoName` — the GitHub repo name (default `csv-geocoder-widget`)
-   - `$EBClient` — the local path to the EB `client` folder
+   - `$WidgetName` - the widget folder name (default `csv-geocoder`)
+   - `$RepoName` - the GitHub repo name (default `csv-geocoder-widget`)
+   - `$EBClient` - the local path to the EB `client` folder
 2. From the repo root, run:
 
    ```

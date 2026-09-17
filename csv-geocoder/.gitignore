@@ -28,3 +28,7 @@ $RECYCLE.BIN/
 *.swp
 *~
 ~$*
+
+# Cowork working folder and release zips never ship
+Claude outputs/
+*.zip

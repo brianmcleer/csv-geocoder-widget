@@ -1,347 +1,203 @@
-﻿<#
-.SYNOPSIS
-    Publish the csv-geocoder widget to GitHub from the local EB install.
+<#
+  publish.ps1  -  One-command publish/update for an ExB custom widget repo.
+  1. Copies the latest widget from the EB folder into this repo's widget subfolder
+     (skips node_modules, .vs, and any working folders listed in $ExcludeDirs,
+     such as "Claude outputs").
+  2. Removes those excluded folders from the repo subfolder if an earlier run or a
+     hand copy left them there, so they never reach GitHub or the release zip.
+  3. Auto-runs 'git init' on first use if the folder is not a git repo yet.
+  4. Commits.
+  5. Publishes the repo to GitHub on first run, or pushes updates after.
+  6. (Optional) Cuts a versioned GitHub Release with a downloadable zip. The zip is
+     built from a staging copy with the editor-only files in $ReleaseOnlyExclude
+     removed (Visual Studio type shims, dev tools). Those stay in the GitHub repo.
+     The release tag must equal the version in manifest.json and package.json, and
+     those two must agree, so a release can never ship a version nobody bumped.
 
-.DESCRIPTION
-    Copies the current widget from ArcGIS Experience Builder 1.21 into this
-    repository, excluding dependency, cache, build, and editor folders.
+  RUN (from a terminal opened in this repo folder):
+    Normal update:            powershell -ExecutionPolicy Bypass -File .\publish.ps1
+    Update + release v1.1.0:  powershell -ExecutionPolicy Bypass -File .\publish.ps1 -Release v1.1.0
+    With a commit message:    powershell -ExecutionPolicy Bypass -File .\publish.ps1 -Release v1.1.0 -CommitMessage "Subject`n`nBody"
 
-    The destination widget folder is deleted first so old excluded folders
-    such as node_modules, .vs, dist, and build cannot remain in the repo copy.
-
-    The script then stages, commits, and pushes changes to GitHub.
-
-    When a release tag is supplied, the script checks that manifest.json and
-    package.json agree with each other and with the tag before it publishes
-    anything, so a release can never ship a version number nobody bumped.
-
-.PARAMETER Release
-    Optional release tag, for example v1.1.0. Must match the version in
-    manifest.json and package.json.
-
-.PARAMETER Message
-    Optional Git commit message. Also accepted as -CommitMessage.
-
-.EXAMPLE
-    powershell -ExecutionPolicy Bypass -File .\publish.ps1 `
-        -Message "Update CSV Geocoder for EB 1.21"
-
-.EXAMPLE
-    powershell -ExecutionPolicy Bypass -File .\publish.ps1 `
-        -Message "Update CSV Geocoder for EB 1.21" `
-        -Release v1.1.0
-
-.EXAMPLE
-    Redo a release. The tag must be deleted first, locally and on GitHub.
-
-        gh release delete v1.1.0 --cleanup-tag --yes
-        git tag -d v1.1.0
-        powershell -ExecutionPolicy Bypass -File .\publish.ps1 -Release v1.1.0
+  REDO A RELEASE (the tag must not already exist on GitHub):
+    gh release delete v1.1.0 --cleanup-tag --yes
+    powershell -ExecutionPolicy Bypass -File .\publish.ps1 -Release v1.1.0 -CommitMessage "..."
 #>
 
-[CmdletBinding()]
 param(
     [string]$Release = "",
-
-    [Alias("CommitMessage")]
-    [string]$Message = ""
+    [string]$CommitMessage = "Update widget ($(Get-Date -Format 'yyyy-MM-dd'))"
 )
 
 $ErrorActionPreference = "Stop"
 
-# ============================================================================
-# Widget settings
-# ============================================================================
-$WidgetName = "csv-geocoder"
-$RepoName   = "csv-geocoder-widget"
-$EBClient   = "C:\arcgis-experience-builder-1.21\client"
-# ============================================================================
+# ----- EDIT THESE PER WIDGET -----------------------------------------------
+$WidgetName     = "csv-geocoder"   # widget folder name (must match EB folder + repo subfolder)
+$RepoName       = "csv-geocoder-widget"
+$ExbWidgetPath  = "C:\arcgis-experience-builder-1.21\client\your-extensions\widgets\$WidgetName"
+$RepoVisibility = "public"      # "public" or "private"; only used by gh repo create on the first run
+# ----------------------------------------------------------------------------
 
-$RepoRoot     = $PSScriptRoot
-$WidgetSource = Join-Path $EBClient "your-extensions\widgets\$WidgetName"
-$WidgetDest   = Join-Path $RepoRoot $WidgetName
+# Folders that live in the EB widget folder but must never ship. "Claude outputs" is the
+# working folder Cowork writes deliverables and zips into. Add other scratch folders here.
+$ExcludeDirs  = @("node_modules", ".vs", "Claude outputs")
+$ExcludeFiles = @("*.user", "*.suo", "*.zip")
 
-function Assert-CommandSucceeded {
-    param(
-        [string]$CommandName,
-        [int[]]$SuccessCodes = @(0)
-    )
+# Editor-only files that belong in the GitHub repo but NOT in the release zip.
+# The *.d.ts shims use ambient `declare module 'react' | 'jimu-*' | 'esri/*'` blocks. Ambient
+# declarations are not file-scoped, so when a downstream developer drops the zip into
+# your-extensions they rewrite the react / jimu / esri types for every other widget in that
+# folder and flood tsc with errors (reported on draw-advanced 4.5.1). They are only there so
+# Visual Studio can type check this widget in isolation (playbook Section 12, item 3).
+# Paths are relative to the widget folder; wildcards allowed in the leaf name; patterns match
+# one folder level only, so a shim that lives deeper needs its own entry.
+$ReleaseOnlyExclude = @(
+    "src\exb-editor-shims*.d.ts",
+    "src\*-shims.d.ts",
+    "src\editor-shims.d.ts",
+    "src\runtime\esri.d.ts",
+    "tools"
+)
 
-    if ($SuccessCodes -notcontains $LASTEXITCODE) {
-        throw "$CommandName failed with exit code $LASTEXITCODE."
+$RepoPath   = $PSScriptRoot
+$WidgetDest = Join-Path $RepoPath $WidgetName
+
+Write-Host "==> Repo:   $RepoPath"
+Write-Host "==> Source: $ExbWidgetPath"
+
+if (-not (Test-Path $ExbWidgetPath)) {
+    throw "Cannot find the widget folder at:`n  $ExbWidgetPath`nEdit `$ExbWidgetPath in publish.ps1."
+}
+
+# Version guard, read from the EB source folder because that is the single source of truth.
+# manifest.json and package.json must agree; a release tag must equal v<that version>.
+function Get-JsonVersion([string]$path) {
+    if (-not (Test-Path $path)) { return $null }
+    try { return (Get-Content $path -Raw | ConvertFrom-Json).version } catch { return $null }
+}
+$manifestVersion = Get-JsonVersion (Join-Path $ExbWidgetPath "manifest.json")
+$packageVersion  = Get-JsonVersion (Join-Path $ExbWidgetPath "package.json")
+Write-Host "==> Version: manifest.json $manifestVersion, package.json $packageVersion"
+if ($manifestVersion -and $packageVersion -and ($manifestVersion -ne $packageVersion)) {
+    $msg = "manifest.json is $manifestVersion but package.json is $packageVersion. Bump both together, in the EB folder."
+    if ($Release -ne "") { throw $msg } else { Write-Warning $msg }
+}
+if ($Release -ne "") {
+    if ($Release -notmatch '^v\d+\.\d+\.\d+$') { throw "Release tag must look like v1.2.3. Received: $Release" }
+    if ($manifestVersion -and ($Release -ne "v$manifestVersion")) {
+        throw "Release tag $Release does not match manifest.json version $manifestVersion. Bump manifest.json and package.json in the EB folder (never the repo copy; /MIR reverts it), or pass -Release v$manifestVersion."
     }
 }
 
-function Get-JsonVersion {
-    param(
-        [string]$Path,
-        [string]$Label
-    )
+Write-Host "`n==> Syncing widget files (skipping $($ExcludeDirs -join ', '))..."
+# robocopy wants each excluded name as its own argument after /XD and /XF
+$xd = @("/XD") + $ExcludeDirs
+$xf = @("/XF") + $ExcludeFiles
+robocopy "$ExbWidgetPath" "$WidgetDest" /MIR @xd @xf /NFL /NDL /NJH /NJS /NP | Out-Null
+if ($LASTEXITCODE -ge 8) { throw "robocopy failed with exit code $LASTEXITCODE" }
 
-    if (-not (Test-Path -LiteralPath $Path)) {
-        throw "$Label not found: $Path"
+# /MIR leaves excluded folders alone on the destination side, so a folder that was mirrored
+# before it was added to $ExcludeDirs stays in the repo until removed here.
+foreach ($dir in $ExcludeDirs) {
+    $stale = Join-Path $WidgetDest $dir
+    if (Test-Path $stale) {
+        Write-Host "    Removing excluded folder from repo copy: $dir"
+        Remove-Item $stale -Recurse -Force
     }
-
-    $version = (Get-Content -LiteralPath $Path -Raw | ConvertFrom-Json).version
-
-    if ([string]::IsNullOrWhiteSpace($version)) {
-        throw "$Label has no version field: $Path"
-    }
-
-    return $version
 }
 
-if (-not (Test-Path -LiteralPath $WidgetSource)) {
-    throw "Widget source not found: $WidgetSource"
+# The manifest has to sit directly inside the widget folder. A second level of nesting is
+# the most common downstream install failure ("<name> is duplicated").
+if (-not (Test-Path (Join-Path $WidgetDest "manifest.json"))) {
+    throw "manifest.json is not directly inside $WidgetDest. The copy is wrong; do not publish it."
 }
+Write-Host "    Done."
 
-Push-Location $RepoRoot
-
+Push-Location $RepoPath
 try {
-    Write-Host "==> Repo:   $RepoRoot"
-    Write-Host "==> Source: $WidgetSource"
-    Write-Host "==> Target: $WidgetDest"
-
-    # ------------------------------------------------------------------------
-    # Version check, against the EB source folder because that is the single
-    # source of truth. Done before anything is copied or pushed so a mismatch
-    # costs nothing to fix.
-    # ------------------------------------------------------------------------
-    $manifestVersion = Get-JsonVersion (Join-Path $WidgetSource "manifest.json") "manifest.json"
-    $packageVersion  = Get-JsonVersion (Join-Path $WidgetSource "package.json")  "package.json"
-
-    Write-Host "`n==> Versions"
-    Write-Host "    manifest.json: $manifestVersion"
-    Write-Host "    package.json:  $packageVersion"
-
-    if ($manifestVersion -ne $packageVersion) {
-        $versionMismatch = "manifest.json is $manifestVersion but package.json is $packageVersion. Bump both together."
-
-        if ([string]::IsNullOrWhiteSpace($Release)) {
-            Write-Warning $versionMismatch
-        }
-        else {
-            throw $versionMismatch
-        }
+    # Auto-initialize git on the first run so this script works on a fresh repo folder
+    # without needing a separate manual "git init" beforehand.
+    if (-not (Test-Path (Join-Path $RepoPath ".git"))) {
+        Write-Host "`n==> No git repository here yet. Running 'git init'..."
+        git init | Out-Null
     }
 
-    if (-not [string]::IsNullOrWhiteSpace($Release)) {
-        if ($Release -notmatch '^v\d+\.\d+\.\d+$') {
-            throw "Release tag must look like v1.1.0. Received: $Release"
-        }
-
-        if ($Release -ne "v$manifestVersion") {
-            throw "Release tag $Release does not match the widget version $manifestVersion. Edit manifest.json and package.json in the EB folder, or pass -Release v$manifestVersion."
-        }
+    git add -A | Out-Null
+    $pending = git status --porcelain
+    if ([string]::IsNullOrWhiteSpace($pending)) {
+        Write-Host "`n==> No changes to commit."
+    } else {
+        Write-Host "`n==> Committing: $($CommitMessage.Split("`n")[0])"
+        git commit -m "$CommitMessage" | Out-Null
     }
 
-    Write-Host "`n==> Removing old repo widget copy"
-
-    if (Test-Path -LiteralPath $WidgetDest) {
-        Remove-Item -LiteralPath $WidgetDest -Recurse -Force
-    }
-
-    New-Item -ItemType Directory -Path $WidgetDest -Force | Out-Null
-
-    Write-Host "==> Copying widget files"
-
-    # "Claude outputs" is the working folder Cowork writes deliverables and zips
-    # into. It lives in the EB widget folder and must never ship.
-    $robocopyArgs = @(
-        $WidgetSource
-        $WidgetDest
-        "/E"
-        "/XD"
-        "node_modules"
-        ".vs"
-        "dist"
-        "build"
-        ".git"
-        ".idea"
-        ".vscode"
-        "coverage"
-        "Claude outputs"
-        "/XF"
-        "*.user"
-        "*.suo"
-        "*.tmp"
-        "*.log"
-        "*.zip"
-        "Thumbs.db"
-        ".DS_Store"
-        "/R:2"
-        "/W:1"
-        "/NFL"
-        "/NDL"
-        "/NJH"
-        "/NJS"
-        "/NP"
-    )
-
-    & robocopy @robocopyArgs | Out-Null
-    $robocopyExitCode = $LASTEXITCODE
-
-    # Robocopy exit codes 0 through 7 are successful.
-    if ($robocopyExitCode -ge 8) {
-        throw "Robocopy failed with exit code $robocopyExitCode."
-    }
-
-    Write-Host "    Widget copy completed."
-
-    Write-Host "`n==> Verifying excluded folders"
-
-    $excludedPaths = @(
-        (Join-Path $WidgetDest "node_modules")
-        (Join-Path $WidgetDest ".vs")
-        (Join-Path $WidgetDest "dist")
-        (Join-Path $WidgetDest "build")
-        (Join-Path $WidgetDest ".git")
-        (Join-Path $WidgetDest ".idea")
-        (Join-Path $WidgetDest ".vscode")
-        (Join-Path $WidgetDest "coverage")
-        (Join-Path $WidgetDest "Claude outputs")
-    )
-
-    foreach ($excludedPath in $excludedPaths) {
-        if (Test-Path -LiteralPath $excludedPath) {
-            Write-Host "    Removing excluded path: $excludedPath"
-            Remove-Item -LiteralPath $excludedPath -Recurse -Force
-        }
-    }
-
-    # The manifest has to sit directly inside the widget folder. A second level
-    # of nesting is the most common downstream install failure.
-    if (-not (Test-Path -LiteralPath (Join-Path $WidgetDest "manifest.json"))) {
-        throw "manifest.json is not directly inside $WidgetDest. The copy is wrong; do not publish it."
-    }
-
-    if (-not (Test-Path -LiteralPath (Join-Path $RepoRoot ".git"))) {
-        Write-Host "`n==> Initializing Git repository"
-
-        git init
-        Assert-CommandSucceeded "git init"
-
-        git branch -M main
-        Assert-CommandSucceeded "git branch -M main"
-    }
-
-    git remote get-url origin 2>$null | Out-Null
-    $hasOrigin = $LASTEXITCODE -eq 0
+    $hasOrigin = (git remote) -contains "origin"
+    $gh = Get-Command gh -ErrorAction SilentlyContinue
 
     if (-not $hasOrigin) {
-        $ghCommand = Get-Command gh -ErrorAction SilentlyContinue
-
-        if (-not $ghCommand) {
-            throw "No GitHub origin exists and the GitHub CLI is not installed."
+        if ($gh) {
+            Write-Host "`n==> First run: creating GitHub repo ($RepoVisibility) and pushing..."
+            gh repo create $RepoName "--$RepoVisibility" --source="." --remote="origin" --push
+        } else {
+            Write-Host "`n==> Repo not on GitHub yet and gh not installed. Publish once via GitHub Desktop, then re-run."
+            return
         }
-
-        Write-Host "`n==> Creating GitHub repository $RepoName"
-
-        gh repo create $RepoName `
-            --public `
-            --source "." `
-            --remote origin `
-            --description "ArcGIS Experience Builder $WidgetName custom widget"
-
-        Assert-CommandSucceeded "gh repo create"
+    } else {
+        Write-Host "`n==> Pushing to GitHub..."
+        git push
     }
 
-    Write-Host "`n==> Staging changes"
+    if ($Release -ne "") {
+        if (-not $gh) {
+            Write-Host "`n==> Skipping release: gh not installed. (winget install --id GitHub.cli ; gh auth login)"
+        } else {
+            # Fail early with a clear message instead of gh's "tag already exists"
+            $existingTags = @(gh release list --limit 200 --json tagName -q ".[].tagName")
+            if ($existingTags -contains $Release) {
+                throw "Release $Release already exists on GitHub. Delete it first:`n  gh release delete $Release --cleanup-tag --yes`nthen run publish.ps1 again."
+            }
+            Write-Host "`n==> Creating release $Release ..."
+            $zip = Join-Path $env:TEMP "$WidgetName.zip"
+            if (Test-Path $zip) { Remove-Item $zip -Force }
 
-    git add -A
-    Assert-CommandSucceeded "git add"
+            # Stage a clean copy of the repo subfolder (never the live EB folder), strip the
+            # editor-only files, and zip that. The repo copy itself is untouched, so the shims
+            # stay on GitHub.
+            $stage     = Join-Path $env:TEMP "$WidgetName-release-stage"
+            $stageCopy = Join-Path $stage $WidgetName
+            if (Test-Path $stage) { Remove-Item $stage -Recurse -Force }
+            New-Item -ItemType Directory -Path $stage | Out-Null
+            robocopy "$WidgetDest" "$stageCopy" /E /NFL /NDL /NJH /NJS /NP | Out-Null
+            if ($LASTEXITCODE -ge 8) { throw "robocopy (release stage) failed with exit code $LASTEXITCODE" }
 
-    git diff --cached --quiet
-    $diffExitCode = $LASTEXITCODE
+            foreach ($pattern in $ReleaseOnlyExclude) {
+                $rel    = Split-Path $pattern -Parent
+                $parent = if ([string]::IsNullOrEmpty($rel)) { $stageCopy } else { Join-Path $stageCopy $rel }
+                $leaf   = Split-Path $pattern -Leaf
+                if (Test-Path $parent) {
+                    Get-ChildItem -Path $parent -Filter $leaf -Force -ErrorAction SilentlyContinue | ForEach-Object {
+                        Write-Host "    Leaving out of release zip: $($_.FullName.Substring($stageCopy.Length + 1))"
+                        Remove-Item $_.FullName -Recurse -Force
+                    }
+                }
+            }
 
-    if ($diffExitCode -eq 0) {
-        Write-Host "    No changes to commit."
-    }
-    elseif ($diffExitCode -eq 1) {
-        if ([string]::IsNullOrWhiteSpace($Message)) {
-            $Message = "Sync $WidgetName from EB $(Get-Date -Format 'yyyy-MM-dd')"
+            # Guard: no ambient editor shim may survive into the zip
+            $leaked = Get-ChildItem -Path $stageCopy -Recurse -File -Filter "*.d.ts" |
+                Where-Object { Select-String -Path $_.FullName -Pattern "declare module ['`"](react|jimu-|esri/)" -Quiet }
+            if ($leaked) {
+                throw "Editor shim still in release stage: $($leaked.FullName -join ', '). Add it to `$ReleaseOnlyExclude."
+            }
+
+            Compress-Archive -Path $stageCopy -DestinationPath $zip
+            Remove-Item $stage -Recurse -Force
+
+            $notes = "Download $WidgetName.zip, extract, and drop the $WidgetName folder into client\your-extensions\widgets so manifest.json sits directly inside it. Then install dependencies in the client folder (npm install on Experience Builder 1.20 and earlier; pnpm install on 1.21 and later) and restart the client. Visual Studio type shims (src/*.d.ts editor files) are left out of this zip on purpose; they are in the GitHub repo if you want them."
+            gh release create $Release "$zip" --title "$RepoName $Release" --notes $notes
         }
-
-        Write-Host "`n==> Committing changes"
-        Write-Host "    $($Message.Split("`n")[0])"
-
-        git commit -m "$Message"
-        Assert-CommandSucceeded "git commit"
-    }
-    else {
-        throw "git diff failed with exit code $diffExitCode."
-    }
-
-    Write-Host "`n==> Pushing to origin/main"
-
-    git push -u origin main
-    Assert-CommandSucceeded "git push"
-
-    if (-not [string]::IsNullOrWhiteSpace($Release)) {
-        $ghCommand = Get-Command gh -ErrorAction SilentlyContinue
-
-        if (-not $ghCommand) {
-            throw "GitHub CLI 'gh' is required to create a release."
-        }
-
-        $existingLocalTag = git tag --list $Release
-
-        if (-not [string]::IsNullOrWhiteSpace($existingLocalTag)) {
-            throw "Local tag $Release already exists. Remove it with: git tag -d $Release"
-        }
-
-        $existingRemoteTag = git ls-remote --tags origin "refs/tags/$Release"
-
-        if (-not [string]::IsNullOrWhiteSpace($existingRemoteTag)) {
-            throw "Remote tag $Release already exists. Remove it with: gh release delete $Release --cleanup-tag --yes"
-        }
-
-        Write-Host "`n==> Creating release $Release"
-
-        git tag $Release
-        Assert-CommandSucceeded "git tag"
-
-        git push origin $Release
-        Assert-CommandSucceeded "git push tag"
-
-        $zipPath = Join-Path $RepoRoot "$WidgetName-$Release.zip"
-
-        if (Test-Path -LiteralPath $zipPath) {
-            Remove-Item -LiteralPath $zipPath -Force
-        }
-
-        Write-Host "    Creating release ZIP: $zipPath"
-
-        # Zips the cleaned repo copy, never the live EB folder, so the archive
-        # contains a single <widget-name> folder with manifest.json inside it.
-        Compress-Archive `
-            -Path $WidgetDest `
-            -DestinationPath $zipPath `
-            -CompressionLevel Optimal
-
-        $releaseNotes = @"
-Download $WidgetName-$Release.zip, extract it, and drop the $WidgetName folder into client\your-extensions\widgets so manifest.json sits directly inside it, not a second level deep.
-
-Then install dependencies from the client folder and restart the client:
-
-- Experience Builder 1.20 and earlier: npm install
-- Experience Builder 1.21 and later: pnpm install
-
-See README.md for configuration and CHANGELOG.md for what changed in this version.
-"@
-
-        gh release create $Release `
-            $zipPath `
-            --title "$WidgetName $Release" `
-            --notes $releaseNotes
-
-        Assert-CommandSucceeded "gh release create"
-
-        Write-Host "`n    Release published."
-        Write-Host "    Esri Community attachment: $zipPath"
     }
 
-    Write-Host "`n==> Finished successfully."
+    Write-Host "`n==> Finished."
 }
 finally {
     Pop-Location

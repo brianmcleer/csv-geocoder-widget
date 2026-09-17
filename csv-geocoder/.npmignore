@@ -17,3 +17,7 @@ $RECYCLE.BIN/
 
 package-lock.json
 pnpm-lock.yaml
+
+# Cowork working folder and release zips never ship
+Claude outputs/
+*.zip
