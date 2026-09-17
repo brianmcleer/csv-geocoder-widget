@@ -2,6 +2,10 @@
 
 All notable changes to the CSV Geocoder widget. Newest first.
 
+## 1.1.2 (2026-09-17)
+
+- Packaging: `src/xlsx.d.ts` and `src/shp-write.d.ts` folded into the editor-only `src/vendor-shims.d.ts`, which the release zip leaves out, because ambient declarations of real packages (`xlsx`, `@mapbox/shp-write`) shadow the `@types` of neighbouring widgets.
+
 ## 1.1.1 (2026-09-17)
 
 - Packaging: the Visual Studio editor shims are no longer in the release zip. `publish.ps1` strips them from a staging copy (`$ReleaseOnlyExclude`) and refuses to zip if any ambient `declare module` of react, jimu or esri survives. The shims stay in the GitHub repo; clone users delete them before building.
