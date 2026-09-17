@@ -31,3 +31,6 @@ $RECYCLE.BIN/
 
 # Local release artifacts produced by publish.ps1
 csv-geocoder-*.zip
+
+# Community attachment zips built by publish-all.ps1 never get committed
+*.zip
