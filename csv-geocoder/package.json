@@ -1,6 +1,6 @@
 {
   "name": "csv-geocoder",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Upload CSV or Excel files of addresses, map columns to address fields, geocode against a configurable locator service, add the matched points to the connected map as a real layer with an attribute table and popups, and export the results as GeoJSON, KML, or Shapefile.",
   "author": "Brian McLeer",
   "license": "Apache-2.0",
