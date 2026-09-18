@@ -2,6 +2,10 @@
 
 All notable changes to the CSV Geocoder widget. Newest first.
 
+## 1.1.4 (2026-09-18)
+
+- Added: anonymous usage and error telemetry (shared beacon module; off unless the portal publishes an exb-beacon-sink table; telemetry: false in config disables it).
+
 ## 1.1.3 (2026-09-17)
 
 - Security: the world-locator check in `widget.tsx` now parses the geocoder URL and compares the hostname exactly instead of a substring match. Resolves CodeQL `js/incomplete-url-substring-sanitization`. The check only decides whether the help guide mentions credits; no behavior change for real configs.

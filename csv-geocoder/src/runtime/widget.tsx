@@ -21,6 +21,8 @@ import HelpPopup from './components/HelpPopup'
 import FirstRunHint from './components/FirstRunHint'
 import { buildHelpSections, type HelpFeatures } from './helpSections'
 import defaultMessages from './translations/default'
+import { beacon } from '../shared/beacon'
+import type { BeaconHandle } from '../shared/beacon'
 
 type Phase = 'idle' | 'parsing' | 'mapping' | 'geocoding' | 'done' | 'error'
 
@@ -245,6 +247,9 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     const [isFailureReviewOpen, setFailureReviewOpen] = React.useState(false)
     const [isHelpOpen, setHelpOpen] = React.useState(false)
 
+    const beaconRef = React.useRef<BeaconHandle | null>(null)
+    React.useEffect(() => { beaconRef.current = beacon.init(props) }, [])
+
     const abortRef = React.useRef<AbortController | null>(null)
     const reviewTriggerRef = React.useRef<HTMLButtonElement>(null)
     const jmvRef = React.useRef<JimuMapView | null>(null)
@@ -318,6 +323,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
 
     // -- File handling ---------------------------------------------------------
     const onFile = async (file: File): Promise<void> => {
+        beaconRef.current?.action('load')
         setFailureReviewOpen(false)
         setState(s => ({ ...s, phase: 'parsing', error: null, results: null, resultMapping: null }))
         try {
@@ -334,6 +340,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
             }
             setState(s => ({ ...s, phase: 'mapping', table, mapping }))
         } catch (e) {
+            beaconRef.current?.error(e, 'load')
             setState(s => ({
                 ...s,
                 phase: 'error',
@@ -395,6 +402,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     }
 
     const onRunGeocode = async (): Promise<void> => {
+        beaconRef.current?.action('geocode')
         if (!state.table) return
         setFailureReviewOpen(false)
         const validationError = validateMapping(state.mapping)
@@ -439,6 +447,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
             const layerInfo = await addResultsLayer(results, runTable)
             setState(s => ({ ...s, phase: 'done', results, resultMapping: runMapping, layerInfo }))
         } catch (e) {
+            beaconRef.current?.error(e, 'geocode')
             if ((e as Error).name === 'AbortError') {
                 setState(s => ({ ...s, phase: 'mapping', error: 'Geocoding cancelled.' }))
                 return
@@ -452,6 +461,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     }
 
     const onRemoveLayer = React.useCallback((): void => {
+        beaconRef.current?.action('remove-layer')
         const map = jmvRef.current?.view?.map
         removeOwnLayers(map, layerIdPrefix)
         setState(s => ({ ...s, layerInfo: null }))
