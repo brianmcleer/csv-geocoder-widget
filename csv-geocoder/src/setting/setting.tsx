@@ -253,6 +253,18 @@ const Setting = (props: SettingProps): React.ReactElement => {
                     />
                 </div>
             </div>
+            <div style={sect}>
+                <div style={head}>Help</div>
+                <div style={row}>
+                    <label style={lab}>Show help guide</label>
+                    <input
+                        type='checkbox'
+                        checked={props.config?.showHelp !== false}
+                        onChange={e => { update('showHelp', e.target.checked) }}
+                        aria-label='Show the question-mark button that opens the widget help guide'
+                    />
+                </div>
+            </div>
         </div>
     )
 }

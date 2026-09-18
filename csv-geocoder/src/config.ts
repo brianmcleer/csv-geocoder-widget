@@ -24,6 +24,9 @@ export interface SymbolConfig {
 }
 
 export interface Config {
+  /** Show the question-mark button that opens the help guide. Undefined means on,
+   *  so apps configured before this setting existed keep their help button. */
+  showHelp?: boolean
   /** Locator service URL (e.g. https://geocode-api.arcgis.com/.../World/GeocodeServer). */
   geocoderUrl: string
   /** Optional API key / token used when calling the locator. Stored in app JSON. */
