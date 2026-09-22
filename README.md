@@ -1,6 +1,6 @@
 # csv-geocoder-widget
 
-[![License](https://img.shields.io/github/license/brianmcleer/csv-geocoder-widget)](LICENSE) [![Release](https://img.shields.io/github/v/release/brianmcleer/=tag)](https://github.com/brianmcleer/csv-geocoder-widget/releases) [![Issues](https://img.shields.io/github/issues/brianmcleer/csv-geocoder-widget)](https://github.com/brianmcleer/csv-geocoder-widget/issues)
+[![License](https://img.shields.io/github/license/brianmcleer/csv-geocoder-widget)](LICENSE) [![Release](https://img.shields.io/github/v/release/brianmcleer/csv-geocoder-widget?display_name=tag)](https://github.com/brianmcleer/csv-geocoder-widget/releases) [![Issues](https://img.shields.io/github/issues/brianmcleer/csv-geocoder-widget)](https://github.com/brianmcleer/csv-geocoder-widget/issues)
 
 GitHub home of the **CSV Geocoder** custom widget for ArcGIS Experience Builder.
 
@@ -24,21 +24,21 @@ If you clone the repository instead of using the zip, delete `csv-geocoder/src/e
 
 ```
 csv-geocoder-widget/
-â”œâ”€â”€ README.md                <- this file (GitHub landing page)
-â”œâ”€â”€ LICENSE                  <- Apache-2.0
-â”œâ”€â”€ .gitignore
-â”œâ”€â”€ publish.ps1              <- automation: sync from EB, push, cut release
-â””â”€â”€ csv-geocoder/            <- the widget; drop this folder into your-extensions/widgets
-    â”œâ”€â”€ package.json
-    â”œâ”€â”€ package-lock.json    <- generated in the real EB environment
-    â”œâ”€â”€ manifest.json
-    â”œâ”€â”€ config.json
-    â”œâ”€â”€ icon.svg
-    â”œâ”€â”€ README.md            <- widget-level install + usage docs
-    â”œâ”€â”€ LICENSE
-    â”œâ”€â”€ .gitignore
-    â”œâ”€â”€ .npmignore
-    â””â”€â”€ src/ ...
+├── README.md                <- this file (GitHub landing page)
+├── LICENSE                  <- Apache-2.0
+├── .gitignore
+├── publish.ps1              <- automation: sync from EB, push, cut release
+└── csv-geocoder/            <- the widget; drop this folder into your-extensions/widgets
+    ├── package.json
+    ├── package-lock.json    <- generated in the real EB environment
+    ├── manifest.json
+    ├── config.json
+    ├── icon.svg
+    ├── README.md            <- widget-level install + usage docs
+    ├── LICENSE
+    ├── .gitignore
+    ├── .npmignore
+    └── src/ ...
 ```
 
 ## Install (downstream users)
