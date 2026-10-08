@@ -6,6 +6,9 @@ import { submittedAddress } from '../utils/address-text'
 import {
     STATUS_LABEL, STATUS_ORDER, failReason, exportCSV, exportFileName, downloadBlob
 } from '../utils/exporters'
+import { hooks as __exbI18nHooks } from 'jimu-core';
+import __exbI18nMessages from '../translations/default';
+
 
 interface Props {
     panelId: string
@@ -35,6 +38,7 @@ function formatSubmittedAddress(
 }
 
 const FailureReviewPanel = (props: Props): React.ReactElement => {
+  const t = __exbI18nHooks.useTranslation(__exbI18nMessages);
     const { panelId, table, mapping, results, minScore, onClose, onExported } = props
     const [query, setQuery] = React.useState('')
     const [statusFilter, setStatusFilter] = React.useState<StatusFilter>('any')
@@ -479,7 +483,7 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                 <button
                     type='button'
                     className='back-button'
-                    aria-label='Back to geocoding results'
+                    aria-label={t('backToGeocodingResults')}
                     onClick={onClose}
                 >
                     <svg width='18' height='18' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
@@ -492,15 +496,15 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                         id={titleId}
                         className='panel-title'
                         tabIndex={-1}
-                    >Review unmatched</h2>
+                    >{t('reviewUnmatched')}</h2>
                     <p className='panel-subtitle'>
-                        {failures.length.toLocaleString()} {failures.length === 1 ? 'record did' : 'records did'} not produce an accepted match.
+                        {(failures.length === 1 ? t('failuresCountRecordDidNotProduceAn', { failuresCount: failures.length.toLocaleString() }) : t('failuresCountRecordsDidNotProduceAn', { failuresCount: failures.length.toLocaleString() }))}
                     </p>
                 </div>
             </header>
 
             <div className='search-section'>
-                <label className='search-label' htmlFor={searchId}>Search unmatched records</label>
+                <label className='search-label' htmlFor={searchId}>{t('searchUnmatchedRecords')}</label>
                 <div className='search-box'>
                     <svg className='search-icon' width='15' height='15' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
                         <circle cx='11' cy='11' r='7' stroke='currentColor' strokeWidth='2' />
@@ -511,14 +515,14 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                         className='search-input'
                         type='search'
                         value={query}
-                        placeholder='Address, row number, reason, or field value'
+                        placeholder={t('addressRowNumberReasonOrField')}
                         onChange={event => { setQuery(event.currentTarget.value) }}
                     />
                     {query && (
                         <button
                             type='button'
                             className='clear-search'
-                            aria-label='Clear search'
+                            aria-label={t('clearSearch')}
                             onClick={() => { setQuery('') }}
                         >
                             <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
@@ -531,14 +535,14 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
 
             {presentStatuses.length > 1 && (
                 <div className='status-filter'>
-                    <label className='search-label' htmlFor={statusId}>Reason</label>
+                    <label className='search-label' htmlFor={statusId}>{t('reason')}</label>
                     <select
                         id={statusId}
                         className='status-select'
                         value={statusFilter}
                         onChange={event => { setStatusFilter(event.currentTarget.value as StatusFilter) }}
                     >
-                        <option value='any'>Any reason ({failures.length.toLocaleString()})</option>
+                        <option value='any'>{t('anyReasonFailuresCount', { failuresCount: failures.length.toLocaleString() })}</option>
                         {presentStatuses.map(s => (
                             <option key={s} value={s}>{STATUS_LABEL[s]} ({(statusCounts[s] ?? 0).toLocaleString()})</option>
                         ))}
@@ -547,7 +551,7 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
             )}
 
             <p className='filter-summary' role='status' aria-live='polite'>
-                Showing {filteredFailures.length.toLocaleString()} of {failures.length.toLocaleString()} unmatched {failures.length === 1 ? 'record' : 'records'}.
+                {(failures.length === 1 ? t('showingFilteredFailuresCountOfFailuresCountUnmatchedRecord', { filteredFailuresCount: filteredFailures.length.toLocaleString(), failuresCount: failures.length.toLocaleString() }) : t('showingFilteredFailuresCountOfFailuresCountUnmatchedRecords', { filteredFailuresCount: filteredFailures.length.toLocaleString(), failuresCount: failures.length.toLocaleString() }))}
             </p>
 
             {filteredFailures.length > 0
@@ -562,18 +566,18 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                                 <li className='failure-card' key={result.objectId}>
                                     <div className='failure-meta'>
                                         <span className='row-number'>
-                                            Record {(result.objectId + 1).toLocaleString()} · source row {(result.objectId + 2).toLocaleString()}
+                                            {t('recordObjectIdSourceRowObjectId2', { objectId: (result.objectId + 1).toLocaleString(), objectId2: (result.objectId + 2).toLocaleString() })}
                                         </span>
                                         <span className='chips'>
                                             <span className='status-chip'>{STATUS_LABEL[result.status]}</span>
                                             <span className='score'>
-                                                {result.score > 0 ? `Score ${Math.round(result.score)}` : 'No score'}
+                                                {result.score > 0 ? t('scoreScore', { score: Math.round(result.score) }) : t('noScore')}
                                             </span>
                                         </span>
                                     </div>
 
                                     <div className='submitted-address'>
-                                        <span className='field-label'>Submitted address</span>
+                                        <span className='field-label'>{t('submittedAddress')}</span>
                                         {submittedAddress}
                                     </div>
 
@@ -587,21 +591,21 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
 
                                     {hasCandidate && (
                                         <div className='candidate-address'>
-                                            <span className='field-label'>Closest locator candidate</span>
+                                            <span className='field-label'>{t('closestLocatorCandidate')}</span>
                                             {result.matchAddress}
                                             {result.addrType ? ` (${result.addrType})` : ''}
                                         </div>
                                     )}
 
                                     <details className='row-details'>
-                                        <summary className='row-summary'>Original row fields</summary>
+                                        <summary className='row-summary'>{t('originalRowFields')}</summary>
                                         <dl className='row-fields'>
                                             {table.fields.map(field => {
                                                 const value = cleanValue(row?.[field])
                                                 return (
                                                     <React.Fragment key={field}>
                                                         <dt className='row-field-name'>{field}</dt>
-                                                        <dd className='row-field-value'>{value || <span className='empty-value'>blank</span>}</dd>
+                                                        <dd className='row-field-value'>{value || <span className='empty-value'>{t('blank')}</span>}</dd>
                                                     </React.Fragment>
                                                 )
                                             })}
@@ -614,27 +618,27 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                 )
                 : (
                     <div className='empty-state' role='status'>
-                        No unmatched records match this search. Clear the search or pick Any reason to show them all.
+                        {t('noUnmatchedRecordsMatchThisSearch')}
                     </div>
                 )}
 
             {downloaded && (
-                <p className='downloaded' role='status' aria-live='polite'>Downloaded <strong>{downloaded}</strong></p>
+                <p className='downloaded' role='status' aria-live='polite'>{t('downloaded')} <strong>{downloaded}</strong></p>
             )}
 
             <footer className='panel-footer'>
-                <button type='button' className='footer-button' onClick={onClose}>Back to results</button>
+                <button type='button' className='footer-button' onClick={onClose}>{t('backToResults')}</button>
                 <button
                     type='button'
                     className='footer-button primary'
                     onClick={onDownload}
                     disabled={filteredFailures.length === 0}
-                    aria-label={`Download the ${filteredFailures.length.toLocaleString()} records shown as CSV`}
+                    aria-label={t('downloadTheFilteredFailuresCountRecordsShownAs', { filteredFailuresCount: filteredFailures.length.toLocaleString() })}
                 >
                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
                         <path d='M12 3v12m0 0l-5-5m5 5l5-5M4 21h16' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
                     </svg>
-                    Download {filteredFailures.length.toLocaleString()} as CSV
+                    {t('downloadFilteredFailuresCountAsCsv', { filteredFailuresCount: filteredFailures.length.toLocaleString() })}
                 </button>
             </footer>
         </section>

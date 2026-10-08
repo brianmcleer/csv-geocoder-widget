@@ -2,6 +2,9 @@ import { React, jsx, Immutable } from 'jimu-core'
 import { MapWidgetSelector } from 'jimu-ui/advanced/setting-components'
 
 import { type IMConfig, type Config, type SymbolConfig, DEFAULT_CONFIG } from '../config'
+import { hooks as __exbI18nHooks } from 'jimu-core';
+import __exbI18nMessages from './translations/default';
+
 
 /**
  * Minimal settings panel. Uses only MapWidgetSelector from jimu-ui;
@@ -38,6 +41,7 @@ type SettingProps = {
 }
 
 const Setting = (props: SettingProps): React.ReactElement => {
+  const t = __exbI18nHooks.useTranslation(__exbI18nMessages);
     const { config, onSettingChange, id, useMapWidgetIds } = props
 
     // For reads we treat config as a plain Config, because the runtime shape is
@@ -87,9 +91,9 @@ const Setting = (props: SettingProps): React.ReactElement => {
     return (
         <div style={wrap}>
             <div style={section}>
-                <div style={h}>Map</div>
+                <div style={h}>{t('sectionMap')}</div>
                 <div style={row}>
-                    <label style={lab}>Connect to a Map widget</label>
+                    <label style={lab}>{t('connectToAMapWidget')}</label>
                     <MapWidgetSelector
                         useMapWidgetIds={useMapWidgetIds}
                         onSelect={onMapWidgetSelected}
@@ -98,10 +102,10 @@ const Setting = (props: SettingProps): React.ReactElement => {
             </div>
 
             <div style={section}>
-                <div style={h}>Geocoding service</div>
+                <div style={h}>{t('sectionGeocoder')}</div>
 
                 <div style={row}>
-                    <label style={lab}>Locator URL</label>
+                    <label style={lab}>{t('locatorUrl')}</label>
                     <input
                         type='text'
                         style={input}
@@ -112,7 +116,7 @@ const Setting = (props: SettingProps): React.ReactElement => {
                 </div>
 
                 <div style={row}>
-                    <label style={lab}>API key / token (optional)</label>
+                    <label style={lab}>{t('apiKey')}</label>
                     <input
                         type='password'
                         style={input}
@@ -122,7 +126,7 @@ const Setting = (props: SettingProps): React.ReactElement => {
                 </div>
 
                 <div style={row}>
-                    <label style={lab}>Batch size</label>
+                    <label style={lab}>{t('batchSize')}</label>
                     <input
                         type='number'
                         style={input}
@@ -133,7 +137,7 @@ const Setting = (props: SettingProps): React.ReactElement => {
                 </div>
 
                 <div style={row}>
-                    <label style={lab}>Minimum match score (0 to 100)</label>
+                    <label style={lab}>{t('minimumMatchScore0To100')}</label>
                     <input
                         type='number'
                         style={input}
@@ -148,10 +152,10 @@ const Setting = (props: SettingProps): React.ReactElement => {
             </div>
 
             <div style={section}>
-                <div style={h}>Behaviour</div>
+                <div style={h}>{t('sectionBehaviour')}</div>
 
                 <div style={row}>
-                    <label style={lab}>Default address mode</label>
+                    <label style={lab}>{t('defaultMode')}</label>
                     <select
                         style={input}
                         value={get('defaultAddressMode')}
@@ -159,8 +163,8 @@ const Setting = (props: SettingProps): React.ReactElement => {
                             update('defaultAddressMode', e.target.value as IMConfig['defaultAddressMode'])
                         }}
                     >
-                        <option value='multi'>Separate columns</option>
-                        <option value='single'>Single full address</option>
+                        <option value='multi'>{t('separateColumns')}</option>
+                        <option value='single'>{t('singleFullAddress')}</option>
                     </select>
                 </div>
 
@@ -170,26 +174,24 @@ const Setting = (props: SettingProps): React.ReactElement => {
                         checked={get('zoomToResults')}
                         onChange={e => { update('zoomToResults', e.target.checked) }}
                     />
-                    Zoom to results
+                    {t('zoomToResults')}
                 </label>
             </div>
 
             <div style={section}>
-                <div style={h}>Map layer</div>
+                <div style={h}>{t('sectionLayer')}</div>
 
                 <div style={row}>
-                    <label style={lab}>Layer title</label>
+                    <label style={lab}>{t('layerTitle')}</label>
                     <input
                         type='text'
                         style={input}
                         defaultValue={get('layerTitle')}
-                        placeholder='Leave blank to use the file name'
+                        placeholder={t('leaveBlankToUseTheFile')}
                         onBlur={e => { update('layerTitle', e.target.value) }}
                     />
                     <span style={hint}>
-                        Matched points are added to the connected map as a layer, so nobody has to
-                        download a file and bring it back in. Blank means the layer takes the name
-                        of the uploaded file.
+                        {t('matchedPointsAreAddedToThe')}
                     </span>
                 </div>
 
@@ -200,19 +202,19 @@ const Setting = (props: SettingProps): React.ReactElement => {
                         onChange={e => { update('replacePreviousLayer', e.target.checked) }}
                     />
                     <span>
-                        Replace the previous layer on a new run
+                        {t('replacePreviousLayer')}
                         <span style={hint}>
-                            Off: every run adds another layer, numbered (2), (3) and so on.
+                            {t('offEveryRunAddsAnotherLayer')}
                         </span>
                     </span>
                 </label>
             </div>
 
             <div style={section}>
-                <div style={h}>Point symbol</div>
+                <div style={h}>{t('sectionSymbol')}</div>
 
                 <div style={{ ...row, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                    <label style={lab}>Fill colour</label>
+                    <label style={lab}>{t('fillColour')}</label>
                     <input
                         type='color'
                         value={getSym('color')}
@@ -222,7 +224,7 @@ const Setting = (props: SettingProps): React.ReactElement => {
                 </div>
 
                 <div style={row}>
-                    <label style={lab}>Size (px)</label>
+                    <label style={lab}>{t('sizePx')}</label>
                     <input
                         type='number'
                         style={input}
@@ -233,7 +235,7 @@ const Setting = (props: SettingProps): React.ReactElement => {
                 </div>
 
                 <div style={{ ...row, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                    <label style={lab}>Outline colour</label>
+                    <label style={lab}>{t('outlineColour')}</label>
                     <input
                         type='color'
                         value={getSym('outlineColor')}
@@ -243,7 +245,7 @@ const Setting = (props: SettingProps): React.ReactElement => {
                 </div>
 
                 <div style={row}>
-                    <label style={lab}>Outline width</label>
+                    <label style={lab}>{t('outlineWidth')}</label>
                     <input
                         type='number'
                         style={input}
@@ -254,14 +256,14 @@ const Setting = (props: SettingProps): React.ReactElement => {
                 </div>
             </div>
             <div style={section}>
-                <div style={h}>Help</div>
+                <div style={h}>{t('help')}</div>
                 <div style={row}>
-                    <label style={lab}>Show help guide</label>
+                    <label style={lab}>{t('showHelpGuide')}</label>
                     <input
                         type='checkbox'
                         checked={props.config?.showHelp !== false}
                         onChange={e => { update('showHelp', e.target.checked) }}
-                        aria-label='Show the question-mark button that opens the widget help guide'
+                        aria-label={t('showTheQuestionMarkButtonThat')}
                     />
                 </div>
             </div>

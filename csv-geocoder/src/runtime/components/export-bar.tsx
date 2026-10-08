@@ -8,6 +8,9 @@ import {
     type TableScope
 } from '../utils/exporters'
 import Tooltip from './tooltip'
+import { hooks as __exbI18nHooks } from 'jimu-core';
+import __exbI18nMessages from '../translations/default';
+
 
 interface Props {
     table: ParsedTable
@@ -85,6 +88,7 @@ const iconFor = (k: FormatDef['iconKey']): React.ReactElement =>
     k === 'zip' ? zipSvg : k === 'table' ? tableSvg : fileSvg
 
 const ExportBar = (props: Props): React.ReactElement => {
+  const t = __exbI18nHooks.useTranslation(__exbI18nMessages);
     const { table, results, mapping, symbolColor, locatorUrl, minScore, onExported, onExportError } = props
     const [busy, setBusy] = React.useState<Busy>(null)
     const [error, setError] = React.useState<string | null>(null)
@@ -359,11 +363,11 @@ const ExportBar = (props: Props): React.ReactElement => {
             {/* ---- Address check table -------------------------------------- */}
             <div className='group' role='group' aria-labelledby={scopeLabelId}>
                 <div className='group-head'>
-                    <h4 id={scopeLabelId} className='group-title'>Address check table</h4>
-                    <Tooltip text='A spreadsheet of your rows with MATCH_STATUS, MATCH_SCORE, the address you sent, the address the locator matched, the address type, a plain reason for every row that did not match, and coordinates for every row that did. Open it in Excel and filter on MATCH_STATUS.' />
+                    <h4 id={scopeLabelId} className='group-title'>{t('addressCheckTable')}</h4>
+                    <Tooltip text={t('aSpreadsheetOfYourRowsWith')} />
                 </div>
 
-                <div className='scope' role='radiogroup' aria-label='Rows to include'>
+                <div className='scope' role='radiogroup' aria-label={t('rowsToInclude')}>
                     {SCOPES.map((s, i) => {
                         const checked = scope === s.id
                         return (
@@ -391,36 +395,36 @@ const ExportBar = (props: Props): React.ReactElement => {
                         f,
                         canExportTable,
                         emptyScopeHintId,
-                        `Export ${scopeWord} as ${f.label}`
+                        t('exportScopeWordAsLabel', { scopeWord, label: f.label })
                     ))}
                 </div>
                 {!canExportTable && (
                     <span id={emptyScopeHintId} className='sr-only'>
-                        There are no {scopeWord} to export. Pick another option above.
+                        {t('thereAreNoScopeWordToExport', { scopeWord })}
                     </span>
                 )}
             </div>
 
             {/* ---- Map files -------------------------------------------------- */}
-            <div className='group' role='group' aria-label='Map file export'>
+            <div className='group' role='group' aria-label={t('mapFileExport')}>
                 <div className='group-head'>
-                    <h4 className='group-title'>Map file</h4>
-                    <Tooltip text='Matched points only, since a row without a location has nothing to draw. GeoJSON for web maps and ArcGIS Online, KML for Google Earth, a zipped Shapefile for ArcGIS Pro.' />
+                    <h4 className='group-title'>{t('mapFile')}</h4>
+                    <Tooltip text={t('matchedPointsOnlySinceARow')} />
                 </div>
                 <p className='group-note'>
-                    {matched.length.toLocaleString()} matched point{matched.length === 1 ? '' : 's'}.
+                    {(matched.length === 1 ? t('matchedCountMatchedPoint', { matchedCount: matched.length.toLocaleString() }) : t('matchedCountMatchedPoints', { matchedCount: matched.length.toLocaleString() }))}
                 </p>
                 <div className='grid three'>
                     {MAP_FORMATS.map(f => renderFormat(
                         f,
                         canExportMap,
                         noMatchHintId,
-                        `Export matched points as ${f.id === 'shp' ? 'a zipped Shapefile' : f.label}`
+                        t('exportMatchedPointsAsId', { id: f.id === 'shp' ? t('aZippedShapefile') : f.label })
                     ))}
                 </div>
                 {!canExportMap && (
                     <span id={noMatchHintId} className='sr-only'>
-                        No matched points to export. Re-run geocoding with a lower minimum match score, or check that the address fields are mapped correctly.
+                        {t('noMatchedPointsToExportRe')}
                     </span>
                 )}
             </div>
@@ -430,7 +434,7 @@ const ExportBar = (props: Props): React.ReactElement => {
                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false' style={{ flexShrink: 0, marginTop: 1 }}>
                         <path d='M5 12l5 5L20 7' stroke='currentColor' strokeWidth='3' strokeLinecap='round' strokeLinejoin='round' />
                     </svg>
-                    <span className='status-text'>Downloaded <strong className='status-file'>{lastExport}</strong></span>
+                    <span className='status-text'>{t('downloaded')} <strong className='status-file'>{lastExport}</strong></span>
                 </div>
             )}
 

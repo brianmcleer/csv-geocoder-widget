@@ -1,6 +1,9 @@
 import { React, jsx, css } from 'jimu-core'
 import { type AddressMode, type AddressRole } from '../../config'
 import Tooltip from './tooltip'
+import { hooks as __exbI18nHooks } from 'jimu-core';
+import __exbI18nMessages from '../translations/default';
+
 
 export interface FieldMapping {
     mode: AddressMode
@@ -44,6 +47,7 @@ const MULTI_ROLES: RoleDef[] = [
  *     'required' on a sr-only span so screen readers announce it once.
  */
 const FieldMapper = (props: Props): React.ReactElement => {
+  const t = __exbI18nHooks.useTranslation(__exbI18nMessages);
     const { fields, value, onChange } = props
     const multiBtnRef = React.useRef<HTMLButtonElement>(null)
     const singleBtnRef = React.useRef<HTMLButtonElement>(null)
@@ -176,8 +180,8 @@ const FieldMapper = (props: Props): React.ReactElement => {
   `
 
     return (
-        <div css={styles} role='group' aria-label='Address field mapping'>
-            <div className='seg' role='radiogroup' aria-label='Address mapping mode'>
+        <div css={styles} role='group' aria-label={t('addressFieldMapping')}>
+            <div className='seg' role='radiogroup' aria-label={t('addressMappingMode')}>
                 <button
                     ref={multiBtnRef}
                     type='button'
@@ -187,7 +191,7 @@ const FieldMapper = (props: Props): React.ReactElement => {
                     className='seg-btn'
                     onClick={() => { setMode('multi') }}
                     onKeyDown={onModeKey}
-                >Separate columns</button>
+                >{t('separateColumns')}</button>
                 <button
                     ref={singleBtnRef}
                     type='button'
@@ -197,19 +201,19 @@ const FieldMapper = (props: Props): React.ReactElement => {
                     className='seg-btn'
                     onClick={() => { setMode('single') }}
                     onKeyDown={onModeKey}
-                >Single full address</button>
+                >{t('singleFullAddress')}</button>
             </div>
 
             {value.mode === 'single' && (
                 <div className='field'>
                     <div className='field-head'>
                         <label htmlFor='csvg-single'>
-                            Address column
+                            {t('addressColumn')}
                             <span className='req' aria-hidden='true'> *</span>
-                            <span className='sr-only'> required</span>
+                            <span className='sr-only'> {t('required')}</span>
                         </label>
                         <Tooltip
-                            text='The column containing the complete address as one string, e.g. "100 Main St, Springfield, IL 62701".'
+                            text={t('theColumnContainingTheCompleteAddress')}
                             describedById='csvg-single-help'
                         />
                     </div>
@@ -221,7 +225,7 @@ const FieldMapper = (props: Props): React.ReactElement => {
                         value={value.singleField ?? ''}
                         onChange={e => { setSingle(e.currentTarget.value) }}
                     >
-                        <option value=''>(select column)</option>
+                        <option value=''>{t('selectColumn')}</option>
                         {fields.map(f => <option key={f} value={f}>{f}</option>)}
                     </select>
                 </div>
@@ -230,8 +234,8 @@ const FieldMapper = (props: Props): React.ReactElement => {
             {value.mode === 'multi' && (
                 <div className='grid'>
                     {MULTI_ROLES.map((r, idx) => {
-                        const fieldId = `csvg-m-${r.key.toLowerCase()}`
-                        const helpId = `${fieldId}-help`
+                        const fieldId = t('csvgMKey', { key: r.key.toLowerCase() })
+                        const helpId = t('fieldIdHelp', { fieldId })
                         return (
                             <div className='field' key={r.key}>
                                 <div className='field-head'>
@@ -240,7 +244,7 @@ const FieldMapper = (props: Props): React.ReactElement => {
                                         {r.required && (
                                             <React.Fragment key='required-mark'>
                                                 <span className='req' aria-hidden='true'> *</span>
-                                                <span className='sr-only'> required</span>
+                                                <span className='sr-only'> {t('required')}</span>
                                             </React.Fragment>
                                         )}
                                     </label>
@@ -254,7 +258,7 @@ const FieldMapper = (props: Props): React.ReactElement => {
                                     value={value.multi[r.key] ?? ''}
                                     onChange={e => { setMulti(r.key, e.currentTarget.value) }}
                                 >
-                                    <option value=''>(none)</option>
+                                    <option value=''>{t('none')}</option>
                                     {fields.map(f => <option key={f} value={f}>{f}</option>)}
                                 </select>
                             </div>

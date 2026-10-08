@@ -2,6 +2,9 @@ import { React } from 'jimu-core'
 import { Button } from 'jimu-ui'
 import { CalciteIcon } from 'calcite-components'
 import { useTokens } from '../theme'
+import { hooks as __exbI18nHooks } from 'jimu-core';
+import __exbI18nMessages from '../translations/default';
+
 
 /**
  * The tinted banner that points a first-time user at the guide. Shown until
@@ -25,6 +28,7 @@ export interface FirstRunHintProps {
 const FirstRunHint: React.FC<FirstRunHintProps> = ({
   title, body, linkLabel, dismissLabel, onOpenHelp, onDismiss
 }) => {
+  const t = __exbI18nHooks.useTranslation(__exbI18nMessages);
   const tokens = useTokens()
 
   return (

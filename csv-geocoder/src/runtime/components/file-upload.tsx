@@ -1,4 +1,7 @@
 import { React, jsx, css } from 'jimu-core'
+import { hooks as __exbI18nHooks } from 'jimu-core';
+import __exbI18nMessages from '../translations/default';
+
 
 const ACCEPT = '.csv,.tsv,.txt,.xlsx,.xls,.xlsm,.ods'
 
@@ -24,6 +27,7 @@ interface Props {
  *    - prefers-reduced-motion disables the lift animation.
  */
 const FileUpload = (props: Props): React.ReactElement => {
+  const t = __exbI18nHooks.useTranslation(__exbI18nMessages);
     const { onFile, disabled, fileName } = props
     const [hover, setHover] = React.useState(false)
     const inputRef = React.useRef<HTMLInputElement>(null)
@@ -177,9 +181,9 @@ const FileUpload = (props: Props): React.ReactElement => {
                         </svg>
                     </div>
                     <div className='title'>
-                        {fileName ? 'Replace file' : 'Drop a file here'}
+                        {fileName ? t('replaceFile') : t('dropAFileHere')}
                     </div>
-                    <div className='hint'>CSV · TSV · TXT · XLSX · XLS · ODS</div>
+                    <div className='hint'>{t('csvTsvTxtXlsxXlsOds')}</div>
                     {fileName && (
                         <div className='file' aria-live='polite'>
                             <svg width='12' height='12' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
@@ -201,13 +205,13 @@ const FileUpload = (props: Props): React.ReactElement => {
                         onClick={openPicker}
                         disabled={disabled}
                     >
-                        {fileName ? 'Choose a different file' : 'Browse for a file'}
+                        {fileName ? t('chooseADifferentFile') : t('browseForAFile')}
                     </button>
                 </div>
 
                 {/* Polite drag-state announcement (silent unless dragging) */}
                 <span className='sr-only' role='status' aria-live='polite'>
-                    {hover ? 'File detected, drop to upload.' : ''}
+                    {hover ? t('fileDetectedDropToUpload') : ''}
                 </span>
 
                 <input

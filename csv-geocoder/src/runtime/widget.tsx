@@ -782,7 +782,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
 
     // -- Render ----------------------------------------------------------------
     return (
-        <main css={wrap} aria-label='Address geocoder'>
+        <main css={wrap} aria-label={t('addressGeocoder')}>
             <div
                 className='widget-scroll'
                 hidden={isFailureReviewOpen}
@@ -843,8 +843,8 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                 {/* ------- 1. Upload --------------------------------------------- */}
                 <section className='card' aria-labelledby='csvg-card-upload'>
                     <div className='card-head'>
-                        <h3 id='csvg-card-upload' className='card-title'>1. Choose a file</h3>
-                        <Tooltip text='Supported formats: CSV, TSV, TXT, XLSX, XLS, ODS. The first row is used as column headers.' />
+                        <h3 id='csvg-card-upload' className='card-title'>{t('_1ChooseAFile')}</h3>
+                        <Tooltip text={t('supportedFormatsCsvTsvTxtXlsx')} />
                     </div>
                     <FileUpload
                         onFile={onFile}
@@ -857,11 +857,11 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                 {state.table && (
                     <section className='card' aria-labelledby='csvg-card-map'>
                         <div className='card-head'>
-                            <h3 id='csvg-card-map' className='card-title'>2. Map address fields</h3>
-                            <Tooltip text='Pick which column(s) hold the address. Use "Single full address" if one column has the entire address, or "Separate columns" to map individual parts.' />
+                            <h3 id='csvg-card-map' className='card-title'>{t('_2MapAddressFields')}</h3>
+                            <Tooltip text={t('pickWhichColumnSHoldThe')} />
                         </div>
                         <div className='meta'>
-                            {state.table.rows.length.toLocaleString()} rows · {state.table.fields.length} columns
+                            {t('rowsCountRowsFieldsCountColumns', { rowsCount: state.table.rows.length.toLocaleString(), fieldsCount: String(state.table.fields.length) })}
                         </div>
                         <FieldMapper
                             fields={state.table.fields}
@@ -888,7 +888,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                         <button
                             type='button'
                             className='close'
-                            aria-label='Dismiss error message'
+                            aria-label={t('dismissErrorMessage')}
                             onClick={() => { setState(s => ({ ...s, error: null })) }}
                         >
                             <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
@@ -904,7 +904,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                             <circle cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='2' />
                             <path d='M12 8v4m0 4h.01' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
                         </svg>
-                        <span className='banner-text'>No Map widget is connected. Addresses can still be checked and exported as a table; connect a Map widget in this widget’s settings to also draw the matched points.</span>
+                        <span className='banner-text'>{t('noMapWidgetIsConnectedAddresses')}</span>
                     </div>
                 )}
 
@@ -912,7 +912,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                 {state.phase === 'geocoding' && (
                     <section className='card' aria-labelledby='csvg-card-progress'>
                         <div className='card-head'>
-                            <h3 id='csvg-card-progress' className='card-title'>Geocoding…</h3>
+                            <h3 id='csvg-card-progress' className='card-title'>{t('geocoding')}</h3>
                         </div>
                         <div
                             className='progress-track'
@@ -920,7 +920,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                             aria-valuemin={0}
                             aria-valuemax={100}
                             aria-valuenow={progressPct}
-                            aria-label='Geocoding progress'
+                            aria-label={t('geocodingProgress')}
                         >
                             <div className='progress-fill' style={{ width: `${progressPct}%` }} />
                         </div>
@@ -935,13 +935,13 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                 {state.phase === 'done' && state.results && (
                     <section className='card' aria-labelledby='csvg-card-results'>
                         <div className='card-head'>
-                            <h3 id='csvg-card-results' className='card-title'>3. Results</h3>
+                            <h3 id='csvg-card-results' className='card-title'>{t('_3Results')}</h3>
                         </div>
-                        <div className='stats' role='group' aria-label='Geocoding results summary'>
+                        <div className='stats' role='group' aria-label={t('geocodingResultsSummary')}>
                             <StatCard
                                 tone='success'
                                 value={successCount.toLocaleString()}
-                                label='Matched'
+                                label={t('matched')}
                                 icon={
                                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>
                                         <path d='M5 12l5 5L20 7' stroke='currentColor' strokeWidth='3' strokeLinecap='round' strokeLinejoin='round' />
@@ -951,7 +951,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                             <StatCard
                                 tone='error'
                                 value={failureCount.toLocaleString()}
-                                label='Unmatched'
+                                label={t('failed')}
                                 icon={
                                     <svg width='12' height='12' viewBox='0 0 24 24' fill='none'>
                                         <path d='M6 6l12 12M18 6L6 18' stroke='currentColor' strokeWidth='3' strokeLinecap='round' />
@@ -961,7 +961,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                             <StatCard
                                 tone='neutral'
                                 value={`${matchRate}%`}
-                                label='Match rate'
+                                label={t('matchRate')}
                                 icon={
                                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>
                                         <path d='M3 17l6-6 4 4 8-8M14 7h7v7' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
@@ -972,7 +972,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
 
                         {/* Why rows did not match, only the reasons that occurred. */}
                         {(failureCount > 0 || statusCounts.tied > 0) && (
-                            <ul className='breakdown' aria-label='Unmatched rows by reason'>
+                            <ul className='breakdown' aria-label={t('unmatchedRowsByReason')}>
                                 {(['low-score', 'no-match', 'blank', 'error'] as const)
                                     .filter(k => statusCounts[k] > 0)
                                     .map(k => (
@@ -981,8 +981,8 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                         </li>
                                     ))}
                                 {statusCounts.tied > 0 && (
-                                    <li key='tied' title='Matched, but the locator found more than one equally good candidate'>
-                                        <strong>{statusCounts.tied.toLocaleString()}</strong> matched with a tie
+                                    <li key='tied' title={t('matchedButTheLocatorFoundMore')}>
+                                        <strong>{statusCounts.tied.toLocaleString()}</strong> {t('matchedWithATie')}
                                     </li>
                                 )}
                             </ul>
@@ -998,9 +998,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                         <path d='M3 12l9 5 9-5M3 17l9 5 9-5' stroke='currentColor' strokeWidth='2' strokeLinejoin='round' />
                                     </svg>
                                     <span>
-                                        Added to the map as <span className='layer-name'>{state.layerInfo.title}</span>.
-                                        {' '}
-                                        Open it from the map’s layer list to see the table.
+                                        {t('addedToTheMapAs')} <span className='layer-name'>{state.layerInfo.title}</span>{t('openItFromTheMapS')}
                                     </span>
                                 </div>
                                 <div className='layer-actions'>
@@ -1008,7 +1006,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                         type='button'
                                         className='btn secondary small'
                                         onClick={onRemoveLayer}
-                                    >Remove from map</button>
+                                    >{t('removeFromMap')}</button>
                                 </div>
                             </div>
                         )}
@@ -1027,23 +1025,23 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
                                         <path d='M4 5h16M4 12h16M4 19h10' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
                                     </svg>
-                                    Review unmatched ({failureCount.toLocaleString()})
+                                    {t('reviewUnmatchedFailureCount', { failureCount: failureCount.toLocaleString() })}
                                 </button>
                                 <button
                                     type='button'
                                     className='btn secondary'
                                     onClick={onDownloadUnmatched}
-                                    aria-label={`Download the ${failureCount.toLocaleString()} unmatched rows as CSV`}
+                                    aria-label={t('downloadTheFailureCountUnmatchedRowsAs', { failureCount: failureCount.toLocaleString() })}
                                 >
                                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
                                         <path d='M12 3v12m0 0l-5-5m5 5l5-5M4 21h16' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
                                     </svg>
-                                    Download unmatched
+                                    {t('downloadUnmatched')}
                                 </button>
                             </div>
                         )}
                         {quickExport && (
-                            <span className='quick-done' role='status'>Downloaded <strong>{quickExport}</strong></span>
+                            <span className='quick-done' role='status'>{t('downloaded')} <strong>{quickExport}</strong></span>
                         )}
                     </section>
                 )}
@@ -1052,8 +1050,8 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                 {state.phase === 'done' && state.results && state.table && (
                     <section className='card' aria-labelledby='csvg-card-export'>
                         <div className='card-head'>
-                            <h3 id='csvg-card-export' className='card-title'>4. Export</h3>
-                            <Tooltip text='Address check table: every row with its match result, as CSV or Excel, for all rows, only the unmatched ones, or only the matched ones. Map file: the matched points as GeoJSON, KML or a zipped Shapefile.' />
+                            <h3 id='csvg-card-export' className='card-title'>{t('_4Export')}</h3>
+                            <Tooltip text={t('addressCheckTableEveryRowWith')} />
                         </div>
                         <ExportBar
                             table={state.table}
@@ -1073,7 +1071,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                     {state.phase === 'geocoding'
                         ? (
                             <button type='button' className='btn danger' onClick={onCancel}>
-                                Cancel
+                                {t('cancel')}
                             </button>
                         )
                         : (
@@ -1083,7 +1081,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                     className='btn secondary'
                                     onClick={onClear}
                                     disabled={!state.table}
-                                >Clear</button>
+                                >{t('clear')}</button>
                                 <button
                                     type='button'
                                     className='btn primary'
@@ -1095,7 +1093,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                         <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z' stroke='currentColor' strokeWidth='2' />
                                         <circle cx='12' cy='10' r='3' stroke='currentColor' strokeWidth='2' />
                                     </svg>
-                                    Geocode
+                                    {t('geocode')}
                                 </button>
                             </React.Fragment>
                         )}
@@ -1108,7 +1106,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                         position: 'absolute', width: 1, height: 1, padding: 0, margin: -1,
                         overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0
                     }}
-                >No map is connected, so results are checked and can be exported as a table but are not drawn.</span>
+                >{t('noMapIsConnectedSoResults')}</span>
             </div>
 
             {isFailureReviewOpen && state.table && state.results && (

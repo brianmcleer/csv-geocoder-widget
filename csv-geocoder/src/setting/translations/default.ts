@@ -11,5 +11,19 @@ export default {
   defaultMode: 'Default address mode',
   zoomToResults: 'Zoom to results',
   layerTitle: 'Layer title',
-  replacePreviousLayer: 'Replace the previous layer on a new run'
+  replacePreviousLayer: 'Replace the previous layer on a new run',
+  connectToAMapWidget: 'Connect to a Map widget',
+  minimumMatchScore0To100: 'Minimum match score (0 to 100)',
+  separateColumns: 'Separate columns',
+  singleFullAddress: 'Single full address',
+  leaveBlankToUseTheFile: 'Leave blank to use the file name',
+  matchedPointsAreAddedToThe: 'Matched points are added to the connected map as a layer, so nobody has to download a file and bring it back in. Blank means the layer takes the name of the uploaded file.',
+  offEveryRunAddsAnotherLayer: 'Off: every run adds another layer, numbered (2), (3) and so on.',
+  fillColour: 'Fill colour',
+  sizePx: 'Size (px)',
+  outlineColour: 'Outline colour',
+  outlineWidth: 'Outline width',
+  help: 'Help',
+  showHelpGuide: 'Show help guide',
+  showTheQuestionMarkButtonThat: 'Show the question-mark button that opens the widget help guide'
 }
