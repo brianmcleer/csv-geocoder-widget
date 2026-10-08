@@ -2,6 +2,32 @@
 
 All notable changes to the CSV Geocoder widget. Newest first.
 
+## 1.2.0 (2026-10-08)
+
+### Added
+
+- **Address check table** export under **4. Export**: CSV or Excel, for **All rows**, **Unmatched** only, or **Matched** only. Every source column is kept in source order, with `MATCH_STATUS`, `MATCH_SCORE`, `SUBMITTED_ADDRESS`, `MATCH_ADDR`, `ADDR_TYPE`, `FAIL_REASON`, `LONGITUDE`, `LATITUDE` and `SOURCE_ROW` added on the right. Added column names that collide with a source column get a numeric suffix.
+- Excel workbook has a **Summary** sheet (file, run time, locator URL without query string, minimum score, counts and shares by status, and a key to the statuses) and, for All rows, separate **All results**, **Unmatched** and **Matched** sheets with filter arrows on the header row.
+- Match status is now explicit on every record: matched, low score, no match, blank address, or service error. A locator Status `T` match is labelled **Matched (tied)**.
+- Results card: unmatched rows broken down by reason, and a one-click **Download unmatched** CSV.
+- Review panel: **Reason** filter, status chip and address type on each record, and **Download as CSV** for exactly the records on screen (reason filter and search both apply).
+- Help guide: new **Checking a list of addresses** section; results, export and troubleshooting text updated.
+- Telemetry: `export` action with `format:scope` detail, and `export-<format>` errors.
+
+### Changed
+
+- **Failed** is now **Unmatched** throughout the widget.
+- Geocode runs without a connected Map widget. The results and the table export work; only the layer step is skipped. The banner says so instead of blocking the run.
+- Rows whose mapped address columns are all blank are not sent to the locator. They are reported as **Blank address**, which saves requests and credits.
+- Download names are built from the uploaded file and include the time, for example `Hydrants_unmatched_2026-10-08_1430.csv`. GeoJSON features carry `addr_type`.
+
+### Fixed
+
+- A locator record with Status `U` or a NaN location is treated as no match. Before, a minimum match score of 0 accepted it and tried to draw a point at NaN.
+- Cancel during a run no longer records the in-flight batch as a service error before stopping.
+- Settings panel: the **Help** section referenced undefined `sect` and `head` styles (1.1.6), which threw when the settings panel opened. It now uses `section` and `h` like the other sections.
+- CSV export neutralizes formula-leading text (`=`, `+`, `-`, `@`) to prevent CSV injection.
+
 ## 1.1.6 (2026-09-18)
 
 - Settings: a **Show help guide** option. Turn it off and the question-mark button and the first-run hint both disappear; the guide itself is untouched. Undefined means on, so apps configured before this release keep their help button.

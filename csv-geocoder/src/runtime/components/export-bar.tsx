@@ -1,33 +1,64 @@
 import { React, jsx, css } from 'jimu-core'
 import type { ParsedTable } from '../utils/parse-file'
 import type { GeocodeResult } from '../utils/geocoder'
+import type { FieldMapping } from './field-mapper'
 import {
-    exportGeoJSON, exportKML, exportShapefile,
-    downloadBlob, timestampedBaseName
+    exportGeoJSON, exportKML, exportShapefile, exportCSV, exportXLSX,
+    downloadBlob, exportFileName, countByStatus, filterByScope,
+    type TableScope
 } from '../utils/exporters'
 import Tooltip from './tooltip'
 
 interface Props {
     table: ParsedTable
     results: GeocodeResult[]
+    /** Column mapping the run used, for the SUBMITTED_ADDRESS column. */
+    mapping: FieldMapping
     symbolColor: string
+    locatorUrl: string
+    minScore: number
+    /** Called after a file downloads, for telemetry. */
+    onExported?: (format: FormatId, scope: TableScope | 'matched-points') => void
+    /** Called when an export throws, for telemetry. */
+    onExportError?: (error: unknown, format: FormatId) => void
 }
 
-type Busy = 'geojson' | 'kml' | 'shp' | null
+export type FormatId = 'csv' | 'xlsx' | 'geojson' | 'kml' | 'shp'
+type Busy = FormatId | null
 
 interface FormatDef {
-    id: Exclude<Busy, null>
+    id: FormatId
     label: string
     ext: string
-    ariaLabel: string
-    iconKey: 'file' | 'zip'
+    iconKey: 'file' | 'zip' | 'table'
 }
 
-const FORMATS: FormatDef[] = [
-    { id: 'geojson', label: 'GeoJSON', ext: '.geojson', ariaLabel: 'Export matched points as GeoJSON', iconKey: 'file' },
-    { id: 'kml', label: 'KML', ext: '.kml', ariaLabel: 'Export matched points as KML', iconKey: 'file' },
-    { id: 'shp', label: 'Shapefile', ext: '.zip', ariaLabel: 'Export matched points as a zipped Shapefile', iconKey: 'zip' }
+const TABLE_FORMATS: FormatDef[] = [
+    { id: 'csv', label: 'CSV', ext: '.csv', iconKey: 'table' },
+    { id: 'xlsx', label: 'Excel', ext: '.xlsx', iconKey: 'table' }
 ]
+
+const MAP_FORMATS: FormatDef[] = [
+    { id: 'geojson', label: 'GeoJSON', ext: '.geojson', iconKey: 'file' },
+    { id: 'kml', label: 'KML', ext: '.kml', iconKey: 'file' },
+    { id: 'shp', label: 'Shapefile', ext: '.zip', iconKey: 'zip' }
+]
+
+const FORMAT_LABEL: { [K in FormatId]: string } = {
+    csv: 'CSV', xlsx: 'Excel', geojson: 'GeoJSON', kml: 'KML', shp: 'Shapefile'
+}
+
+const SCOPES: Array<{ id: TableScope, label: string }> = [
+    { id: 'all', label: 'All rows' },
+    { id: 'unmatched', label: 'Unmatched' },
+    { id: 'matched', label: 'Matched' }
+]
+
+const SCOPE_FILE_LABEL: { [K in TableScope]: string } = {
+    all: 'address_check',
+    unmatched: 'unmatched',
+    matched: 'matched'
+}
 
 const fileSvg = (
     <svg width='16' height='16' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
@@ -44,72 +75,174 @@ const zipSvg = (
         <path d='M10 12h2m-2 2h2m-2 2h2m-2 2h2' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' />
     </svg>
 )
+const tableSvg = (
+    <svg width='16' height='16' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
+        <rect x='3' y='4' width='18' height='16' rx='2' stroke='currentColor' strokeWidth='2' />
+        <path d='M3 9h18M3 14h18M9 9v11M15 9v11' stroke='currentColor' strokeWidth='1.5' />
+    </svg>
+)
+const iconFor = (k: FormatDef['iconKey']): React.ReactElement =>
+    k === 'zip' ? zipSvg : k === 'table' ? tableSvg : fileSvg
 
 const ExportBar = (props: Props): React.ReactElement => {
-    const { table, results, symbolColor } = props
+    const { table, results, mapping, symbolColor, locatorUrl, minScore, onExported, onExportError } = props
     const [busy, setBusy] = React.useState<Busy>(null)
     const [error, setError] = React.useState<string | null>(null)
     const [lastExport, setLastExport] = React.useState<string | null>(null)
+    const [scope, setScope] = React.useState<TableScope>('all')
+    const scopeRefs = React.useRef<Array<HTMLButtonElement | null>>([])
+    const scopeLabelId = React.useId()
+    const noMatchHintId = React.useId()
+    const emptyScopeHintId = React.useId()
 
+    const counts = React.useMemo(() => countByStatus(results), [results])
     const matched = React.useMemo(() => results.filter(r => r.point), [results])
-    const canExport = matched.length > 0
+    const scopeCount: { [K in TableScope]: number } = {
+        all: counts.total,
+        matched: counts.matched,
+        unmatched: counts.unmatched
+    }
+    const canExportMap = matched.length > 0
+    const canExportTable = scopeCount[scope] > 0
 
-    const run = async (id: Exclude<Busy, null>): Promise<void> => {
+    const run = async (id: FormatId): Promise<void> => {
         setBusy(id)
         setError(null)
         try {
             let blob: Blob
             let fname: string
-            if (id === 'geojson') {
+            const ctx = { table, mapping, minScore }
+            if (id === 'csv') {
+                blob = exportCSV(ctx, filterByScope(results, scope))
+                fname = exportFileName(table.fileName, SCOPE_FILE_LABEL[scope], '.csv')
+            } else if (id === 'xlsx') {
+                blob = exportXLSX(ctx, results, scope, { locatorUrl, minScore })
+                fname = exportFileName(table.fileName, SCOPE_FILE_LABEL[scope], '.xlsx')
+            } else if (id === 'geojson') {
                 blob = exportGeoJSON(table, matched)
-                fname = `${timestampedBaseName()}.geojson`
+                fname = exportFileName(table.fileName, 'geocoded', '.geojson')
             } else if (id === 'kml') {
                 blob = exportKML(table, matched, symbolColor)
-                fname = `${timestampedBaseName()}.kml`
+                fname = exportFileName(table.fileName, 'geocoded', '.kml')
             } else {
                 blob = await exportShapefile(table, matched)
-                fname = `${timestampedBaseName()}_shapefile.zip`
+                fname = exportFileName(table.fileName, 'geocoded_shapefile', '.zip')
             }
             downloadBlob(blob, fname)
             setLastExport(fname)
+            onExported?.(id, id === 'csv' || id === 'xlsx' ? scope : 'matched-points')
         } catch (e) {
-            const label = id === 'geojson' ? 'GeoJSON' : id === 'kml' ? 'KML' : 'Shapefile'
-            setError(`Could not export ${label}: ${e instanceof Error ? e.message : String(e)}`)
+            onExportError?.(e, id)
+            setError(`Could not export ${FORMAT_LABEL[id]}: ${e instanceof Error ? e.message : String(e)}`)
         } finally {
             setBusy(null)
         }
     }
 
-    const styles = css`
-    display: flex; flex-direction: column; gap: 10px;
+    // Roving focus for the scope radio group: arrows move and select, the way a
+    // native radio group behaves.
+    const onScopeKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number): void => {
+        const keys = ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End']
+        if (keys.indexOf(event.key) < 0) return
+        event.preventDefault()
+        let next = index
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % SCOPES.length
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + SCOPES.length) % SCOPES.length
+        if (event.key === 'Home') next = 0
+        if (event.key === 'End') next = SCOPES.length - 1
+        setScope(SCOPES[next].id)
+        scopeRefs.current[next]?.focus()
+    }
 
-    .summary {
+    const styles = css`
+    display: flex; flex-direction: column; gap: 12px;
+
+    .group {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .group + .group {
+      padding-top: 12px;
+      border-top: 1px solid var(--ref-palette-neutral-500, #d0d0d0);
+    }
+    .group-head {
       display: flex; align-items: center; gap: 6px;
-      font-size: 12px;
+    }
+    .group-title {
+      margin: 0;
+      font-size: 12px; font-weight: 700; line-height: 1.2;
       color: var(--ref-palette-neutral-1100, #1a1a1a);
     }
+    .group-note {
+      margin: 0;
+      font-size: 12px; line-height: 1.4;
+      color: var(--ref-palette-neutral-1000, #595959);
+    }
 
-    /* Three equal columns. minmax(0, 1fr) lets columns shrink below
-       intrinsic content width so all three are exactly the same width. */
-    .grid {
+    /* Scope segmented control */
+    .scope {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid var(--ref-palette-neutral-700, #a0a0a0);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .scope-btn {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1px;
+      min-height: 44px;
+      min-width: 0;
+      padding: 6px 4px;
+      font: 600 12px/1.2 inherit;
+      background: var(--ref-palette-neutral-100, #fff);
+      color: var(--ref-palette-neutral-1100, #1a1a1a);
+      border: 0;
+      border-right: 1px solid var(--ref-palette-neutral-700, #a0a0a0);
+      cursor: pointer;
+      text-align: center;
+    }
+    .scope-btn:last-of-type { border-right: 0; }
+    .scope-btn:hover:not([aria-checked='true']) {
+      background: var(--ref-palette-neutral-300, #f0f0f0);
+    }
+    .scope-btn[aria-checked='true'] {
+      background: var(--sys-color-primary-main, #0079c1);
+      color: #fff;
+    }
+    .scope-btn:focus-visible {
+      outline: 2px solid var(--sys-color-primary-main, #0079c1);
+      outline-offset: -4px;
+    }
+    .scope-btn[aria-checked='true']:focus-visible { outline-color: #fff; }
+    .scope-btn .scope-label {
+      max-width: 100%;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .scope-btn .scope-count {
+      font-size: 11px; font-weight: 500; opacity: .9;
+    }
+
+    /* Format buttons */
+    .grid {
+      display: grid;
       gap: 8px;
     }
-    /* Stack to one column on very narrow widgets so labels stay readable. */
+    .grid.two   { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     @media (max-width: 320px) {
-      .grid { grid-template-columns: 1fr; }
+      .grid.two, .grid.three, .scope { grid-template-columns: 1fr; }
+      .scope-btn { border-right: 0; border-bottom: 1px solid var(--ref-palette-neutral-700, #a0a0a0); }
+      .scope-btn:last-of-type { border-bottom: 0; }
     }
 
     .fmt-btn {
       display: inline-flex;
-      flex-direction: column;       /* stack icon → label → chip vertically */
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 4px;
       padding: 10px 6px;
-      min-height: 72px;             /* uniform height across all three */
-      min-width: 0;                 /* allow shrinking inside the grid track */
+      min-height: 72px;
+      min-width: 0;
       font: 600 13px/1.2 inherit;
       background: var(--ref-palette-neutral-100, #fff);
       color: var(--ref-palette-neutral-1100, #1a1a1a);
@@ -148,8 +281,9 @@ const ExportBar = (props: Props): React.ReactElement => {
       white-space: nowrap;
     }
     @media (forced-colors: active) {
-      .fmt-btn { border-color: CanvasText; }
-      .fmt-btn:focus-visible { outline-color: Highlight; }
+      .fmt-btn, .scope, .scope-btn { border-color: CanvasText; }
+      .fmt-btn:focus-visible, .scope-btn:focus-visible { outline-color: Highlight; }
+      .scope-btn[aria-checked='true'] { background: Highlight; color: HighlightText; }
     }
 
     .spinner {
@@ -170,6 +304,7 @@ const ExportBar = (props: Props): React.ReactElement => {
       padding: 8px 10px;
       border-radius: 6px;
       display: flex; align-items: flex-start; gap: 8px;
+      overflow-wrap: anywhere;
     }
     .status {
       background: color-mix(in srgb, var(--sys-color-success-main, #2e7d32) 8%, var(--ref-palette-neutral-100, #fff));
@@ -189,50 +324,110 @@ const ExportBar = (props: Props): React.ReactElement => {
     }
   `
 
-    const noMatchHintId = 'csvg-no-match-hint'
+    const scopeNote = scope === 'unmatched'
+        ? 'Only the rows that did not match, with the reason for each. Hand this list to whoever is checking the addresses.'
+        : scope === 'matched'
+            ? 'Only the rows that matched, with the address the locator matched them to.'
+            : 'Every row from your file with its match result added. Excel also gets Unmatched and Matched sheets.'
+
+    const renderFormat = (f: FormatDef, enabled: boolean, describedBy: string | undefined, aria: string): React.ReactElement => {
+        const isBusy = busy === f.id
+        return (
+            <button
+                key={f.id}
+                type='button'
+                className='fmt-btn'
+                onClick={() => { void run(f.id) }}
+                disabled={!enabled || busy !== null}
+                aria-busy={isBusy}
+                aria-label={aria}
+                aria-describedby={!enabled ? describedBy : undefined}
+            >
+                {isBusy
+                    ? <span className='spinner' role='presentation' />
+                    : iconFor(f.iconKey)}
+                <span className='label'>{f.label}</span>
+                <span className='ext' aria-hidden='true'>{f.ext}</span>
+            </button>
+        )
+    }
+
+    const scopeWord = scope === 'all' ? 'all rows' : scope === 'unmatched' ? 'unmatched rows' : 'matched rows'
 
     return (
         <div css={styles}>
-            <div className='summary'>
-                <span className='summary-text'>
-                    <strong className='summary-count'>{matched.length.toLocaleString()}</strong> matched point{matched.length === 1 ? '' : 's'} ready to export
-                </span>
-                <Tooltip text='Only matched points are included. Failed records (no candidate or below the score threshold) are skipped.' />
+            {/* ---- Address check table -------------------------------------- */}
+            <div className='group' role='group' aria-labelledby={scopeLabelId}>
+                <div className='group-head'>
+                    <h4 id={scopeLabelId} className='group-title'>Address check table</h4>
+                    <Tooltip text='A spreadsheet of your rows with MATCH_STATUS, MATCH_SCORE, the address you sent, the address the locator matched, the address type, a plain reason for every row that did not match, and coordinates for every row that did. Open it in Excel and filter on MATCH_STATUS.' />
+                </div>
+
+                <div className='scope' role='radiogroup' aria-label='Rows to include'>
+                    {SCOPES.map((s, i) => {
+                        const checked = scope === s.id
+                        return (
+                            <button
+                                key={s.id}
+                                ref={el => { scopeRefs.current[i] = el }}
+                                type='button'
+                                role='radio'
+                                aria-checked={checked}
+                                tabIndex={checked ? 0 : -1}
+                                className='scope-btn'
+                                onClick={() => { setScope(s.id) }}
+                                onKeyDown={e => { onScopeKeyDown(e, i) }}
+                            >
+                                <span className='scope-label'>{s.label}</span>
+                                <span className='scope-count'>{scopeCount[s.id].toLocaleString()}</span>
+                            </button>
+                        )
+                    })}
+                </div>
+                <p className='group-note' aria-live='polite'>{scopeNote}</p>
+
+                <div className='grid two'>
+                    {TABLE_FORMATS.map(f => renderFormat(
+                        f,
+                        canExportTable,
+                        emptyScopeHintId,
+                        `Export ${scopeWord} as ${f.label}`
+                    ))}
+                </div>
+                {!canExportTable && (
+                    <span id={emptyScopeHintId} className='sr-only'>
+                        There are no {scopeWord} to export. Pick another option above.
+                    </span>
+                )}
             </div>
 
-            <div className='grid' role='group' aria-label='Export format options'>
-                {FORMATS.map(f => {
-                    const isBusy = busy === f.id
-                    return (
-                        <button
-                            key={f.id}
-                            type='button'
-                            className='fmt-btn'
-                            onClick={() => { void run(f.id) }}
-                            disabled={!canExport || busy !== null}
-                            aria-busy={isBusy}
-                            aria-label={f.ariaLabel}
-                            aria-describedby={!canExport ? noMatchHintId : undefined}
-                        >
-                            {isBusy
-                                ? <span className='spinner' role='presentation' />
-                                : (f.iconKey === 'file' ? fileSvg : zipSvg)}
-                            <span className='label'>{f.label}</span>
-                            <span className='ext' aria-hidden='true'>{f.ext}</span>
-                        </button>
-                    )
-                })}
+            {/* ---- Map files -------------------------------------------------- */}
+            <div className='group' role='group' aria-label='Map file export'>
+                <div className='group-head'>
+                    <h4 className='group-title'>Map file</h4>
+                    <Tooltip text='Matched points only, since a row without a location has nothing to draw. GeoJSON for web maps and ArcGIS Online, KML for Google Earth, a zipped Shapefile for ArcGIS Pro.' />
+                </div>
+                <p className='group-note'>
+                    {matched.length.toLocaleString()} matched point{matched.length === 1 ? '' : 's'}.
+                </p>
+                <div className='grid three'>
+                    {MAP_FORMATS.map(f => renderFormat(
+                        f,
+                        canExportMap,
+                        noMatchHintId,
+                        `Export matched points as ${f.id === 'shp' ? 'a zipped Shapefile' : f.label}`
+                    ))}
+                </div>
+                {!canExportMap && (
+                    <span id={noMatchHintId} className='sr-only'>
+                        No matched points to export. Re-run geocoding with a lower minimum match score, or check that the address fields are mapped correctly.
+                    </span>
+                )}
             </div>
-
-            {!canExport && (
-                <span id={noMatchHintId} className='sr-only'>
-                    No matched points to export. Re-run geocoding with a lower minimum match score, or check that the address fields are mapped correctly.
-                </span>
-            )}
 
             {lastExport && !error && (
                 <div className='status' role='status' aria-live='polite'>
-                    <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
+                    <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false' style={{ flexShrink: 0, marginTop: 1 }}>
                         <path d='M5 12l5 5L20 7' stroke='currentColor' strokeWidth='3' strokeLinecap='round' strokeLinejoin='round' />
                     </svg>
                     <span className='status-text'>Downloaded <strong className='status-file'>{lastExport}</strong></span>

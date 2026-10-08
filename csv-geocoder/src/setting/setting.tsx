@@ -253,8 +253,8 @@ const Setting = (props: SettingProps): React.ReactElement => {
                     />
                 </div>
             </div>
-            <div style={sect}>
-                <div style={head}>Help</div>
+            <div style={section}>
+                <div style={h}>Help</div>
                 <div style={row}>
                     <label style={lab}>Show help guide</label>
                     <input

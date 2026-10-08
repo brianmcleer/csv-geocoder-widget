@@ -72,6 +72,13 @@ export function buildHelpSections (t: T, f: HelpFeatures): HelpSection[] {
       body: [t('helpResults1'), t('helpResults2'), t('helpResults3'), t('helpResults4')]
     },
     {
+      key: 'check',
+      icon: 'check-circle',
+      title: t('helpCheckTitle'),
+      intro: t('helpCheckIntro'),
+      body: [t('helpCheck1'), t('helpCheck2'), t('helpCheck3'), t('helpCheck4'), t('helpCheck5'), t('helpCheck6')]
+    },
+    {
       key: 'export',
       icon: 'download',
       title: t('helpExportTitle'),
@@ -100,6 +107,7 @@ export function buildHelpSections (t: T, f: HelpFeatures): HelpSection[] {
         t('helpTips1'),
         t('helpTips2'),
         t('helpTips3'),
+        t('helpTips5'),
         ...when(f.worldLocator, 'helpTips4')
       ]
     }

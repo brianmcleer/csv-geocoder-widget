@@ -17,6 +17,9 @@ import FieldMapper, { type FieldMapping, validateMapping } from './components/fi
 import Tooltip from './components/tooltip'
 import ExportBar from './components/export-bar'
 import FailureReviewPanel from './components/failure-review-panel'
+import {
+    countByStatus, filterByScope, exportCSV, exportFileName, downloadBlob, STATUS_LABEL
+} from './utils/exporters'
 import HelpPopup from './components/HelpPopup'
 import FirstRunHint from './components/FirstRunHint'
 import { buildHelpSections, type HelpFeatures } from './helpSections'
@@ -246,6 +249,8 @@ const Widget = (props: WidgetProps): React.ReactElement => {
 
     const [isFailureReviewOpen, setFailureReviewOpen] = React.useState(false)
     const [isHelpOpen, setHelpOpen] = React.useState(false)
+    /** File name of the last "Download unmatched" from the Results card. */
+    const [quickExport, setQuickExport] = React.useState<string | null>(null)
 
     const beaconRef = React.useRef<BeaconHandle | null>(null)
     React.useEffect(() => { beaconRef.current = beacon.init(props) }, [])
@@ -325,6 +330,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     const onFile = async (file: File): Promise<void> => {
         beaconRef.current?.action('load')
         setFailureReviewOpen(false)
+        setQuickExport(null)
         setState(s => ({ ...s, phase: 'parsing', error: null, results: null, resultMapping: null }))
         try {
             const table = await parseAddressFile(file)
@@ -410,10 +416,9 @@ const Widget = (props: WidgetProps): React.ReactElement => {
             setState(s => ({ ...s, error: validationError }))
             return
         }
-        if (!state.jmv) {
-            setState(s => ({ ...s, error: 'Select a map widget in the widget settings.' }))
-            return
-        }
+        // No map is fine: the run still produces the Results breakdown and the
+        // address-check table, which is all an address check needs. The layer
+        // step simply has nowhere to go.
 
         const runTable = state.table
         const runMapping: FieldMapping = {
@@ -423,6 +428,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
         const inputs = buildInputs(runTable, runMapping)
         const ac = new AbortController()
         abortRef.current = ac
+        setQuickExport(null)
 
         setState(s => ({
             ...s,
@@ -471,6 +477,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     // somebody can geocode a second file without losing the first one.
     const onClear = (): void => {
         setFailureReviewOpen(false)
+        setQuickExport(null)
         setState(s => ({
             ...s,
             phase: 'idle',
@@ -484,6 +491,33 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     }
     const onCancel = (): void => { abortRef.current?.abort() }
 
+    const onExported = React.useCallback((format: string, scope: string): void => {
+        beaconRef.current?.action('export', `${format}:${scope}`)
+    }, [])
+    const onExportError = React.useCallback((e: unknown, format: string): void => {
+        beaconRef.current?.error(e, `export-${format}`)
+    }, [])
+
+    // One-click shortcut on the Results card: the to-do list of rows to
+    // investigate, without going through the Export card.
+    const onDownloadUnmatched = (): void => {
+        if (!state.table || !state.results) return
+        try {
+            const mapping = state.resultMapping ?? state.mapping
+            const blob = exportCSV(
+                { table: state.table, mapping, minScore: cfg.minScore },
+                filterByScope(state.results, 'unmatched')
+            )
+            const name = exportFileName(state.table.fileName, 'unmatched', '.csv')
+            downloadBlob(blob, name)
+            setQuickExport(name)
+            onExported('csv', 'unmatched-quick')
+        } catch (e) {
+            onExportError(e, 'csv')
+            setState(s => ({ ...s, error: `Could not export CSV: ${e instanceof Error ? e.message : String(e)}` }))
+        }
+    }
+
     const openFailureReview = React.useCallback((): void => {
         setFailureReviewOpen(true)
     }, [])
@@ -494,8 +528,9 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     }, [])
 
     // -- Derived ---------------------------------------------------------------
-    const successCount = (state.results ?? []).filter(r => r.point).length
-    const failureCount = (state.results?.length ?? 0) - successCount
+    const statusCounts = React.useMemo(() => countByStatus(state.results ?? []), [state.results])
+    const successCount = statusCounts.matched
+    const failureCount = statusCounts.unmatched
     const matchRate = state.results && state.results.length > 0
         ? Math.round(100 * successCount / state.results.length)
         : 0
@@ -566,9 +601,28 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     }
 
     .stats { display: flex; gap: 10px; flex-wrap: wrap; }
+    .breakdown {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin: 0; padding: 0; list-style: none;
+    }
+    .breakdown li {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 8px;
+      font-size: 11px; line-height: 1.3;
+      border-radius: 999px;
+      background: var(--ref-palette-neutral-100, #fff);
+      border: 1px solid var(--ref-palette-neutral-600, #b5b5b5);
+      color: var(--ref-palette-neutral-1100, #1a1a1a);
+    }
+    .breakdown li strong { font-weight: 700; }
     .review-actions {
-      display: flex; justify-content: flex-end;
+      display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap;
       padding-top: 2px;
+    }
+    .quick-done {
+      font-size: 12px; line-height: 1.4;
+      color: var(--sys-color-success-main, #2e7d32);
+      overflow-wrap: anywhere;
     }
 
     /* Two rows, not one: a single flex row crushes the label to zero width at
@@ -691,6 +745,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
       .progress-fill { background: Highlight; }
       .banner { border-color: CanvasText; }
       .layer-note { border-color: CanvasText; }
+      .breakdown li { border-color: CanvasText; }
     }
   `
 
@@ -849,7 +904,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                             <circle cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='2' />
                             <path d='M12 8v4m0 4h.01' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
                         </svg>
-                        <span className='banner-text'>Open this widget’s settings and connect it to a Map widget to display geocoded points.</span>
+                        <span className='banner-text'>No Map widget is connected. Addresses can still be checked and exported as a table; connect a Map widget in this widget’s settings to also draw the matched points.</span>
                     </div>
                 )}
 
@@ -896,7 +951,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                             <StatCard
                                 tone='error'
                                 value={failureCount.toLocaleString()}
-                                label='Failed'
+                                label='Unmatched'
                                 icon={
                                     <svg width='12' height='12' viewBox='0 0 24 24' fill='none'>
                                         <path d='M6 6l12 12M18 6L6 18' stroke='currentColor' strokeWidth='3' strokeLinecap='round' />
@@ -914,6 +969,24 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                 }
                             />
                         </div>
+
+                        {/* Why rows did not match, only the reasons that occurred. */}
+                        {(failureCount > 0 || statusCounts.tied > 0) && (
+                            <ul className='breakdown' aria-label='Unmatched rows by reason'>
+                                {(['low-score', 'no-match', 'blank', 'error'] as const)
+                                    .filter(k => statusCounts[k] > 0)
+                                    .map(k => (
+                                        <li key={k}>
+                                            <strong>{statusCounts[k].toLocaleString()}</strong> {STATUS_LABEL[k].toLowerCase()}
+                                        </li>
+                                    ))}
+                                {statusCounts.tied > 0 && (
+                                    <li key='tied' title='Matched, but the locator found more than one equally good candidate'>
+                                        <strong>{statusCounts.tied.toLocaleString()}</strong> matched with a tie
+                                    </li>
+                                )}
+                            </ul>
+                        )}
 
                         {/* The whole point of the FeatureLayer: say where the results
                             went, in the words the Layer List uses. */}
@@ -954,9 +1027,23 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
                                         <path d='M4 5h16M4 12h16M4 19h10' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
                                     </svg>
-                                    Review failures ({failureCount.toLocaleString()})
+                                    Review unmatched ({failureCount.toLocaleString()})
+                                </button>
+                                <button
+                                    type='button'
+                                    className='btn secondary'
+                                    onClick={onDownloadUnmatched}
+                                    aria-label={`Download the ${failureCount.toLocaleString()} unmatched rows as CSV`}
+                                >
+                                    <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
+                                        <path d='M12 3v12m0 0l-5-5m5 5l5-5M4 21h16' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+                                    </svg>
+                                    Download unmatched
                                 </button>
                             </div>
+                        )}
+                        {quickExport && (
+                            <span className='quick-done' role='status'>Downloaded <strong>{quickExport}</strong></span>
                         )}
                     </section>
                 )}
@@ -966,12 +1053,17 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                     <section className='card' aria-labelledby='csvg-card-export'>
                         <div className='card-head'>
                             <h3 id='csvg-card-export' className='card-title'>4. Export</h3>
-                            <Tooltip text='The points are already on the map as a layer. Export only when you need a file to keep or to hand to somebody: GeoJSON (web-friendly), KML (Google Earth), or a zipped Shapefile (GIS desktop tools).' />
+                            <Tooltip text='Address check table: every row with its match result, as CSV or Excel, for all rows, only the unmatched ones, or only the matched ones. Map file: the matched points as GeoJSON, KML or a zipped Shapefile.' />
                         </div>
                         <ExportBar
                             table={state.table}
                             results={state.results}
+                            mapping={state.resultMapping ?? state.mapping}
                             symbolColor={cfg.symbol.color}
+                            locatorUrl={cfg.geocoderUrl}
+                            minScore={cfg.minScore}
+                            onExported={onExported}
+                            onExportError={onExportError}
                         />
                     </section>
                 )}
@@ -996,7 +1088,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                     type='button'
                                     className='btn primary'
                                     onClick={() => { void onRunGeocode() }}
-                                    disabled={!state.table || isBusy || !state.jmv}
+                                    disabled={!state.table || isBusy}
                                     aria-describedby={!state.jmv ? 'csvg-no-map-hint' : undefined}
                                 >
                                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
@@ -1016,7 +1108,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                         position: 'absolute', width: 1, height: 1, padding: 0, margin: -1,
                         overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0
                     }}
-                >Connect a map widget in settings to enable geocoding.</span>
+                >No map is connected, so results are checked and can be exported as a table but are not drawn.</span>
             </div>
 
             {isFailureReviewOpen && state.table && state.results && (
@@ -1025,7 +1117,9 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                     table={state.table}
                     results={state.results}
                     mapping={state.resultMapping ?? state.mapping}
+                    minScore={cfg.minScore}
                     onClose={closeFailureReview}
+                    onExported={count => { onExported('csv', `unmatched-panel:${count}`) }}
                 />
             )}
 

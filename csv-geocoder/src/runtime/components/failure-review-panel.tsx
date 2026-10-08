@@ -1,27 +1,26 @@
 import { React, jsx, css } from 'jimu-core'
-import { type AddressRole } from '../../config'
 import { type ParsedTable } from '../utils/parse-file'
-import { type GeocodeResult } from '../utils/geocoder'
+import { type GeocodeResult, type MatchStatus } from '../utils/geocoder'
 import { type FieldMapping } from './field-mapper'
+import { submittedAddress } from '../utils/address-text'
+import {
+    STATUS_LABEL, STATUS_ORDER, failReason, exportCSV, exportFileName, downloadBlob
+} from '../utils/exporters'
 
 interface Props {
     panelId: string
     table: ParsedTable
     mapping: FieldMapping
     results: GeocodeResult[]
+    /** Minimum score the run used, so a low-score reason can quote it. */
+    minScore?: number
     onClose: () => void
+    /** Called after the list downloads, for telemetry. */
+    onExported?: (count: number) => void
 }
 
 type SourceRow = ParsedTable['rows'][number]
-
-const ADDRESS_ROLES: AddressRole[] = [
-    'Address',
-    'Address2',
-    'City',
-    'Region',
-    'Postal',
-    'Country'
-]
+type StatusFilter = 'any' | Exclude<MatchStatus, 'matched'>
 
 function cleanValue(value: string | undefined): string {
     return value?.trim() ?? ''
@@ -32,30 +31,15 @@ function formatSubmittedAddress(
     mapping: FieldMapping
 ): string {
     if (!row) return '(source row unavailable)'
-
-    if (mapping.mode === 'single') {
-        const value = mapping.singleField ? cleanValue(row[mapping.singleField]) : ''
-        return value || '(blank address)'
-    }
-
-    const parts: string[] = []
-    for (const role of ADDRESS_ROLES) {
-        const field = mapping.multi[role]
-        const value = field ? cleanValue(row[field]) : ''
-        if (value) parts.push(value)
-    }
-    return parts.join(', ') || '(blank address)'
-}
-
-function failureReason(result: GeocodeResult): string {
-    if (result.error) return result.error
-    if (result.score > 0) return 'The locator candidate did not meet the minimum match score.'
-    return 'No locator candidate was returned.'
+    return submittedAddress(row, mapping) || '(blank address)'
 }
 
 const FailureReviewPanel = (props: Props): React.ReactElement => {
-    const { panelId, table, mapping, results, onClose } = props
+    const { panelId, table, mapping, results, minScore, onClose, onExported } = props
     const [query, setQuery] = React.useState('')
+    const [statusFilter, setStatusFilter] = React.useState<StatusFilter>('any')
+    const [downloaded, setDownloaded] = React.useState<string | null>(null)
+    const statusId = React.useId()
     const headingRef = React.useRef<HTMLHeadingElement>(null)
     const titleId = React.useId()
     const searchId = React.useId()
@@ -65,29 +49,51 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
     }, [])
 
     const failures = React.useMemo(
-        () => results.filter(result => !result.point),
+        () => results.filter(result => result.status !== 'matched'),
         [results]
     )
 
+    // Only the reasons that actually occur are offered as filters.
+    const statusCounts = React.useMemo(() => {
+        const c: { [K in MatchStatus]?: number } = {}
+        for (const r of failures) c[r.status] = (c[r.status] ?? 0) + 1
+        return c
+    }, [failures])
+    const presentStatuses = STATUS_ORDER.filter(s => s !== 'matched' && (statusCounts[s] ?? 0) > 0) as Array<Exclude<MatchStatus, 'matched'>>
+
     const filteredFailures = React.useMemo(() => {
         const normalizedQuery = query.trim().toLowerCase()
-        if (!normalizedQuery) return failures
+        const byStatus = statusFilter === 'any' ? failures : failures.filter(r => r.status === statusFilter)
+        if (!normalizedQuery) return byStatus
 
-        return failures.filter(result => {
+        return byStatus.filter(result => {
             const row = table.rows[result.objectId]
             const rowValues = table.fields.map(field => row?.[field] ?? '')
             const searchableText = [
                 String(result.objectId + 1),
                 String(result.objectId + 2),
                 formatSubmittedAddress(row, mapping),
-                failureReason(result),
+                failReason(result, minScore),
+                STATUS_LABEL[result.status],
                 result.matchAddress,
                 ...rowValues
             ].join(' ').toLowerCase()
 
             return searchableText.indexOf(normalizedQuery) >= 0
         })
-    }, [failures, mapping, query, table.fields, table.rows])
+    }, [failures, mapping, minScore, query, statusFilter, table.fields, table.rows])
+
+    // Downloads exactly what is on screen: the status filter and the search
+    // both apply, so somebody can narrow to "No match" rows on one street and
+    // hand over just those.
+    const onDownload = (): void => {
+        const narrowed = filteredFailures.length !== failures.length
+        const blob = exportCSV({ table, mapping, minScore }, filteredFailures)
+        const name = exportFileName(table.fileName, narrowed ? 'unmatched_filtered' : 'unmatched', '.csv')
+        downloadBlob(blob, name)
+        setDownloaded(name)
+        onExported?.(filteredFailures.length)
+    }
 
     const styles = css`
     position: absolute;
@@ -198,6 +204,47 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
     }
     .clear-search:hover {
       background: var(--ref-palette-neutral-300, #f0f0f0);
+    }
+
+    .status-filter {
+      display: flex; flex-direction: column; gap: 5px;
+    }
+    .status-select {
+      width: 100%;
+      min-height: 36px;
+      box-sizing: border-box;
+      padding: 6px 8px;
+      font: 400 13px/1.3 inherit;
+      color: var(--ref-palette-neutral-1100, #1a1a1a);
+      background: var(--ref-palette-neutral-100, #fff);
+      border: 1px solid var(--ref-palette-neutral-700, #a0a0a0);
+      border-radius: 6px;
+    }
+    .status-select:focus-visible {
+      outline: 2px solid var(--sys-color-primary-main, #0079c1);
+      outline-offset: 2px;
+    }
+    .chips {
+      display: inline-flex; gap: 6px; flex-wrap: wrap; align-items: center;
+    }
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 999px;
+      color: var(--sys-color-error-main, #b00020);
+      background: color-mix(in srgb, var(--sys-color-error-main, #d32f2f) 10%, var(--ref-palette-neutral-100, #fff));
+      border: 1px solid color-mix(in srgb, var(--sys-color-error-main, #d32f2f) 45%, transparent);
+    }
+    .downloaded {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--sys-color-success-main, #2e7d32);
+      overflow-wrap: anywhere;
     }
 
     .filter-summary {
@@ -345,6 +392,8 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
 
     .panel-footer {
       display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       justify-content: flex-end;
       margin-top: auto;
       padding-top: 2px;
@@ -359,8 +408,18 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
       color: var(--ref-palette-neutral-1100, #1a1a1a);
       cursor: pointer;
     }
-    .footer-button:hover {
+    .footer-button:hover:not([disabled]) {
       background: var(--ref-palette-neutral-300, #f0f0f0);
+    }
+    .footer-button[disabled] { opacity: .45; cursor: not-allowed; }
+    .footer-button.primary {
+      background: var(--sys-color-primary-main, #0079c1);
+      border-color: var(--sys-color-primary-main, #0079c1);
+      color: #fff;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .footer-button.primary:hover:not([disabled]) {
+      background: color-mix(in srgb, var(--sys-color-primary-main, #0079c1) 88%, #000);
     }
 
     @media (max-width: 360px) {
@@ -378,6 +437,8 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
     @media (forced-colors: active) {
       .back-button,
       .search-input,
+      .status-select,
+      .status-chip,
       .failure-card,
       .row-fields,
       .footer-button {
@@ -431,7 +492,7 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                         id={titleId}
                         className='panel-title'
                         tabIndex={-1}
-                    >Review failures</h2>
+                    >Review unmatched</h2>
                     <p className='panel-subtitle'>
                         {failures.length.toLocaleString()} {failures.length === 1 ? 'record did' : 'records did'} not produce an accepted match.
                     </p>
@@ -439,7 +500,7 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
             </header>
 
             <div className='search-section'>
-                <label className='search-label' htmlFor={searchId}>Search failed records</label>
+                <label className='search-label' htmlFor={searchId}>Search unmatched records</label>
                 <div className='search-box'>
                     <svg className='search-icon' width='15' height='15' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
                         <circle cx='11' cy='11' r='7' stroke='currentColor' strokeWidth='2' />
@@ -457,7 +518,7 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                         <button
                             type='button'
                             className='clear-search'
-                            aria-label='Clear failure search'
+                            aria-label='Clear search'
                             onClick={() => { setQuery('') }}
                         >
                             <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
@@ -468,8 +529,25 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                 </div>
             </div>
 
+            {presentStatuses.length > 1 && (
+                <div className='status-filter'>
+                    <label className='search-label' htmlFor={statusId}>Reason</label>
+                    <select
+                        id={statusId}
+                        className='status-select'
+                        value={statusFilter}
+                        onChange={event => { setStatusFilter(event.currentTarget.value as StatusFilter) }}
+                    >
+                        <option value='any'>Any reason ({failures.length.toLocaleString()})</option>
+                        {presentStatuses.map(s => (
+                            <option key={s} value={s}>{STATUS_LABEL[s]} ({(statusCounts[s] ?? 0).toLocaleString()})</option>
+                        ))}
+                    </select>
+                </div>
+            )}
+
             <p className='filter-summary' role='status' aria-live='polite'>
-                Showing {filteredFailures.length.toLocaleString()} of {failures.length.toLocaleString()} failed {failures.length === 1 ? 'record' : 'records'}.
+                Showing {filteredFailures.length.toLocaleString()} of {failures.length.toLocaleString()} unmatched {failures.length === 1 ? 'record' : 'records'}.
             </p>
 
             {filteredFailures.length > 0
@@ -486,8 +564,11 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                                         <span className='row-number'>
                                             Record {(result.objectId + 1).toLocaleString()} · source row {(result.objectId + 2).toLocaleString()}
                                         </span>
-                                        <span className='score'>
-                                            {result.score > 0 ? `Score ${Math.round(result.score)}` : 'No score'}
+                                        <span className='chips'>
+                                            <span className='status-chip'>{STATUS_LABEL[result.status]}</span>
+                                            <span className='score'>
+                                                {result.score > 0 ? `Score ${Math.round(result.score)}` : 'No score'}
+                                            </span>
                                         </span>
                                     </div>
 
@@ -501,13 +582,14 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                                             <circle cx='12' cy='12' r='9' stroke='currentColor' strokeWidth='2' />
                                             <path d='M12 7v6m0 4h.01' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
                                         </svg>
-                                        <span className='reason-text'>{failureReason(result)}</span>
+                                        <span className='reason-text'>{failReason(result, minScore)}</span>
                                     </div>
 
                                     {hasCandidate && (
                                         <div className='candidate-address'>
                                             <span className='field-label'>Closest locator candidate</span>
                                             {result.matchAddress}
+                                            {result.addrType ? ` (${result.addrType})` : ''}
                                         </div>
                                     )}
 
@@ -532,12 +614,28 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                 )
                 : (
                     <div className='empty-state' role='status'>
-                        No failed records match “{query}”. Clear the search to show all failures.
+                        No unmatched records match this search. Clear the search or pick Any reason to show them all.
                     </div>
                 )}
 
+            {downloaded && (
+                <p className='downloaded' role='status' aria-live='polite'>Downloaded <strong>{downloaded}</strong></p>
+            )}
+
             <footer className='panel-footer'>
                 <button type='button' className='footer-button' onClick={onClose}>Back to results</button>
+                <button
+                    type='button'
+                    className='footer-button primary'
+                    onClick={onDownload}
+                    disabled={filteredFailures.length === 0}
+                    aria-label={`Download the ${filteredFailures.length.toLocaleString()} records shown as CSV`}
+                >
+                    <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
+                        <path d='M12 3v12m0 0l-5-5m5 5l5-5M4 21h16' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+                    </svg>
+                    Download {filteredFailures.length.toLocaleString()} as CSV
+                </button>
             </footer>
         </section>
     )

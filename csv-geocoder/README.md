@@ -1,6 +1,6 @@
 # CSV Geocoder Widget
 
-An ArcGIS Experience Builder custom widget that lets users upload a CSV or Excel file of addresses, map columns to address fields, geocode against a configurable locator service, add the matched points to the connected Map widget as a real map layer, and export the results.
+An ArcGIS Experience Builder custom widget that lets users upload a CSV or Excel file of addresses, map columns to address fields, geocode against a configurable locator service, add the matched points to the connected Map widget as a real map layer, and export the results. It also works as an address checker: run a list against your locator and download the rows that did not match, each with the reason.
 
 The matched points are not a temporary graphics overlay. They are added as a client-side feature layer, so they appear in the Layer List with an attribute table, popups and a legend, and the Filter, Select, Chart and Table widgets can all consume them. Nobody has to download a GeoJSON and bring it back in through Add Data.
 
@@ -14,16 +14,18 @@ The matched points are not a temporary graphics overlay. They are added as a cli
 - Remove that layer again from inside the widget, or keep stacking one layer per run
 - Set a minimum match score, point symbol, and zoom-to-results behavior
 - View live progress and cancel an active run
-- Review matched, failed, and match-rate totals
-- Open a searchable failure-review panel showing the source row, mapped address, score, failure reason, best candidate, and original field values
+- Review matched, unmatched, and match-rate totals, with the unmatched rows broken down by reason: low score, no match, blank address, or service error
+- Open a searchable review panel for the unmatched rows showing the source row, submitted address, score, reason, best candidate and its address type, and original field values; filter it by reason and download exactly what is on screen as CSV
+- Export an **address check table** as CSV or Excel for all rows, only the unmatched rows, or only the matched rows, with the match result added to every row
 - Export matched points as GeoJSON, KML, or a zipped Shapefile
+- Skip rows with a blank address without sending them to the locator, so they cost nothing
 - Read a searchable in-widget help guide written in plain language, with a first-run hint for new users
 - Use the workflow with keyboard navigation and screen-reader status announcements
 
 ## Requirements
 
 - ArcGIS Experience Builder Developer Edition 1.21
-- A Map widget on the same page as this widget
+- A Map widget on the same page, to draw the matched points (optional for address checking and table export)
 - Network access to the configured Locator service
 
 ## Install
@@ -79,11 +81,11 @@ ArcGIS Maps SDK modules are imported through Experience Builder's `esri/*` alias
 
 ## Configuration
 
-- **Map widget**: Required for displaying matched points.
+- **Map widget**: Needed to draw the matched points. Without one, the widget still checks addresses and exports the address check table.
 - **Locator URL**: Defaults to the Esri World Geocoding Service. The service must expose `geocodeAddresses`.
 - **API key / token**: Optional in the widget configuration. Use a referrer-restricted credential appropriate for the deployed app.
 - **Batch size**: Number of addresses sent per request.
-- **Minimum match score**: Results below this 0 to 100 threshold are reported as failures.
+- **Minimum match score**: Results below this 0 to 100 threshold are reported as unmatched with the reason Low score.
 - **Point symbol**: Fill color, size, outline color, and outline width.
 - **Default address mode**: Separate columns or one full-address column.
 - **Zoom to results**: Fits the connected map to matched points when geocoding completes.
@@ -105,8 +107,8 @@ Sending separate components to a locator built for single-line input (or the rev
 2. Confirm or change the detected field mapping.
 3. Select **Geocode** and monitor progress.
 4. Review the result totals. The matched points are on the map by now, and the widget names the layer it added. Open that layer from the map's Layer List to see the attribute table, or click a point for its popup.
-5. When failures are present, select **Review failures** to open the failure-review panel. Filter failures by row, address, reason, candidate, or any original source value; expand a failure to inspect the complete source row.
-6. Close the panel and export matched points as GeoJSON, KML, or Shapefile when a file is needed as well.
+5. When rows did not match, select **Review unmatched** to open the review panel. Filter by reason, search by row, address, candidate, or any original source value, and expand a record to inspect the complete source row. **Download as CSV** saves exactly the records shown. **Download unmatched** on the Results card saves all of them in one click.
+6. Under **4. Export**, download the address check table (CSV or Excel; all rows, unmatched, or matched) or the matched points as GeoJSON, KML, or Shapefile.
 7. **Remove from map** takes the layer off again. **Clear** empties the form only and leaves any layers already on the map alone, so a second file can be geocoded without losing the first.
 
 The layer lives in the browser. Nothing is written to the portal, so no sign-in and no publisher privilege is needed, and closing the app loses it. The export buttons are still the way to keep a copy.
@@ -115,15 +117,38 @@ The layer lives in the browser. Nothing is written to the portal, so no sign-in 
 
 Spreadsheet headings are not valid feature-layer field names, so each column is sanitized (spaces and punctuation become underscores, a leading digit gets an `F_` prefix, collisions get a numeric suffix) and the original heading is kept as the field alias. The attribute table therefore reads exactly like the source file. Two extra fields are added: `MATCH_ADDR`, the address the locator matched, and `MATCH_SCORE`, its confidence.
 
+### Address check table
+
+The table export is built for checking a list of addresses against an official address locator. Every original column is kept, in source order, and these columns are added on the right. If the file already has a column with one of these names, the added column gets a numeric suffix (`MATCH_SCORE_1`).
+
+| Column | Contents |
+| --- | --- |
+| `MATCH_STATUS` | `Matched`, `Matched (tied)`, `Low score`, `No match`, `Blank address`, or `Service error` |
+| `MATCH_SCORE` | Locator score of the best candidate, blank when there was none |
+| `SUBMITTED_ADDRESS` | The address sent to the locator, built from the mapped columns |
+| `MATCH_ADDR` | The address the locator matched, or for a low score, the closest candidate it found |
+| `ADDR_TYPE` | The locator's address type, for example `PointAddress` or `StreetAddress` |
+| `FAIL_REASON` | A plain-language reason for every row that did not match |
+| `LONGITUDE`, `LATITUDE` | WGS84 coordinates for matched rows |
+| `SOURCE_ROW` | The row number in the uploaded spreadsheet (headings are row 1) |
+
+`Matched (tied)` is the locator's Status `T`: two candidates scored the same. It counts as matched but is worth a second look.
+
+**CSV** is UTF-8 with a byte order mark, so Excel opens accented characters correctly. Text values that start with `=`, `+`, `-` or `@` are prefixed with an apostrophe so a spreadsheet cannot run them as formulas (CSV injection); plain numbers such as `-108.55` are left as they are.
+
+**Excel** starts with a **Summary** sheet (source file, run time, locator URL without its query string, minimum score, and counts by status), followed by the rows. With **All rows** selected the workbook carries **All results**, **Unmatched** and **Matched** sheets, so one file is both the full check and the to-do list. Every data sheet has filter arrows on the header row.
+
+Downloads are named after the uploaded file, for example `Hydrants_unmatched_2026-10-08_1430.csv`.
+
 ### Help guide
 
 A **Help** button sits at the top right of the widget. It opens a short searchable guide written in plain language, and it adapts to how the widget is configured: the map layer section is dropped when no Map widget is connected, and the credit warning only appears when the app points at Esri's world geocoder. A first-run hint points new users at the guide until they dismiss it once.
 
 ### Using the exported Shapefile
 
-The Shapefile export downloads as a `.zip` named like `geocoded-YYYY-MM-DD-shapefile.zip`. That outer zip contains a **folder**, and the actual shapefile parts (`.shp`, `.shx`, `.dbf`, `.prj`) live inside that folder. Most applications that accept a "zipped shapefile" (ArcGIS Online, Portal, and many web maps) expect a zip whose shapefile parts sit at the top level, not nested inside a folder. So to use the export:
+The Shapefile export downloads as a `.zip` named like `<file>_geocoded_shapefile_YYYY-MM-DD_HHMM.zip`. That outer zip contains a **folder**, and the actual shapefile parts (`.shp`, `.shx`, `.dbf`, `.prj`) live inside that folder. Most applications that accept a "zipped shapefile" (ArcGIS Online, Portal, and many web maps) expect a zip whose shapefile parts sit at the top level, not nested inside a folder. So to use the export:
 
-1. Unzip the downloaded `geocoded-YYYY-MM-DD-shapefile.zip`.
+1. Unzip the downloaded shapefile zip.
 2. Open the folder it produced. You should see the `.shp`, `.shx`, `.dbf`, and `.prj` files together.
 3. Select those files (or the folder), and create a new zip from them so the parts are at the root of the new zip.
 4. Upload that new zip to ArcGIS Online, Portal, or your target application.
@@ -132,7 +157,7 @@ GeoJSON and KML have no such step; they download as a single ready-to-use file. 
 
 ## Security and data handling
 
-File parsing and export generation occur in the browser. Only mapped address values are sent to the configured Locator service during geocoding. Original non-address attributes remain in the browser unless the user exports the results. Credentials stored in widget configuration become part of the app configuration, so apply service and referrer restrictions rather than embedding an unrestricted key.
+File parsing and export generation occur in the browser. Only mapped address values are sent to the configured Locator service during geocoding. Original non-address attributes remain in the browser unless the user exports the results. Rows with a blank address are not sent at all. Credentials stored in widget configuration become part of the app configuration, so apply service and referrer restrictions rather than embedding an unrestricted key.
 
 ## Usage telemetry
 

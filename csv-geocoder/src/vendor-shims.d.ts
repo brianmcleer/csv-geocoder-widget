@@ -35,11 +35,15 @@ declare module 'xlsx' {
   }
 
   export function read(data: ArrayBuffer, options?: { type?: string, cellDates?: boolean }): WorkBook
+  export function write(wb: WorkBook, options: { type: 'array', bookType: 'xlsx', compression?: boolean }): ArrayBuffer
 
   export namespace utils {
     function sheet_to_json<T>(sheet: WorkSheet, options?: { defval?: unknown, raw?: boolean }): T[]
     function decode_range(ref: string): { s: { r: number, c: number }, e: { r: number, c: number } }
     function encode_cell(cell: { r: number, c: number }): string
+    function aoa_to_sheet(data: unknown[][]): WorkSheet
+    function book_new(): WorkBook
+    function book_append_sheet(wb: WorkBook, ws: WorkSheet, name?: string): void
   }
 }
 

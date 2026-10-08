@@ -6,7 +6,7 @@ export default {
   cancel: 'Cancel',
   clear: 'Clear',
   matched: 'Matched',
-  failed: 'Failed',
+  failed: 'Unmatched',
   matchRate: 'Match rate',
   selectMapWidget: 'Select a Map widget in this widget’s settings to display points.',
 
@@ -17,8 +17,8 @@ export default {
   // ---------------------------------------------------------------------------
   helpTitle: 'Help',
   close: 'Close',
-  helpIntro: 'This widget takes a list of addresses from a spreadsheet and puts them on the map.',
-  helpSearchPlaceholder: 'Search the guide (try "layer" or "failed")',
+  helpIntro: 'This widget takes a list of addresses from a spreadsheet, checks each one against the address locator, and puts the matches on the map.',
+  helpSearchPlaceholder: 'Search the guide (try "layer" or "unmatched")',
   helpNoMatches: 'Nothing in the guide matches that word. Try another, or open the sections above.',
   helpAnd: 'and',
 
@@ -60,22 +60,31 @@ export default {
 
   helpResultsTitle: 'Reading the results',
   helpResults1: 'Matched: rows the geocoder found a place for.',
-  helpResults2: 'Failed: rows it could not place, or placed with too little confidence.',
+  helpResults2: 'Unmatched: rows it could not place, or placed with too little confidence. The small labels under the totals say why: low score, no match, blank address or service error.',
   helpResults3: 'Match rate: matched rows as a share of the whole file. Above 90 percent is a good file.',
-  helpResults4: 'Review failures opens the full list of rows that did not make it, with the reason for each one. Fix those addresses in your spreadsheet and run the file again.',
+  helpResults4: 'Review unmatched opens the full list of rows that did not make it, with the reason for each one. Filter it by reason or search it, then download what is on screen as a CSV. Download unmatched saves the whole list in one click.',
+
+  helpCheckTitle: 'Checking a list of addresses',
+  helpCheckIntro: 'The widget doubles as an address checker: it tells you which rows are in the address locator and which are not.',
+  helpCheck1: 'Upload the list and press Geocode. Matched means the locator found the address.',
+  helpCheck2: 'Under 4. Export, pick Unmatched, then CSV or Excel. You get only the rows that need a look, each with its reason in the FAIL_REASON column.',
+  helpCheck3: 'Low score: the locator found something close but not close enough. MATCH_ADDR shows what it found, which usually points to a typo, a wrong suffix or a missing unit.',
+  helpCheck4: 'No match: the locator found nothing. Blank address: the row has no address in the mapped columns. Service error: the request failed, so run the file again.',
+  helpCheck5: 'Matched (tied) means two candidates scored the same. It counts as matched, but it is worth a second look.',
+  helpCheck6: 'Pick All rows instead to get the whole file back with MATCH_STATUS on every row. Excel then adds Unmatched and Matched sheets and a Summary sheet with the totals.',
 
   helpExportTitle: 'Downloading a copy',
-  helpExportIntro: 'Only matched points are included. Failed rows are left out.',
-  helpExport1: 'GeoJSON: the general purpose one. Most web maps and ArcGIS Online read it.',
-  helpExport2: 'KML: for Google Earth.',
-  helpExport3: 'Shapefile: a ZIP for ArcGIS Pro and other desktop tools.',
-  helpExport4: 'The file lands in your downloads folder with the date and time in its name.',
+  helpExportIntro: 'Two kinds of download: a table of your rows, or a map file of the matched points.',
+  helpExport1: 'Address check table: CSV or Excel, for all rows, only the unmatched ones, or only the matched ones. Every original column is kept, with the match result added on the right.',
+  helpExport2: 'Map file: GeoJSON for web maps and ArcGIS Online, KML for Google Earth, or a Shapefile ZIP for ArcGIS Pro. Matched points only, since an unmatched row has no place to draw.',
+  helpExport3: 'Excel opens the CSV with accented letters intact, and a value that starts with = or + is kept as text, never run as a formula.',
+  helpExport4: 'The file lands in your downloads folder, named after your file with the date and time.',
 
   helpTroubleTitle: 'If something looks wrong',
-  helpTrouble1: 'Geocode is greyed out: no map is connected to this widget. Ask the GIS Division to connect one.',
+  helpTrouble1: 'No points appear: no map is connected to this widget. Checking and the table export still work. Ask the GIS Division to connect a map if you need the points drawn.',
   helpTrouble2: 'Nothing happened after you picked a file: the file had no readable rows. Check that row one is the column headings and that there is at least one row under it.',
-  helpTrouble3: 'Everything failed: the columns are matched to the wrong things. Go back to 2. Map address fields and check each box.',
-  helpTrouble4: 'Many rows failed with a score message: the addresses are close but not close enough. Spelling, a missing city or a missing ZIP are the usual reasons.',
+  helpTrouble3: 'Everything is unmatched: the columns are matched to the wrong things. Go back to 2. Map address fields and check each box.',
+  helpTrouble4: 'Many rows say low score: the addresses are close but not close enough. Spelling, a missing city or a missing ZIP are the usual reasons.',
   helpTrouble5: 'The points landed in the wrong part of the country: the city or state column is empty, so the geocoder guessed. Fill those columns in and run it again.',
   helpTrouble6: 'The layer is gone: the browser tab was closed or reloaded. Run the file again, or bring back the copy you exported.',
   helpTroubleContact: 'Still stuck? Contact the GIS Division and mention the CSV Geocoder name and this app.',
@@ -84,5 +93,6 @@ export default {
   helpTips1: 'Clean addresses win. Take out apartment numbers and notes like "behind the school" before you start.',
   helpTips2: 'A big file is fine. The bar shows how far along it is, and Cancel stops it.',
   helpTips3: 'Clear empties the form so you can start on another file.',
+  helpTips5: 'Rows with a blank address are never sent to the locator, so they cost nothing and show up as Blank address.',
   helpTips4: 'This app uses Esri’s worldwide address finder, which spends credits on large runs. Check with the GIS Division before running tens of thousands of rows.'
 }

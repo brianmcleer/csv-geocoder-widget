@@ -5,6 +5,10 @@
  *   - send batches larger than what addressToLocations() allows,
  *   - control the token and proxy behaviour from widget settings, and
  *   - report per-record failures (score < threshold, out-of-quota, etc.).
+ *
+ * Every record comes back with a `status` code so the address-check table
+ * export and the Results breakdown can say WHY a row did not match, not just
+ * that it did not.
  */
 import { type AddressRole } from '../../config'
 
@@ -23,11 +27,26 @@ export interface GeocodePoint {
   spatialReference: { wkid: number }
 }
 
+/**
+ * Outcome of one record.
+ *  - matched:   a candidate at or above the minimum score; has a point.
+ *  - low-score: the locator found a candidate, but below the minimum score.
+ *  - no-match:  the locator returned no usable candidate (Status U, or nothing).
+ *  - blank:     the mapped address columns were empty, so nothing was sent.
+ *  - error:     the request for this record's batch failed (HTTP, token, quota).
+ */
+export type MatchStatus = 'matched' | 'low-score' | 'no-match' | 'blank' | 'error'
+
 export interface GeocodeResult {
   objectId: number
   point: GeocodePoint | null
   score: number
   matchAddress: string
+  status: MatchStatus
+  /** Locator's own Status attribute: M (matched), T (tied), U (unmatched). */
+  locatorStatus?: string
+  /** Locator's Addr_type, e.g. PointAddress, StreetAddress, Locality. */
+  addrType?: string
   /** Reason the record failed, if any. */
   error?: string
 }
@@ -47,9 +66,9 @@ interface GeocodeAddressesResponse {
   spatialReference?: { wkid: number, latestWkid?: number }
   locations?: Array<{
     address: string
-    location: { x: number, y: number }
+    location: { x: number | string, y: number | string }
     score: number
-    attributes: { ResultID: number, [k: string]: unknown }
+    attributes: { ResultID: number, Status?: string, Addr_type?: string, [k: string]: unknown }
   }>
   error?: { code: number, message: string }
 }
@@ -76,6 +95,20 @@ function chunk<T> (arr: T[], size: number): T[][] {
   return out
 }
 
+/**
+ * True when there is nothing to send. A blank row would spend a locator call
+ * (and on the world locator, a credit) to learn nothing, so it is reported
+ * as "blank" without a request.
+ */
+export function isBlankInput (input: GeocodeInput): boolean {
+  if (typeof input.address === 'string') return input.address.trim() === ''
+  return Object.values(input.address).every(v => (v ?? '').trim() === '')
+}
+
+function toNumber (v: number | string | undefined): number {
+  return typeof v === 'number' ? v : Number(v)
+}
+
 export async function geocodeBatch (
   inputs: GeocodeInput[],
   opts: GeocodeOptions
@@ -83,8 +116,28 @@ export async function geocodeBatch (
   const { url, apiKey, batchSize, minScore, onProgress, signal } = opts
   const endpoint = `${url.replace(/\/+$/, '')}/geocodeAddresses`
   const out: GeocodeResult[] = []
-  const batches = chunk(inputs, Math.max(1, batchSize))
   let completed = 0
+
+  // Blank rows are settled up front and never sent.
+  const toSend: GeocodeInput[] = []
+  for (const i of inputs) {
+    if (isBlankInput(i)) {
+      out.push({
+        objectId: i.objectId,
+        point: null,
+        score: 0,
+        matchAddress: '',
+        status: 'blank',
+        error: 'Address columns are blank'
+      })
+      completed++
+    } else {
+      toSend.push(i)
+    }
+  }
+  if (completed > 0) onProgress?.(completed, inputs.length)
+
+  const batches = chunk(toSend, Math.max(1, batchSize))
 
   for (const batch of batches) {
     if (signal?.aborted) throw new DOMException('Aborted', 'AbortError')
@@ -108,11 +161,13 @@ export async function geocodeBatch (
       if (!response.ok) throw new Error(`Locator request failed with HTTP ${response.status}`)
       data = await response.json() as GeocodeAddressesResponse
     } catch (e) {
+      // A cancel must stop the run, not be recorded as a failed batch.
+      if ((e as Error)?.name === 'AbortError') throw e
       // Whole-batch failure -> mark every record in the batch as errored.
       const msg = e instanceof Error ? e.message : String(e)
       for (const i of batch) {
         out.push({
-          objectId: i.objectId, point: null, score: 0, matchAddress: '', error: msg
+          objectId: i.objectId, point: null, score: 0, matchAddress: '', status: 'error', error: msg
         })
       }
       completed += batch.length
@@ -127,6 +182,7 @@ export async function geocodeBatch (
           point: null,
           score: 0,
           matchAddress: '',
+          status: 'error',
           error: `${data.error.code}: ${data.error.message}`
         })
       }
@@ -143,29 +199,57 @@ export async function geocodeBatch (
 
     for (const i of batch) {
       const loc = byId.get(i.objectId)
-      if (!loc || loc.score < minScore) {
+      const locatorStatus = typeof loc?.attributes?.Status === 'string' ? loc.attributes.Status : undefined
+      const addrType = typeof loc?.attributes?.Addr_type === 'string' ? loc.attributes.Addr_type : undefined
+      const x = toNumber(loc?.location?.x)
+      const y = toNumber(loc?.location?.y)
+
+      // Status U, or a location of NaN, is the locator saying "no match". Without
+      // this check a minimum score of 0 would put an unmatched row on the map at NaN.
+      const usable = !!loc && locatorStatus !== 'U' && Number.isFinite(x) && Number.isFinite(y)
+
+      if (!usable) {
         out.push({
           objectId: i.objectId,
           point: null,
           score: loc?.score ?? 0,
           matchAddress: loc?.address ?? '',
-          error: !loc
-            ? 'No candidate returned'
-            : `Score ${loc.score.toFixed(0)} below threshold ${minScore}`
+          status: 'no-match',
+          locatorStatus,
+          addrType,
+          error: 'No candidate returned'
         })
         continue
       }
+
+      if (loc.score < minScore) {
+        out.push({
+          objectId: i.objectId,
+          point: null,
+          score: loc.score,
+          matchAddress: loc.address ?? '',
+          status: 'low-score',
+          locatorStatus,
+          addrType,
+          error: `Score ${loc.score.toFixed(0)} below threshold ${minScore}`
+        })
+        continue
+      }
+
       out.push({
         objectId: i.objectId,
         point: {
-          x: loc.location.x,
-          y: loc.location.y,
-          longitude: loc.location.x,
-          latitude: loc.location.y,
+          x,
+          y,
+          longitude: x,
+          latitude: y,
           spatialReference: { wkid: 4326 }
         },
         score: loc.score,
-        matchAddress: loc.address
+        matchAddress: loc.address,
+        status: 'matched',
+        locatorStatus,
+        addrType
       })
     }
 
@@ -173,5 +257,7 @@ export async function geocodeBatch (
     onProgress?.(completed, inputs.length)
   }
 
+  // Back in source order, since blank rows were settled first.
+  out.sort((a, b) => a.objectId - b.objectId)
   return out
 }
