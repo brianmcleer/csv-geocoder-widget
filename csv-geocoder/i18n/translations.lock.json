@@ -202,16 +202,16 @@
       },
       "locales": {
         "ar": {
-          "file": "dce6cad3be84",
+          "file": "bcecf1b5b7e2",
           "counts": {
             "esri": 25,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 155,
+            "machine": 167,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -988,20 +988,80 @@
               "t": "لا تطابق",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "فقط الصفوف التي لم تتطابق مع سبب كل واحد سلّم هذه القائمة لمن يفحص العناوين",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "فقط الصفوف التي تطابقت مع العنوان الذي طابقه الموقع",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "كل صف من ملفك مع نتائج المباراة أضيفت (إكسل) يحصل أيضاً على أوراق غير متطابقة",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "استبدال الملف. الحالي: {fileName}- إدخال الصحافة أو الفضاء لاختيار ملف مختلف.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "ألقي ملفاً هنا، أو أضغط على (إينتر) أو (سوس) لفتح مُلتقط الملف.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(الصف المرجعي غير متاح)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(عنوان بلانك)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "ملف القراءة",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "ملف محشو {toLocaleString} جسور جاهزة للرسم",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocoding {toLocaleString} of of {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} أضيفت إلى الخريطة {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "اكتمل الترميز الجغرافي {toLocaleString} of of {toLocaleString2} متطابقة",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "bg": {
-          "file": "72fb7b855b8c",
+          "file": "b0e1fd8f11b3",
           "counts": {
             "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -1773,6 +1833,66 @@
               "t": "Няма съвпадение.",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Само редовете, които не съвпадат, с причината за всеки. Дай този списък на този, който проверява адресите.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Само редовете, които съвпадат с адреса на локатора.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Всеки ред от вашия файл с неговия резултат мач добавя. Excel също получава несравними и съвпадащи чаршафи.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Заменете файла. Текущ: {fileName}. Натиснете Enter или пространство, за да изберете различен файл.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Пуснете файл тук, или натиснете Enter или Space, за да отворите picker файл.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(недостъпен изходен ред)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(шест адрес)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Четене на файл.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Файлът е зареден. {toLocaleString} редове готови за карта.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Геокодиране {toLocaleString} на {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Добавяне към картата като {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Геокодирането завършено. {toLocaleString} на {toLocaleString2} Съвпадат.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
@@ -1791,16 +1911,16 @@
           "entries": {}
         },
         "ca": {
-          "file": "50f2c17de37c",
+          "file": "9910893b97e0",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -2572,20 +2692,80 @@
               "t": "Sense coincidències",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Només les files que no van coincidir, amb el motiu de cada. Dóna aquesta llista a qui estigui comprovant les adreces.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Només les files que coincideixen amb, amb l' adreça on el localitzador les coincideix.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Cada fila des del fitxer amb el resultat de la partida afegit. L' Excel també té fulls sense parella i coincidir.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Substitueix el fitxer. Actual: {fileName}. Premeu Retorn o Espai per a triar un fitxer diferent.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Deixeu aquí un fitxer o premeu Intro o Espai per obrir el selector de fitxers.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(la fila de codi no està disponible)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(adreça en blanc)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Llegeix el fitxer.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Fitxer carregat. {toLocaleString} files llests per al mapa.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocoding {toLocaleString} de {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} S' ha afegit al mapa com {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocoding completada. {toLocaleString} de {toLocaleString2} Coincidència.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "cs": {
-          "file": "6547fb30421c",
+          "file": "a4c3ec803f37",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -3357,20 +3537,80 @@
               "t": "Žádná shoda.",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Pouze řádky, které se neshodují, s důvodem pro každého. Předej ten seznam tomu, kdo kontroluje adresy.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Pouze řádky, které se shodují s adresou, kterou je lokátor přiřadil.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Každý řádek z vašeho souboru s přidaným výsledkem zápasu. Excel také dostane bezkonkurenční a odpovídající listy.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Nahradit soubor. Aktuální: {fileName}. Stiskněte Enter nebo Space zvolit jiný soubor.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Zahoďte soubor zde, nebo stiskněte Enter nebo Space pro otevření picker souborů.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(řádek zdroje není k dispozici)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(prázdná adresa)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Čtení souboru.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Soubor nabitý. {toLocaleString} Řádky připraveny k mapování.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geokódování {toLocaleString} z {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Přidáno do mapy jako {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokódování dokončeno. {toLocaleString} z {toLocaleString2} se shoduje.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "da": {
-          "file": "a6fa903e2cdd",
+          "file": "e0a9c8ea695d",
           "counts": {
             "esri": 25,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 155,
+            "machine": 167,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -4147,20 +4387,80 @@
               "t": "Ingen match",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Kun de rækker, der ikke stemte overens, med årsagen til hver. Giv listen til den, der tjekker adresserne.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Kun de rækker, der matchede, med adressen lokalisatoren matchede dem til.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Hver række fra din fil med dens match resultat tilføjet. Excel får også uovertruffen og matchede lagner.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Erstat fil. Løbende: {fileName}. Tryk på Enter eller mellemrum for at vælge en anden fil.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Smid en fil her, eller tryk på Enter eller Space for at åbne fil picker.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(kilderække ikke tilgængelig)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(blank adresse)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Læser fil.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Fil indlæst. {toLocaleString} rækker klar til kort.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geokodning {toLocaleString} af {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Tilføjet til kortet som {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokodning fuldført. {toLocaleString} af {toLocaleString2} matchede.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "de": {
-          "file": "3b1de75409c1",
+          "file": "99a4a13f6be0",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -4932,20 +5232,80 @@
               "t": "Kein Match",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Nur die Zeilen, die nicht übereinstimmen, mit dem Grund für jeden. Geben Sie diese Liste an denjenigen weiter, der die Adressen überprüft.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Nur die Zeilen, die übereinstimmten, mit der Adresse, mit der der Locator sie übereinstimmte.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Jede Zeile aus Ihrer Datei mit ihrem Übereinstimmungsergebnis hinzugefügt. Excel erhält auch Unmatched und Matched Blätter.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Datei ersetzen. Aktuell: {fileName}Drücken Sie Enter oder Space, um eine andere Datei auszuwählen.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Lassen Sie eine Datei hier fallen, oder drücken Sie Enter oder Space, um die Dateiauswahl zu öffnen.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(Quellenzeile nicht verfügbar)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(Leeradresse)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Lesedatei.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Datei geladen. {toLocaleString} Zeilen bereit zur Karte.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocodierung {toLocaleString} von {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Zur Karte hinzugefügt als {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocoding vollständig. {toLocaleString} von {toLocaleString2} abgestimmt.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "el": {
-          "file": "8312f4011bab",
+          "file": "9b3883921512",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -5717,20 +6077,80 @@
               "t": "Κανένα ταίριασμα",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Μόνο οι σειρές που δεν ταίριαζαν, με το λόγο για το καθένα. Δώσε αυτή τη λίστα σε όποιον ελέγχει τις διευθύνσεις.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Μόνο οι σειρές που ταίριαζαν, με τη διεύθυνση που τις ταίριαζε ο εντοπιστής.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Κάθε σειρά από το αρχείο σας με το αποτέλεσμα του αγώνα προστέθηκε. Excel παίρνει επίσης Unmatched και ταιριάζουν φύλλα.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Αντικατάσταση αρχείου. Τρέχων: {fileName}. Πατήστε Enter ή Space για να επιλέξετε ένα διαφορετικό αρχείο.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Ρίξτε ένα αρχείο εδώ, ή πατήστε Enter ή Space για να ανοίξετε τον επιλογέα αρχείων.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(μη διαθέσιμη γραμμή πηγής)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(καφέ διεύθυνση)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Ανάγνωση αρχείου.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Το αρχείο φορτώθηκε. {toLocaleString} σειρές έτοιμες για χάρτη.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Γεωκωδικοποίηση {toLocaleString} του {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Προστέθηκε στο χάρτη ως {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Η γεωκωδικοποίηση ολοκληρώθηκε. {toLocaleString} του {toLocaleString2} Ταιριάζουν.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "es": {
-          "file": "741376916ae3",
+          "file": "5c3137c24571",
           "counts": {
             "esri": 25,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 155,
+            "machine": 167,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -6507,20 +6927,80 @@
               "t": "No hay coincidencia",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Sólo las filas que no coincidían, con la razón de cada una. Entrega esta lista a quien esté revisando las direcciones.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Sólo las filas que coincidían, con la dirección a la que el localizador las emparejó.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Cada fila de su archivo con su resultado de partido añadido. Excel también consigue hojas sin igual y emparejadas.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Reemplaza el archivo. Corriente: {fileName}. Pulse Enter o Espacio para elegir un archivo diferente.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Deja un archivo aquí, o pulsa Enter o Space para abrir el selector de archivos.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(La fila de la fuente no está disponible)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(Dirección negra)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Archivo de lectura.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "El archivo cargado. {toLocaleString} filas listas para el mapa.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocoding {toLocaleString} de {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Añadido al mapa como {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocodificación completa. {toLocaleString} de {toLocaleString2} coinciden.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "et": {
-          "file": "444d6354535d",
+          "file": "eebbd189069c",
           "counts": {
             "esri": 24,
             "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -7292,20 +7772,80 @@
               "t": "Tikku pole",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Ainult need read, mis ei klappinud, iga põhjusega. Anna see nimekiri kõigile, kes aadresse kontrollivad.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Ainult read, mis sobisid, aadressiga, millega lokaator neid sobitas.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Iga rida failist koos vaste tulemusega on lisatud. Excel saab ka tasakaalustamata ja sobitatud lehti.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Asenda fail. Praegune: {fileName}Vajuta Enter või Space, et valida mõni muu fail.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Viska fail siia või vajuta Enter või Space failivalija avamiseks.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(allikarida ei ole kättesaadav)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(tühiaadress)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Faili lugemine.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Fail laetud. {toLocaleString} read valmis kaardistama.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geokodeerimine {toLocaleString} ühest {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Lisatud kaardile {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokodeerimine lõpetatud. {toLocaleString} ühest {toLocaleString2} sobis.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "fi": {
-          "file": "6d34287af3c2",
+          "file": "d67180210c69",
           "counts": {
             "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -8077,20 +8617,80 @@
               "t": "Ei täsmää",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Vain rivit, jotka eivät täsmää, syy kunkin. Anna tämä lista sille, joka tarkistaa osoitteet.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Vain rivit täsmäsivät osoitteeseen, johon paikannin täsmäsi.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Jokainen rivi tiedostosta ja sen ottelutulos lisätty. Excel saa myös vertaamaton ja Matched lakanat.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Korvaa tiedosto. Nykyinen: {fileName}. Paina Enter tai tilaa valita eri tiedosto.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Pudota tiedosto tähän, tai paina Enter tai tilaa avata tiedoston poimija.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(lähderivi ei saatavilla)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(tyhjä osoite)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Luen tiedostoa.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Tiedosto ladattu. {toLocaleString} Rivit valmiina karttaan.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geokoodaus {toLocaleString} / {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Lisätty karttaan {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokoodaus valmis. {toLocaleString} / {toLocaleString2} Sovittu.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "fr": {
-          "file": "bb0a6db1671a",
+          "file": "b5b4b2bea021",
           "counts": {
             "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -8862,20 +9462,80 @@
               "t": "Pas de correspondance",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Seulement les lignes qui ne correspondaient pas, avec la raison pour chacune. Donnez cette liste à celui qui vérifie les adresses.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Seules les lignes qui correspondaient, avec l'adresse à laquelle le localisateur correspondait.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Chaque ligne de votre fichier avec son résultat de correspondance ajouté. Excel obtient également des feuilles inégalées et assorties.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Remplacer le fichier. Actuellement & #160;: {fileName}. Appuyez sur Entrée ou Espace pour choisir un fichier différent.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Déposer un fichier ici, ou appuyez sur Entrée ou Espace pour ouvrir le sélectionneur de fichiers.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(ligne source non disponible)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(adresse blanche)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Lire le fichier.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Dossier chargé. {toLocaleString} lignes prêtes à cartographier.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Codage géographique {toLocaleString} des {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Ajouté à la carte comme {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Géocodage terminé. {toLocaleString} des {toLocaleString2} apparié.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "he": {
-          "file": "02639dd89a4c",
+          "file": "18f6104ab217",
           "counts": {
             "esri": 23,
             "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 155,
+            "machine": 167,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -9652,6 +10312,66 @@
               "t": "לא משחק",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "רק השורות שלא התאימו, עם הסיבה לכל אחד. לחצו על רשימה זו למי בודק את הכתובות.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "רק השורות שהתאימו, עם הכתובת המאתר התאימו להם.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "כל שורה מהקובץ שלך עם תוצאות המשחק שלה הוסיף. Excel גם מקבל גליונות לא מתאימים ומתואמים.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "החלפת קובץ המונחים: {fileName}הקש Enter or Space כדי לבחור קובץ אחר.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "הורד קובץ כאן, או הקש Enter או Space כדי לפתוח את קובץ הקובץ.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(שורה ללא תשלום)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(כתובת lank)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "קובץ קריאה",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "File טעון. {toLocaleString} שורות מוכנות למפות",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocoding {toLocaleString} של {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} הוספת המפה כמו {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "הגיאוגרף הושלם. {toLocaleString} של {toLocaleString2} מתאים.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
@@ -9670,16 +10390,16 @@
           "entries": {}
         },
         "hu": {
-          "file": "ff214e87f630",
+          "file": "0df7210221d1",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -10451,20 +11171,80 @@
               "t": "Nincs egyezés",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Csak azok a sorok, amelyek nem egyeztek, mindegyik okkal. Add át ezt a listát annak, aki ellenőrzi a címeket.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Csak a sorok egyeznek, a cím, amit a helymeghatározó talált.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Minden sor a fájl a mérkőzés eredménye hozzá. Excel is kap páratlan és összeillő lepedők.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "A fájl cseréje. Jelenleg: {fileName}. Nyomja meg az Enter vagy Space, hogy válasszon egy másik fájlt.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Dobja el a fájlt itt, vagy nyomja meg az Enter vagy Space, hogy nyissa meg a fájlszedő.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(forrássor nem áll rendelkezésre)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(üres cím)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "File olvasás.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Fájl betöltve. {toLocaleString} sor kész a térképre.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Földkódolás {toLocaleString} II. {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Hozzáadva a térképhez: {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Földkódolás kész. {toLocaleString} II. {toLocaleString2} egyezés.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "id": {
-          "file": "5e0da5a982b8",
+          "file": "10ae7d2e908a",
           "counts": {
             "esri": 24,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 156,
+            "machine": 168,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -11246,20 +12026,80 @@
               "t": "Tidak cocok",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Hanya baris yang tidak cocok, dengan alasan untuk masing-masing. Tangan daftar ini kepada siapa pun yang memeriksa alamat.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Hanya baris-baris yang cocok, dengan alamat locator cocok dengan.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Setiap baris dari berkas Anda dengan hasil yang cocok ditambahkan. Excel juga mendapat seprai yang tidak cocok dan cocok.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Ganti berkas. Saat ini: {fileName}. Tekan Enter atau Space untuk memilih berkas lain.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Jatuhkan berkas di sini, atau tekan Enter atau Space untuk membuka picker berkas.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(baris sumber tidak tersedia)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(alamat kosong)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Membaca file.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "File dimuat. {toLocaleString} baris siap untuk memetakan.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocoding {toLocaleString} dari {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Ditambahkan ke peta sebagai {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocoding selesai. {toLocaleString} dari {toLocaleString2} cocok.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "it": {
-          "file": "4bf76fa3ec40",
+          "file": "0dac882f88b4",
           "counts": {
             "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -12031,20 +12871,80 @@
               "t": "Nessuna corrispondenza",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Solo le righe che non corrispondono, con la ragione per ciascuno. Consegna questa lista a chiunque stia controllando gli indirizzi.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Solo le righe che corrispondono, con l'indirizzo a cui il locatore li ha abbinati.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Ogni riga dal file con il suo risultato match aggiunto. Excel ottiene anche fogli non abbinati e abbinati.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Sostituisci file. Corrente: {fileName}. Premere Invio o Spazio per scegliere un file diverso.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Getta un file qui, o premi Invio o Spazio per aprire il raccoglitore di file.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(Risorsa non disponibile)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(indirizzo vuoto)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Documento di lettura.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "File caricato. {toLocaleString} righe pronte per la mappa.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocodifica {toLocaleString} di {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Aggiunto alla mappa come {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocodifica completa. {toLocaleString} di {toLocaleString2} abbinato.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "ja": {
-          "file": "96ab8a0ba67a",
+          "file": "1f3abf07f181",
           "counts": {
             "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -12816,20 +13716,80 @@
               "t": "マッチなし",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "マッチしなかった行だけ、それぞれの理由で。 アドレスを誰にでもチェックするリストを渡します。",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "一致する行のみ、ロケータのアドレスが一致する。",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "マッチ結果でファイルから各行が追加されます。 Excel は、比類のないマッチシートも取得します。",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "ファイルを置換します。 現在の: {fileName}. Enter または Space を押して別のファイルを選択します。",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "ここにファイルをドロップするか、 Enter または Space を押してファイルピッカーを開きます。",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(ソース行は利用できません)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(ブランクアドレス)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "読み込みファイル。",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "読み込まれたファイル。 {toLocaleString} 行はマップする準備ができています。",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "ジオコーディング {toLocaleString} インフォメーション {toLocaleString2}お問い合わせ",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} 地図に追加 {title}お問い合わせ",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "ジオコーディングが完了しました。 {toLocaleString} インフォメーション {toLocaleString2} マッチング。",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "ko": {
-          "file": "45e745711bdc",
+          "file": "6613781e8852",
           "counts": {
             "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -13601,20 +14561,80 @@
               "t": "아니 일치",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "일치하지 않은 행만, 각각의 이유와. 이 목록에 손을 누구든지 주소를 검사합니다.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "해당 주소와 일치한 행만 해당 주소와 일치합니다.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "모든 행의 파일과 일치 결과가 추가되었습니다. Excel은 일치하고 일치한 시트를 가져옵니다.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "파일 교체. 현재: {fileName}. 다른 파일을 선택하는 Enter 또는 Space를 누르십시오.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "여기에서 파일을 드롭하거나 Enter 또는 스페이스를 눌러 파일 선택기를 엽니 다.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(소스 행 사용 불가)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(주소)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "파일 읽기.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "파일로드. {toLocaleString} 지도를 준비합니다.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "지오 코딩 {toLocaleString} 이름 * {toLocaleString2}·",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} 지도에 추가 {title}·",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocoding 완료. {toLocaleString} 이름 * {toLocaleString2} 이름 *",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "lt": {
-          "file": "784ddb0670a1",
+          "file": "254b282c522a",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -14386,20 +15406,80 @@
               "t": "Neatitinka",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Tik tos eilutės, kurios neatitiko, su kiekvienos priežasties. Perduok šį sąrašą tiems, kurie tikrina adresus.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Tik tos eilutės, kurios sugretino, su adresu, į kurį jas sulygino lokatorius.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Kiekviena eilutė iš jūsų failo su jos rungtynių rezultatas pridėta. Excel taip pat gauna nesuderintas ir Matched lakštai.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Pakeisti failą. Dabartinis: {fileName}. Paspauskite Enter arba Space pasirinkti kitą failą.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Įmeskite failą čia, arba paspauskite Enter arba Space atverti failų rinktuvą.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(šaltinio eilutė neprieinama)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(tuščias adresas)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Perskaitomas failas.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Įkeltas failas. {toLocaleString} eilutės parengtos žemėlapiui.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geokodavimas {toLocaleString} iš {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Pridėta prie žemėlapio kaip {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokodavimas baigtas. {toLocaleString} iš {toLocaleString2} atitiko.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "lv": {
-          "file": "09c1d3e78a65",
+          "file": "12082e418ce5",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -15171,20 +16251,80 @@
               "t": "Nav atbilstības",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Tikai rindas, kas neatbilda, ar iemeslu katrai. Iedod šo sarakstu ikvienam, kurš pārbauda adreses.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Tikai rindas, kas atbilst, ar adresi vietrādis atbilst tām.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Katra rinda no jūsu faila ar pievienoto spēles rezultātu. Excel arī izpaužas Nesaskaņotas un Matched lapas.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Aizvietot failu. Pašreizējais: {fileName}. Nospiediet Ievadiet vai Space, lai izvēlētos citu failu.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Šeit iemetiet failu, vai nospiediet 'Enter' vai 'Atstarpe', lai atvērtu failu izvēlētāju.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(avotu rinda nav pieejama)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(tukša adrese)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Lasu failu.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Fails ielādēts. {toLocaleString} rindas gatavas kartēt.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Ģeokodēšana {toLocaleString} skaits * {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Pievienots kartei kā {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Ģeokodēšana pabeigta. {toLocaleString} skaits * {toLocaleString2} sakrita.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "no": {
-          "file": "72ff5761131d",
+          "file": "482dd4db6df1",
           "counts": {
             "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -15956,20 +17096,80 @@
               "t": "Ingen treff",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Bare radene som ikke passer, med grunn til hver. Gi denne listen til alle som sjekker adressene.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Bare de radene som matches, med adressen locator matchet dem til.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Hver rad fra filen din med dets matchresultat lagt til. Excel får også uovertruffen og matchet ark.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Erstatt fil. Nåværende: {fileName}. Trykk Enter eller Space for å velge en annen fil.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Slepp en fil her, eller trykk Enter eller Space for å åpne filvelgeren.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(kilderad utilgjengelig)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(tom adresse)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Lesefil.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Fil lastet. {toLocaleString} rader klar til å kartlegge.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geokoding {toLocaleString} av {toLocaleString2}..",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Lagt til kartet som {title}..",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokoding ferdig. {toLocaleString} av {toLocaleString2} matchet.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "nl": {
-          "file": "6c722796b378",
+          "file": "3ccc81f9385f",
           "counts": {
             "esri": 24,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 155,
+            "machine": 167,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -16746,20 +17946,80 @@
               "t": "Geen overeenkomst",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Alleen de rijen die niet overeenkomen, met de reden voor elk. Geef deze lijst aan degene die de adressen controleert.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Alleen de rijen die overeenkomen met het adres waar de locatie vandaan komt.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Elke rij uit uw bestand met het resultaat toegevoegd. Excel krijgt ook Unmatched en Matched lakens.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Bestand vervangen. Huidig: {fileName}. Druk op Enter of Spatie om een ander bestand te kiezen.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Laat hier een bestand vallen, of druk op Enter of Space om de bestandskiezer te openen.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(bronrij niet beschikbaar)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(blancoadres)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Leesdossier.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Bestand geladen. {toLocaleString} rijen klaar om in kaart te brengen.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocodering {toLocaleString} van {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Aan de kaart toegevoegd als {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocodering voltooid. {toLocaleString} van {toLocaleString2} Gematcht.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "pl": {
-          "file": "2d0c9949ef99",
+          "file": "b9e210aaafff",
           "counts": {
             "esri": 24,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 155,
+            "machine": 167,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -17536,20 +18796,80 @@
               "t": "Brak dopasowania",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Tylko wiersze, które nie pasowały, z powodem dla każdego. Przekaż tę listę temu, kto sprawdza adresy.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Tylko wiersze pasujące do adresu, do którego dopasował się lokalizator.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Dodano każdy wiersz z pliku z wynikiem dopasowania. Excel dostaje również niezrównane i dopasowane arkusze.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Zastąp plik. Bieżące: {fileName}. Naciśnij Enter lub Space, aby wybrać inny plik.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Upuść tutaj plik lub naciśnij Enter lub Space, aby otworzyć picker pliku.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(wiersz źródłowy niedostępny)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(pusty adres)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Czytanie plików.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Plik załadowany. {toLocaleString} wiersze gotowe do mapowania.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geokodowanie {toLocaleString} z {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Dodano do mapy {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokodowanie zakończone. {toLocaleString} z {toLocaleString2} Pasuje.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "pt-br": {
-          "file": "1a9fcf348d3c",
+          "file": "1c099985fc64",
           "counts": {
             "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -18321,20 +19641,80 @@
               "t": "Sem correspondência.",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Só as filas que não combinavam, com a razão de cada uma. Entregue esta lista para quem está checando os endereços.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Só as linhas que combinavam, com o endereço que o localizador combinava.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Cada linha do seu arquivo com seu resultado de jogo adicionado. Excel também tem lençóis incomparáveis e compatíveis.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Substituir arquivo. Atual: {fileName}Pressione Enter ou Space para escolher um arquivo diferente.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Largue um arquivo aqui, ou pressione Enter ou Space para abrir o seletor de arquivos.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(fonte linha indisponível)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(endereço em branco)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Lendo o arquivo.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Arquivo carregado. {toLocaleString} linhas prontas para mapear.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocodificação {toLocaleString} de {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Adicionado ao mapa como {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocodificação completa. {toLocaleString} de {toLocaleString2} Combinado.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "pt-pt": {
-          "file": "42779aacf1c4",
+          "file": "1200f6868763",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -19106,20 +20486,80 @@
               "t": "Sem correspondência",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Apenas as linhas que não correspondem, com a razão para cada. Entregue esta lista a quem estiver a verificar as moradas.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Apenas as linhas que corresponderam, com o endereço ao qual o localizador correspondeu.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Cada linha de seu arquivo com seu resultado de correspondência adicionado. Excel também recebe folhas incomparáveis e correspondentes.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Substituir o ficheiro. Atual: {fileName}. Pressione Enter ou Espaço para escolher um arquivo diferente.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Solte um arquivo aqui, ou pressione Enter ou Space para abrir o seletor de arquivos.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(linha de origem não disponível)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(endereço em branco)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "A ler o ficheiro.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Ficheiro carregado. {toLocaleString} linhas prontas para mapear.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocodificação {toLocaleString} de {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Adicionado ao mapa como {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocodificação completa. {toLocaleString} de {toLocaleString2} Combinado.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "ro": {
-          "file": "48e4c87ca77a",
+          "file": "a492515d7ce6",
           "counts": {
             "esri": 24,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 155,
+            "machine": 167,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -19896,20 +21336,80 @@
               "t": "Exportă",
               "src": "machine",
               "h": "f3e4fadb9e37"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Numai rândurile care nu se potrivesc, cu motivul pentru fiecare. Dă lista asta oricui verifică adresele.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Doar rândurile care se potrivesc, cu adresa la care se potrivesc localizatorul.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Fiecare rând din fișierul cu rezultatul meciului adăugat. Excel, de asemenea, devine neegalat și foi potrivite.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Înlocuieşte fişierul. Curent: {fileName}. Apăsați Enter sau Space pentru a alege un alt fișier.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Aruncați un fișier aici, sau apăsați Enter sau Space pentru a deschide culegatorul de fișiere.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(rând sursă indisponibil)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(adresă albă)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Citesc dosarul.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Dosar încărcat. {toLocaleString} Rânduri gata de hartă.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocodare {toLocaleString} din {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Adăugat pe hartă ca {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocoding complet. {toLocaleString} din {toLocaleString2} Potrivit.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "ru": {
-          "file": "2795d9973ffa",
+          "file": "4350df13dca9",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -20681,20 +22181,80 @@
               "t": "Нет совпадений",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Только те ряды, которые не совпадали, с причиной для каждого. Передайте этот список тому, кто проверяет адреса.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Только те строки, которые совпадали, с адресом, по которому совпадал локатор.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Каждая строка из вашего файла с добавленным результатом соответствия. Excel также получает непревзойденные и сопоставленные листы.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Замените файл. Текущее: {fileName}Нажмите Enter или Space, чтобы выбрать другой файл.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Бросьте файл здесь или нажмите Enter или Space, чтобы открыть файл.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(источник недоступен)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(белый адрес)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Чтение файла.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Файл загружен. {toLocaleString} Ряды готовы к карте.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Геокодирование {toLocaleString} из {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Добавлено на карту как {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Геокодирование завершено. {toLocaleString} из {toLocaleString2} совпадал.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "sk": {
-          "file": "d6078d5be606",
+          "file": "e03953d729eb",
           "counts": {
             "esri": 24,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 155,
+            "machine": 167,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -21471,20 +23031,80 @@
               "t": "Vývoz",
               "src": "machine",
               "h": "f3e4fadb9e37"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Iba riadky, ktoré sa nezhodovali, s dôvodom pre každého. Podajte tento zoznam každému, kto kontroluje adresy.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Iba riadky, ktoré sa zhodujú, s adresou lokátor zodpovedali.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Každý riadok z vášho súboru s pridaným výsledkom zápasu. Excel tiež dostane bezkonkurenčné a zodpovedajúce listy.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Nahradiť súbor. Aktuálne: {fileName}. Stlačte tlačidlo Enter alebo priestor pre výber iného súboru.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Drop súbor tu, alebo stlačte Enter alebo Space pre otvorenie súborového zberača.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(zdrojový riadok nie je k dispozícii)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(prázdna adresa)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Čítam súbor.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Načítaný súbor. {toLocaleString} rady pripravené na mapovanie.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geokódovanie {toLocaleString} z {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Pridané na mapu {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokódovanie dokončené. {toLocaleString} z {toLocaleString2} Spárované.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "sl": {
-          "file": "728661f0fb9c",
+          "file": "e6b7ebd6ba64",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -22256,6 +23876,66 @@
               "t": "Ni ujemanja.",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Samo vrstice, ki se niso ujemale, z razlogom za vsakega. Daj ta seznam tistemu, ki preverja naslove.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Samo vrstice, ki so se ujemale z naslovom, ki ga je iskalec našel.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Vsaka vrstica iz vaše datoteke z dodanim rezultatom ujemanja. Excel dobi tudi neporavnane in ujemane liste.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Zamenjaj datoteko. Trenutni: {fileName}. Pritisnite Enter ali Space izbrati drugo datoteko.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Tu spusti datoteko ali pa pritisnite Enter ali Space, da odprete izbirnik datotek.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(izvorna vrstica ni na voljo)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(black naslov)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Berem datoteko.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Datoteka naložena. {toLocaleString} Vrstice pripravljene za zemljevid.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geokodiranje {toLocaleString} o {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Dodan na zemljevid kot {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokodiranje končano. {toLocaleString} o {toLocaleString2} Ujema se.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
@@ -22274,16 +23954,16 @@
           "entries": {}
         },
         "sv": {
-          "file": "c31f94fd4c87",
+          "file": "1638b15d41cd",
           "counts": {
             "esri": 24,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 155,
+            "machine": 167,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -23060,20 +24740,80 @@
               "t": "Ingen match",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Endast raderna som inte matchade, med anledning av varje. Hantera denna lista till den som kontrollerar adresserna.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Endast raderna som matchade, med adressen locatorn matchade dem till.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Varje rad från din fil med dess matchresultat läggs till. Excel får också oöverträffade och matchade lakan.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Ersätt fil. Nuvarande: {fileName}Tryck på Enter eller Space för att välja en annan fil.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Släpp en fil här, eller tryck på Enter eller Space för att öppna filväljaren.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(källa rad otillgänglig)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(blank adress)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Läsa fil.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Fil laddad. {toLocaleString} rader redo att kartlägga.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocoding {toLocaleString} av {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Läggs till på kartan som {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocoding komplett. {toLocaleString} av {toLocaleString2} matchade.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "th": {
-          "file": "0f2d1d9f9ce8",
+          "file": "e13a0f34b820",
           "counts": {
             "esri": 23,
             "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 155,
+            "machine": 167,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -23850,20 +25590,80 @@
               "t": "ไม่เข้าคู่",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "เฉพาะ แถว ที่ ไม่ เข้า กัน กับ เหตุ ผล แต่ ละ แถว. ส่งรายชื่อนี้ให้ใครก็ตามที่กําลังเช็คที่อยู่",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "เฉพาะแถวที่เข้าคู่กับที่อยู่ ที่ตรงกับที่อยู่",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "ทุกแถวจากแฟ้มของคุณ ที่มีผลตรงกันเพิ่มขึ้น เอ็กซ์เซลยังจับคู่และจับคู่ผ้าปูที่นอน",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "แทนที่แฟ้ม ปัจจุบัน: {fileName}กดปุ่ม Enter หรือ Space เพื่อเลือกแฟ้มอื่น",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "ทิ้งแฟ้มไว้ที่นี่ หรือกด Enter หรือ Space เพื่อเปิดแฟ้ม",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(ไม่มีแถวของแหล่ง)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(Black address)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "กําลังอ่านแฟ้ม",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "โหลดแฟ้มแล้ว {toLocaleString} แถวพร้อมที่จะทําแผนที่",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "การเขียนภาพ {toLocaleString} ของ {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} เพิ่มเข้ากับแผนที่เป็น {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "การยึดเหนี่ยวเสร็จสมบูรณ์ {toLocaleString} ของ {toLocaleString2} ตรงกัน",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "tr": {
-          "file": "0cb03b93a5be",
+          "file": "e2cd889da77d",
           "counts": {
             "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -24635,20 +26435,80 @@
               "t": "Hiç maç yok",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Sadece eşleşmeyen satırlar, her biri için nedenle. Bu liste, adresleri kimin kontrol ettiği için.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Sadece eşleştirilen satırlar, locator adresi onlarla eşleştirdi.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Maç sonucu ile dosyanızdan her satır eklendi. Excel ayrıca rakipsiz ve eşleştirilmiş çarşaflar alır.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Dosyayı değiştirmek. Şu anki: {fileName}. Press farklı bir dosyayı seçmek için or Space girin.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Burada bir dosyayı açın veya basın girin veya dosyayı açın.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(Kaynak sıraları kullanılamaz)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(blank adresi)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Okuma dosyası.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Dosya yüklendi. {toLocaleString} satırlar haritaya hazır.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocoding {toLocaleString} Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Haritaya eklendi {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geocoding tamamlandı. {toLocaleString} Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of {toLocaleString2} Eşleşti.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "zh-cn": {
-          "file": "92aacaf9f1ec",
+          "file": "5c955cef9a0c",
           "counts": {
             "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -25420,20 +27280,80 @@
               "t": "无匹配",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "只有那些不匹配的行,各有原因. 把这名单交给正在查地址的人",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "只有匹配的行,与定位器的地址匹配.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "您文件中的每一行都添加了匹配结果 。 Excel还获得未匹配和匹配的工作表.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "替换文件 。 当前 : {fileName}按 Enter 或 Space 键选择不同的文件。",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "在此丢弃文件, 或者按 Enter 或 Space 打开文件拾取器 。",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(没有来源行)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(空白地址)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "阅读文件。",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "文件已载入 。 {toLocaleString} 准备好地图了",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "地理编码 {toLocaleString} 页:1 {toLocaleString2}。 。 。 。",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} 添加到地图中 {title}。 。 。 。",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "地理编码完成 。 {toLocaleString} 页:1 {toLocaleString2} 对应。",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "uk": {
-          "file": "06e5848f7474",
+          "file": "55dce3aad069",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -26205,20 +28125,80 @@
               "t": "Немає матчу",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Тільки ряди, які не відповідають, з підставою для кожного. Перегляньте цей список, щоб хто-небудь перевірив адреси.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Тільки ряди, які збігаються, з адресним розташуванням, збігаються з ними.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Кожен рядок з вашого файлу з його результатом. Excel також отримує Unmatched і збігаються аркуші.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Замінити файл. Поточний час: {fileName}. Натисніть Enter або пробіл, щоб вибрати інший файл.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Поверніть файл тут, або натисніть кнопку Enter або Space, щоб відкрити пікір файлів.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(серійний ряд 0,05)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(пошта звернення)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Читання файлу.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Завантажено файл. {toLocaleString} рядків, готових до карти.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Геообробка {toLocaleString} з {toLocaleString2}й",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Додано до карти як {title}й",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Геокодування завершено. {toLocaleString} з {toLocaleString2} збігаються.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "vi": {
-          "file": "7f48bab1c83f",
+          "file": "5d601f1bddb8",
           "counts": {
             "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -26990,20 +28970,80 @@
               "t": "Không khớp",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Chỉ có những hàng không khớp, với lý do của mỗi hàng. Đưa danh sách này cho bất cứ ai đang kiểm tra địa chỉ.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Chỉ có những hàng khớp với địa chỉ của nó.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Mỗi hàng từ tập tin của bạn với kết quả khớp của nó thêm vào. Con tầu cũng có những tấm trải giường.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Thay thế tập tin. & Hiện {fileName}. Nhấn Enter or Space để chọn tập tin khác.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Ở đây hãy thả tập tin, hoặc bấm Enter hay Space để mở bộ chọn tập tin.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(Không có hàng nguồn)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(địa chỉ)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Đang đọc tập tin.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Tập tin đã tải. {toLocaleString} Hàng sẵn sàng để vẽ bản đồ.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocoding {toLocaleString} Kho {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Thêm vào bản đồ {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Hoàn thành nhiệm vụ địa lý. {toLocaleString} Kho {toLocaleString2} trùng khớp.",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "zh-hk": {
-          "file": "874db510f2fe",
+          "file": "1e65b3870773",
           "counts": {
             "esri": 24,
             "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -27775,20 +29815,80 @@
               "t": "不匹配",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "只有不匹配的行, 和每行的原因。 把這張名單交給檢查地址的人",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "只有匹配的行, 和定位器的地址相匹配 。",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "您檔案中的每一行都加上了匹配的結果 。 Excel 也得到未匹配和匹配的工作表 。",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "取代檔案 。 目前 : {fileName}按 Enter 或 Space 以選擇不同的檔案。",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "在這裡丟下檔案, 或是按 Enter 或 Space 來開啟檔案拾取器 。",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "( 找不到來源列)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(空白地址)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "看文件。",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "檔案已載入 。 {toLocaleString} 排成一列",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "地理编码 {toLocaleString} 四, {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} 新增到地圖 {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "地理編碼完成 。 {toLocaleString} 四, {toLocaleString2} 匹配。",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         },
         "zh-tw": {
-          "file": "874db510f2fe",
+          "file": "1e65b3870773",
           "counts": {
             "esri": 24,
             "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 154,
+            "machine": 166,
             "stale": 0,
-            "missing": 12
+            "missing": 0
           },
           "entries": {
             "_widgetLabel": {
@@ -28560,6 +30660,66 @@
               "t": "不匹配",
               "src": "machine",
               "h": "3518dffe0672"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "只有不匹配的行, 和每行的原因。 把這張名單交給檢查地址的人",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "只有匹配的行, 和定位器的地址相匹配 。",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "您檔案中的每一行都加上了匹配的結果 。 Excel 也得到未匹配和匹配的工作表 。",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "取代檔案 。 目前 : {fileName}按 Enter 或 Space 以選擇不同的檔案。",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "在這裡丟下檔案, 或是按 Enter 或 Space 來開啟檔案拾取器 。",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "( 找不到來源列)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(空白地址)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "看文件。",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "檔案已載入 。 {toLocaleString} 排成一列",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "地理编码 {toLocaleString} 四, {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} 新增到地圖 {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "地理編碼完成 。 {toLocaleString} 四, {toLocaleString2} 匹配。",
+              "src": "machine",
+              "h": "37ad723d24d9"
             }
           }
         }
