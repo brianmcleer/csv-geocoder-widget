@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Søg i guiden (prøv \"lag\" eller \"uovertruffen\")",
         helpNoMatches: "Intet i guiden matcher det ord. Prøv en anden, eller åbn afsnittene ovenfor.",
         helpAnd: "og",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Ny her?",
         firstRunBody: "Vælg et regneark med adresser, tjek kolonnerne widget gættet, og tryk på Geokode.",
         firstRunHelpLink: "Åbn guiden.",
         firstRunDismiss: "Afvis dette tip",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Download {failureCount} umatchede rækker som CSV",
         _4Export: "4. Eksport",
         addressCheckTableEveryRowWith: "Adresseafkrydsningstabel: Hver række med dens match resultat, som CSV eller Excel, for alle rækker, kun de umatchede, eller kun de matchede. Kortfil: de matchede punkter som GeoJSON, KML eller en zippet Shapefile.",
-        noMapIsConnectedSoResults: "Intet kort er forbundet, så resultaterne er markeret og kan eksporteres som en tabel, men er ikke tegnet."
+        noMapIsConnectedSoResults: "Intet kort er forbundet, så resultaterne er markeret og kan eksporteres som en tabel, men er ikke tegnet.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "GeoJSON",
+        shapefile: "Shapefile",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Gade",
+        line2: "Line 2",
+        city: "By",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Land",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Overfør",
+        map: "Kort",
+        export: "Eksportér",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

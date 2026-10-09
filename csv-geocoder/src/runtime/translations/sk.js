@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Vyhľadajte sprievodcu (skúste \"vrstvu\" alebo \"bezkonkurenčnú\")",
         helpNoMatches: "Nič v sprievodcovi nezodpovedá tomu slovu. Skúste iné, alebo otvoriť časti vyššie.",
         helpAnd: "a",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Tu nový?",
         firstRunBody: "Vyberte tabuľku adries, skontrolujte stĺpce widget hádal, a stlačte Geocode.",
         firstRunHelpLink: "Otvorte sprievodcu.",
         firstRunDismiss: "Odmietnite tento tip",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Stiahnuť {failureCount} nespárované riadky ako CSV",
         _4Export: "4. Export",
         addressCheckTableEveryRowWith: "Kontrolná tabuľka adresy: každý riadok s výsledkom zápasu, ako CSV alebo Excel, pre všetky riadky, len tie bezkonkurenčné, alebo len tie zodpovedajúce. Mapový súbor: zodpovedajúce body ako GeoJSON, KML alebo zipped Shapefile.",
-        noMapIsConnectedSoResults: "Žiadna mapa nie je pripojená, takže výsledky sú kontrolované a môžu byť exportované ako tabuľka, ale nie sú zobrazené."
+        noMapIsConnectedSoResults: "Žiadna mapa nie je pripojená, takže výsledky sú kontrolované a môžu byť exportované ako tabuľka, ale nie sú zobrazené.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "GeoJSON",
+        shapefile: "Súbor tvarov",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Ulica",
+        line2: "Line 2",
+        city: "Mesto",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Krajina",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Nahrať",
+        map: "Mapa",
+        export: "Vývoz",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

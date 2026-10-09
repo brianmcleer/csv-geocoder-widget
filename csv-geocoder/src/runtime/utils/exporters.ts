@@ -24,6 +24,7 @@ import type { ParsedTable } from './parse-file'
 import type { GeocodeResult, MatchStatus } from './geocoder'
 import type { FieldMapping } from '../components/field-mapper'
 import { submittedAddress } from './address-text'
+import { __t } from '../i18n-t'
 
 // =============================================================================
 // Status vocabulary (one place, so the UI, the table and the help agree)
@@ -41,8 +42,8 @@ export const STATUS_ORDER: MatchStatus[] = ['matched', 'low-score', 'no-match', 
 
 /** Label for one result, flagging a tied match (locator Status T) so it can be checked. */
 export function statusLabel (r: GeocodeResult): string {
-  if (r.status === 'matched' && r.locatorStatus === 'T') return 'Matched (tied)'
-  return STATUS_LABEL[r.status] ?? 'No match'
+  if (r.status === 'matched' && r.locatorStatus === 'T') return __t("matchedTied")
+  return STATUS_LABEL[r.status] ?? __t("noMatch")
 }
 
 /** Plain-language reason a row did not match. Empty for matched rows. */

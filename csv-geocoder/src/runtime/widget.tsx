@@ -26,6 +26,18 @@ import { buildHelpSections, type HelpFeatures } from './helpSections'
 import defaultMessages from './translations/default'
 import { beacon } from '../shared/beacon'
 import type { BeaconHandle } from '../shared/beacon'
+import __i18nDefaults from './translations/default'
+import { __setIntl } from './i18n-t'
+let __i18nIntl: any = null
+/** Module translator: app language via the widget intl, English from default.ts, {name} values filled. */
+const __t = (id: string, values?: { [key: string]: any }): string => {
+  const msg: string = (__i18nDefaults as any)[id] ?? id
+  if (__i18nIntl && typeof __i18nIntl.formatMessage === 'function') {
+    try { return __i18nIntl.formatMessage({ id, defaultMessage: msg }, values) } catch (e) { }
+  }
+  return msg.replace(/\{(\w+)\}/g, (m: string, k: string) => (values && values[k] != null ? String(values[k]) : m))
+}
+
 
 type Phase = 'idle' | 'parsing' | 'mapping' | 'geocoding' | 'done' | 'error'
 
@@ -81,10 +93,10 @@ const StepIndicator: React.FC<{ phase: Phase }> = ({ phase }) => {
     }
     const current = stepFor(phase)
     const steps: Array<{ n: 1 | 2 | 3 | 4, label: string }> = [
-        { n: 1, label: 'Upload' },
-        { n: 2, label: 'Map' },
-        { n: 3, label: 'Geocode' },
-        { n: 4, label: 'Export' }
+        { n: 1, label: __t("upload") },
+        { n: 2, label: __t("map") },
+        { n: 3, label: __t("geocode") },
+        { n: 4, label: __t("export") }
     ]
 
     const styles = css`
@@ -135,7 +147,7 @@ const StepIndicator: React.FC<{ phase: Phase }> = ({ phase }) => {
   `
 
     return (
-        <ol css={styles} aria-label='Workflow progress'>
+        <ol css={styles} aria-label={__t("uiWorkflowProgress")}>
             {steps.map((s, i) => {
                 const isActive = s.n === current
                 const isDone = s.n < current || (phase === 'done' && s.n <= 3)
@@ -218,6 +230,8 @@ type WidgetProps = AllWidgetProps<IMConfig> & {
 }
 
 const Widget = (props: WidgetProps): React.ReactElement => {
+  __setIntl((props as any).intl)
+  __i18nIntl = (props as any).intl
     const { useMapWidgetIds, config, id: widgetId } = props
 
     // Resolved config that ALWAYS has every field, even when `config` arrives
@@ -925,7 +939,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                             <div className='progress-fill' style={{ width: `${progressPct}%` }} />
                         </div>
                         <div className='progress-text' aria-live='polite'>
-                            <span className='progress-count'>{state.progress.completed.toLocaleString()} of {state.progress.total.toLocaleString()}</span>
+                            <span className='progress-count'>{state.progress.completed.toLocaleString()} {__t("uiOf")} {state.progress.total.toLocaleString()}</span>
                             <span className='progress-pct'>{progressPct}%</span>
                         </div>
                     </section>

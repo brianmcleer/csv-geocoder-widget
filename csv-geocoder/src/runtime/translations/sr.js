@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Download the {failureCount} unmatched rows as CSV",
         _4Export: "4. Export",
         addressCheckTableEveryRowWith: "Address check table: every row with its match result, as CSV or Excel, for all rows, only the unmatched ones, or only the matched ones. Map file: the matched points as GeoJSON, KML or a zipped Shapefile.",
-        noMapIsConnectedSoResults: "No map is connected, so results are checked and can be exported as a table but are not drawn."
+        noMapIsConnectedSoResults: "No map is connected, so results are checked and can be exported as a table but are not drawn.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "GeoJSON",
+        shapefile: "Shapefile",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Ulica",
+        line2: "Line 2",
+        city: "Grad",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Zemlja",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Otpremi",
+        map: "Mapa",
+        export: "Izvezi",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

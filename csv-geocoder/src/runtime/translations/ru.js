@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Поиск в руководстве (попробуйте «слой» или «непревзойденный»)",
         helpNoMatches: "Ничто в руководстве не соответствует этому слову. Попробуйте другой или откройте разделы выше.",
         helpAnd: "и",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Здесь новый?",
         firstRunBody: "Выберите электронную таблицу адресов, проверьте колонки, которые угадал виджет, и нажмите Geocode.",
         firstRunHelpLink: "Откройте проводник.",
         firstRunDismiss: "Откажитесь от этого совета",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Скачать {failureCount} Непревзойденные ряды как CSV",
         _4Export: "4 Экспорт.",
         addressCheckTableEveryRowWith: "Таблица проверки адресов: каждая строка с результатом соответствия, как CSV или Excel, для всех строк, только для непревзойденных или только для совпадающих. Файл карты: совпадающие точки как GeoJSON, KML или zipped Shapefile.",
-        noMapIsConnectedSoResults: "Карта не связана, поэтому результаты проверяются и могут быть экспортированы в виде таблицы, но не нарисованы."
+        noMapIsConnectedSoResults: "Карта не связана, поэтому результаты проверяются и могут быть экспортированы в виде таблицы, но не нарисованы.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "ГеоДжон",
+        shapefile: "Шейпфиль",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Улица",
+        line2: "Line 2",
+        city: "Город",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Страна",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Загрузить",
+        map: "Карта",
+        export: "Экспорт",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

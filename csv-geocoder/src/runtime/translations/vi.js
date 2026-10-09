@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Tìm hướng dẫn ( thử \"kẻ giết người\" hay \"không ai sánh bằng\"",
         helpNoMatches: "Không có gì phù hợp với từ đó. Thử cái khác, hoặc mở phần trên.",
         helpAnd: "và",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Mới đến à?",
         firstRunBody: "Chọn một bảng tính địa chỉ, kiểm tra các cột mà ô điều khiển đoán, và nhấn Geocode.",
         firstRunHelpLink: "Mở sách hướng dẫn ra.",
         firstRunDismiss: "Giải tán",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Tải về {failureCount} Hàng không trùng với CSV",
         _4Export: "4. Xuất",
         addressCheckTableEveryRowWith: "Kiểm tra địa chỉ: mỗi hàng với kết quả khớp, như CNV hay Excel, cho tất cả hàng, chỉ những hàng không khớp, hoặc chỉ những cái khớp. Tập tin sơ đồ: các điểm khớp như GeoJSON, KML hoặc một tập tin định dạng ziped.",
-        noMapIsConnectedSoResults: "Không có bản đồ nào được kết nối, vì vậy kết quả được kiểm tra và có thể xuất ra làm bàn nhưng không được vẽ."
+        noMapIsConnectedSoResults: "Không có bản đồ nào được kết nối, vì vậy kết quả được kiểm tra và có thể xuất ra làm bàn nhưng không được vẽ.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "GeoJSON",
+        shapefile: "Tập tin Hình",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Đường phố",
+        line2: "Line 2",
+        city: "Thành phố",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Quốc gia",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Tải lên",
+        map: "Bản đồ",
+        export: "Xuất",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

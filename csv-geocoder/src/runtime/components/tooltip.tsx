@@ -1,4 +1,5 @@
 import { React, jsx, css } from 'jimu-core'
+import { __tc } from '../i18n-t'
 
 interface TooltipProps {
     text: string
@@ -176,7 +177,7 @@ const Tooltip: React.FC<TooltipProps> = ({ text, describedById, triggerLabel }) 
                     ref={triggerRef}
                     type='button'
                     className='tt-trigger'
-                    aria-label={triggerLabel ?? 'Show help'}
+                    aria-label={__tc(triggerLabel, "showHelp")}
                     aria-expanded={open}
                     aria-describedby={tipId}
                     onFocus={() => { setOpen(true) }}

@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "搜索指南( 尝试“ layer ” 或“ 无匹配” )",
         helpNoMatches: "指南中没有任何内容与这个词相符。 尝试另一个,或者打开上面的部分。",
         helpAnd: "和",
-        firstRunTitle: "New here?",
+        firstRunTitle: "新来的?",
         firstRunBody: "选择地址电子表格,检查猜到的部件列,并按 Geocode 键。",
         firstRunHelpLink: "开导.",
         firstRunDismiss: "解除这个提示",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "下载 {failureCount} 作为 CSV 未匹配的行",
         _4Export: "4. 出口",
         addressCheckTableEveryRowWith: "地址检查表:每行都有匹配结果,作为CSV或Excel,适用于所有行,只有未匹配的,或者只有匹配的. 映射文件:匹配的点为GeoJSON,KML或ziped的形状文件.",
-        noMapIsConnectedSoResults: "没有映射图连接, 因此结果会被检查, 可以导出为表格, 但无法绘制 。"
+        noMapIsConnectedSoResults: "没有映射图连接, 因此结果会被检查, 可以导出为表格, 但无法绘制 。",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "地理通讯",
+        shapefile: "形状文件",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "街区",
+        line2: "Line 2",
+        city: "城市",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "国家/地区",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "上传",
+        map: "地图",
+        export: "导出",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

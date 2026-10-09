@@ -29,7 +29,7 @@ System.register([], function (e) {
         outlineWidth: "Outline genişlik",
         help: "Yardım",
         showHelpGuide: "Show help guide",
-        showTheQuestionMarkButtonThat: "widget'ı açan soru işaret düğmesine göster"
+        showTheQuestionMarkButtonThat: "Widget'ı açan soru işaret düğmesine göster"
       })
     }
   }

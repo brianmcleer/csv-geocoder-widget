@@ -10,6 +10,7 @@ import {
 import Tooltip from './tooltip'
 import { hooks as __exbI18nHooks } from 'jimu-core';
 import __exbI18nMessages from '../translations/default';
+import { __setIntl, __t } from '../i18n-t'
 
 
 interface Props {
@@ -38,13 +39,13 @@ interface FormatDef {
 
 const TABLE_FORMATS: FormatDef[] = [
     { id: 'csv', label: 'CSV', ext: '.csv', iconKey: 'table' },
-    { id: 'xlsx', label: 'Excel', ext: '.xlsx', iconKey: 'table' }
+    { id: 'xlsx', label: __t("excel"), ext: '.xlsx', iconKey: 'table' }
 ]
 
 const MAP_FORMATS: FormatDef[] = [
-    { id: 'geojson', label: 'GeoJSON', ext: '.geojson', iconKey: 'file' },
+    { id: 'geojson', label: __t("geoJSON"), ext: '.geojson', iconKey: 'file' },
     { id: 'kml', label: 'KML', ext: '.kml', iconKey: 'file' },
-    { id: 'shp', label: 'Shapefile', ext: '.zip', iconKey: 'zip' }
+    { id: 'shp', label: __t("shapefile"), ext: '.zip', iconKey: 'zip' }
 ]
 
 const FORMAT_LABEL: { [K in FormatId]: string } = {
@@ -52,9 +53,9 @@ const FORMAT_LABEL: { [K in FormatId]: string } = {
 }
 
 const SCOPES: Array<{ id: TableScope, label: string }> = [
-    { id: 'all', label: 'All rows' },
-    { id: 'unmatched', label: 'Unmatched' },
-    { id: 'matched', label: 'Matched' }
+    { id: 'all', label: __t("allRows") },
+    { id: 'unmatched', label: __t("failed") },
+    { id: 'matched', label: __t("matched") }
 ]
 
 const SCOPE_FILE_LABEL: { [K in TableScope]: string } = {
@@ -88,6 +89,7 @@ const iconFor = (k: FormatDef['iconKey']): React.ReactElement =>
     k === 'zip' ? zipSvg : k === 'table' ? tableSvg : fileSvg
 
 const ExportBar = (props: Props): React.ReactElement => {
+  __setIntl((props as any).intl)
   const t = __exbI18nHooks.useTranslation(__exbI18nMessages);
     const { table, results, mapping, symbolColor, locatorUrl, minScore, onExported, onExportError } = props
     const [busy, setBusy] = React.useState<Busy>(null)
@@ -137,7 +139,7 @@ const ExportBar = (props: Props): React.ReactElement => {
             onExported?.(id, id === 'csv' || id === 'xlsx' ? scope : 'matched-points')
         } catch (e) {
             onExportError?.(e, id)
-            setError(`Could not export ${FORMAT_LABEL[id]}: ${e instanceof Error ? e.message : String(e)}`)
+            setError(__t("couldNotExportValueValue2", { value: FORMAT_LABEL[id], value2: e instanceof Error ? e.message : String(e) }))
         } finally {
             setBusy(null)
         }

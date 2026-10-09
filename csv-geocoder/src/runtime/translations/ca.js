@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Cerca la guia (el matador \" o \"sense parella\")",
         helpNoMatches: "Res en la guia coincideix amb aquesta paraula. Proveu-ne una altra, o obriu les seccions de dalt.",
         helpAnd: "i",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Nova aquí?",
         firstRunBody: "Trieu un full de càlcul d' adreces, comproveu les columnes que l' estri ha endevinat i premeu Geocode.",
         firstRunHelpLink: "Obre la guia.",
         firstRunDismiss: "Descarta aquest consell",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Baixa la {failureCount} files sense parella com CSV",
         _4Export: "Exportació 4.",
         addressCheckTableEveryRowWith: "Taula de comprovació de l' adreça: Cada fila amb el resultat de la coincidència, com CSV o Excel, per a totes les files, només les que no estan sense parella, o només les que coincideixen. Fitxer de mapa: Els punts marcats com a GeoJSON, KML o un fitxer de forma zip.",
-        noMapIsConnectedSoResults: "No hi ha cap mapa connectat, es comproven els resultats i es poden exportar com a taula però no es dibuixen."
+        noMapIsConnectedSoResults: "No hi ha cap mapa connectat, es comproven els resultats i es poden exportar com a taula però no es dibuixen.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "GeoJSON",
+        shapefile: "Fitxer de formes",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Carrer",
+        line2: "Line 2",
+        city: "Ciutat",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "País",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Puja",
+        map: "Mapa",
+        export: "Exporta",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

@@ -3,6 +3,7 @@ import { type AddressMode, type AddressRole } from '../../config'
 import Tooltip from './tooltip'
 import { hooks as __exbI18nHooks } from 'jimu-core';
 import __exbI18nMessages from '../translations/default';
+import { __setIntl, __t } from '../i18n-t'
 
 
 export interface FieldMapping {
@@ -25,12 +26,12 @@ interface RoleDef {
 }
 
 const MULTI_ROLES: RoleDef[] = [
-    { key: 'Address', label: 'Street', help: 'Number and street name. Example: "100 Main Street".', required: true },
-    { key: 'Address2', label: 'Line 2', help: 'Unit, suite, apartment, or floor.' },
-    { key: 'City', label: 'City', help: 'City, town, or locality.' },
-    { key: 'Region', label: 'State / Region', help: 'State, province, or administrative region.' },
-    { key: 'Postal', label: 'Postal code', help: 'ZIP, postcode, or equivalent.' },
-    { key: 'Country', label: 'Country', help: 'Country name or ISO code (e.g. "US", "USA").' }
+    { key: 'Address', label: __t("street"), help: 'Number and street name. Example: "100 Main Street".', required: true },
+    { key: 'Address2', label: __t("line2"), help: 'Unit, suite, apartment, or floor.' },
+    { key: 'City', label: __t("city"), help: 'City, town, or locality.' },
+    { key: 'Region', label: __t("stateRegion"), help: 'State, province, or administrative region.' },
+    { key: 'Postal', label: __t("postalCode"), help: 'ZIP, postcode, or equivalent.' },
+    { key: 'Country', label: __t("country"), help: 'Country name or ISO code (e.g. "US", "USA").' }
 ]
 
 /**
@@ -47,6 +48,7 @@ const MULTI_ROLES: RoleDef[] = [
  *     'required' on a sr-only span so screen readers announce it once.
  */
 const FieldMapper = (props: Props): React.ReactElement => {
+  __setIntl((props as any).intl)
   const t = __exbI18nHooks.useTranslation(__exbI18nMessages);
     const { fields, value, onChange } = props
     const multiBtnRef = React.useRef<HTMLButtonElement>(null)

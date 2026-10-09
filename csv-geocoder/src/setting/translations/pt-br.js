@@ -28,8 +28,8 @@ System.register([], function (e) {
         outlineColour: "Cor do contorno",
         outlineWidth: "Largura do contorno",
         help: "Ajuda",
-        showHelpGuide: "Mostre guia de ajuda.",
-        showTheQuestionMarkButtonThat: "Mostre o botão de ponto de interrogação que abre o guia de ajuda do widget."
+        showHelpGuide: "Mostre guia de ajuda",
+        showTheQuestionMarkButtonThat: "Mostre o botão de ponto de interrogação que abre o guia de ajuda do widget"
       })
     }
   }

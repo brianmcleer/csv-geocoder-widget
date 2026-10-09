@@ -3,8 +3,8 @@
   "generator": "exb-i18n-kit",
   "parts": {
     "runtime": {
-      "en": "0d9d7c9bf5a4",
-      "keys": 159,
+      "en": "e0b5935d837c",
+      "keys": 180,
       "hashes": {
         "_widgetLabel": "b358ed6f0f9d",
         "chooseFile": "74b1d89d8525",
@@ -164,20 +164,41 @@
         "downloadTheFailureCountUnmatchedRowsAs": "83d95eb75fc4",
         "_4Export": "10ef575bbbeb",
         "addressCheckTableEveryRowWith": "599a96da5bd8",
-        "noMapIsConnectedSoResults": "670de8d9468a"
+        "noMapIsConnectedSoResults": "670de8d9468a",
+        "uiWorkflowProgress": "aa91107f6a7e",
+        "uiOf": "de04fa0e29f9",
+        "excel": "a08e11119aef",
+        "geoJSON": "97eeda258d4d",
+        "shapefile": "1e21d10d2150",
+        "allRows": "83a3b2635989",
+        "couldNotExportValueValue2": "8128c66380b7",
+        "street": "b45410999343",
+        "line2": "22342f78499f",
+        "city": "4271627f4f0b",
+        "stateRegion": "dc38323c89f9",
+        "postalCode": "d7432cda8e62",
+        "country": "d523ebbd1014",
+        "showHelp": "d1cf52c9a6bf",
+        "matchedTied": "3eb0eafd908f",
+        "noMatch": "3518dffe0672",
+        "upload": "8bdf057f91e7",
+        "map": "ab478f3efc84",
+        "export": "f3e4fadb9e37",
+        "unknownError": "af6321ca7a8b",
+        "unserializableError": "76e73551597a"
       },
       "locales": {
         "ar": {
-          "file": "36dd0c23f314",
+          "file": "824eed947e94",
           "counts": {
-            "esri": 11,
+            "esri": 22,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 144,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -225,30 +246,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "لا شيء في الدليل يطابق تلك الكلمة جرّبْ آخر، أَو يَفْتحُ الأقسامَ أعلاه.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "اختر ورقة من العناوين وتحقق من الأعمدة التي خمّنها المستعار و اضغط على (جيوكو)",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "افتح الدليل",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "اترك هذه المعلومة",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "ابدأ هنا: ثلاث خطوات",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "تحت 1، اختر ملفاً، اضغط على (بروز) من أجل ملف واختار ملفك أي CSV أَو ملف إكسل كلاهما يعمل.",
@@ -475,11 +481,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "إذا كان هناك شيء ما يبدو خاطئا",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "No points appear: no map is connected to this widget. التدقيق وتصدير الجدول لا يزال يعمل. أطلب من شعبة نظام المعلومات الجغرافية أن تربط خريطة إذا كنت بحاجة إلى النقاط المستقاة.",
               "src": "machine",
@@ -514,11 +515,6 @@
               "t": "لا تزال عالقة؟ اتصل بشعبة نظام المعلومات الجغرافية وتذكر اسم CSV Geocoder وهذا التطبيق.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "من الجيد معرفة",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "العناوين النظيفة تفوز أخرج أرقام الشقة و ملاحظات مثل \"خلف المدرسة\" قبل أن تبدأ",
@@ -914,20 +910,30 @@
               "t": "ولا توجد خريطة متصلة، وبالتالي يتم التحقق من النتائج ويمكن تصديرها على أنها جدول ولكن لا يتم سحبها.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "shapefile": {
+              "t": "Shapefile",
+              "src": "machine",
+              "h": "1e21d10d2150"
             }
           }
         },
         "bg": {
-          "file": "ae78ee191789",
+          "file": "680e7add0fd4",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 22,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -975,30 +981,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Нищо в ръководството не съвпада с тази дума. Опитайте друг, или отвори секциите по-горе.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Изберете електронна таблица с адреси, проверете колоните джаджата познае, и натиснете Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Отвори гидът.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Освободете този съвет.",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Започнете от тук: три стъпки",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Под 1. Изберете файл, натиснете Преглед за файл и изберете електронна таблица. CSV или Excel файл и двете работят.",
@@ -1225,11 +1216,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Ако нещо не е наред",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Не се появяват точки: няма карта, свързана с този джаджа. Проверката и износа на масата все още работят. Помолете GIS дивизията да свърже карта, ако имате нужда от начертани точки.",
               "src": "machine",
@@ -1264,11 +1250,6 @@
               "t": "Още ли си заклещен? Свържете се с GIS Division и споменете името на CSV Geocoder и това приложение.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Добре е да го знам.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Чистите адреси печелят. Извади номерата на апартаментите и бележките като \"зад училището,\" преди да започнеш.",
@@ -1664,34 +1645,39 @@
               "t": "Не е свързана карта, така че резултатите се проверяват и могат да бъдат изнесени като таблица, но не са съставени.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "bs": {
-          "file": "38fd77e6f421",
+          "file": "60cbcdcfddbb",
           "counts": {
-            "esri": 11,
+            "esri": 16,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
             "machine": 0,
             "stale": 0,
-            "missing": 147
+            "missing": 163
           },
           "entries": {}
         },
         "ca": {
-          "file": "e5921f04505c",
+          "file": "2dc0cfc0d9d5",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -1739,30 +1725,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Res en la guia coincideix amb aquesta paraula. Proveu-ne una altra, o obriu les seccions de dalt.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Trieu un full de càlcul d' adreces, comproveu les columnes que l' estri ha endevinat i premeu Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Obre la guia.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Descarta aquest consell",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Comença aquí: tres passes",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Sota 1. Escolliu un fitxer, premeu Navega per un fitxer i escolliu el vostre full de càlcul. Un fitxer CSV o un fitxer Excel ambdós funciona.",
@@ -1989,11 +1960,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Si alguna cosa sembla malament",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "No apareixen punts: no hi ha mapa connectat a aquest estri. Comprovant i l' exportació de la taula encara funciona. Demaneu a la Divisió GIS que connecti un mapa si necessiteu els punts dibuixats.",
               "src": "machine",
@@ -2028,11 +1994,6 @@
               "t": "Encara està atrapat? Contacteu amb la Divisió GIS i mencioneu el nom del Geocodedor CSV i aquesta aplicació.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Bo saber-ho",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Neteja les adreces que guanyen. Treu els números d'apartament i notes com \"la universitat\" abans de començar.",
@@ -2428,20 +2389,25 @@
               "t": "No hi ha cap mapa connectat, es comproven els resultats i es poden exportar com a taula però no es dibuixen.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "cs": {
-          "file": "75687b1e4658",
+          "file": "bb570225aa9e",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -2489,30 +2455,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Nic v průvodci neodpovídá tomu slovu. Zkuste jiný, nebo otevřete sekce výše.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Vyberte tabulku adres, zkontrolujte sloupce widget uhodl, a stiskněte Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Otevři průvodce.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Vypustit tento tip",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Začněte zde: tři kroky",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Pod 1. Vyberte si soubor, stiskněte Procházet pro soubor a vyberte si tabulku. CSV nebo Excel soubor obě práce.",
@@ -2739,11 +2690,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Pokud něco vypadá špatně",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "K tomuto widgetu není připojena žádná mapa. Kontrola a tabulka export stále funguje. Požádejte GIS Divizi, aby připojila mapu, pokud budete potřebovat body čerpané.",
               "src": "machine",
@@ -2778,11 +2724,6 @@
               "t": "Pořád se zasekl? Kontaktujte divize GIS a uveďte název CSV Geodder a tuto aplikaci.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Dobré vědět.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Čisté adresy vyhrávají. Vyndej čísla bytů a poznámky jako \"za školou\", než začneš.",
@@ -3178,20 +3119,25 @@
               "t": "Žádná mapa není připojena, takže výsledky jsou kontrolovány a mohou být vyváženy jako tabulka, ale nejsou čerpány.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "da": {
-          "file": "76700e6f2b99",
+          "file": "4148e4bb52e0",
           "counts": {
-            "esri": 11,
+            "esri": 22,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 144,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -3239,30 +3185,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Intet i guiden matcher det ord. Prøv en anden, eller åbn afsnittene ovenfor.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Vælg et regneark med adresser, tjek kolonnerne widget gættet, og tryk på Geokode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Åbn guiden.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Afvis dette tip",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Start her: tre trin",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Under 1. Vælg en fil, tryk på Gennemse for en fil og vælg dit regneark. En CSV eller en Excel-fil begge virker.",
@@ -3489,11 +3420,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Hvis noget ser forkert ud",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Ingen punkter vises: intet kort er forbundet til denne kontrol. Kontrol og tabel eksport virker stadig. Bed GIS Division om at forbinde et kort, hvis du har brug for de markerede punkter.",
               "src": "machine",
@@ -3528,11 +3454,6 @@
               "t": "Sidder du stadig fast? Kontakt GIS Division og nævne CSV Geocoder navn og denne app.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Godt at vide",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Rene adresser vinder. Tag ud lejlighed numre og noter som \"bag skolen\" før du starter.",
@@ -3928,20 +3849,30 @@
               "t": "Intet kort er forbundet, så resultaterne er markeret og kan eksporteres som en tabel, men er ikke tegnet.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "shapefile": {
+              "t": "Shapefile",
+              "src": "machine",
+              "h": "1e21d10d2150"
             }
           }
         },
         "de": {
-          "file": "7085a440ef9a",
+          "file": "71855728beba",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -3989,30 +3920,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Nichts im Guide passt zu diesem Wort. Versuchen Sie es mit einem anderen oder öffnen Sie die obigen Abschnitte.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Wählen Sie eine Tabelle mit Adressen, überprüfen Sie die Spalten, die das Widget erraten hat, und drücken Sie Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Öffne den Guide.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Verwerfen Sie diesen Tipp",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Beginnen Sie hier: drei Schritte",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Unter 1. Wählen Sie eine Datei aus, drücken Sie nach einer Datei suchen und wählen Sie Ihre Tabelle aus. Eine CSV- oder eine Excel-Datei funktionieren beide.",
@@ -4239,11 +4155,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Wenn etwas falsch aussieht",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Keine Punkte erscheinen: keine Karte ist mit diesem Widget verbunden. Checking und der Tabellenexport funktionieren immer noch. Bitten Sie die GIS Division, eine Karte zu verbinden, wenn Sie die gezeichneten Punkte benötigen.",
               "src": "machine",
@@ -4278,11 +4189,6 @@
               "t": "Immer noch stecken? Kontaktieren Sie die GIS-Abteilung und nennen Sie den CSV Geocoder-Namen und diese App.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Gut zu wissen",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Saubere Adressen gewinnen. Nehmen Sie Wohnungsnummern und Notizen wie \"hinter der Schule\" heraus, bevor Sie anfangen.",
@@ -4678,20 +4584,25 @@
               "t": "Keine Karte ist verbunden, so dass die Ergebnisse überprüft werden und als Tabelle exportiert werden können, aber nicht gezeichnet werden.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "el": {
-          "file": "791c8faa8a6b",
+          "file": "cf7cee52493c",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -4739,30 +4650,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Τίποτα στον οδηγό δεν ταιριάζει με αυτή τη λέξη. Δοκιμάστε ένα άλλο, ή ανοίξτε τα τμήματα παραπάνω.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Επιλέξτε ένα φύλλο διευθύνσεων, ελέγξτε τις στήλες που μαντέψατε το widget και πατήστε Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Άνοιξε τον οδηγό.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Διαλύστε αυτή την πληροφορία.",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Εκκίνηση εδώ: τρία βήματα",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Κάτω από 1. Επιλέξτε ένα αρχείο, πατήστε Περιήγηση για ένα αρχείο και επιλέξτε το φύλλο σας. Ένα CSV ή ένα αρχείο Excel λειτουργούν και τα δύο.",
@@ -4989,11 +4885,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Αν κάτι φαίνεται λάθος",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Δεν εμφανίζονται σημεία: κανένας χάρτης δεν συνδέεται με αυτό το γραφικό συστατικό. Ο έλεγχος και η εξαγωγή του τραπεζιού εξακολουθούν να λειτουργούν. Ζητήστε από το τμήμα GIS να συνδέσετε ένα χάρτη αν χρειάζεστε τα σημεία που έχουν σχεδιαστεί.",
               "src": "machine",
@@ -5028,11 +4919,6 @@
               "t": "Ακόμα κολλημένος; Επικοινωνήστε με τον Τομέα GIS και αναφέρετε το όνομα του γεωκωδικοποιητή CSV και αυτή την εφαρμογή.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Χαίρομαι που το μαθαίνω.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Οι καθαρές διευθύνσεις κερδίζουν. Βγάλτε τους αριθμούς των διαμερισμάτων και σημειώσεις όπως \"πίσω από το σχολείο\" πριν ξεκινήσετε.",
@@ -5428,20 +5314,25 @@
               "t": "Δεν συνδέεται χάρτης, έτσι τα αποτελέσματα ελέγχονται και μπορούν να εξαχθούν ως πίνακας αλλά δεν σχεδιάζονται.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "ΓεωJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "es": {
-          "file": "1ca1e618513c",
+          "file": "06f2c810d2f1",
           "counts": {
-            "esri": 11,
+            "esri": 22,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 144,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -5489,30 +5380,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Nada en la guía coincide con esa palabra. Pruebe otro, o abra las secciones anteriores.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Escoge una hoja de cálculo de direcciones, revisa las columnas el widget adivinado, y presiona Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Abre el guía.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Desestima esta propina",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Empieza aquí: tres pasos",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Bajo 1. Elija un archivo, presione Buscar un archivo y elija su hoja de cálculo. Un CSV o un archivo Excel ambos funcionan.",
@@ -5739,11 +5615,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Si algo se ve mal",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "No aparecen puntos: ningún mapa está conectado a este widget. El control y la exportación de mesa siguen funcionando. Pídale a la División GIS que conecte un mapa si necesita los puntos dibujados.",
               "src": "machine",
@@ -5778,11 +5649,6 @@
               "t": "¿Sigues atrapado? Contacte con la División GIS y mencione el nombre de CSV Geocoder y esta aplicación.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Es bueno saberlo.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Ganan direcciones limpias. Saque números de apartamento y notas como \"detrás de la escuela\" antes de empezar.",
@@ -6178,20 +6044,30 @@
               "t": "Ningún mapa está conectado, por lo que los resultados se verifican y se pueden exportar como tabla pero no se dibujan.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "shapefile": {
+              "t": "Shapefile",
+              "src": "machine",
+              "h": "1e21d10d2150"
             }
           }
         },
         "et": {
-          "file": "640db3315a5c",
+          "file": "7f180fbdc150",
           "counts": {
-            "esri": 10,
-            "esri-check": 2,
+            "esri": 21,
+            "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -6239,30 +6115,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Mitte miski juhendis ei klapi selle sõnaga. Proovige teist või avage ülaltoodud lõigud.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Valige aadresside tabel, kontrollige vidina äraarvatud veerge ja vajutage Geocode'i.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Tee teejuht lahti.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Tühista see vihje",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Alusta siit: kolm sammu",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "1. Valige fail, vajutage faili sirvimiseks ja valige arvutustabel. CSV või Exceli fail töötavad mõlemad.",
@@ -6489,11 +6350,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Kui midagi on valesti",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Punktid puuduvad: selle vidinaga ei ole kaarti ühendatud. Kontroll ja lauaeksport töötavad endiselt. Paluge GIS-i osakonnal ühendada kaart, kui vajate joonistatud punkte.",
               "src": "machine",
@@ -6528,11 +6384,6 @@
               "t": "Ikka veel kinni? Võtke ühendust GIS-i osakonnaga ja mainige CSV geokooderi nimi ja see rakendus.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Hea teada",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Puhtad aadressid võidavad. Võtke korteri numbrid ja märkmed nagu \"kooli taga\" enne alustamist.",
@@ -6928,20 +6779,25 @@
               "t": "Ühtegi kaarti ei ole ühendatud, seega kontrollitakse tulemusi ja neid saab eksportida tabelina, kuid neid ei joonistata.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJson",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "fi": {
-          "file": "d2469fe1e48e",
+          "file": "b0b1c864abdc",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 22,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -6989,30 +6845,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Mikään oppaassa ei vastaa tuota sanaa. Kokeile toista, tai avaa kohdat yllä.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Valitse taulukkolaskenta osoitteet, tarkista sarakkeet widget arvattu, ja paina Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Avaa opas.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Poista tämä kärki",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Aloita tästä: kolme vaihetta",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Alla 1. Valitse tiedosto, paina Selaa tiedostoa ja valitse taulukkolaskenta. CSV tai Excel-tiedosto molemmat toimivat.",
@@ -7239,11 +7080,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Jos jokin näyttää väärältä.",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Pisteitä ei näy: karttaa ei ole liitetty tähän elementtiin. Tarkistaminen ja pöydän vienti toimivat edelleen. Pyydä GIS-osastoa liittämään kartta, jos tarvitset piirroksia.",
               "src": "machine",
@@ -7278,11 +7114,6 @@
               "t": "Oletko yhä jumissa? Ota yhteyttä GIS-jaostoon ja mainitse CSV:n geokoodaajan nimi ja tämä sovellus.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Hyvä tietää",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Puhtaat osoitteet voittivat. Ota asunnon numerot ja muistiinpanot kuten \"koulun takana\" ennen kuin aloitat.",
@@ -7678,20 +7509,25 @@
               "t": "Karttaa ei ole liitetty, joten tulokset tarkastetaan ja voidaan viedä taulukona, mutta niitä ei piirretään.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "fr": {
-          "file": "1818ff09ad98",
+          "file": "35cdeab2b588",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 22,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -7739,30 +7575,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Rien dans le guide ne correspond à ce mot. Essayez un autre, ou ouvrez les sections ci-dessus.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Choisissez un tableur d'adresses, vérifiez les colonnes du widget deviné, et appuyez sur Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Ouvrez le guide.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Rompez ce tuyau",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Commencez ici: trois étapes",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Sous 1. Choisissez un fichier, appuyez sur Rechercher un fichier et choisissez votre tableur. Un fichier CSV ou Excel fonctionnent tous les deux.",
@@ -7989,11 +7810,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Si quelque chose ne va pas",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Aucun point n'apparaît : aucune carte n'est connectée à ce widget. La vérification et l'exportation de table fonctionnent toujours. Demandez à la Division SIG de connecter une carte si vous avez besoin des points tracés.",
               "src": "machine",
@@ -8028,11 +7844,6 @@
               "t": "Toujours coincé ? Contactez la Division SIG et mentionnez le nom du géocodeur CSV et cette application.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Bon à savoir",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Les adresses propres gagnent. Prenez les numéros d'appartement et les notes comme \"derrière l'école\" avant de commencer.",
@@ -8428,20 +8239,25 @@
               "t": "Aucune carte n'est connectée, donc les résultats sont vérifiés et peuvent être exportés comme une table mais ne sont pas dessinés.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GéoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "he": {
-          "file": "797511dc9a7e",
+          "file": "b6caa8d811fb",
           "counts": {
-            "esri": 10,
-            "esri-check": 2,
+            "esri": 20,
+            "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 144,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -8489,30 +8305,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "שום דבר במדריך לא מתאים למילה הזאת. נסה עוד, או לפתוח את החלקים לעיל.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "בחר גליון התפשטות של כתובות, בדוק את העמודות הנחושות, ולחץ על Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "פתח את המדריך",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "אכזב את הטיפ הזה",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "התחל כאן: שלושה צעדים",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "תחת 1. בחר קובץ, הקש Browse עבור קובץ ולבחור את גליון התפוצה שלך. קובץ CSV או קובץ Excel הן עבודה.",
@@ -8739,11 +8540,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "אם משהו נראה לא בסדר",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "לא מופיעים נקודות: שום מפה לא מחוברת לשרביט הזה. לבדוק את הטבלה ויצוא עדיין עובד. שאל את מחלקת GIS כדי לחבר מפה אם אתה צריך את הנקודות נמשכות.",
               "src": "machine",
@@ -8778,11 +8574,6 @@
               "t": "עדיין תקוע? צור קשר עם מחלקת GIS והזכיר את שם CSV Geocoder ואת היישום הזה.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "טוב לדעת",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "כתובות נקיות מנצחות קחו מספרי דירות והערות כמו \"מאחורי בית הספר\" לפני שתתחילו.",
@@ -9178,34 +8969,44 @@
               "t": "אין מפה מחוברת, ולכן התוצאות נבדקות וניתן לייצא אותן כשולחן, אך הן אינן נמשכות.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "ג'קסון",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "shapefile": {
+              "t": "Shapefile",
+              "src": "machine",
+              "h": "1e21d10d2150"
             }
           }
         },
         "hr": {
-          "file": "38fd77e6f421",
+          "file": "60cbcdcfddbb",
           "counts": {
-            "esri": 11,
+            "esri": 16,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
             "machine": 0,
             "stale": 0,
-            "missing": 147
+            "missing": 163
           },
           "entries": {}
         },
         "hu": {
-          "file": "e5ce8020d726",
+          "file": "1a4125347245",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -9253,30 +9054,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "A kalauzban semmi sem egyezik ezzel a szóval. Próbálja meg egy másik, vagy nyissa ki a fenti szakaszok.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Válassza ki a címek táblázatát, ellenőrizze a widget kitalált oszlopokat, és nyomja meg a Geocode gombot.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Nyisd ki az útmutatót.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Elutasítom ezt a tippet",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Kezdjük itt: három lépés",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "1. Válasszon egy fájlt, nyomja meg a (z) fájlt és válassza ki a táblázatot. Egy CSV vagy egy Excel fájl is működik.",
@@ -9503,11 +9289,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Ha valami nem stimmel",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Nincs pont jelenik meg: nincs térkép csatlakozik ehhez a widget. Ellenőrzés és az asztali export még mindig működik. Kérje meg a FIS Divíziót, hogy csatlakoztasson egy térképet, ha szüksége van a lehívott pontokra.",
               "src": "machine",
@@ -9542,11 +9323,6 @@
               "t": "Még mindig? Lépjen kapcsolatba a FIS Divízióval, és említse meg a CSV Geocoder nevét és ezt az alkalmazást.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Jó tudni.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "A tiszta címek nyernek. Vedd ki a lakásszámokat és a jegyzeteket, mint a \"suli mögött\", mielőtt elkezded.",
@@ -9942,20 +9718,25 @@
               "t": "Nincs csatlakoztatva térkép, így az eredményeket ellenőrzik, és exportálható, mint egy táblázat, de nem rajzolták.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "id": {
-          "file": "a2f19ba05250",
+          "file": "d69606a9fd41",
           "counts": {
-            "esri": 10,
-            "esri-check": 2,
+            "esri": 21,
+            "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 145,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -10003,30 +9784,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Tidak ada dalam panduan cocok kata itu. Coba yang lain, atau buka bagian di atas.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Pilih spreadsheet alamat, periksa kolom tebakan widget, dan tekan Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Buka panduannya.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Buang tip ini",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Mulai dari sini: tiga langkah",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Di bawah 1. Pilih berkas, tekan Ramban untuk berkas dan pilih lembar kerja Anda. Sebuah CSV atau sebuah berkas Excel keduanya bekerja.",
@@ -10253,11 +10019,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Jika ada sesuatu yang salah",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Tak ada titik yang muncul: tak ada peta yang terhubung ke widget ini. Memeriksa dan ekspor meja masih bekerja. Minta Divisi GIS untuk menghubungkan peta jika kau butuh gambarannya.",
               "src": "machine",
@@ -10292,11 +10053,6 @@
               "t": "Masih terjebak? Hubungi Divisi GIS dan sebutkan nama CSV Geocoder dan aplikasi ini.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Baik untuk mengetahui",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Alamat bersih menang. Ambil nomor apartemen dan catatan seperti \"belakang sekolah\" sebelum Anda mulai.",
@@ -10618,6 +10374,11 @@
               "src": "machine",
               "h": "f8ad5e71d7a8"
             },
+            "geocoding": {
+              "t": "Pengkodean...",
+              "src": "machine",
+              "h": "198fe176bfe8"
+            },
             "geocodingProgress": {
               "t": "Kemajuan geocoding",
               "src": "machine",
@@ -10692,20 +10453,30 @@
               "t": "Tidak ada peta yang terhubung, sehingga hasil diperiksa dan dapat diekspor sebagai tabel tetapi tidak digambar.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "shapefile": {
+              "t": "Shapefile",
+              "src": "machine",
+              "h": "1e21d10d2150"
             }
           }
         },
         "it": {
-          "file": "e5319798404b",
+          "file": "e3abe398349a",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 22,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -10753,30 +10524,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Niente nella guida corrisponde a quella parola. Prova un altro, o apri le sezioni sopra.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Scegli un foglio di calcolo degli indirizzi, controlla le colonne che il widget ha indovinato e premi Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Apri la guida.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "respingere questo suggerimento",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Inizia qui: tre passi",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Sotto 1. Scegliere un file, premere Sfoglia per un file e scegliere il foglio di calcolo. Un file CSV o Excel funzionano entrambi.",
@@ -11003,11 +10759,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Se qualcosa sembra sbagliato",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Non appaiono punti: nessuna mappa è collegata a questo widget. Il controllo e l'esportazione della tabella funzionano ancora. Chiedi alla Divisione GIS di collegare una mappa se hai bisogno dei punti tracciati.",
               "src": "machine",
@@ -11042,11 +10793,6 @@
               "t": "Ancora bloccata? Contattare la Divisione GIS e menzionare il nome CSV Geocoder e questa applicazione.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Buono a sapersi",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Gli indirizzi puliti vincono. Prendere i numeri di appartamento e note come \"dietro la scuola\" prima di iniziare.",
@@ -11442,20 +11188,25 @@
               "t": "Nessuna mappa è collegata, quindi i risultati sono controllati e possono essere esportati come una tabella ma non sono disegnati.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "ja": {
-          "file": "266fb3cbc4ff",
+          "file": "863ede914c8b",
           "counts": {
-            "esri": 10,
+            "esri": 22,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -11503,30 +11254,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "ガイドがその単語と一致するわけではありません。 別のセクションを試し、または上記のセクションを開きます。",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "アドレスのスプレッドシートを選択し、ウィジェットの列をチェックし、ジオコードを押します。",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "ガイドを開きます。",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "この先端を却下",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "ここから: 3 つのステップ",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "1。 ファイルを選択し、ファイルをブラウズを押してスプレッドシートを選択します。 CSV または Excel ファイルの両方が動作します。",
@@ -11753,11 +11489,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "何かが間違っている",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "ポイントが表示されない:マップがこのウィジェットに接続されていない。 チェックとテーブルのエクスポートがまだ機能します。 描画ポイントが必要な場合は、GIS事業部にマップを接続してください。",
               "src": "machine",
@@ -11792,11 +11523,6 @@
               "t": "まだ立ち往生? GIS部門に連絡し、CSVジオコーダ名とこのアプリに言及してください。",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "よく知る",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "クリーンアドレスが勝ちます。 アパートの番号とノートを「学校に通じる」と出ます。",
@@ -12192,20 +11918,25 @@
               "t": "地図が接続されていないため、結果がチェックされ、テーブルとしてエクスポートできますが、描画されません。",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "ジオジェソン",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "ko": {
-          "file": "5d5fbbc71142",
+          "file": "f667c21c43fe",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 22,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -12253,30 +11984,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "가이드의 아무것도 그 단어 일치. 다른 시도, 또는 위의 섹션을 엽니 다.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "주소의 스프레드 시트를 선택하고 위젯을 추측하고 Geocode를 누릅니다.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "자주 묻는 질문",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "이 팁을 무시",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "여기에 시작: 세 단계",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "1. 파일 선택, 파일에 대한 검색을 눌러 스프레드 시트를 선택합니다. CSV 또는 Excel 파일 모두 작동합니다.",
@@ -12503,11 +12219,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "뭔가 잘못되었는지",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "포인트가 나타나지 않습니다 :지도가이 위젯에 연결되지 않습니다. 검사 및 테이블 수출은 여전히 작동합니다. 지도를 연결하려면 GIS 사업부에 문의하십시오.",
               "src": "machine",
@@ -12542,11 +12253,6 @@
               "t": "아직도 붙어? GIS 부서에 문의하고 CSV Geocoder 이름과이 응용 프로그램을 언급하십시오.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "잘 알고",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "깨끗한 주소 승리. 시작하기 전에 \"학교 뒤에\"와 같은 아파트 번호와 메모를 꺼내.",
@@ -12942,20 +12648,25 @@
               "t": "지도가 연결되지 않습니다, 그래서 결과는 검사되고 테이블로 수출될 수 있습니다 그러나 그려지지 않습니다.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "사이트맵",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "lt": {
-          "file": "f967ce316944",
+          "file": "6081708720a1",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -13003,30 +12714,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Vadove nėra nieko, kas atitiktų šį žodį. Pabandykite kitą, arba atidaryti skyrių aukščiau.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Pasirinkite skaičiuoklę adresus, patikrinti stulpelius valdikliui atspėti, ir paspauskite Geokodas.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Atidaryk gidą.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Nutraukti šį patarimą",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Pradėti čia: trys žingsniai",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Pagal 1. Pasirinkite failą, paspauskite Naršyti failą ir pasirinkite savo skaičiuoklę. CSV arba Excel failas abu darbas.",
@@ -13253,11 +12949,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Jei kas nors atrodo blogai",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Nėra taškų: nėra žemėlapio yra prijungtas prie šio valdikliui. Patikrinimas ir stalo eksportas vis dar veikia. Paprašykite GIS skyriaus, kad prijungtumėte žemėlapį, jei reikia atkreipti taškų.",
               "src": "machine",
@@ -13292,11 +12983,6 @@
               "t": "Vis dar įstrigęs? Susisiekite su GIS skyriumi ir nurodykite CSV Geocoder pavadinimą ir šią programėlę.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Gera žinoti",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Išvalyti adresus laimėti. Išimkite buto numerius ir užrašus kaip \"už mokyklos\" prieš pradedant.",
@@ -13692,20 +13378,25 @@
               "t": "Žemėlapis nėra prijungtas, todėl rezultatai yra tikrinami ir gali būti eksportuojami kaip lentelė, bet nėra traukiami.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "lv": {
-          "file": "961dfbcebf33",
+          "file": "ced50100ea1e",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -13753,30 +13444,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Nekas ceļvedī neatbilst šim vārdam. Mēģiniet citu, vai atvērt sadaļas iepriekš.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Izvēlieties adrešu izklājlapu, pārbaudiet logdaļas uzminētās kolonnas un nospiediet Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Atveriet ceļvedi.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Noņemt šo galu",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Sākt šeit: trīs soļi",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "1. Izvēlieties failu, nospiediet Pārlūkot failu un izvēlieties savu izklājlapu. Abi CSV vai Excel faili darbojas.",
@@ -14003,11 +13679,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Ja kaut kas izskatās nepareizi",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Neviens punkts neparādās: karte nav savienota ar šo logdaļu. Pārbaude un galda eksports joprojām strādā. Lūdziet ĢIS nodaļai pievienot karti, ja jums ir nepieciešams novilkt punktus.",
               "src": "machine",
@@ -14042,11 +13713,6 @@
               "t": "Joprojām iestrēdzis? Sazinieties ar ĢIS nodaļu un miniet CSV Geocoder nosaukumu un šo lietotni.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Labi zināt",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Clean adreses win. Izņemiet dzīvokļu numurus un piezīmes kā \"aiz skolas\" pirms sākat.",
@@ -14442,20 +14108,25 @@
               "t": "Karte nav savienota, tāpēc rezultāti tiek pārbaudīti un tos var eksportēt kā tabulu, bet tie netiek zīmēti.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "no": {
-          "file": "c8c550cfdd70",
+          "file": "ec928c864507",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 22,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -14503,30 +14174,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Ingenting i guiden stemmer med det ordet. Prøv en annen, eller åpne seksjonene ovenfor.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Velg et regneark med adresser, sjekk kolonnene som widgeten gjettet og trykk Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Åpne guiden.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Utsett dette tipset",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Start her: 3 trinn",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Velg en fil, trykk Bla gjennom for en fil og velg regneark. En CSV eller en Excel-fil fungerer begge.",
@@ -14753,11 +14409,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Hvis noe ser galt ut",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Ingen punkter vises: Ingen kart er koblet til denne widgeten. Sjekk og bordeksport fungerer fortsatt. Be GIS-divisjonen om å koble til et kart hvis du trenger poengene som tegnes.",
               "src": "machine",
@@ -14792,11 +14443,6 @@
               "t": "Fortsatt fast? Kontakt GIS-divisjonen og nevne CSV Geocoder-navnet og denne appen.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Godt å vite",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Rene adresser vinner. Ta ut leilighetsnummer og notater som \" bak skolen\" før du starter.",
@@ -15192,20 +14838,25 @@
               "t": "Ingen kart er tilkoblet, så resultatene kontrolleres og kan eksporteres som tabell, men ikke tegnes.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "nl": {
-          "file": "aa4c9bc4711d",
+          "file": "f19661deb251",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 21,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 144,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -15253,30 +14904,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Niets in de gids komt overeen met dat woord. Probeer een andere, of open de bovenstaande secties.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Kies een spreadsheet met adressen, controleer de kolommen van het widget geraden, en druk op Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Open de gids.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Deze tip verwerpen",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Begin hier: drie stappen",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Onder 1. Kies een bestand, druk op Bladeren naar een bestand en kies uw spreadsheet. Een CSV of een Excel bestand werken beide.",
@@ -15503,11 +15139,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Als er iets mis lijkt.",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Er verschijnen geen punten: geen kaart is verbonden met dit widget. Controleren en de tafel export nog steeds werken. Vraag de GIS Division om een kaart aan te sluiten als je de getrokken punten nodig hebt.",
               "src": "machine",
@@ -15542,11 +15173,6 @@
               "t": "Nog steeds vast? Neem contact op met de GIS Division en vermeld de CSV Geocoder naam en deze app.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Goed om te weten",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Schoone adressen winnen. Neem appartement nummers en notities zoals \"achter de school\" voordat je begint.",
@@ -15942,20 +15568,30 @@
               "t": "Geen kaart is verbonden, dus resultaten worden gecontroleerd en kunnen worden geëxporteerd als een tabel, maar worden niet getekend.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "street": {
+              "t": "Straat",
+              "src": "machine",
+              "h": "b45410999343"
             }
           }
         },
         "pl": {
-          "file": "5f64bd60faa1",
+          "file": "e98ceae94fc9",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 21,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 144,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -16003,30 +15639,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Nic w przewodniku nie pasuje do tego słowa. Spróbuj innego, albo otwórz powyższe sekcje.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Wybierz arkusz adresów, sprawdź kolumny widget odgadnąć, i naciśnij Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Otwórz przewodnik.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Odrzuć tę wskazówkę.",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Zacznij tutaj: trzy kroki",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Pod 1. Wybierz plik, naciśnij Przeglądaj plik i wybierz arkusz kalkulacyjny. Plik CSV lub Excel działa.",
@@ -16253,11 +15874,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Jeśli coś wygląda źle",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Brak punktów: żadna mapa nie jest połączona z tym widżetem. Sprawdzanie i eksport tabeli nadal działa. Poproś GIS Division o podłączenie mapy, jeśli potrzebujesz narysowanych punktów.",
               "src": "machine",
@@ -16292,11 +15908,6 @@
               "t": "Nadal utknąłeś? Skontaktuj się z Wydziałem GIS i podaj nazwę CSV Geocoder i tę aplikację.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Dobrze wiedzieć.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Wygrywa czysty adres. Wyjmij numery mieszkania i notatki jak \"za szkołą\" przed rozpoczęciem.",
@@ -16692,20 +16303,30 @@
               "t": "Nie jest połączona mapa, więc wyniki są sprawdzane i mogą być eksportowane jako tabela, ale nie są rysowane.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "shapefile": {
+              "t": "Shapefile",
+              "src": "machine",
+              "h": "1e21d10d2150"
             }
           }
         },
         "pt-br": {
-          "file": "7049a8639f67",
+          "file": "88fd1f06b5a9",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 22,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -16753,30 +16374,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Nada no guia combina com essa palavra. Tente outro, ou abra as seções acima.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Escolha uma planilha de endereços, verifique as colunas que o widget adivinhou e pressione Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Abra o guia.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Descarte esta dica.",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Comece aqui: três passos",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Escolha um arquivo, pressione procurar um arquivo e escolha sua planilha. Um CSV ou um arquivo Excel ambos funcionam.",
@@ -17003,11 +16609,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Se algo parecer errado",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Nenhum ponto aparece: nenhum mapa está conectado a este widget. Verificando e a exportação da mesa ainda funciona. Peça à Divisão GIS para conectar um mapa se precisar de pontos.",
               "src": "machine",
@@ -17042,11 +16643,6 @@
               "t": "Ainda preso? Contate a Divisão GIS e mencione o nome CSV Geocoder e este aplicativo.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Bom saber.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Endereços limpos vencem. Pegue números de apartamento e notas como \"atrás da escola\" antes de começar.",
@@ -17442,20 +17038,25 @@
               "t": "Nenhum mapa está conectado, então os resultados são verificados e podem ser exportados como uma tabela mas não são desenhados.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "pt-pt": {
-          "file": "bd154246e11d",
+          "file": "89b8f4561f56",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -17503,30 +17104,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Nada no guia corresponde a essa palavra. Tente outro, ou abra as seções acima.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Escolha uma planilha de endereços, verifique as colunas do widget adivinhado e pressione Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Abra o guia.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Descarte esta dica",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Comece aqui: três passos",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Em 1. Escolha um arquivo, pressione Procurar um arquivo e escolha sua planilha. Um CSV ou um arquivo Excel ambos funcionam.",
@@ -17753,11 +17339,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Se algo parecer errado",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Não aparecem pontos: nenhum mapa está ligado a este elemento. A verificação e a exportação da tabela ainda funcionam. Peça à Divisão GIS para conectar um mapa se precisar dos pontos desenhados.",
               "src": "machine",
@@ -17792,11 +17373,6 @@
               "t": "Ainda preso? Entre em contato com a Divisão GIS e mencione o nome CSV Geocoder e esta aplicação.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "É bom saber.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "As moradas limpas ganham. Tira números de apartamento e notas como \"atrás da escola\" antes de começares.",
@@ -18192,20 +17768,25 @@
               "t": "Nenhum mapa está conectado, então os resultados são verificados e podem ser exportados como uma tabela, mas não são desenhados.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "ro": {
-          "file": "671f4d42febc",
+          "file": "960151c0bee3",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 21,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 144,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -18253,30 +17834,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Nimic din ghid nu se potriveşte cu acest cuvânt. Încearcă altul, sau deschide secţiunile de mai sus.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Alege o foaie de calcul de adrese, verifica coloanele widget ghicit, și apăsați Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Deschide ghidul.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Eliberează acest sfat",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Începe aici: trei pași",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Sub 1. Alegeți un fișier, apăsați Browse pentru un fișier și selectați foaia de calcul. Un CSV sau un fișier Excel ambele lucrări.",
@@ -18503,11 +18069,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Dacă ceva nu arată bine",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Nu apar puncte: nicio hartă nu este conectată la acest widget. Verificarea și exportul de masă încă funcționează. Cere Diviziei GIS să conecteze o hartă dacă ai nevoie de punctele trase.",
               "src": "machine",
@@ -18542,11 +18103,6 @@
               "t": "Încă blocat? Contactați divizia GIS și menționați numele Geocoder CSV și această aplicație.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "E bine de ştiut.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Adresele curate câştigă. Scoate numere de apartamente și note ca \"în spatele școlii\" înainte de a începe.",
@@ -18942,20 +18498,30 @@
               "t": "Nicio hartă nu este conectată, astfel încât rezultatele sunt verificate și pot fi exportate ca masă, dar nu sunt trase.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "export": {
+              "t": "Exportă",
+              "src": "machine",
+              "h": "f3e4fadb9e37"
             }
           }
         },
         "ru": {
-          "file": "4edebff6ad5c",
+          "file": "894bcb62651c",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -19003,30 +18569,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Ничто в руководстве не соответствует этому слову. Попробуйте другой или откройте разделы выше.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Выберите электронную таблицу адресов, проверьте колонки, которые угадал виджет, и нажмите Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Откройте проводник.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Откажитесь от этого совета",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Начните здесь: три шага",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Под 1.Выберите файл, нажмите Browse для файла и выберите свою электронную таблицу. CSV или файл Excel оба работают.",
@@ -19253,11 +18804,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Если что-то выглядит неправильно",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Никаких точек не появляется: ни одна карта не связана с этим виджетом. Проверка и экспорт стола все еще работают. Попросите отдел ГИС соединить карту, если вам нужны нарисованные точки.",
               "src": "machine",
@@ -19292,11 +18838,6 @@
               "t": "Все еще застрял? Свяжитесь с отделом ГИС и укажите имя геокодера CSV и это приложение.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Хорошо знать",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Чистые адреса выигрывают. Возьмите номера квартир и заметки, такие как «за школой», прежде чем начать.",
@@ -19692,20 +19233,25 @@
               "t": "Карта не связана, поэтому результаты проверяются и могут быть экспортированы в виде таблицы, но не нарисованы.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "ГеоДжон",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "sk": {
-          "file": "3cab3a820c05",
+          "file": "5287a850906a",
           "counts": {
-            "esri": 10,
+            "esri": 21,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 144,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -19753,30 +19299,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Nič v sprievodcovi nezodpovedá tomu slovu. Skúste iné, alebo otvoriť časti vyššie.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Vyberte tabuľku adries, skontrolujte stĺpce widget hádal, a stlačte Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Otvorte sprievodcu.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Odmietnite tento tip",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Začnite tu: tri kroky",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Pod 1. Vyberte súbor, stlačte tlačidlo Prechádzať pre súbor a vyberte tabuľku. CSV alebo Excel súbor obaja pracujú.",
@@ -20003,11 +19534,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Ak niečo vyzerá zle",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Žiadne body: žiadna mapa nie je pripojená k tomuto widgetu. Kontrola a export stola stále fungujú. Požiadajte Divíziu GIS o pripojenie mapy, ak potrebujete body.",
               "src": "machine",
@@ -20042,11 +19568,6 @@
               "t": "Stále zaseknutý? Kontaktujte Divíziu GIS a uveďte názov CSV Geocoder a túto aplikáciu.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Dobré vedieť",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Vyhrajú čisté adresy. Vyber si čísla bytov a poznámky ako \"za školou\" predtým, ako začneš.",
@@ -20442,20 +19963,30 @@
               "t": "Žiadna mapa nie je pripojená, takže výsledky sú kontrolované a môžu byť exportované ako tabuľka, ale nie sú zobrazené.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "export": {
+              "t": "Vývoz",
+              "src": "machine",
+              "h": "f3e4fadb9e37"
             }
           }
         },
         "sl": {
-          "file": "932823f37c70",
+          "file": "99633d4d4dee",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -20503,30 +20034,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Nič v vodiču se ne ujema s to besedo. Poskusite drugo ali pa odprite zgornje oddelke.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Izberite preglednico naslovov, preverite stolpce gradnik uganil, in pritisnite Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Odpri vodič.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Zavrni ta namig",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Začnite tukaj: trije koraki",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Pod 1. Izberite datoteko, pritisnite Brskajte za datoteko in izberite preglednico. CSV ali Excelova datoteka delujeta.",
@@ -20753,11 +20269,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Če je kaj narobe.",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Ni točk: ni zemljevid povezan s tem gradnikom. Preverjanje in izvoz še vedno deluje. Vprašajte oddelek GIS za povezavo zemljevida, če potrebujete začrtane točke.",
               "src": "machine",
@@ -20792,11 +20303,6 @@
               "t": "Še vedno obtičal? Kontaktirajte oddelek GIS in omenite ime geokoderja CSV in to aplikacijo.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Dobro je vedeti.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Čisti naslovi zmagajo. Vzemi številke stanovanj in zapiske, kot je \"za šolo\", preden začneš.",
@@ -21192,34 +20698,39 @@
               "t": "Zemljevid ni povezan, zato so rezultati preverjeni in se lahko izvozijo kot tabela, vendar niso narisani.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "sr": {
-          "file": "cec1ab680ea3",
+          "file": "b7c1e5351927",
           "counts": {
-            "esri": 11,
+            "esri": 16,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
             "machine": 0,
             "stale": 0,
-            "missing": 147
+            "missing": 163
           },
           "entries": {}
         },
         "sv": {
-          "file": "a9874c1d5266",
+          "file": "9ef7cdf3af33",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 21,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 144,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -21267,30 +20778,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Ingenting i guiden matchar det ordet. Prova en annan, eller öppna avsnitten ovan.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Välj ett kalkylblad av adresser, kontrollera kolumnerna widget gissade och tryck på Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Öppna guiden.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Avfärda detta tips",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Börja här: tre steg",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Under 1. Välj en fil, tryck på Bläddra för en fil och välj ditt kalkylblad. En CSV eller en Excel-fil fungerar båda.",
@@ -21517,11 +21013,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Om något ser fel",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Inga punkter visas: ingen karta är ansluten till denna widget. Kontrollera och tabellexporten fungerar fortfarande. Fråga GIS-avdelningen för att ansluta en karta om du behöver de punkter som dras.",
               "src": "machine",
@@ -21556,11 +21047,6 @@
               "t": "Fortfarande fast? Kontakta GIS-avdelningen och nämna CSV Geocoder-namnet och den här appen.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Bra att veta",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Rena adresser vinner. Ta ut lägenhetsnummer och anteckningar som \"bakom skolan\" innan du börjar.",
@@ -21956,20 +21442,30 @@
               "t": "Ingen karta är ansluten, så resultaten kontrolleras och kan exporteras som en tabell men inte dras.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJson",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "shapefile": {
+              "t": "Shapefile",
+              "src": "machine",
+              "h": "1e21d10d2150"
             }
           }
         },
         "th": {
-          "file": "619253b286c6",
+          "file": "66960c8a39b8",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 20,
+            "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 144,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -22017,30 +21513,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "ไม่มีอะไรในคู่มือที่ตรงกับคํานั้น ลอง เปิด อีก ส่วน หนึ่ง ข้าง บน.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "เลือกตารางคํานวณของที่อยู่ ให้ตรวจสอบคอลัมน์ที่วิดเจ็ตเดาได้ และกด Goode",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "เปิดคู่มือ",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "ไม่สนใจเคล็ดลับนี้",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "เริ่มที่นี่: สามขั้นตอน",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "ภายใต้ 1 เลือกแฟ้ม ให้กดเรียกดูแฟ้มและเลือกตารางคํานวณของคุณ เอกสาร CSV หรือเอกเซลใช้ได้ทั้งคู่",
@@ -22267,11 +21748,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "ถ้ามีอะไรผิดปกติ",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "ไม่มีจุดปรากฎ: ไม่มีแผนที่ที่เชื่อมต่อกับวิดเจ็ตนี้ การตรวจสอบและการส่งออกตารางยังคงทํางาน ขอให้หน่วยจีไอเอสเชื่อมต่อแผนที่ ถ้าคุณต้องการจุดวาด",
               "src": "machine",
@@ -22306,11 +21782,6 @@
               "t": "ยังติดอยู่อีกเหรอ? ติดต่อ GPS ดิวิชั่น และพูดถึงชื่อ GOCV และแอพนี้",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "ดีที่ได้รู้",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "ที่อยู่สะอาดชนะ เอาหมายเลขห้องออกมา และจดไว้ เหมือน \"อยู่ที่โรงเรียน\" ก่อนคุณจะเริ่ม",
@@ -22632,6 +22103,11 @@
               "src": "machine",
               "h": "f8ad5e71d7a8"
             },
+            "geocoding": {
+              "t": "จัดเรียงภาพ...",
+              "src": "machine",
+              "h": "198fe176bfe8"
+            },
             "geocodingProgress": {
               "t": "ความคืบหน้าการย้ายภาพ",
               "src": "machine",
@@ -22706,20 +22182,25 @@
               "t": "ไม่พบแผนที่ที่เชื่อมต่ออยู่ ดังนั้นผลลัพธ์จะถูกตรวจสอบและส่งออกเป็นตาราง แต่ไม่สามารถวาดได้",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "จี เจ สัน",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "tr": {
-          "file": "1fecaef7553c",
+          "file": "8b7d92537062",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 22,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -22767,30 +22248,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Rehberde hiçbir şey bu kelimeyi maçları. Başka bir deneyin veya yukarıdaki bölümleri açın.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Bir adres tablosu seçin, sütunları pencereleri tahmin edin ve Geocode basın.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Rehberi açın.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Bu ipucunu al",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Buraya başlayın: Üç adım",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "1. Bir dosya seçin, bir dosya için basın ve yay tablonuzu seçin. Bir CSV veya bir Excel dosyası her ikisi de çalışır.",
@@ -23017,11 +22483,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Bir şey yanlış görünüyorsa",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Hiçbir puan görünmüyor: Bu widget'a hiçbir harita bağlı değildir. Kontrol etmek ve masa ihracat hala çalışıyor. GIS Division'a, çizilen noktalara ihtiyacınız varsa bir harita bağlanmak için sorun.",
               "src": "machine",
@@ -23056,11 +22517,6 @@
               "t": "Hala sıkıştı? GIS Bölüm ile iletişime geçin ve CSV Geocoder adı ve bu uygulamadan bahsedin.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "İyi bilmek",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Temiz adresler kazanır. Başlamadan önce \"okulu\" gibi daire numaraları ve notları çıkarın.",
@@ -23456,20 +22912,25 @@
               "t": "Hiçbir harita bağlantılı değildir, bu yüzden sonuçlar kontrol edilir ve bir masa olarak ihraç edilebilir ancak çizilmemektedir.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "zh-cn": {
-          "file": "8bc2838bda2e",
+          "file": "ce7f08bf775a",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 22,
+            "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -23517,30 +22978,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "指南中没有任何内容与这个词相符。 尝试另一个,或者打开上面的部分。",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "选择地址电子表格,检查猜到的部件列,并按 Geocode 键。",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "开导.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "解除这个提示",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "从这里开始: 三步",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "1. 选择文件,按浏览文件并选择电子表格。 CSV 或 Excel 文件同时工作 。",
@@ -23767,11 +23213,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "如果有什么不对劲",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "没有点 : 没有地图连接到此部件 。 检查和表格导出仍然有效 。 如果需要绘制的点数,请GIS分区连接地图。",
               "src": "machine",
@@ -23806,11 +23247,6 @@
               "t": "还卡住了? 联系GIS分部,并提及CSV地理编码器名称和这个应用程序.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "很高兴知道",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "净地址胜. 在你开始之前 拿出公寓的号码和笔记 比如\"在学校后面\"",
@@ -24206,20 +23642,25 @@
               "t": "没有映射图连接, 因此结果会被检查, 可以导出为表格, 但无法绘制 。",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "地理通讯",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "uk": {
-          "file": "3ccf5a91867f",
+          "file": "dbef51b3725b",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -24267,30 +23708,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Ніщо в інструкції відповідає словом. Спробуйте ще одну або відкрийте розділи вище.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Підберіть таблицю адрес, перевірте стовпчики віджет вгадали, і натисніть Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Відкрийте посібник.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Відшкодувати цей кінчик",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Почати тут: три кроки",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Під 1. Виберіть файл, натисніть кнопку Переглядати файл і підберіть свій аркуш. Файл CSV або Excel як працює.",
@@ -24517,11 +23943,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Якщо щось виглядає неправильно",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Немає точок з'являються: немає карти підключено до цього віджету. Перевірити і експорт таблиці все ще працює. Запитайте розділ ГІС для підключення карти, якщо вам потрібні точки, намальовані.",
               "src": "machine",
@@ -24556,11 +23977,6 @@
               "t": "Натюрморт? Зв'язатися з відділом ГІС і згадати ім'я CSV Geocoder і це додаток.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Добре знати",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Чисті адреси виграшу. Прийміть номери квартир і ноти, такі як \"похилого віку\" перед початком.",
@@ -24956,20 +24372,25 @@
               "t": "Немає підключеної карти, тому результати перевіряють і можуть бути експортовані як таблицю, але не намальовані.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "ГеоДжсон",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "vi": {
-          "file": "70c72b147817",
+          "file": "4393898cb2fe",
           "counts": {
-            "esri": 11,
+            "esri": 23,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -25017,30 +24438,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Không có gì phù hợp với từ đó. Thử cái khác, hoặc mở phần trên.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "Chọn một bảng tính địa chỉ, kiểm tra các cột mà ô điều khiển đoán, và nhấn Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Mở sách hướng dẫn ra.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Giải tán",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Bắt đầu ở đây: ba bước",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Dưới 1. Chọn một tập tin, ấn Duyệt tìm tập tin và chọn bảng tính. Một CSV hoặc một tập tin approaching cả hai làm việc.",
@@ -25267,11 +24673,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Nếu có gì không ổn",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Không có điểm xuất hiện: không có bản đồ nào được kết nối đến ô điều khiển này. Kiểm tra và xuất khẩu bàn vẫn hoạt động. Hãy yêu cầu đơn vị GIS kết nối bản đồ nếu anh cần vẽ các điểm.",
               "src": "machine",
@@ -25306,11 +24707,6 @@
               "t": "Vẫn kẹt à? Liên lạc với đơn vị GIS và đề cập đến CSV Geocoder và ứng dụng này.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Rất vui được biết",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Địa chỉ sạch sẽ thắng. Lấy số căn hộ và ghi chú như là \"ra khỏi trường\" trước khi bắt đầu.",
@@ -25706,20 +25102,25 @@
               "t": "Không có bản đồ nào được kết nối, vì vậy kết quả được kiểm tra và có thể xuất ra làm bàn nhưng không được vẽ.",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "zh-hk": {
-          "file": "07e37b4e7a34",
+          "file": "f6d57b93c78d",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 21,
+            "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -25767,30 +25168,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "向导裡沒有什麼能符合這個詞的 再試一次,或者打開上面的區域",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "選取地址表, 檢查猜到的元件列, 按 Geocode 。",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "打開向导",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "解除此提示",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "從這裡開始: 三步",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "1. 選擇檔案, 按瀏覽檔案並選擇工作表 。 CSV 或 Excel 檔案兩項工作。",
@@ -26017,11 +25403,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "如果有什麼不對勁",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "沒有點 : 沒有地圖連接到此元件 。 檢查和表匯出仍然工作 。 如果需要地點, 請讓 GIS 司連接地圖 。",
               "src": "machine",
@@ -26056,11 +25437,6 @@
               "t": "仍然卡住了? 聯繫GIS分部 提到 CSV Geocoder 名字和這個應用程式 。",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "很高興知道",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "清洁地址贏了 在你開始前 拿出公寓號碼和\"學校后面\"的字條",
@@ -26456,20 +25832,25 @@
               "t": "沒有地圖連接, 因此檢查結果可以匯出為表格, 但沒有畫出 。",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "地理",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         },
         "zh-tw": {
-          "file": "07e37b4e7a34",
+          "file": "f6d57b93c78d",
           "counts": {
-            "esri": 11,
-            "esri-check": 1,
+            "esri": 21,
+            "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 147,
+            "machine": 143,
             "stale": 0,
-            "missing": 0
+            "missing": 13
           },
           "entries": {
             "_widgetLabel": {
@@ -26517,30 +25898,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "向导裡沒有什麼能符合這個詞的 再試一次,或者打開上面的區域",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
             "firstRunBody": {
               "t": "選取地址表, 檢查猜到的元件列, 按 Geocode 。",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "打開向导",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "解除此提示",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "從這裡開始: 三步",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "1. 選擇檔案, 按瀏覽檔案並選擇工作表 。 CSV 或 Excel 檔案兩項工作。",
@@ -26767,11 +26133,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "如果有什麼不對勁",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "沒有點 : 沒有地圖連接到此元件 。 檢查和表匯出仍然工作 。 如果需要地點, 請讓 GIS 司連接地圖 。",
               "src": "machine",
@@ -26806,11 +26167,6 @@
               "t": "仍然卡住了? 聯繫GIS分部 提到 CSV Geocoder 名字和這個應用程式 。",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "很高興知道",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "清洁地址贏了 在你開始前 拿出公寓號碼和\"學校后面\"的字條",
@@ -27206,6 +26562,11 @@
               "t": "沒有地圖連接, 因此檢查結果可以匯出為表格, 但沒有畫出 。",
               "src": "machine",
               "h": "670de8d9468a"
+            },
+            "geoJSON": {
+              "t": "地理",
+              "src": "machine",
+              "h": "97eeda258d4d"
             }
           }
         }
@@ -27247,12 +26608,12 @@
         "ar": {
           "file": "4e374c154ee6",
           "counts": {
-            "esri": 3,
+            "esri": 5,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 24,
+            "machine": 22,
             "stale": 0,
             "missing": 0
           },
@@ -27366,28 +26727,18 @@
               "t": "الاستعارة الخارجية",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "دليل المساعدة",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "اظهر زر التساؤل الذي يفتح المرشد",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "bg": {
           "file": "e167dbfcef19",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -27496,16 +26847,6 @@
               "t": "Ширина на изхода",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Показване на ръководство за помощ",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Показване на бутона въпрос-марка, която отваря джаджа помощ ръководство",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
@@ -27526,12 +26867,12 @@
         "ca": {
           "file": "a0096be2af9a",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -27640,28 +26981,18 @@
               "t": "Amplada del contorn",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Mostra la guia d' ajuda",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Mostra el botó Pregunta- marca que obre la guia d' ajuda de l' estri",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "cs": {
           "file": "095937d161f7",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -27770,28 +27101,18 @@
               "t": "Šířka obrysu",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Zobrazit nápovědu",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Zobrazit tlačítko question- mark, které otevře nápovědu widget",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "da": {
           "file": "a7ac15f05b24",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -27900,28 +27221,18 @@
               "t": "Indhold bredde",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Vis hjælpeguide",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Vis spørgsmåls- markerings- knappen der åbner kontrolhjælpevejledningen",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "de": {
           "file": "d61e24447493",
           "counts": {
-            "esri": 4,
+            "esri": 5,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 22,
             "stale": 0,
             "missing": 0
           },
@@ -28035,23 +27346,18 @@
               "t": "Show Help Guide",
               "src": "machine",
               "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Zeigen Sie die Fragezeichentaste an, die das Widget-Hilfehandbuch öffnet",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "el": {
           "file": "93f7828e2f97",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -28160,28 +27466,18 @@
               "t": "Πλάτος περιγράμματος",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Εμφάνιση οδηγού βοήθειας",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Εμφάνιση του κουμπιού ερωτηματολογίου που ανοίγει τον οδηγό βοήθειας widget",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "es": {
           "file": "5d7ee375323b",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -28290,28 +27586,18 @@
               "t": "Ancho fijo",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Mostrar guía de ayuda",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Mostrar el botón de la marca de preguntas que abre el widget guía de ayuda",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "et": {
           "file": "23808bae157c",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -28420,28 +27706,18 @@
               "t": "Kontuuri laius",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Abijuhendi näitamine",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Küsimusemärgi nupu näitamine, mis avab vidina abi juhendi",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "fi": {
           "file": "4dd2ccdc0268",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -28550,28 +27826,18 @@
               "t": "Leveys",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Näytä ohje",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Näytä kysymys-merkki-painike, joka avaa widget ohjeen",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "fr": {
           "file": "d0c0fbb8bafb",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -28680,28 +27946,18 @@
               "t": "Largeur de sortie",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Afficher le guide d'aide",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Afficher le bouton question-marque qui ouvre le guide d'aide du widget",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "he": {
           "file": "c1ab5407d40c",
           "counts": {
-            "esri": 3,
+            "esri": 5,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 24,
+            "machine": 22,
             "stale": 0,
             "missing": 0
           },
@@ -28815,16 +28071,6 @@
               "t": "המונחים",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "מדריך עזרה",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "הצג את לחצן סימן שאלה פותח את מדריך העזרה widget",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
@@ -28845,12 +28091,12 @@
         "hu": {
           "file": "58fa61352f06",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -28959,28 +28205,18 @@
               "t": "Szélesség",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Segítőútmutató megjelenítése",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Megjeleníti a kérdőjel gombot, amely megnyitja a widget súgó útmutatót",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "id": {
           "file": "e1cbd03f1a21",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -29089,28 +28325,18 @@
               "t": "Lebar garis luar",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Tampilkan panduan bantuan",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Tampilkan tombol tanya-tandai yang membuka panduan bantuan widget",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "it": {
           "file": "c75cd8ad67d1",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -29219,28 +28445,18 @@
               "t": "Larghezza esterna",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Mostra la guida",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Mostra il pulsante di punto interrogativo che apre la guida di aiuto widget",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "ja": {
           "file": "9214058e5b76",
           "counts": {
-            "esri": 3,
+            "esri": 5,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 24,
+            "machine": 22,
             "stale": 0,
             "missing": 0
           },
@@ -29354,28 +28570,18 @@
               "t": "輪郭の幅",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "ヘルプガイドを表示",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "ウィジェットヘルプガイドを開く質問のボタンを表示する",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "ko": {
           "file": "bf2539fb6bbc",
           "counts": {
-            "esri": 3,
+            "esri": 5,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 24,
+            "machine": 22,
             "stale": 0,
             "missing": 0
           },
@@ -29489,28 +28695,18 @@
               "t": "개략 폭",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "공지사항",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "위젯 도움말 가이드를 열 수있는 질문 표시 버튼",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "lt": {
           "file": "5378252160a1",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -29619,28 +28815,18 @@
               "t": "Intervalo plotis",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Rodyti pagalbos vadovą",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Rodyti klausimų žymėjimo mygtuką, kuris atveria valdikliui skirtą pagalbos vadovą",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "lv": {
           "file": "c11c517a2c04",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -29749,28 +28935,18 @@
               "t": "Aprises platums",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Rādīt palīdzības ceļvedi",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Rādīt jautājumu zīmes pogu, kas atver logdaļu palīdzības rokasgrāmatu",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "no": {
           "file": "6acee6bf24d2",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -29879,28 +29055,18 @@
               "t": "Omrissbredde",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Vis hjelpguide",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Vis spørsmålsmerkeknappen som åpner widget-hjelpeguiden",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "nl": {
-          "file": "395b88a9807a",
+          "file": "8f2dd7f5830f",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -30009,28 +29175,18 @@
               "t": "Omtrekbreedte",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Hulplijn tonen",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "De knop met het vraagteken tonen die de hulplijn widget opent",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "pl": {
           "file": "9ec46791773a",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -30139,28 +29295,18 @@
               "t": "Szerokość linii",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Pokaż przewodnik pomocy",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Pokaż przycisk question- mark, który otwiera przewodnik pomocy widget",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "pt-br": {
-          "file": "3de7d46e40ee",
+          "file": "4316573620bb",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -30269,28 +29415,18 @@
               "t": "Largura do contorno",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Mostre guia de ajuda.",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Mostre o botão de ponto de interrogação que abre o guia de ajuda do widget.",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "pt-pt": {
           "file": "075f0108d156",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -30399,28 +29535,18 @@
               "t": "Largura do contorno",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Mostrar guia de ajuda",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Mostrar o botão de marca de perguntas que abre o guia de ajuda do elemento",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "ro": {
           "file": "bfb9725d10df",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -30529,28 +29655,18 @@
               "t": "Lățimea liniei",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Arată ghidul de ajutor",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Arată butonul semn de întrebare care deschide ghidul de ajutor widget",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "ru": {
           "file": "c3a32f1ac1ee",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -30659,28 +29775,18 @@
               "t": "Ширина линии",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Показать справочник",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Покажите кнопку вопрос-марка, которая открывает руководство по помощи виджета",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "sk": {
           "file": "d92d8d9bea2d",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -30789,28 +29895,18 @@
               "t": "Šírka obrysu",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Zobraziť návod na pomoc",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Zobraziť tlačidlo otázniku, ktoré otvorí sprievodcu pomocníkom",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "sl": {
           "file": "ac22e96cd5f9",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -30919,16 +30015,6 @@
               "t": "Širina okvirja",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Prikaži vodnik za pomoč",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Prikaži gumb z vprašanji, ki odpre widget pomoč vodnik",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
@@ -30949,12 +30035,12 @@
         "sv": {
           "file": "f157c2f8de34",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -31063,28 +30149,18 @@
               "t": "Outline bredd",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Visa hjälp guide",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Visa frågemärke knappen som öppnar widget hjälp guide",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "th": {
           "file": "c299f15626b7",
           "counts": {
-            "esri": 3,
+            "esri": 5,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 24,
+            "machine": 22,
             "stale": 0,
             "missing": 0
           },
@@ -31198,28 +30274,18 @@
               "t": "ความกว้างเส้น",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "แสดงคําแนะนํา",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "แสดงปุ่ม เครื่องหมายคําถามที่เปิดวิดเจ็ตคําแนะนํา",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "tr": {
-          "file": "5aab20cddc4b",
+          "file": "97d0f1235b80",
           "counts": {
-            "esri": 4,
+            "esri": 5,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 22,
             "stale": 0,
             "missing": 0
           },
@@ -31333,23 +30399,18 @@
               "t": "Show help guide",
               "src": "machine",
               "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "widget'ı açan soru işaret düğmesine göster",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "zh-cn": {
           "file": "2b8fb9de9e34",
           "counts": {
-            "esri": 3,
+            "esri": 5,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 24,
+            "machine": 22,
             "stale": 0,
             "missing": 0
           },
@@ -31463,28 +30524,18 @@
               "t": "大纲宽度",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "显示帮助指南",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "显示打开部件帮助指南的问题标记按钮",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "uk": {
           "file": "9e4c7e087d2c",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -31593,28 +30644,18 @@
               "t": "Ширина лінії",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Показати посібник",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Показати натис-mark, який відкриває посібник з підтримки віджету",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "vi": {
           "file": "1c669143eb0a",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -31723,28 +30764,18 @@
               "t": "Độ rộng nét",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Hiện hướng dẫn trợ giúp",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Hiển thị nút đánh dấu câu hỏi để mở hướng dẫn trợ giúp ô điều khiển",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "zh-hk": {
           "file": "8452b8718c1e",
           "counts": {
-            "esri": 3,
+            "esri": 5,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 24,
+            "machine": 22,
             "stale": 0,
             "missing": 0
           },
@@ -31858,28 +30889,18 @@
               "t": "直線寬度",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "顯示說明指南",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "顯示開啟元件說明指導的問題標鍵",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
         "zh-tw": {
           "file": "8452b8718c1e",
           "counts": {
-            "esri": 3,
+            "esri": 5,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 24,
+            "machine": 22,
             "stale": 0,
             "missing": 0
           },
@@ -31993,16 +31014,6 @@
               "t": "直線寬度",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "顯示說明指南",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "顯示開啟元件說明指導的問題標鍵",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         }

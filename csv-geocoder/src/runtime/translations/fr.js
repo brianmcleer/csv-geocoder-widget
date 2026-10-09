@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Recherche dans le guide (essayez \"couche\" ou \"non jumelé\")",
         helpNoMatches: "Rien dans le guide ne correspond à ce mot. Essayez un autre, ou ouvrez les sections ci-dessus.",
         helpAnd: "et",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Nouveau ici ?",
         firstRunBody: "Choisissez un tableur d'adresses, vérifiez les colonnes du widget deviné, et appuyez sur Geocode.",
         firstRunHelpLink: "Ouvrez le guide.",
         firstRunDismiss: "Rompez ce tuyau",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Téléchargez le {failureCount} lignes non appariées en CSV",
         _4Export: "4. Exportations",
         addressCheckTableEveryRowWith: "Tableau de vérification de l'adresse : chaque ligne avec son résultat de correspondance, en CSV ou Excel, pour toutes les lignes, seulement les lignes non appariées, ou seulement les lignes correspondantes. Fichier de carte : les points correspondants comme GeoJSON, KML ou un Shapefile zippé.",
-        noMapIsConnectedSoResults: "Aucune carte n'est connectée, donc les résultats sont vérifiés et peuvent être exportés comme une table mais ne sont pas dessinés."
+        noMapIsConnectedSoResults: "Aucune carte n'est connectée, donc les résultats sont vérifiés et peuvent être exportés comme une table mais ne sont pas dessinés.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "GéoJSON",
+        shapefile: "Fichierdeforme",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Rue",
+        line2: "Line 2",
+        city: "Ville",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Pays",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Charger",
+        map: "Carte",
+        export: "Exporter",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

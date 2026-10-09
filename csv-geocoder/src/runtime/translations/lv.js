@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Meklēt ceļvedī (tri \"slānis\" vai \"nesaskaņots\")",
         helpNoMatches: "Nekas ceļvedī neatbilst šim vārdam. Mēģiniet citu, vai atvērt sadaļas iepriekš.",
         helpAnd: "un",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Jauna šeit?",
         firstRunBody: "Izvēlieties adrešu izklājlapu, pārbaudiet logdaļas uzminētās kolonnas un nospiediet Geocode.",
         firstRunHelpLink: "Atveriet ceļvedi.",
         firstRunDismiss: "Noņemt šo galu",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Lejupielādēt {failureCount} Nesaskaņotas rindas kā CSV",
         _4Export: "4. Eksports",
         addressCheckTableEveryRowWith: "Adreses pārbaudes tabula: katra rinda ar tās atbilstības rezultātu, kā CSV vai Excel, visām rindām, tikai nesaskaņotās, vai tikai saskaņotās. Kartes fails: saskaņotie punkti kā GeoJSON, KML vai zipped Shapefile.",
-        noMapIsConnectedSoResults: "Karte nav savienota, tāpēc rezultāti tiek pārbaudīti un tos var eksportēt kā tabulu, bet tie netiek zīmēti."
+        noMapIsConnectedSoResults: "Karte nav savienota, tāpēc rezultāti tiek pārbaudīti un tos var eksportēt kā tabulu, bet tie netiek zīmēti.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "GeoJSON",
+        shapefile: "Formfails",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Iela",
+        line2: "Line 2",
+        city: "Pilsēta",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Valsts",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Augšupielādēt",
+        map: "Karte",
+        export: "Eksportēt",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

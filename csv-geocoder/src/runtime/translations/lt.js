@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Ieškoti vadovo (pabandykite \"sluoksnis\" arba \"nesuderintas\")",
         helpNoMatches: "Vadove nėra nieko, kas atitiktų šį žodį. Pabandykite kitą, arba atidaryti skyrių aukščiau.",
         helpAnd: "ir",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Čia nauja?",
         firstRunBody: "Pasirinkite skaičiuoklę adresus, patikrinti stulpelius valdikliui atspėti, ir paspauskite Geokodas.",
         firstRunHelpLink: "Atidaryk gidą.",
         firstRunDismiss: "Nutraukti šį patarimą",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Parsisiųsti {failureCount} nesuderintos eilutės kaip CSV",
         _4Export: "4. Eksportas",
         addressCheckTableEveryRowWith: "Adreso tikrinimo lentelė: kiekviena eilutė su jos rungtynių rezultatu, kaip CSV arba Excel, visoms eilutėms, tik nesuderintos, arba tik suderintos. Žemėlapio failas: suderinti taškai kaip GeoJSON, KML arba užtraukta Shapefile.",
-        noMapIsConnectedSoResults: "Žemėlapis nėra prijungtas, todėl rezultatai yra tikrinami ir gali būti eksportuojami kaip lentelė, bet nėra traukiami."
+        noMapIsConnectedSoResults: "Žemėlapis nėra prijungtas, todėl rezultatai yra tikrinami ir gali būti eksportuojami kaip lentelė, bet nėra traukiami.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "GeoJSON",
+        shapefile: "Name",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Gatvė",
+        line2: "Line 2",
+        city: "Miestas",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Šalis",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Įkelti",
+        map: "Žemėlapis",
+        export: "Eksportuoti",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

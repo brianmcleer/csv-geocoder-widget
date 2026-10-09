@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Пошук посібника (три \"шаровий\" або \"розумний\"",
         helpNoMatches: "Ніщо в інструкції відповідає словом. Спробуйте ще одну або відкрийте розділи вище.",
         helpAnd: "та",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Головна",
         firstRunBody: "Підберіть таблицю адрес, перевірте стовпчики віджет вгадали, і натисніть Geocode.",
         firstRunHelpLink: "Відкрийте посібник.",
         firstRunDismiss: "Відшкодувати цей кінчик",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Завантажити {failureCount} незрівняні ряди як CSV",
         _4Export: "4. Експорт",
         addressCheckTableEveryRowWith: "Таблиця перевірки адреси: кожен рядок з його результатом, як CSV або Excel, для всіх рядків, тільки незрівняні, або тільки відповідні. Файл карти: відповідні точки як GeoJSON, KML або zipped Shapefile.",
-        noMapIsConnectedSoResults: "Немає підключеної карти, тому результати перевіряють і можуть бути експортовані як таблицю, але не намальовані."
+        noMapIsConnectedSoResults: "Немає підключеної карти, тому результати перевіряють і можуть бути експортовані як таблицю, але не намальовані.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "ГеоДжсон",
+        shapefile: "Штепсель",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Вулиця",
+        line2: "Line 2",
+        city: "Місто",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Країна",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Передати",
+        map: "Карта",
+        export: "Експорт",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

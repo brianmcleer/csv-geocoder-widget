@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Sök guiden (försök \"lager\" eller \"oöverträffad\")",
         helpNoMatches: "Ingenting i guiden matchar det ordet. Prova en annan, eller öppna avsnitten ovan.",
         helpAnd: "och",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Ny här?",
         firstRunBody: "Välj ett kalkylblad av adresser, kontrollera kolumnerna widget gissade och tryck på Geocode.",
         firstRunHelpLink: "Öppna guiden.",
         firstRunDismiss: "Avfärda detta tips",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Ladda ner {failureCount} oöverträffade rader som CSV",
         _4Export: "4. export",
         addressCheckTableEveryRowWith: "Adresskontrolltabell: varje rad med sitt matchresultat, som CSV eller Excel, för alla rader, endast de oöverträffade, eller bara de matchade. Kartfil: matchade poäng som GeoJSON, KML eller en zipped Shapefile.",
-        noMapIsConnectedSoResults: "Ingen karta är ansluten, så resultaten kontrolleras och kan exporteras som en tabell men inte dras."
+        noMapIsConnectedSoResults: "Ingen karta är ansluten, så resultaten kontrolleras och kan exporteras som en tabell men inte dras.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "GeoJson",
+        shapefile: "Shapefile",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Gata",
+        line2: "Line 2",
+        city: "Stad",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Land",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Överför",
+        map: "Karta",
+        export: "Exportera",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

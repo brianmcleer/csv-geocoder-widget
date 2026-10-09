@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Durchsuchen Sie den Leitfaden (versuchen Sie \"layer\" oder \"unmatched\")",
         helpNoMatches: "Nichts im Guide passt zu diesem Wort. Versuchen Sie es mit einem anderen oder öffnen Sie die obigen Abschnitte.",
         helpAnd: "und",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Neu hier?",
         firstRunBody: "Wählen Sie eine Tabelle mit Adressen, überprüfen Sie die Spalten, die das Widget erraten hat, und drücken Sie Geocode.",
         firstRunHelpLink: "Öffne den Guide.",
         firstRunDismiss: "Verwerfen Sie diesen Tipp",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "Download der {failureCount} Nicht ausgeglichene Zeilen als CSV",
         _4Export: "4. Ausfuhr",
         addressCheckTableEveryRowWith: "Adressprüftabelle: jede Zeile mit ihrem Übereinstimmungsergebnis, als CSV oder Excel, für alle Zeilen, nur die nicht übereinstimmenden oder nur die übereinstimmenden. Kartendatei: die übereinstimmenden Punkte als GeoJSON, KML oder ein gezipptes Shapefile.",
-        noMapIsConnectedSoResults: "Keine Karte ist verbunden, so dass die Ergebnisse überprüft werden und als Tabelle exportiert werden können, aber nicht gezeichnet werden."
+        noMapIsConnectedSoResults: "Keine Karte ist verbunden, so dass die Ergebnisse überprüft werden und als Tabelle exportiert werden können, aber nicht gezeichnet werden.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "GeoJSON",
+        shapefile: "Shapefil",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Straße",
+        line2: "Line 2",
+        city: "Stadt",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Land",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Hochladen",
+        map: "Karte",
+        export: "Exportieren",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

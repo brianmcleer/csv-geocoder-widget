@@ -19,7 +19,7 @@ System.register([], function (e) {
         helpSearchPlaceholder: "Rehberi arayın (basın \"çalı\" veya \"uyumsuz\")",
         helpNoMatches: "Rehberde hiçbir şey bu kelimeyi maçları. Başka bir deneyin veya yukarıdaki bölümleri açın.",
         helpAnd: "ve",
-        firstRunTitle: "New here?",
+        firstRunTitle: "Yeni burada?",
         firstRunBody: "Bir adres tablosu seçin, sütunları pencereleri tahmin edin ve Geocode basın.",
         firstRunHelpLink: "Rehberi açın.",
         firstRunDismiss: "Bu ipucunu al",
@@ -161,7 +161,28 @@ System.register([], function (e) {
         downloadTheFailureCountUnmatchedRowsAs: "İndirin {failureCount} Unmatched rows as CSV",
         _4Export: "4. İhracat 4.",
         addressCheckTableEveryRowWith: "Adres kontrol masası: Maç sonucu ile her sıra, tüm satırlar için, sadece rakipsiz olanları veya sadece eşleştirilmiş olanları. Map file: GeoJSON, KML veya zipped bir formfile olarak maçlanmış puanlar.",
-        noMapIsConnectedSoResults: "Hiçbir harita bağlantılı değildir, bu yüzden sonuçlar kontrol edilir ve bir masa olarak ihraç edilebilir ancak çizilmemektedir."
+        noMapIsConnectedSoResults: "Hiçbir harita bağlantılı değildir, bu yüzden sonuçlar kontrol edilir ve bir masa olarak ihraç edilebilir ancak çizilmemektedir.",
+        uiWorkflowProgress: "Workflow progress",
+        uiOf: "of",
+        excel: "Excel",
+        geoJSON: "GeoJSON",
+        shapefile: "Şekil",
+        allRows: "All rows",
+        couldNotExportValueValue2: "Could not export {value}: {value2}",
+        street: "Sokak",
+        line2: "Line 2",
+        city: "Şehir",
+        stateRegion: "State / Region",
+        postalCode: "Postal code",
+        country: "Ülke",
+        showHelp: "Show help",
+        matchedTied: "Matched (tied)",
+        noMatch: "No match",
+        upload: "Yükle",
+        map: "Harita",
+        export: "Dışa Aktar",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error"
       })
     }
   }

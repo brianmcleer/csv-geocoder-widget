@@ -27,7 +27,7 @@ System.register([], function (e) {
         sizePx: "Grootte (px)",
         outlineColour: "Omtrekkleur",
         outlineWidth: "Omtrekbreedte",
-        help: "Help",
+        help: "Hulp",
         showHelpGuide: "Hulplijn tonen",
         showTheQuestionMarkButtonThat: "De knop met het vraagteken tonen die de hulplijn widget opent"
       })
