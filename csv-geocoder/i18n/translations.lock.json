@@ -3,8 +3,8 @@
   "generator": "exb-i18n-kit",
   "parts": {
     "runtime": {
-      "en": "e0b5935d837c",
-      "keys": 180,
+      "en": "ac8b1de1a307",
+      "keys": 193,
       "hashes": {
         "_widgetLabel": "b358ed6f0f9d",
         "chooseFile": "74b1d89d8525",
@@ -185,20 +185,33 @@
         "map": "ab478f3efc84",
         "export": "f3e4fadb9e37",
         "unknownError": "af6321ca7a8b",
-        "unserializableError": "76e73551597a"
+        "unserializableError": "76e73551597a",
+        "onlyTheRowsThatDidNot": "d2c6607c59c8",
+        "onlyTheRowsThatMatchedWith": "47a5a62b1171",
+        "everyRowFromYourFileWith": "0c3f4709d26c",
+        "replaceFileCurrentFileNamePressEnter": "7ae054e68a80",
+        "dropAFileHereOrPress": "d3119549a543",
+        "sourceRowUnavailable": "846e2bd62f83",
+        "blankAddress": "1ec754ff6075",
+        "readingFile": "ce210cead331",
+        "fileLoadedToLocaleStringRowsReadyTo": "8044e7e297d0",
+        "geocodingToLocaleStringOfToLocaleString2": "865842b6ba9f",
+        "baseAddedToTheMapAs": "82e4b3ba03a4",
+        "geocodingCompleteToLocaleStringOfToLocaleString2Matched": "37ad723d24d9",
+        "anErrorOccurred": "bccc6f1f5cca"
       },
       "locales": {
         "ar": {
-          "file": "824eed947e94",
+          "file": "dce6cad3be84",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 144,
+            "machine": 155,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -911,6 +924,21 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "التقدم المحرز في سير العمل",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "of of",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
@@ -920,20 +948,60 @@
               "t": "Shapefile",
               "src": "machine",
               "h": "1e21d10d2150"
+            },
+            "allRows": {
+              "t": "جميع الصفوف",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "لا يمكن التصدير {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "البند 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "الدولة/الإقليم",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "رمز البريد",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "النجدة",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "متطابقة (مقيدة)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "لا تطابق",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "bg": {
-          "file": "680e7add0fd4",
+          "file": "72fb7b855b8c",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -1646,38 +1714,93 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Напредък на работния поток",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "на",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Всички редове",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Грешка при експортиране {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Линия 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Държава / регион",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Пощенски код",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Показване на помощ",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Съвпадащи (обвързани)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Няма съвпадение.",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "bs": {
-          "file": "60cbcdcfddbb",
+          "file": "33efd8135a23",
           "counts": {
-            "esri": 16,
+            "esri": 17,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
             "machine": 0,
             "stale": 0,
-            "missing": 163
+            "missing": 175
           },
           "entries": {}
         },
         "ca": {
-          "file": "2dc0cfc0d9d5",
+          "file": "50f2c17de37c",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -2390,24 +2513,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Progrés del flux de feina",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "de",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Totes les files",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "No s' ha pogut exportar {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Línia 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Estat / Regió",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Codi postal",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Mostra l' ajuda",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Coincidència (cat)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Sense coincidències",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "cs": {
-          "file": "bb570225aa9e",
+          "file": "6547fb30421c",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -3120,24 +3298,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Pokrok při práci",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "z",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Všechny řádky",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Nelze exportovat {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Řádek 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Stát / region",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "PSČ",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Zobrazit nápovědu",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Shoda (svázaná)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Žádná shoda.",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "da": {
-          "file": "4148e4bb52e0",
+          "file": "a6fa903e2cdd",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 144,
+            "machine": 155,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -3850,6 +4083,21 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Fremskridt i arbejdsgangen",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "af",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
@@ -3859,20 +4107,60 @@
               "t": "Shapefile",
               "src": "machine",
               "h": "1e21d10d2150"
+            },
+            "allRows": {
+              "t": "Alle rækker",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Kunne ikke eksportere {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linje 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Staten / regionen",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Postnr.",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Vis hjælp",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Matchet (bundet)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Ingen match",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "de": {
-          "file": "71855728beba",
+          "file": "3b1de75409c1",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -4585,24 +4873,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Fortschritte beim Workflow",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "von",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Alle Zeilen",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Konnte nicht exportieren {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linie 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Staat/Region",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Postleitzahl",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Show Hilfe",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Matched (gebunden)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Kein Match",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "el": {
-          "file": "cf7cee52493c",
+          "file": "8312f4011bab",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -5315,24 +5658,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Πρόοδος ροής εργασίας",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "του",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "ΓεωJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Όλες οι σειρές",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Αδυναμία εξαγωγής {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Γραμμή 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Κράτος/Περιφέρεια",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Ταχυδρομικός κώδικας",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Εμφάνιση βοήθειας",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Ασορτί (δεμένο)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Κανένα ταίριασμα",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "es": {
-          "file": "06f2c810d2f1",
+          "file": "741376916ae3",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 144,
+            "machine": 155,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -6045,6 +6443,21 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Progresos en la corriente de trabajo",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "de",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
@@ -6054,20 +6467,60 @@
               "t": "Shapefile",
               "src": "machine",
               "h": "1e21d10d2150"
+            },
+            "allRows": {
+              "t": "Todas las filas",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "No se puede exportar {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Línea 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Estado/región",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Código postal",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Mostrar ayuda",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Coincidido (tigado)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "No hay coincidencia",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "et": {
-          "file": "7f180fbdc150",
+          "file": "444d6354535d",
           "counts": {
-            "esri": 21,
+            "esri": 24,
             "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -6780,24 +7233,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Töövoo edenemine",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "ühest",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJson",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Kõik read",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Ekspordimine nurjus {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Rida 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Riik / piirkond",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Postiindeks",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Näita abi",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Sobivad (seotud)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Tikku pole",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "fi": {
-          "file": "b0b1c864abdc",
+          "file": "6d34287af3c2",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -7510,24 +8018,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Työnkulun kehitys",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "/",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Kaikki rivit",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Ei voitu viedä {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linja 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Valtio/alue",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Postinro",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Näytä ohje",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Sovitettu (sidottu)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Ei täsmää",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "fr": {
-          "file": "35cdeab2b588",
+          "file": "bb0a6db1671a",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -8240,24 +8803,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Évolution des flux de travail",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "des",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GéoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Toutes les lignes",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Impossible d'exporter {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Ligne 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "État/Région",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Code postal",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Afficher l'aide",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Correspondance (liée)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Pas de correspondance",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "he": {
-          "file": "b6caa8d811fb",
+          "file": "02639dd89a4c",
           "counts": {
-            "esri": 20,
+            "esri": 23,
             "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 144,
+            "machine": 155,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -8970,6 +9588,21 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "התקדמות זרימת העבודה",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "של",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "ג'קסון",
               "src": "machine",
@@ -8979,34 +9612,74 @@
               "t": "Shapefile",
               "src": "machine",
               "h": "1e21d10d2150"
+            },
+            "allRows": {
+              "t": "כל השורות",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "לא יכול לייצא {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "קו 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "מדינה / אזור",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "קוד דואר",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "הצג עזרה",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "עקבו אחרי (tied)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "לא משחק",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "hr": {
-          "file": "60cbcdcfddbb",
+          "file": "33efd8135a23",
           "counts": {
-            "esri": 16,
+            "esri": 17,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
             "machine": 0,
             "stale": 0,
-            "missing": 163
+            "missing": 175
           },
           "entries": {}
         },
         "hu": {
-          "file": "1a4125347245",
+          "file": "ff214e87f630",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -9719,24 +10392,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "A munkafolyamat előrehaladása",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "II.",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Összes sor",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Nem sikerült exportálni {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "vonal",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Állam / Régió",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Irányítószám",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Segítség megjelenítése",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Összeillő (kötött)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Nincs egyezés",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "id": {
-          "file": "d69606a9fd41",
+          "file": "5e0da5a982b8",
           "counts": {
-            "esri": 21,
+            "esri": 24,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 145,
+            "machine": 156,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -10454,6 +11182,21 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Kemajuan aliran kerja",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "dari",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
@@ -10463,20 +11206,60 @@
               "t": "Shapefile",
               "src": "machine",
               "h": "1e21d10d2150"
+            },
+            "allRows": {
+              "t": "Semua baris",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Tak bisa mengekspor {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Baris 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Negara / Daerah",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Kode pos",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Tampilkan bantuan",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Cocok (terikat)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Tidak cocok",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "it": {
-          "file": "e3abe398349a",
+          "file": "4bf76fa3ec40",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -11189,24 +11972,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Progressi del flusso di lavoro",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "di",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Tutte le righe",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Non poteva esportare {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linea 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Stato / Regione",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Codice postale",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Mostra aiuto",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Abbinato (legato)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Nessuna corrispondenza",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "ja": {
-          "file": "863ede914c8b",
+          "file": "96ab8a0ba67a",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -11919,24 +12757,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "ワークフローの進捗",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "インフォメーション",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "メニュー",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "ジオジェソン",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "すべての行",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "輸出できません {value}: : : {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "ライン2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "州/地域",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "郵便番号",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "ヘルプを表示",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "一致(結ばれた)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "マッチなし",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "ko": {
-          "file": "f667c21c43fe",
+          "file": "45e745711bdc",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -12649,24 +13542,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Workflow 진행",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "이름 *",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "엑셀 엑셀",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "사이트맵",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "모든 행",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "수출할 수 없습니다 {value}:: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "라인 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "국가 / 지역",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Postal 코드",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "공지사항",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "일치 (tied)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "아니 일치",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "lt": {
-          "file": "6081708720a1",
+          "file": "784ddb0670a1",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -13379,24 +14327,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Darbo srauto pažanga",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "iš",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Visos eilutės",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Nepavyko eksportuoti {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "2 linija",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Valstybė / regionas",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Pašto kodas",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Rodyti pagalbą",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Suderinti (susieti)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Neatitinka",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "lv": {
-          "file": "ced50100ea1e",
+          "file": "09c1d3e78a65",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -14109,24 +15112,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Darbplūsmas progress",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "skaits *",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Visas rindas",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Nevar eksportēt {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "līnija",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Valsts / reģions",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Pasta indekss",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Parādīt palīdzību",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Saskaņots (piesaistīts)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Nav atbilstības",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "no": {
-          "file": "ec928c864507",
+          "file": "72ff5761131d",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -14839,24 +15897,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Arbeidsflyt fremgang",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "av",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Alle rader",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Kunne ikke eksportere {value}:) {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linje 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Stat / Region",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Postnummer",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Vis hjelp",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Matchet (tried)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Ingen treff",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "nl": {
-          "file": "f19661deb251",
+          "file": "6c722796b378",
           "counts": {
-            "esri": 21,
+            "esri": 24,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 144,
+            "machine": 155,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -15569,29 +16682,84 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Werkstroomvoortgang",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "van",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
             },
+            "allRows": {
+              "t": "Alle rijen",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Kon niet exporteren {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
             "street": {
               "t": "Straat",
               "src": "machine",
               "h": "b45410999343"
+            },
+            "line2": {
+              "t": "Lijn 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Staat/regio",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Postcode",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Hulp tonen",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Matched (gebonden)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Geen overeenkomst",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "pl": {
-          "file": "e98ceae94fc9",
+          "file": "2d0c9949ef99",
           "counts": {
-            "esri": 21,
+            "esri": 24,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 144,
+            "machine": 155,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -16304,6 +17472,21 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Postępy w przepływie pracy",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "z",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
@@ -16313,20 +17496,60 @@
               "t": "Shapefile",
               "src": "machine",
               "h": "1e21d10d2150"
+            },
+            "allRows": {
+              "t": "Wszystkie wiersze",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Nie można eksportować {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linia 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Państwo / region",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Kod pocztowy",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Pokaż pomoc",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Dopasowane (związane)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Brak dopasowania",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "pt-br": {
-          "file": "88fd1f06b5a9",
+          "file": "1a9fcf348d3c",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -17039,24 +18262,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Progresso do fluxo de trabalho",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "de",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Todas as fileiras",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Não foi possível exportar {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linha 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Estado / Região",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Código postal.",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Mostre ajuda.",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Combinado.",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Sem correspondência.",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "pt-pt": {
-          "file": "89b8f4561f56",
+          "file": "42779aacf1c4",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -17769,24 +19047,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Evolução do fluxo de trabalho",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "de",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Todas as linhas",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Não foi possível exportar {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linha 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Estado / Região",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Código postal",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Mostrar ajuda",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Correspondente (ligado)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Sem correspondência",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "ro": {
-          "file": "960151c0bee3",
+          "file": "48e4c87ca77a",
           "counts": {
-            "esri": 21,
+            "esri": 24,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 144,
+            "machine": 155,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -18499,10 +19832,65 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Progresul fluxului de lucru",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "din",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excelează",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Toate rândurile",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Nu a putut exporta {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linia 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Stat / Regiune",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Codul poștal",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Arată ajutor",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Potrivit (legat)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Nicio potrivire.",
+              "src": "machine",
+              "h": "3518dffe0672"
             },
             "export": {
               "t": "Exportă",
@@ -18512,16 +19900,16 @@
           }
         },
         "ru": {
-          "file": "894bcb62651c",
+          "file": "2795d9973ffa",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -19234,24 +20622,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Ход работы",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "из",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Отлично.",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "ГеоДжон",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Все ряды",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Нельзя экспортировать {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Линия 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Государство / регион",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Почтовый код",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Показать помощь",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Привязан (привязан)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Нет совпадений",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "sk": {
-          "file": "5287a850906a",
+          "file": "d6078d5be606",
           "counts": {
-            "esri": 21,
+            "esri": 24,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 144,
+            "machine": 155,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -19964,10 +21407,65 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Postup pracovného postupu",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "z",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Všetky riadky",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Nie je možné exportovať {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Riadok 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Štát / región",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "PSČ",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Zobraziť pomocníka",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Zhodný (zviazaný)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Žiadna zhoda",
+              "src": "machine",
+              "h": "3518dffe0672"
             },
             "export": {
               "t": "Vývoz",
@@ -19977,16 +21475,16 @@
           }
         },
         "sl": {
-          "file": "99633d4d4dee",
+          "file": "728661f0fb9c",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -20699,38 +22197,93 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Napredek v teku dela",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "o",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Vse vrstice",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Ni moč izvoziti {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Črta 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Država/regija",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Poštna številka",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Prikaži pomoč",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Ujemanje (vezano)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Ni ujemanja.",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "sr": {
-          "file": "b7c1e5351927",
+          "file": "45db792a5127",
           "counts": {
-            "esri": 16,
+            "esri": 17,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
             "machine": 0,
             "stale": 0,
-            "missing": 163
+            "missing": 175
           },
           "entries": {}
         },
         "sv": {
-          "file": "9ef7cdf3af33",
+          "file": "c31f94fd4c87",
           "counts": {
-            "esri": 21,
+            "esri": 24,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 144,
+            "machine": 155,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -21443,6 +22996,21 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Workflow framsteg",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "av",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel Excel Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJson",
               "src": "machine",
@@ -21452,20 +23020,60 @@
               "t": "Shapefile",
               "src": "machine",
               "h": "1e21d10d2150"
+            },
+            "allRows": {
+              "t": "Alla rader",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Kunde inte exportera {value}Från: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linje 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Stat / Region",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Postkod",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Visa hjälp",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Matchad (död)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Ingen match",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "th": {
-          "file": "66960c8a39b8",
+          "file": "0f2d1d9f9ce8",
           "counts": {
-            "esri": 20,
+            "esri": 23,
             "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 144,
+            "machine": 155,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -22183,24 +23791,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "ความคืบหน้าของการทํางาน",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "ของ",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "เอกเซล",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "จี เจ สัน",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "ทุกแถว",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "ไม่สามารถส่งออกได้ {value}. {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "ไลน์ 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "รัฐ / เขตการปกครอง",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "รหัสไปรษณีย์",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "แสดงวิธีใช้",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "เข้าคู่ (เข้าคู่)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "ไม่เข้าคู่",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "tr": {
-          "file": "8b7d92537062",
+          "file": "0cb03b93a5be",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -22913,24 +24576,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Workflow ilerlemesi",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of Of",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Tüm satırlar",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "ihracat yapamaz {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Line 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Devlet / Bölge",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Postal code",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Show help Show help Show",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Eşleştirilmiş (tamam)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Hiç maç yok",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "zh-cn": {
-          "file": "ce7f08bf775a",
+          "file": "92aacaf9f1ec",
           "counts": {
-            "esri": 22,
+            "esri": 25,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -23643,24 +25361,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "工作流程进展",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "页:1",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "外壳",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "地理通讯",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "所有行",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "无法导出 {value}编号 : {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "2号线",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "州/地区",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "邮政编码",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "显示帮助",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "匹配( 绑定)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "无匹配",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "uk": {
-          "file": "dbef51b3725b",
+          "file": "06e5848f7474",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -24373,24 +26146,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Ведуться роботи",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "з",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Головна",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "ГеоДжсон",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Всі рядки",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Чи не експортувати {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Лінія 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Стан / Регіон",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Поштовий індекс",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Допомога",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Зібрано (зв'язаний)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Немає матчу",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "vi": {
-          "file": "4393898cb2fe",
+          "file": "7f48bab1c83f",
           "counts": {
-            "esri": 23,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -25103,24 +26931,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "Tiến trình luồng làm việc",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "Kho",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Nhảy lên",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "GeoJSON",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "Mọi hàng",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Không thể xuất {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Dòng 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Trạng thái / Miền",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Mã bưu điện",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Hiện trợ giúp",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Khớp (đã kết hợp)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Không khớp",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "zh-hk": {
-          "file": "f6d57b93c78d",
+          "file": "874db510f2fe",
           "counts": {
-            "esri": 21,
+            "esri": 24,
             "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -25833,24 +27716,79 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "工作流程",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "四,",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "埃塞爾",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "地理",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "所有行",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "無法匯出 {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "第 2 行",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "州/ 區",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "郵政代碼",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "顯示說明",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "匹配( tied)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "不匹配",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         },
         "zh-tw": {
-          "file": "f6d57b93c78d",
+          "file": "874db510f2fe",
           "counts": {
-            "esri": 21,
+            "esri": 24,
             "esri-check": 3,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 143,
+            "machine": 154,
             "stale": 0,
-            "missing": 13
+            "missing": 12
           },
           "entries": {
             "_widgetLabel": {
@@ -26563,10 +28501,65 @@
               "src": "machine",
               "h": "670de8d9468a"
             },
+            "uiWorkflowProgress": {
+              "t": "工作流程",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "四,",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "埃塞爾",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
             "geoJSON": {
               "t": "地理",
               "src": "machine",
               "h": "97eeda258d4d"
+            },
+            "allRows": {
+              "t": "所有行",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "無法匯出 {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "第 2 行",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "州/ 區",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "郵政代碼",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "顯示說明",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "匹配( tied)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "不匹配",
+              "src": "machine",
+              "h": "3518dffe0672"
             }
           }
         }

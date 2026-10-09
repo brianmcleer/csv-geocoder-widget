@@ -1,6 +1,7 @@
 import { React, jsx, css } from 'jimu-core'
 import { hooks as __exbI18nHooks } from 'jimu-core';
 import __exbI18nMessages from '../translations/default';
+import { __setIntl, __t } from '../i18n-t'
 
 
 const ACCEPT = '.csv,.tsv,.txt,.xlsx,.xls,.xlsm,.ods'
@@ -27,6 +28,7 @@ interface Props {
  *    - prefers-reduced-motion disables the lift animation.
  */
 const FileUpload = (props: Props): React.ReactElement => {
+  __setIntl((props as any).intl)
   const t = __exbI18nHooks.useTranslation(__exbI18nMessages);
     const { onFile, disabled, fileName } = props
     const [hover, setHover] = React.useState(false)
@@ -143,8 +145,8 @@ const FileUpload = (props: Props): React.ReactElement => {
   `
 
     const label = fileName
-        ? `Replace file. Current: ${fileName}. Press Enter or Space to choose a different file.`
-        : 'Drop a file here, or press Enter or Space to open the file picker.'
+        ? __t("replaceFileCurrentFileNamePressEnter", { fileName: fileName })
+        : __t("dropAFileHereOrPress")
 
     return (
         <div css={styles}>

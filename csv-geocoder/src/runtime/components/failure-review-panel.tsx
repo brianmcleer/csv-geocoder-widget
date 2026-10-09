@@ -8,6 +8,7 @@ import {
 } from '../utils/exporters'
 import { hooks as __exbI18nHooks } from 'jimu-core';
 import __exbI18nMessages from '../translations/default';
+import { __locale, __setIntl, __t } from '../i18n-t'
 
 
 interface Props {
@@ -33,11 +34,12 @@ function formatSubmittedAddress(
     row: SourceRow | undefined,
     mapping: FieldMapping
 ): string {
-    if (!row) return '(source row unavailable)'
-    return submittedAddress(row, mapping) || '(blank address)'
+    if (!row) return __t("sourceRowUnavailable")
+    return submittedAddress(row, mapping) || __t("blankAddress")
 }
 
 const FailureReviewPanel = (props: Props): React.ReactElement => {
+  __setIntl((props as any).intl)
   const t = __exbI18nHooks.useTranslation(__exbI18nMessages);
     const { panelId, table, mapping, results, minScore, onClose, onExported } = props
     const [query, setQuery] = React.useState('')
@@ -498,7 +500,7 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                         tabIndex={-1}
                     >{t('reviewUnmatched')}</h2>
                     <p className='panel-subtitle'>
-                        {(failures.length === 1 ? t('failuresCountRecordDidNotProduceAn', { failuresCount: failures.length.toLocaleString() }) : t('failuresCountRecordsDidNotProduceAn', { failuresCount: failures.length.toLocaleString() }))}
+                        {(failures.length === 1 ? t('failuresCountRecordDidNotProduceAn', { failuresCount: failures.length.toLocaleString(__locale()) }) : t('failuresCountRecordsDidNotProduceAn', { failuresCount: failures.length.toLocaleString(__locale()) }))}
                     </p>
                 </div>
             </header>
@@ -542,16 +544,16 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                         value={statusFilter}
                         onChange={event => { setStatusFilter(event.currentTarget.value as StatusFilter) }}
                     >
-                        <option value='any'>{t('anyReasonFailuresCount', { failuresCount: failures.length.toLocaleString() })}</option>
+                        <option value='any'>{t('anyReasonFailuresCount', { failuresCount: failures.length.toLocaleString(__locale()) })}</option>
                         {presentStatuses.map(s => (
-                            <option key={s} value={s}>{STATUS_LABEL[s]} ({(statusCounts[s] ?? 0).toLocaleString()})</option>
+                            <option key={s} value={s}>{STATUS_LABEL[s]} ({(statusCounts[s] ?? 0).toLocaleString(__locale())})</option>
                         ))}
                     </select>
                 </div>
             )}
 
             <p className='filter-summary' role='status' aria-live='polite'>
-                {(failures.length === 1 ? t('showingFilteredFailuresCountOfFailuresCountUnmatchedRecord', { filteredFailuresCount: filteredFailures.length.toLocaleString(), failuresCount: failures.length.toLocaleString() }) : t('showingFilteredFailuresCountOfFailuresCountUnmatchedRecords', { filteredFailuresCount: filteredFailures.length.toLocaleString(), failuresCount: failures.length.toLocaleString() }))}
+                {(failures.length === 1 ? t('showingFilteredFailuresCountOfFailuresCountUnmatchedRecord', { filteredFailuresCount: filteredFailures.length.toLocaleString(__locale()), failuresCount: failures.length.toLocaleString(__locale()) }) : t('showingFilteredFailuresCountOfFailuresCountUnmatchedRecords', { filteredFailuresCount: filteredFailures.length.toLocaleString(__locale()), failuresCount: failures.length.toLocaleString(__locale()) }))}
             </p>
 
             {filteredFailures.length > 0
@@ -566,7 +568,7 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                                 <li className='failure-card' key={result.objectId}>
                                     <div className='failure-meta'>
                                         <span className='row-number'>
-                                            {t('recordObjectIdSourceRowObjectId2', { objectId: (result.objectId + 1).toLocaleString(), objectId2: (result.objectId + 2).toLocaleString() })}
+                                            {t('recordObjectIdSourceRowObjectId2', { objectId: (result.objectId + 1).toLocaleString(__locale()), objectId2: (result.objectId + 2).toLocaleString(__locale()) })}
                                         </span>
                                         <span className='chips'>
                                             <span className='status-chip'>{STATUS_LABEL[result.status]}</span>
@@ -633,12 +635,12 @@ const FailureReviewPanel = (props: Props): React.ReactElement => {
                     className='footer-button primary'
                     onClick={onDownload}
                     disabled={filteredFailures.length === 0}
-                    aria-label={t('downloadTheFilteredFailuresCountRecordsShownAs', { filteredFailuresCount: filteredFailures.length.toLocaleString() })}
+                    aria-label={t('downloadTheFilteredFailuresCountRecordsShownAs', { filteredFailuresCount: filteredFailures.length.toLocaleString(__locale()) })}
                 >
                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
                         <path d='M12 3v12m0 0l-5-5m5 5l5-5M4 21h16' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
                     </svg>
-                    {t('downloadFilteredFailuresCountAsCsv', { filteredFailuresCount: filteredFailures.length.toLocaleString() })}
+                    {t('downloadFilteredFailuresCountAsCsv', { filteredFailuresCount: filteredFailures.length.toLocaleString(__locale()) })}
                 </button>
             </footer>
         </section>

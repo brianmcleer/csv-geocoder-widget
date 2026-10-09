@@ -182,7 +182,20 @@ System.register([], function (e) {
         map: "Karta",
         export: "Izvezi",
         unknownError: "unknown error",
-        unserializableError: "unserializable error"
+        unserializableError: "unserializable error",
+        onlyTheRowsThatDidNot: "Only the rows that did not match, with the reason for each. Hand this list to whoever is checking the addresses.",
+        onlyTheRowsThatMatchedWith: "Only the rows that matched, with the address the locator matched them to.",
+        everyRowFromYourFileWith: "Every row from your file with its match result added. Excel also gets Unmatched and Matched sheets.",
+        replaceFileCurrentFileNamePressEnter: "Replace file. Current: {fileName}. Press Enter or Space to choose a different file.",
+        dropAFileHereOrPress: "Drop a file here, or press Enter or Space to open the file picker.",
+        sourceRowUnavailable: "(source row unavailable)",
+        blankAddress: "(blank address)",
+        readingFile: "Reading file.",
+        fileLoadedToLocaleStringRowsReadyTo: "File loaded. {toLocaleString} rows ready to map.",
+        geocodingToLocaleStringOfToLocaleString2: "Geocoding {toLocaleString} of {toLocaleString2}.",
+        baseAddedToTheMapAs: "{base} Added to the map as {title}.",
+        geocodingCompleteToLocaleStringOfToLocaleString2Matched: "Geocoding complete. {toLocaleString} of {toLocaleString2} matched.",
+        anErrorOccurred: "Došlo je do pogreške."
       })
     }
   }

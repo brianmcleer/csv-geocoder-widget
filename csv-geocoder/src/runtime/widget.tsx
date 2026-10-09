@@ -27,7 +27,7 @@ import defaultMessages from './translations/default'
 import { beacon } from '../shared/beacon'
 import type { BeaconHandle } from '../shared/beacon'
 import __i18nDefaults from './translations/default'
-import { __setIntl } from './i18n-t'
+import { __locale, __setIntl } from './i18n-t'
 let __i18nIntl: any = null
 /** Module translator: app language via the widget intl, English from default.ts, {name} values filled. */
 const __t = (id: string, values?: { [key: string]: any }): string => {
@@ -768,21 +768,21 @@ const Widget = (props: WidgetProps): React.ReactElement => {
     // "Geocoding…", "Geocoding complete, 32 of 40 matched." etc.
     const phaseAnnouncement = React.useMemo((): string => {
         switch (state.phase) {
-            case 'parsing': return 'Reading file.'
+            case 'parsing': return __t("readingFile")
             case 'mapping':
                 return state.table
-                    ? `File loaded. ${state.table.rows.length.toLocaleString()} rows ready to map.`
+                    ? __t("fileLoadedToLocaleStringRowsReadyTo", { toLocaleString: state.table.rows.length.toLocaleString(__locale()) })
                     : ''
             case 'geocoding':
-                return `Geocoding ${state.progress.completed.toLocaleString()} of ${state.progress.total.toLocaleString()}.`
+                return __t("geocodingToLocaleStringOfToLocaleString2", { toLocaleString: state.progress.completed.toLocaleString(__locale()), toLocaleString2: state.progress.total.toLocaleString(__locale()) })
             case 'done': {
                 if (!state.results) return ''
-                const base = `Geocoding complete. ${successCount.toLocaleString()} of ${state.results.length.toLocaleString()} matched.`
+                const base = __t("geocodingCompleteToLocaleStringOfToLocaleString2Matched", { toLocaleString: successCount.toLocaleString(__locale()), toLocaleString2: state.results.length.toLocaleString(__locale()) })
                 return state.layerInfo
-                    ? `${base} Added to the map as ${state.layerInfo.title}.`
+                    ? __t("baseAddedToTheMapAs", { base: base, title: state.layerInfo.title })
                     : base
             }
-            case 'error': return state.error ?? 'An error occurred.'
+            case 'error': return state.error ?? __t("anErrorOccurred")
             default: return ''
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -875,7 +875,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                             <Tooltip text={t('pickWhichColumnSHoldThe')} />
                         </div>
                         <div className='meta'>
-                            {t('rowsCountRowsFieldsCountColumns', { rowsCount: state.table.rows.length.toLocaleString(), fieldsCount: String(state.table.fields.length) })}
+                            {t('rowsCountRowsFieldsCountColumns', { rowsCount: state.table.rows.length.toLocaleString(__locale()), fieldsCount: String(state.table.fields.length) })}
                         </div>
                         <FieldMapper
                             fields={state.table.fields}
@@ -939,7 +939,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                             <div className='progress-fill' style={{ width: `${progressPct}%` }} />
                         </div>
                         <div className='progress-text' aria-live='polite'>
-                            <span className='progress-count'>{state.progress.completed.toLocaleString()} {__t("uiOf")} {state.progress.total.toLocaleString()}</span>
+                            <span className='progress-count'>{state.progress.completed.toLocaleString(__locale())} {__t("uiOf")} {state.progress.total.toLocaleString(__locale())}</span>
                             <span className='progress-pct'>{progressPct}%</span>
                         </div>
                     </section>
@@ -954,7 +954,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                         <div className='stats' role='group' aria-label={t('geocodingResultsSummary')}>
                             <StatCard
                                 tone='success'
-                                value={successCount.toLocaleString()}
+                                value={successCount.toLocaleString(__locale())}
                                 label={t('matched')}
                                 icon={
                                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>
@@ -964,7 +964,7 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                             />
                             <StatCard
                                 tone='error'
-                                value={failureCount.toLocaleString()}
+                                value={failureCount.toLocaleString(__locale())}
                                 label={t('failed')}
                                 icon={
                                     <svg width='12' height='12' viewBox='0 0 24 24' fill='none'>
@@ -991,12 +991,12 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                     .filter(k => statusCounts[k] > 0)
                                     .map(k => (
                                         <li key={k}>
-                                            <strong>{statusCounts[k].toLocaleString()}</strong> {STATUS_LABEL[k].toLowerCase()}
+                                            <strong>{statusCounts[k].toLocaleString(__locale())}</strong> {STATUS_LABEL[k].toLowerCase()}
                                         </li>
                                     ))}
                                 {statusCounts.tied > 0 && (
                                     <li key='tied' title={t('matchedButTheLocatorFoundMore')}>
-                                        <strong>{statusCounts.tied.toLocaleString()}</strong> {t('matchedWithATie')}
+                                        <strong>{statusCounts.tied.toLocaleString(__locale())}</strong> {t('matchedWithATie')}
                                     </li>
                                 )}
                             </ul>
@@ -1039,13 +1039,13 @@ const Widget = (props: WidgetProps): React.ReactElement => {
                                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
                                         <path d='M4 5h16M4 12h16M4 19h10' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
                                     </svg>
-                                    {t('reviewUnmatchedFailureCount', { failureCount: failureCount.toLocaleString() })}
+                                    {t('reviewUnmatchedFailureCount', { failureCount: failureCount.toLocaleString(__locale()) })}
                                 </button>
                                 <button
                                     type='button'
                                     className='btn secondary'
                                     onClick={onDownloadUnmatched}
-                                    aria-label={t('downloadTheFailureCountUnmatchedRowsAs', { failureCount: failureCount.toLocaleString() })}
+                                    aria-label={t('downloadTheFailureCountUnmatchedRowsAs', { failureCount: failureCount.toLocaleString(__locale()) })}
                                 >
                                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden='true' focusable='false'>
                                         <path d='M12 3v12m0 0l-5-5m5 5l5-5M4 21h16' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />

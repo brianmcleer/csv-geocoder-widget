@@ -10,7 +10,7 @@ import {
 import Tooltip from './tooltip'
 import { hooks as __exbI18nHooks } from 'jimu-core';
 import __exbI18nMessages from '../translations/default';
-import { __setIntl, __t } from '../i18n-t'
+import { __locale, __setIntl, __t } from '../i18n-t'
 
 
 interface Props {
@@ -39,13 +39,13 @@ interface FormatDef {
 
 const TABLE_FORMATS: FormatDef[] = [
     { id: 'csv', label: 'CSV', ext: '.csv', iconKey: 'table' },
-    { id: 'xlsx', label: __t("excel"), ext: '.xlsx', iconKey: 'table' }
+    { id: 'xlsx', get label () { return __t("excel") }, ext: '.xlsx', iconKey: 'table' }
 ]
 
 const MAP_FORMATS: FormatDef[] = [
-    { id: 'geojson', label: __t("geoJSON"), ext: '.geojson', iconKey: 'file' },
+    { id: 'geojson', get label () { return __t("geoJSON") }, ext: '.geojson', iconKey: 'file' },
     { id: 'kml', label: 'KML', ext: '.kml', iconKey: 'file' },
-    { id: 'shp', label: __t("shapefile"), ext: '.zip', iconKey: 'zip' }
+    { id: 'shp', get label () { return __t("shapefile") }, ext: '.zip', iconKey: 'zip' }
 ]
 
 const FORMAT_LABEL: { [K in FormatId]: string } = {
@@ -53,9 +53,9 @@ const FORMAT_LABEL: { [K in FormatId]: string } = {
 }
 
 const SCOPES: Array<{ id: TableScope, label: string }> = [
-    { id: 'all', label: __t("allRows") },
-    { id: 'unmatched', label: __t("failed") },
-    { id: 'matched', label: __t("matched") }
+    { id: 'all', get label () { return __t("allRows") } },
+    { id: 'unmatched', get label () { return __t("failed") } },
+    { id: 'matched', get label () { return __t("matched") } }
 ]
 
 const SCOPE_FILE_LABEL: { [K in TableScope]: string } = {
@@ -331,10 +331,10 @@ const ExportBar = (props: Props): React.ReactElement => {
   `
 
     const scopeNote = scope === 'unmatched'
-        ? 'Only the rows that did not match, with the reason for each. Hand this list to whoever is checking the addresses.'
+        ? __t("onlyTheRowsThatDidNot")
         : scope === 'matched'
-            ? 'Only the rows that matched, with the address the locator matched them to.'
-            : 'Every row from your file with its match result added. Excel also gets Unmatched and Matched sheets.'
+            ? __t("onlyTheRowsThatMatchedWith")
+            : __t("everyRowFromYourFileWith")
 
     const renderFormat = (f: FormatDef, enabled: boolean, describedBy: string | undefined, aria: string): React.ReactElement => {
         const isBusy = busy === f.id
@@ -385,7 +385,7 @@ const ExportBar = (props: Props): React.ReactElement => {
                                 onKeyDown={e => { onScopeKeyDown(e, i) }}
                             >
                                 <span className='scope-label'>{s.label}</span>
-                                <span className='scope-count'>{scopeCount[s.id].toLocaleString()}</span>
+                                <span className='scope-count'>{scopeCount[s.id].toLocaleString(__locale())}</span>
                             </button>
                         )
                     })}
@@ -414,7 +414,7 @@ const ExportBar = (props: Props): React.ReactElement => {
                     <Tooltip text={t('matchedPointsOnlySinceARow')} />
                 </div>
                 <p className='group-note'>
-                    {(matched.length === 1 ? t('matchedCountMatchedPoint', { matchedCount: matched.length.toLocaleString() }) : t('matchedCountMatchedPoints', { matchedCount: matched.length.toLocaleString() }))}
+                    {(matched.length === 1 ? t('matchedCountMatchedPoint', { matchedCount: matched.length.toLocaleString(__locale()) }) : t('matchedCountMatchedPoints', { matchedCount: matched.length.toLocaleString(__locale()) }))}
                 </p>
                 <div className='grid three'>
                     {MAP_FORMATS.map(f => renderFormat(

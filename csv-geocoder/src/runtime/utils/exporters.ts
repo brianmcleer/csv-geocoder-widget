@@ -24,7 +24,7 @@ import type { ParsedTable } from './parse-file'
 import type { GeocodeResult, MatchStatus } from './geocoder'
 import type { FieldMapping } from '../components/field-mapper'
 import { submittedAddress } from './address-text'
-import { __t } from '../i18n-t'
+import { __locale, __t } from '../i18n-t'
 
 // =============================================================================
 // Status vocabulary (one place, so the UI, the table and the help agree)
@@ -253,7 +253,7 @@ function summarySheet (
     ['Address check summary', ''],
     ['', ''],
     ['Source file', ctx.table.fileName],
-    ['Checked', new Date().toLocaleString()],
+    ['Checked', new Date().toLocaleString(__locale())],
     ['Locator', cleanLocatorUrl(meta.locatorUrl)],
     ['Minimum match score', meta.minScore],
     ['Rows in this workbook', scopeText],

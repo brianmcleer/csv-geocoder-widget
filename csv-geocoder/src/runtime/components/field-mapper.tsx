@@ -26,12 +26,12 @@ interface RoleDef {
 }
 
 const MULTI_ROLES: RoleDef[] = [
-    { key: 'Address', label: __t("street"), help: 'Number and street name. Example: "100 Main Street".', required: true },
-    { key: 'Address2', label: __t("line2"), help: 'Unit, suite, apartment, or floor.' },
-    { key: 'City', label: __t("city"), help: 'City, town, or locality.' },
-    { key: 'Region', label: __t("stateRegion"), help: 'State, province, or administrative region.' },
-    { key: 'Postal', label: __t("postalCode"), help: 'ZIP, postcode, or equivalent.' },
-    { key: 'Country', label: __t("country"), help: 'Country name or ISO code (e.g. "US", "USA").' }
+    { key: 'Address', get label () { return __t("street") }, help: 'Number and street name. Example: "100 Main Street".', required: true },
+    { key: 'Address2', get label () { return __t("line2") }, help: 'Unit, suite, apartment, or floor.' },
+    { key: 'City', get label () { return __t("city") }, help: 'City, town, or locality.' },
+    { key: 'Region', get label () { return __t("stateRegion") }, help: 'State, province, or administrative region.' },
+    { key: 'Postal', get label () { return __t("postalCode") }, help: 'ZIP, postcode, or equivalent.' },
+    { key: 'Country', get label () { return __t("country") }, help: 'Country name or ISO code (e.g. "US", "USA").' }
 ]
 
 /**
