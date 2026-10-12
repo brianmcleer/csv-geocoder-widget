@@ -1897,14 +1897,14 @@
           }
         },
         "bs": {
-          "file": "81442a5b113d",
+          "file": "cfc3ae6701b4",
           "counts": {
-            "esri": 17,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 173,
+            "machine": 164,
             "stale": 0,
             "missing": 2
           },
@@ -1954,35 +1954,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Ništa u vodiču ne odgovara toj riječi.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
-            "firstRunTitle": {
-              "t": "Novi ovdje?",
-              "src": "machine",
-              "h": "b81f2e17e001"
-            },
             "firstRunBody": {
               "t": "Izaberite tabelu adresa, provjerite kolone koje je grafički element pogodio i pritisnite Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Otvori vodič.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Otpusti ovaj savjet",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Počnite ovdje: tri koraka",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Pod 1. Odaberite datoteku, pritisnite Pretragu za datotekom i izaberite vašu tabelu. CSV ili Excel datoteka oba rada.",
@@ -2209,11 +2189,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Ako nešto nije u redu",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Nijedna tačka se ne pojavljuje: nijedna mapa nije povezana sa ovim grafičkim elementom. Provjera i izvoz tabele i dalje rade. Pitajte GIS diviziju da poveže mapu ako vam je potrebna iscrtana tačka.",
               "src": "machine",
@@ -2248,11 +2223,6 @@
               "t": "Kontaktirajte GIS diviziju i spomenite ime CSV Geocodera i ovu aplikaciju.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Dobro je znati.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Čiste adrese pobjeđuju, vade brojeve stanova i bilješke kao iza škole, prije nego što počnete.",
@@ -2659,11 +2629,6 @@
               "src": "machine",
               "h": "97eeda258d4d"
             },
-            "shapefile": {
-              "t": "Snimi datoteku",
-              "src": "machine",
-              "h": "1e21d10d2150"
-            },
             "allRows": {
               "t": "Svi redovi",
               "src": "machine",
@@ -2703,16 +2668,6 @@
               "t": "Nema poklapanja",
               "src": "machine",
               "h": "3518dffe0672"
-            },
-            "unknownError": {
-              "t": "nepoznata greška",
-              "src": "machine",
-              "h": "af6321ca7a8b"
-            },
-            "unserializableError": {
-              "t": "Neserijalizacijska greška",
-              "src": "machine",
-              "h": "76e73551597a"
             },
             "onlyTheRowsThatDidNot": {
               "t": "Samo redovi koji se ne poklapaju sa razlogom svakog. Predajte ovu listu onome ko provjerava adrese.",
@@ -11242,14 +11197,14 @@
           }
         },
         "hr": {
-          "file": "e141589eb1b9",
+          "file": "fd0e2af96cf3",
           "counts": {
-            "esri": 17,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 174,
+            "machine": 165,
             "stale": 0,
             "missing": 1
           },
@@ -11299,35 +11254,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Ništa u vodiču ne odgovara toj riječi. Pokušajte drugi, ili otvorite dijelove iznad.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
-            "firstRunTitle": {
-              "t": "Novi ovdje?",
-              "src": "machine",
-              "h": "b81f2e17e001"
-            },
             "firstRunBody": {
               "t": "Odaberite tablicu adresa, provjerite stupce koje je widget pogodio, i pritisnite Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Otvori vodič.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Otpusti ovaj savjet",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Počnite ovdje: tri koraka",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Pod 1. Odaberite datoteku, pritisnite Pregledajte datoteku i izaberite svoju tablicu. CSV ili Excel datoteka oba rada.",
@@ -11554,11 +11489,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Ako nešto izgleda loše",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Ne pojavljuju se točke: karta nije povezana s ovim widgetom. Provjera i izvoz tablice još uvijek rade. Pitajte GIS odjel za povezivanje karte ako vam je potrebno bodove nacrtan.",
               "src": "machine",
@@ -11593,11 +11523,6 @@
               "t": "Još uvijek zaglavi? Kontaktirajte GIS Division i spomenuti CSV Geocoder ime i ovu aplikaciju.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Dobro je znati.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Čiste adrese pobijediti. Izvadite brojeve apartmana i bilješke kao što jeiza škole prije nego što počnete.",
@@ -12009,11 +11934,6 @@
               "src": "machine",
               "h": "97eeda258d4d"
             },
-            "shapefile": {
-              "t": "Oblik datoteke",
-              "src": "machine",
-              "h": "1e21d10d2150"
-            },
             "allRows": {
               "t": "Svi redovi",
               "src": "machine",
@@ -12053,16 +11973,6 @@
               "t": "Nema poklapanja.",
               "src": "machine",
               "h": "3518dffe0672"
-            },
-            "unknownError": {
-              "t": "nepoznata greška",
-              "src": "machine",
-              "h": "af6321ca7a8b"
-            },
-            "unserializableError": {
-              "t": "Neserijalizacijska greška",
-              "src": "machine",
-              "h": "76e73551597a"
             },
             "onlyTheRowsThatDidNot": {
               "t": "Samo redovi koji se ne poklapaju, s razlogom svakog. Predajte ovaj popis onome tko provjerava adrese.",
@@ -25677,14 +25587,14 @@
           }
         },
         "sr": {
-          "file": "567e77472277",
+          "file": "807f10360c6c",
           "counts": {
-            "esri": 17,
+            "esri": 26,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 174,
+            "machine": 165,
             "stale": 0,
             "missing": 1
           },
@@ -25734,35 +25644,15 @@
               "src": "machine",
               "h": "ad0405405571"
             },
-            "helpNoMatches": {
-              "t": "Ništa u vodièu ne odgovara toj reèi.",
-              "src": "machine",
-              "h": "3fe179f75330"
-            },
-            "firstRunTitle": {
-              "t": "Novi ovde?",
-              "src": "machine",
-              "h": "b81f2e17e001"
-            },
             "firstRunBody": {
               "t": "Odaberite tabelu adresa, proverite kolone koje je vidžet pogodio i pritisnite Geocode.",
               "src": "machine",
               "h": "23fdf1491ce9"
             },
-            "firstRunHelpLink": {
-              "t": "Otvori vodiè.",
-              "src": "machine",
-              "h": "2447dd6134ea"
-            },
             "firstRunDismiss": {
               "t": "Otpustite ovaj savet.",
               "src": "machine",
               "h": "1b6bbfcee88b"
-            },
-            "helpStartTitle": {
-              "t": "Poènite ovde: tri koraka.",
-              "src": "machine",
-              "h": "789320b4831d"
             },
             "helpStart1": {
               "t": "Pod 1. Odaberite datoteku, pritisnite Pregledajte datoteku i izaberite tabelu. CSV ili Excel datoteka oba rada.",
@@ -25989,11 +25879,6 @@
               "src": "machine",
               "h": "ed85a85549b3"
             },
-            "helpTroubleTitle": {
-              "t": "Ako nešto nije u redu",
-              "src": "machine",
-              "h": "6f7fec3ff1e0"
-            },
             "helpTrouble1": {
               "t": "Ne pojavljuju se tačke: ni jedna mapa nije povezana sa ovim grafičkim elementom. Provjera i izvoz tabele i dalje radi. Pitajte GIS diviziju da poveže mapu ako vam trebaju iscrtane tačke.",
               "src": "machine",
@@ -26028,11 +25913,6 @@
               "t": "Kontaktirajte GIS diviziju i pomenite ime CSV Geocodera i ovu aplikaciju.",
               "src": "machine",
               "h": "778d90a8fb03"
-            },
-            "helpTipsTitle": {
-              "t": "Dobro je znati.",
-              "src": "machine",
-              "h": "79fc372dc790"
             },
             "helpTips1": {
               "t": "Èiste adrese pobeðuju, vade brojeve stanova i beleške kao iza škole, pre nego što poèneš.",
@@ -26444,11 +26324,6 @@
               "src": "machine",
               "h": "97eeda258d4d"
             },
-            "shapefile": {
-              "t": "ОбликDescription",
-              "src": "machine",
-              "h": "1e21d10d2150"
-            },
             "allRows": {
               "t": "Svi redovi",
               "src": "machine",
@@ -26488,16 +26363,6 @@
               "t": "Nema poklapanja.",
               "src": "machine",
               "h": "3518dffe0672"
-            },
-            "unknownError": {
-              "t": "nepoznata greška",
-              "src": "machine",
-              "h": "af6321ca7a8b"
-            },
-            "unserializableError": {
-              "t": "Neserijalizacijska greška",
-              "src": "machine",
-              "h": "76e73551597a"
             },
             "onlyTheRowsThatDidNot": {
               "t": "Samo redovi koji se ne poklapaju, sa razlogom svakog.",
@@ -33614,12 +33479,12 @@
         "bs": {
           "file": "917812751e2b",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -33728,16 +33593,6 @@
               "t": "Širina linije",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Pokaži vodič za pomoć",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Pokaži dugme sa znakom pitanja koje otvara vodič za pomoć grafičkog elementa",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
@@ -34954,12 +34809,12 @@
         "hr": {
           "file": "b76c980eca35",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -35068,16 +34923,6 @@
               "t": "Širina linije",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Prikaži vodič pomoći",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Prikaži gumb s upitnikom koji otvara vodič za pomoć widgetu",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },
@@ -37014,12 +36859,12 @@
         "sr": {
           "file": "f13a53a3d360",
           "counts": {
-            "esri": 4,
+            "esri": 6,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 23,
+            "machine": 21,
             "stale": 0,
             "missing": 0
           },
@@ -37128,16 +36973,6 @@
               "t": "Оутлајн ширинаQShortcut",
               "src": "machine",
               "h": "928d9acc1733"
-            },
-            "showHelpGuide": {
-              "t": "Pokaži vodič za pomoć",
-              "src": "machine",
-              "h": "03e9f0b81336"
-            },
-            "showTheQuestionMarkButtonThat": {
-              "t": "Prikaži dugme sa znakom pitanja koje otvara vodič za pomoć grafičkom elementu",
-              "src": "machine",
-              "h": "62c4e81a84ca"
             }
           }
         },

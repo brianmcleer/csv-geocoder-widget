@@ -77,7 +77,7 @@ System.register([], function (e) {
         helpTrouble5: "Tačke su sletele u pogrešnom dijelu zemlje: grad ili državna kolona je prazna, tako da je geokoder pogodio.",
         helpTrouble6: "Sloj je nestao: kartica preglednika je zatvorena ili ponovo učitana. Pokrenite ponovo datoteku ili donesite kopiju koju ste izvezli.",
         helpTroubleContact: "Kontaktirajte GIS diviziju i spomenite ime CSV Geocodera i ovu aplikaciju.",
-        helpTipsTitle: "Dobro je znati.",
+        helpTipsTitle: "Dobro je znati",
         helpTips1: "Čiste adrese pobjeđuju, vade brojeve stanova i bilješke kao iza škole, prije nego što počnete.",
         helpTips2: "Velika datoteka je u redu. Bar pokazuje koliko je dugačak i Otkaži ga.",
         helpTips3: "Isprazni formular da bi mogao pokrenuti drugu datoteku.",
