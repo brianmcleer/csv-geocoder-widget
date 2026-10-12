@@ -1897,18 +1897,884 @@
           }
         },
         "bs": {
-          "file": "33efd8135a23",
+          "file": "81442a5b113d",
           "counts": {
             "esri": 17,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 0,
+            "machine": 173,
             "stale": 0,
-            "missing": 175
+            "missing": 2
           },
-          "entries": {}
+          "entries": {
+            "_widgetLabel": {
+              "t": "Adresa Geocoder",
+              "src": "machine",
+              "h": "b358ed6f0f9d"
+            },
+            "mapFields": {
+              "t": "Polje za adresu mape",
+              "src": "machine",
+              "h": "ee65858c3362"
+            },
+            "geocode": {
+              "t": "Geocode",
+              "src": "machine",
+              "h": "b305bd57abc9"
+            },
+            "matched": {
+              "t": "Poklapa se.",
+              "src": "machine",
+              "h": "1bf3ec5bf8dd"
+            },
+            "failed": {
+              "t": "Neupariv",
+              "src": "machine",
+              "h": "c625b458a027"
+            },
+            "matchRate": {
+              "t": "Učestalost poklapanja",
+              "src": "machine",
+              "h": "270807f9f2ca"
+            },
+            "selectMapWidget": {
+              "t": "Izaberite grafički element za mapu u postavkama ovog grafičkog elementa koji će prikazati tačke.",
+              "src": "machine",
+              "h": "698db2d58305"
+            },
+            "helpIntro": {
+              "t": "Ovaj grafički element uzima listu adresa iz tabele, provjerava svaku u odnosu na lokator adrese, i stavlja šibice na mapu.",
+              "src": "machine",
+              "h": "f1e6c17cc0a6"
+            },
+            "helpSearchPlaceholder": {
+              "t": "Traži vodič (pokušajsloj ilineupariv",
+              "src": "machine",
+              "h": "ad0405405571"
+            },
+            "helpNoMatches": {
+              "t": "Ništa u vodiču ne odgovara toj riječi.",
+              "src": "machine",
+              "h": "3fe179f75330"
+            },
+            "firstRunTitle": {
+              "t": "Novi ovdje?",
+              "src": "machine",
+              "h": "b81f2e17e001"
+            },
+            "firstRunBody": {
+              "t": "Izaberite tabelu adresa, provjerite kolone koje je grafički element pogodio i pritisnite Geocode.",
+              "src": "machine",
+              "h": "23fdf1491ce9"
+            },
+            "firstRunHelpLink": {
+              "t": "Otvori vodič.",
+              "src": "machine",
+              "h": "2447dd6134ea"
+            },
+            "firstRunDismiss": {
+              "t": "Otpusti ovaj savjet",
+              "src": "machine",
+              "h": "1b6bbfcee88b"
+            },
+            "helpStartTitle": {
+              "t": "Počnite ovdje: tri koraka",
+              "src": "machine",
+              "h": "789320b4831d"
+            },
+            "helpStart1": {
+              "t": "Pod 1. Odaberite datoteku, pritisnite Pretragu za datotekom i izaberite vašu tabelu. CSV ili Excel datoteka oba rada.",
+              "src": "machine",
+              "h": "ac1ce74653ef"
+            },
+            "helpStart2": {
+              "t": "Ispod 2. polja za adresu mape, provjerite kolone. Grafički element ih pogađa iz vaših naslova, tako da većinu vremena nema ništa za promjenu.",
+              "src": "machine",
+              "h": "5d0d106741da"
+            },
+            "helpStart3": {
+              "t": "Pritisnite Geocode i sačekajte da se traka popuni. Tačke se pojavljuju na mapi kada se završi.",
+              "src": "machine",
+              "h": "c516a98bc599"
+            },
+            "helpFileTitle": {
+              "t": "Datoteka koju donosite",
+              "src": "machine",
+              "h": "4831b2785f8a"
+            },
+            "helpFileIntro": {
+              "t": "Gotovo svaka adresa lista iz tabele radi.",
+              "src": "machine",
+              "h": "9825d2bee268"
+            },
+            "helpFile1": {
+              "t": "Prihvaćene vrste: CSV, TSV, TXT, XLSX, XLS i ODS.",
+              "src": "machine",
+              "h": "6cb583847b50"
+            },
+            "helpFile2": {
+              "t": "Prvi red mora biti kolona, jedan smjer po koloni.",
+              "src": "machine",
+              "h": "554bbacf3c8c"
+            },
+            "helpFile3": {
+              "t": "Samo prvi list Excel radne knjige se čita, pa stavite svoje adrese tamo.",
+              "src": "machine",
+              "h": "ddd50eafb1d1"
+            },
+            "helpFile4": {
+              "t": "Svaka druga kolona dolazi na vožnju, imena, telefonske brojeve, bilješke, sve to sleti na kartu sa pointom.",
+              "src": "machine",
+              "h": "fac7b0465ce5"
+            },
+            "helpFile5": {
+              "t": "Da zamijenite datoteke, pritisnite Odaberite drugu datoteku. Vaši prethodni rezultati su izbrisani.",
+              "src": "machine",
+              "h": "f6f86a49bc54"
+            },
+            "helpColumnsTitle": {
+              "t": "Poklapam vaše kolone",
+              "src": "machine",
+              "h": "80ef985f0cf1"
+            },
+            "helpColumnsIntro": {
+              "t": "Grafički element mora znati koja od vaših kolona sadrži adresu.",
+              "src": "machine",
+              "h": "c201a776b30a"
+            },
+            "helpColumns1": {
+              "t": "Odvojene kolone: izaberite kolonu za ulicu, grad, državu i ZIP. Koristite ovo kada se adresa razdvoji, što je uobičajeni slučaj.",
+              "src": "machine",
+              "h": "75868d604893"
+            },
+            "helpColumns2": {
+              "t": "Jedna puna adresa: izaberite jednu kolonu koja sama drži cijelu adresu, kao250 N 5th St, Grand Junction, CO 81501",
+              "src": "machine",
+              "h": "0187bbfcd085"
+            },
+            "helpColumns3": {
+              "t": "Pretpostavka je popunjena iz vaših smjerova.",
+              "src": "machine",
+              "h": "3f5b29508809"
+            },
+            "helpColumns4": {
+              "t": "Ostavi kutiju na njoj, ako nemaš taj komad, a ulica i grad su dvije najbitnije.",
+              "src": "machine",
+              "h": "373aa0321dd0"
+            },
+            "helpLayerTitle": {
+              "t": "Sloj na mapi",
+              "src": "machine",
+              "h": "a0f75377f433"
+            },
+            "helpLayerIntro": {
+              "t": "Usklađene adrese postaju pravi sloj mape, tako da nema šta da se preuzme i doda nazad.",
+              "src": "machine",
+              "h": "680a303444f2"
+            },
+            "helpLayer1": {
+              "t": "Sloj je nazvan po vašoj datoteci.Dovedite hidrante.csv i sloj se zove Hidranti.",
+              "src": "machine",
+              "h": "9041017bb3ff"
+            },
+            "helpLayer2": {
+              "t": "Pojavljuje se u listi slojeva mape kao i svaki drugi sloj. Uključite i isključite ga, otvorite njegov stol i kliknite na tačku da vidite cijeli red iz datoteke.",
+              "src": "machine",
+              "h": "9968a0013587"
+            },
+            "helpLayer3": {
+              "t": "Ostatak aplikacije može ga koristiti previše: filtrirati ga, odabrati iz njega, staviti ga u grafikon ili tabelu.",
+              "src": "machine",
+              "h": "3ac3b42b19c3"
+            },
+            "helpLayer4": {
+              "t": "Karta se pomjera da odgovara tačkama kada se geokodiranje završi.",
+              "src": "machine",
+              "h": "e086a66cdb76"
+            },
+            "helpLayer5": {
+              "t": "Pritisnite Geocode ponovo zamjenjuje sloj sa zadnjeg pokretanja, tako da se mapa ne popuni dok popravite datoteku i pokušate ponovo.",
+              "src": "machine",
+              "h": "1d84b5444e70"
+            },
+            "helpLayer5Keep": {
+              "t": "Pritiskom Geocode ponovo dodaje još jedan sloj pored prvog, numerisan (2), (3) i tako dalje.",
+              "src": "machine",
+              "h": "4b5f29dffc8f"
+            },
+            "helpLayer6": {
+              "t": "Uklonite slojeve ponovo iskljuÄŤuje. Jasno ne znači: prazni oblik i ostavlja slojeve vaše same.",
+              "src": "machine",
+              "h": "fe1381b21ad9"
+            },
+            "helpLayer7": {
+              "t": "Sloj traje onoliko dugo koliko aplikacija ostaje otvorena. Zatvori karticu i nema je, pa koristi 4. Izvezi ako je potrebno da je zadržiš.",
+              "src": "machine",
+              "h": "3d135d5521ad"
+            },
+            "helpResultsTitle": {
+              "t": "Čitam rezultate.",
+              "src": "machine",
+              "h": "68993609ed8d"
+            },
+            "helpResults1": {
+              "t": "Poklapa se: redovi za koje je geokoder pronašao mjesto.",
+              "src": "machine",
+              "h": "2701f8fcf9b8"
+            },
+            "helpResults2": {
+              "t": "Neupareni: redovi koje nije mogao postaviti ili postaviti sa premalim samopouzdanjem. Male oznake ispod ukupnih vrijednosti kažu zašto: nizak rezultat, nema poklapanja, prazne adrese ili greške u servisu.",
+              "src": "machine",
+              "h": "3c68d7a781e0"
+            },
+            "helpResults3": {
+              "t": "Stopa poklapanja: odgovaraju redovima kao dio cijele datoteke. Iznad 90 posto je dobra datoteka.",
+              "src": "machine",
+              "h": "3cdedb4e18f2"
+            },
+            "helpResults4": {
+              "t": "Recenzija neusporediva otvara punu listu redova koji nisu uspjeli, sa razlogom za svaku. Filtriraj je po razlogu ili pretraži, zatim preuzmi šta je na ekranu kao CSV. Preuzimanje neupareno snima cijelu listu u jednom kliku.",
+              "src": "machine",
+              "h": "624b3f0646d6"
+            },
+            "helpCheckTitle": {
+              "t": "Provjeravam listu adresa",
+              "src": "machine",
+              "h": "3ba5066d924f"
+            },
+            "helpCheckIntro": {
+              "t": "Grafički element se udvostručuje kao provjera adrese: govori vam koji su redovi u lokatoru adrese, a koji nisu.",
+              "src": "machine",
+              "h": "1a163f69f5a8"
+            },
+            "helpCheck1": {
+              "t": "Učitajte listu i pritisnite Geocode. Upoređeno znači da je lokator pronašao adresu.",
+              "src": "machine",
+              "h": "fdbe979b4628"
+            },
+            "helpCheck2": {
+              "t": "Ispod 4. Izvoz, izaberite Neupariv, zatim CSV ili Excel. Dobijate samo redove kojima je potreban pogled, svaki sa svojim razlogom u koloni FAIL_REASON.",
+              "src": "machine",
+              "h": "784f7a31b9bd"
+            },
+            "helpCheck3": {
+              "t": "Nizak rezultat: lokator je našao nešto blizu, ali nedovoljno blizu. MATCH_ADR pokazuje šta je našao, što obično ukazuje na tipsku tipku, pogrešan sufiks ili jedinicu koja nedostaje.",
+              "src": "machine",
+              "h": "3bec7d84c14d"
+            },
+            "helpCheck4": {
+              "t": "Nema poklapanja: lokator nije našao ništa. Prazna adresa: red nema adresu u mapiranim kolonama. Servisna greška: zahtjev nije uspio, pa pokrenite ponovo datoteku.",
+              "src": "machine",
+              "h": "ac755292d7de"
+            },
+            "helpCheck5": {
+              "t": "Utakmica (zavezana) znači da su dva kandidata dobila isti rezultat. Ubraja se u utakmicu, ali vrijedi još jednom pogledati.",
+              "src": "machine",
+              "h": "3d283fb25f0d"
+            },
+            "helpCheck6": {
+              "t": "Odaberite sve redove umjesto toga da vratite cijelu datoteku sa MATCH_STATUS-om u svakom redu. Excel zatim dodaje Neuparene i Uparene listove i Sažetak listova sa ukupnim brojevima.",
+              "src": "machine",
+              "h": "8febb73f4927"
+            },
+            "helpExportTitle": {
+              "t": "Preuzimam kopiju",
+              "src": "machine",
+              "h": "f18312690607"
+            },
+            "helpExportIntro": {
+              "t": "Dvije vrste preuzimanja: tabela vaših redova, ili datoteka mape poklapanja tačaka.",
+              "src": "machine",
+              "h": "ed3cdb1d764b"
+            },
+            "helpExport1": {
+              "t": "Tabela provjere adresa: CSV ili Excel, za sve redove, samo one neuparene, ili samo one uparene. Svaka originalna kolona se čuva, uz dodan rezultat meča na desnoj strani.",
+              "src": "machine",
+              "h": "a4a0829d155a"
+            },
+            "helpExport2": {
+              "t": "Datoteka mape: GeoJSON za web mape i ArcGIS Online, KML za Google Earth, ili Shapefile ZIP za ArcGIS Pro. Uparene tačke samo, pošto neuparen red nema mjesta za crtanje.",
+              "src": "machine",
+              "h": "0f7a8af5989e"
+            },
+            "helpExport3": {
+              "t": "Excel otvara CSV s nedirnutim naglašenim slovima, a vrijednost koja počinje sa = ili + se čuva kao tekst, nikada se ne pokreće kao formula.",
+              "src": "machine",
+              "h": "169aa9fd7964"
+            },
+            "helpExport4": {
+              "t": "Datoteka slijeće u vaš direktorij za preuzimanje, nazvan po vašem fajlu sa datumom i vremenom.",
+              "src": "machine",
+              "h": "ed85a85549b3"
+            },
+            "helpTroubleTitle": {
+              "t": "Ako nešto nije u redu",
+              "src": "machine",
+              "h": "6f7fec3ff1e0"
+            },
+            "helpTrouble1": {
+              "t": "Nijedna tačka se ne pojavljuje: nijedna mapa nije povezana sa ovim grafičkim elementom. Provjera i izvoz tabele i dalje rade. Pitajte GIS diviziju da poveže mapu ako vam je potrebna iscrtana tačka.",
+              "src": "machine",
+              "h": "3caa81f14005"
+            },
+            "helpTrouble2": {
+              "t": "Ništa se nije desilo nakon što ste izabrali datoteku: datoteka nije imala redove koji se mogu čitati. Provjerite da je red jedan naslova kolone i da ispod nje postoji barem jedan red.",
+              "src": "machine",
+              "h": "2f0106727764"
+            },
+            "helpTrouble3": {
+              "t": "Sve je neusporedivo: kolone se poklapaju sa pogrešnim stvarima. Vratite se na 2. Polja za mapu i provjerite svaki okvir.",
+              "src": "machine",
+              "h": "12efe06626e8"
+            },
+            "helpTrouble4": {
+              "t": "Mnogi redovi kažu nizak rezultat: adrese su blizu, ali nisu dovoljno blizu. Pravopis, nedostaje grad ili nedostaje ZIP su uobičajeni razlozi.",
+              "src": "machine",
+              "h": "03e716cc1b5a"
+            },
+            "helpTrouble5": {
+              "t": "Tačke su sletele u pogrešnom dijelu zemlje: grad ili državna kolona je prazna, tako da je geokoder pogodio.",
+              "src": "machine",
+              "h": "91510f78e177"
+            },
+            "helpTrouble6": {
+              "t": "Sloj je nestao: kartica preglednika je zatvorena ili ponovo učitana. Pokrenite ponovo datoteku ili donesite kopiju koju ste izvezli.",
+              "src": "machine",
+              "h": "7d7985f203e3"
+            },
+            "helpTroubleContact": {
+              "t": "Kontaktirajte GIS diviziju i spomenite ime CSV Geocodera i ovu aplikaciju.",
+              "src": "machine",
+              "h": "778d90a8fb03"
+            },
+            "helpTipsTitle": {
+              "t": "Dobro je znati.",
+              "src": "machine",
+              "h": "79fc372dc790"
+            },
+            "helpTips1": {
+              "t": "Čiste adrese pobjeđuju, vade brojeve stanova i bilješke kao iza škole, prije nego što počnete.",
+              "src": "machine",
+              "h": "fbfa45500dea"
+            },
+            "helpTips2": {
+              "t": "Velika datoteka je u redu. Bar pokazuje koliko je dugačak i Otkaži ga.",
+              "src": "machine",
+              "h": "559766f937f5"
+            },
+            "helpTips3": {
+              "t": "Isprazni formular da bi mogao pokrenuti drugu datoteku.",
+              "src": "machine",
+              "h": "29e81f9cc15f"
+            },
+            "helpTips5": {
+              "t": "Redovi sa praznom adresom se nikada ne šalju na lokator, tako da ništa ne koštaju i pojavljuju se kao Blank adresa.",
+              "src": "machine",
+              "h": "2747e49773c4"
+            },
+            "helpTips4": {
+              "t": "Ova aplikacija koristi Esrijev pronalazač adresa širom svijeta, koji troši kredite na velike optrčavanja. Provjerite sa GIS Divizijom prije nego što pokrenete desetine hiljada redova.",
+              "src": "machine",
+              "h": "c74119ad9ac0"
+            },
+            "addressCheckTable": {
+              "t": "Tabela provjere adrese",
+              "src": "machine",
+              "h": "8efee4b265c2"
+            },
+            "aSpreadsheetOfYourRowsWith": {
+              "t": "Tabela Vaših redova sa MATCH_STATUS, MATCH_SCORE, adresa koju ste poslali, adresa koju je lokator usporedio, tip adrese, običan razlog za svaki red koji se nije poklapao i koordinate za svaki red koji je poslao. Otvorite je u Excel i filtrirajte na MATCH_STATUS.",
+              "src": "machine",
+              "h": "689ba7e04841"
+            },
+            "rowsToInclude": {
+              "t": "Redovi koji će se uključiti",
+              "src": "machine",
+              "h": "bcc561c451fb"
+            },
+            "exportScopeWordAsLabel": {
+              "t": "Izvezi {scopeWord} kao {label}",
+              "src": "machine",
+              "h": "5515fbefad4b"
+            },
+            "thereAreNoScopeWordToExport": {
+              "t": "Nema {scopeWord} za izvoz. Izaberite drugu opciju iznad.",
+              "src": "machine",
+              "h": "3160cb3219e0"
+            },
+            "mapFileExport": {
+              "t": "Kartaški izvoz datoteke",
+              "src": "machine",
+              "h": "f5b4331d7bad"
+            },
+            "mapFile": {
+              "t": "Kartaška datoteka",
+              "src": "machine",
+              "h": "544d7d4466a2"
+            },
+            "matchedPointsOnlySinceARow": {
+              "t": "Poklapane tačke, pošto red bez lokacije nema šta da crta. GeoJSON za web mape i ArcGIS Online, KML za Google Earth, zipped Shapefile za ArcGIS Pro.",
+              "src": "machine",
+              "h": "1f4d581d92c2"
+            },
+            "matchedCountMatchedPoint": {
+              "t": "{matchedCount}odgovara tački.",
+              "src": "machine",
+              "h": "38f14cc49017"
+            },
+            "matchedCountMatchedPoints": {
+              "t": "{matchedCount}odgovaraju bodovima.",
+              "src": "machine",
+              "h": "658e9923bb3d"
+            },
+            "aZippedShapefile": {
+              "t": "zipirani oblik datoteke",
+              "src": "machine",
+              "h": "e557d2803b94"
+            },
+            "noMatchedPointsToExportRe": {
+              "t": "Nema odgovarajućih bodova za izvoz. Ponovo pokrenuto geokodiranje sa manjim minimalnim rezultatom poklapanja, ili provjerite da li su polja adrese ispravno mapirana.",
+              "src": "machine",
+              "h": "eeee350354ec"
+            },
+            "downloaded": {
+              "t": "Preuzeto",
+              "src": "machine",
+              "h": "c61970292546"
+            },
+            "backToGeocodingResults": {
+              "t": "Nazad na rezultate geokodiranja",
+              "src": "machine",
+              "h": "aa7fb5e6cd2b"
+            },
+            "reviewUnmatched": {
+              "t": "Pregled neuparen",
+              "src": "machine",
+              "h": "f43ce1f45148"
+            },
+            "failuresCountRecordDidNotProduceAn": {
+              "t": "{failuresCount}zapis nije proizveo prihvaćenu utakmicu.",
+              "src": "machine",
+              "h": "f4fa2b70d0ae"
+            },
+            "failuresCountRecordsDidNotProduceAn": {
+              "t": "{failuresCount}zapisi nisu proizveli prihvaćenu podudarnost.",
+              "src": "machine",
+              "h": "aae88211ed81"
+            },
+            "recordDid": {
+              "t": "Rekord je uspio.",
+              "src": "machine",
+              "h": "dadc6956c4cd"
+            },
+            "recordsDid": {
+              "t": "zabilješke jesu.",
+              "src": "machine",
+              "h": "c4285de53546"
+            },
+            "searchUnmatchedRecords": {
+              "t": "Traži neuparene zapise",
+              "src": "machine",
+              "h": "45172e49a231"
+            },
+            "addressRowNumberReasonOrField": {
+              "t": "Adresa, broj reda, razlog ili vrijednost polja",
+              "src": "machine",
+              "h": "5d80fe6cbc23"
+            },
+            "reason": {
+              "t": "Razlog",
+              "src": "machine",
+              "h": "f219cc0614ae"
+            },
+            "anyReasonFailuresCount": {
+              "t": "Bilo koji razlog ({failuresCount})",
+              "src": "machine",
+              "h": "b7723a4a68cc"
+            },
+            "showingFilteredFailuresCountOfFailuresCountUnmatchedRecord": {
+              "t": "Prikazujem neupareni zapis {filteredFailuresCount} {failuresCount}.",
+              "src": "machine",
+              "h": "49f46814a131"
+            },
+            "showingFilteredFailuresCountOfFailuresCountUnmatchedRecords": {
+              "t": "Prikazujem neuparene zapise {filteredFailuresCount} {failuresCount}.",
+              "src": "machine",
+              "h": "3e8e290d3407"
+            },
+            "recordObjectIdSourceRowObjectId2": {
+              "t": "Zabilježi {objectId} · izvorni red {objectId2}",
+              "src": "machine",
+              "h": "ff343450bd4f"
+            },
+            "noScore": {
+              "t": "Nema rezultata",
+              "src": "machine",
+              "h": "1d55e538b5b4"
+            },
+            "submittedAddress": {
+              "t": "Dopuštena adresa",
+              "src": "machine",
+              "h": "dee7ed9fded0"
+            },
+            "closestLocatorCandidate": {
+              "t": "Najbliži kandidat za lociranje",
+              "src": "machine",
+              "h": "8e6ed2a071f6"
+            },
+            "originalRowFields": {
+              "t": "Izvorna polja reda",
+              "src": "machine",
+              "h": "4aa0a17d0e3e"
+            },
+            "noUnmatchedRecordsMatchThisSearch": {
+              "t": "Nema neusporedivih zapisa koji odgovaraju ovoj potrazi. Očistite pretragu ili izaberite bilo koji razlog da ih sve prikažete.",
+              "src": "machine",
+              "h": "ce7cd798db92"
+            },
+            "backToResults": {
+              "t": "Nazad na rezultate",
+              "src": "machine",
+              "h": "48d51d7a2aad"
+            },
+            "downloadFilteredFailuresCountAsCsv": {
+              "t": "Preuzmi {filteredFailuresCount} kao CSV",
+              "src": "machine",
+              "h": "247bd21d90a0"
+            },
+            "downloadTheFilteredFailuresCountRecordsShownAs": {
+              "t": "Preuzmite {filteredFailuresCount} zapise prikazane kao CSV",
+              "src": "machine",
+              "h": "7e553e9e4c4c"
+            },
+            "addressFieldMapping": {
+              "t": "Mapiranje polja za adresu",
+              "src": "machine",
+              "h": "6dc96b53b8f5"
+            },
+            "addressMappingMode": {
+              "t": "Mapiranje adrese",
+              "src": "machine",
+              "h": "d23ceb629e31"
+            },
+            "separateColumns": {
+              "t": "Odvojene kolone",
+              "src": "machine",
+              "h": "81eb49b8a57c"
+            },
+            "singleFullAddress": {
+              "t": "Jedna puna adresa",
+              "src": "machine",
+              "h": "530ac112e394"
+            },
+            "addressColumn": {
+              "t": "Kolona s adresom",
+              "src": "machine",
+              "h": "5b23d6ee92ac"
+            },
+            "theColumnContainingTheCompleteAddress": {
+              "t": "Kolona koja sadrži kompletnu adresu kao jedan string, npr.100 Main St, Springfield, IL 62701",
+              "src": "machine",
+              "h": "f465354480e9"
+            },
+            "selectColumn": {
+              "t": "(Izaberite kolonu)",
+              "src": "machine",
+              "h": "138f1de5c565"
+            },
+            "csvgMKey": {
+              "t": "csvg-m-{key}",
+              "src": "machine",
+              "h": "cc6146c1447f"
+            },
+            "fieldIdHelp": {
+              "t": "{fieldId}-pomoć",
+              "src": "machine",
+              "h": "56485761fc90"
+            },
+            "none": {
+              "t": "(ništa)",
+              "src": "machine",
+              "h": "3c6b183d348f"
+            },
+            "dropAFileHere": {
+              "t": "Ispusti ovdje datoteku",
+              "src": "machine",
+              "h": "5b8427061e17"
+            },
+            "csvTsvTxtXlsxXlsOds": {
+              "t": "CSV · TSV · TXT · XLSX · XLS · ODS",
+              "src": "machine",
+              "h": "d1f5db0fe71a"
+            },
+            "chooseADifferentFile": {
+              "t": "Izaberi neku drugu datoteku",
+              "src": "machine",
+              "h": "7c1920bd7a2c"
+            },
+            "browseForAFile": {
+              "t": "Traži datoteku",
+              "src": "machine",
+              "h": "64c9ae16f63c"
+            },
+            "fileDetectedDropToUpload": {
+              "t": "Datoteka otkrivena, ispusti za upload.",
+              "src": "machine",
+              "h": "67d01fbc74d4"
+            },
+            "addressGeocoder": {
+              "t": "Adresa",
+              "src": "machine",
+              "h": "329d79f7e834"
+            },
+            "_1ChooseAFile": {
+              "t": "1. Izaberite datoteku",
+              "src": "machine",
+              "h": "384ed04ab030"
+            },
+            "supportedFormatsCsvTsvTxtXlsx": {
+              "t": "Podržani formati: CSV, TSV, TXT, XLSX, XLS, ODS. Prvi red se koristi kao zaglavlje kolone.",
+              "src": "machine",
+              "h": "72ec95f15c5b"
+            },
+            "_2MapAddressFields": {
+              "t": "2. Polja za adresu mape",
+              "src": "machine",
+              "h": "19f374d0ad5c"
+            },
+            "pickWhichColumnSHoldThe": {
+              "t": "Izaberite koja kolona sadrži adresu. KoristiteSamu punu adresu ako jedna kolona ima cijelu adresu, iliOdvojite kolone za mapiranje pojedinih dijelova.",
+              "src": "machine",
+              "h": "a6212c4a5d60"
+            },
+            "rowsCountRowsFieldsCountColumns": {
+              "t": "{rowsCount}redovi · {fieldsCount} kolone",
+              "src": "machine",
+              "h": "caf9687a36ee"
+            },
+            "dismissErrorMessage": {
+              "t": "Poruka servera:",
+              "src": "machine",
+              "h": "c095cffe057b"
+            },
+            "noMapWidgetIsConnectedAddresses": {
+              "t": "Grafički element za mapu nije povezan. Adresa se još uvijek može provjeriti i izvoziti kao tabela; povezati grafički element za mapu u postavkama ovog grafičkog elementa da bi se također nacrtale odgovarajuće tačke.",
+              "src": "machine",
+              "h": "f8ad5e71d7a8"
+            },
+            "geocodingProgress": {
+              "t": "Napredak geokodiranja",
+              "src": "machine",
+              "h": "ee826d10447f"
+            },
+            "_3Results": {
+              "t": "3. Rezultati",
+              "src": "machine",
+              "h": "d47578d534cc"
+            },
+            "geocodingResultsSummary": {
+              "t": "Sažetak rezultata geokodiranja",
+              "src": "machine",
+              "h": "c5c34575cd6c"
+            },
+            "unmatchedRowsByReason": {
+              "t": "Neupareni redovi po razumu",
+              "src": "machine",
+              "h": "1bf7e9b0c57d"
+            },
+            "matchedWithATie": {
+              "t": "Poklapa se sa kravatom.",
+              "src": "machine",
+              "h": "82bfc5e9eee0"
+            },
+            "matchedButTheLocatorFoundMore": {
+              "t": "Poklapa se, ali lokator je pronašao više jednako dobrih kandidata.",
+              "src": "machine",
+              "h": "f72117d442bd"
+            },
+            "addedToTheMapAs": {
+              "t": "Dodano u mapu kao",
+              "src": "machine",
+              "h": "fcf2ca591fee"
+            },
+            "openItFromTheMapS": {
+              "t": ". Otvorite ga sa liste slojeva mape da biste vidjeli tabelu.",
+              "src": "machine",
+              "h": "f7c0bc31c242"
+            },
+            "removeFromMap": {
+              "t": "Ukloni sa mape",
+              "src": "machine",
+              "h": "a0d4bef8a6eb"
+            },
+            "reviewUnmatchedFailureCount": {
+              "t": "Pregled neuparen ({failureCount})",
+              "src": "machine",
+              "h": "4dc7b46bcf09"
+            },
+            "downloadUnmatched": {
+              "t": "Preuzimanje nije upareno",
+              "src": "machine",
+              "h": "9618d357785a"
+            },
+            "downloadTheFailureCountUnmatchedRowsAs": {
+              "t": "Preuzmi {failureCount} neuparene redove kao CSV",
+              "src": "machine",
+              "h": "83d95eb75fc4"
+            },
+            "_4Export": {
+              "t": "4. Izvoz",
+              "src": "machine",
+              "h": "10ef575bbbeb"
+            },
+            "addressCheckTableEveryRowWith": {
+              "t": "Tabela provjere adresa: svaki red sa svojim rezultatom poklapanja, kao CSV ili Excel, za sve redove, samo one neuparene, ili samo one koje se poklapaju. Karta datoteka: odgovara tačkama kao GeoJSON, KML ili zipped Shapefile.",
+              "src": "machine",
+              "h": "599a96da5bd8"
+            },
+            "noMapIsConnectedSoResults": {
+              "t": "Nijedna mapa nije povezana, pa se rezultati provjeravaju i mogu se izvoziti kao tabela ali se ne iscrtavaju.",
+              "src": "machine",
+              "h": "670de8d9468a"
+            },
+            "uiWorkflowProgress": {
+              "t": "Napredak radnog toka",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "od",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "shapefile": {
+              "t": "Snimi datoteku",
+              "src": "machine",
+              "h": "1e21d10d2150"
+            },
+            "allRows": {
+              "t": "Svi redovi",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Nisam mogao izvesti {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linija 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Stanje / Regija",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Poštanski broj",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Pokaži pomoć",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Šifrirano (zavezano)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Nema poklapanja",
+              "src": "machine",
+              "h": "3518dffe0672"
+            },
+            "unknownError": {
+              "t": "nepoznata greška",
+              "src": "machine",
+              "h": "af6321ca7a8b"
+            },
+            "unserializableError": {
+              "t": "Neserijalizacijska greška",
+              "src": "machine",
+              "h": "76e73551597a"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Samo redovi koji se ne poklapaju sa razlogom svakog. Predajte ovu listu onome ko provjerava adrese.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Samo se redovi podudaraju, sa adresom na koju ih je locirao.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Svaki red iz vaše datoteke sa dodanim rezultatom poklapanja. Excel također dobiva Neuparene i Uparene listove.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Zamijeni datoteku. Trenutni: {fileName}. Pritisnite Enter ili Space da izaberete drugu datoteku.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Ovdje ispustite datoteku ili pritisnite Enter ili Space da otvorite birač datoteka.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(izvorni red nije dostupan)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(prazna adresa)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Čitam datoteku.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Datoteka je učitana. {toLocaleString} redovi su spremni za mapu.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geokodiranje {toLocaleString} od {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base}Dodano mapi kao {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokodiranje završeno. {toLocaleString} od {toLocaleString2} podudaranje.",
+              "src": "machine",
+              "h": "37ad723d24d9"
+            }
+          }
         },
         "ca": {
           "file": "9910893b97e0",
@@ -10376,18 +11242,889 @@
           }
         },
         "hr": {
-          "file": "33efd8135a23",
+          "file": "e141589eb1b9",
           "counts": {
             "esri": 17,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 0,
+            "machine": 174,
             "stale": 0,
-            "missing": 175
+            "missing": 1
           },
-          "entries": {}
+          "entries": {
+            "_widgetLabel": {
+              "t": "Geokoder adrese",
+              "src": "machine",
+              "h": "b358ed6f0f9d"
+            },
+            "mapFields": {
+              "t": "Polja za adresu mape",
+              "src": "machine",
+              "h": "ee65858c3362"
+            },
+            "geocode": {
+              "t": "Geocode",
+              "src": "machine",
+              "h": "b305bd57abc9"
+            },
+            "matched": {
+              "t": "Poklapa se",
+              "src": "machine",
+              "h": "1bf3ec5bf8dd"
+            },
+            "failed": {
+              "t": "Neupariv",
+              "src": "machine",
+              "h": "c625b458a027"
+            },
+            "matchRate": {
+              "t": "Stopa poklapanja",
+              "src": "machine",
+              "h": "270807f9f2ca"
+            },
+            "selectMapWidget": {
+              "t": "Odaberite widget mape u postavkama ovog grafičkog elementa za prikaz točaka.",
+              "src": "machine",
+              "h": "698db2d58305"
+            },
+            "helpIntro": {
+              "t": "Ovaj widget uzima popis adresa iz tabele, provjerava svaku od njih u odnosu na lokator adrese, i stavlja šibice na karti.",
+              "src": "machine",
+              "h": "f1e6c17cc0a6"
+            },
+            "helpSearchPlaceholder": {
+              "t": "Pretraži vodič (pokušajsloj ilineupariv",
+              "src": "machine",
+              "h": "ad0405405571"
+            },
+            "helpNoMatches": {
+              "t": "Ništa u vodiču ne odgovara toj riječi. Pokušajte drugi, ili otvorite dijelove iznad.",
+              "src": "machine",
+              "h": "3fe179f75330"
+            },
+            "firstRunTitle": {
+              "t": "Novi ovdje?",
+              "src": "machine",
+              "h": "b81f2e17e001"
+            },
+            "firstRunBody": {
+              "t": "Odaberite tablicu adresa, provjerite stupce koje je widget pogodio, i pritisnite Geocode.",
+              "src": "machine",
+              "h": "23fdf1491ce9"
+            },
+            "firstRunHelpLink": {
+              "t": "Otvori vodič.",
+              "src": "machine",
+              "h": "2447dd6134ea"
+            },
+            "firstRunDismiss": {
+              "t": "Otpusti ovaj savjet",
+              "src": "machine",
+              "h": "1b6bbfcee88b"
+            },
+            "helpStartTitle": {
+              "t": "Počnite ovdje: tri koraka",
+              "src": "machine",
+              "h": "789320b4831d"
+            },
+            "helpStart1": {
+              "t": "Pod 1. Odaberite datoteku, pritisnite Pregledajte datoteku i izaberite svoju tablicu. CSV ili Excel datoteka oba rada.",
+              "src": "machine",
+              "h": "ac1ce74653ef"
+            },
+            "helpStart2": {
+              "t": "Pod 2. Map adresa polja, provjerite stupce. Grafički element ih pogađa iz svojih naslova, tako da većinu vremena nema ništa za promjenu.",
+              "src": "machine",
+              "h": "5d0d106741da"
+            },
+            "helpStart3": {
+              "t": "Pritisnite Geocode i pričekajte da se traka popuni. Bodovi se pojavljuju na karti kada završi.",
+              "src": "machine",
+              "h": "c516a98bc599"
+            },
+            "helpFileTitle": {
+              "t": "Datoteka koju donosite",
+              "src": "machine",
+              "h": "4831b2785f8a"
+            },
+            "helpFileIntro": {
+              "t": "Gotovo bilo koji popis adresa iz tablice radi.",
+              "src": "machine",
+              "h": "9825d2bee268"
+            },
+            "helpFile1": {
+              "t": "Prihvaćene vrste: CSV, TSV, TXT, XLSX, XLS i ODS.",
+              "src": "machine",
+              "h": "6cb583847b50"
+            },
+            "helpFile2": {
+              "t": "Prvi red moraju biti naslovi stupca, jedan naslov po stupcu.",
+              "src": "machine",
+              "h": "554bbacf3c8c"
+            },
+            "helpFile3": {
+              "t": "Samo prvi list Excel radne knjige se čita, pa stavite svoje adrese tamo.",
+              "src": "machine",
+              "h": "ddd50eafb1d1"
+            },
+            "helpFile4": {
+              "t": "Svaki drugi stupac dolazi zajedno za vožnju. Imena, telefonski brojevi, bilješke: sve to slijeće na kartu s točkom.",
+              "src": "machine",
+              "h": "fac7b0465ce5"
+            },
+            "helpFile5": {
+              "t": "Da biste zamijenili datoteke, pritisnite Odaberite drugu datoteku. Vaši prethodni rezultati su izbrisani.",
+              "src": "machine",
+              "h": "f6f86a49bc54"
+            },
+            "helpColumnsTitle": {
+              "t": "Usklađujem vaše stupce",
+              "src": "machine",
+              "h": "80ef985f0cf1"
+            },
+            "helpColumnsIntro": {
+              "t": "Grafički element mora znati koji od vaših stupova sadrži adresu.",
+              "src": "machine",
+              "h": "c201a776b30a"
+            },
+            "helpColumns1": {
+              "t": "Odvojeni stupci: odaberite stupac za ulicu, grad, državu i ZIP. Koristite ovo kada se adresa podijeli, što je uobičajen slučaj.",
+              "src": "machine",
+              "h": "75868d604893"
+            },
+            "helpColumns2": {
+              "t": "Jednostruka puna adresa: izaberite jedan stupac koji drži cijelu adresu na vlastitu, kao što je250 N 5. St, Grand raskrižje, CO 81501",
+              "src": "machine",
+              "h": "0187bbfcd085"
+            },
+            "helpColumns3": {
+              "t": "Pretpostavka je popunjena iz vaših smjerova.",
+              "src": "machine",
+              "h": "3f5b29508809"
+            },
+            "helpColumns4": {
+              "t": "Ostavite kutiju na (ništa) ako nemate taj komad. Ulica i grad su dvije koje su najvažnije.",
+              "src": "machine",
+              "h": "373aa0321dd0"
+            },
+            "helpLayerTitle": {
+              "t": "Sloj na karti",
+              "src": "machine",
+              "h": "a0f75377f433"
+            },
+            "helpLayerIntro": {
+              "t": "Usklađene adrese postaju pravi sloj karte, tako da nema ništa za preuzimanje i dodavanje natrag.",
+              "src": "machine",
+              "h": "680a303444f2"
+            },
+            "helpLayer1": {
+              "t": "Sloj je nazvan po vašoj datoteci. Donesite hidrante.csv i sloj se zove Hidranti.",
+              "src": "machine",
+              "h": "9041017bb3ff"
+            },
+            "helpLayer2": {
+              "t": "Pojavljuje se u mapinoj listi slojeva kao i svaki drugi sloj. Uključite ga i isključite, otvorite njegov stol i kliknite na točku da biste vidjeli cijeli red iz svoje datoteke.",
+              "src": "machine",
+              "h": "9968a0013587"
+            },
+            "helpLayer3": {
+              "t": "Ostatak aplikacije može ga koristiti previše: filtrirati ga, odabrati iz njega, staviti ga u grafikonu ili tablici.",
+              "src": "machine",
+              "h": "3ac3b42b19c3"
+            },
+            "helpLayer4": {
+              "t": "Karta se kreće kako bi odgovarala točkama kada se geokodiranje završi.",
+              "src": "machine",
+              "h": "e086a66cdb76"
+            },
+            "helpLayer5": {
+              "t": "Pritisnite Geocode ponovno zamjenjuje sloj iz vašeg posljednjeg pokretanja, tako da se karta ne popuni dok popravite datoteku i pokušajte ponovno.",
+              "src": "machine",
+              "h": "1d84b5444e70"
+            },
+            "helpLayer5Keep": {
+              "t": "Pritisnite Geocode opet dodaje još jedan sloj pored prvog, numeriran (2), (3) i tako dalje.",
+              "src": "machine",
+              "h": "4b5f29dffc8f"
+            },
+            "helpLayer6": {
+              "t": "Uklonite s karte ponovno skida sloj. Clear ne: to prazni oblik i ostavlja svoje slojeve na miru.",
+              "src": "machine",
+              "h": "fe1381b21ad9"
+            },
+            "helpLayer7": {
+              "t": "Sloj traje sve dok aplikacija ostaje otvorena. Zatvori karticu i ona je nestala, pa koristite 4. Izvoz ako je potrebno da ga zadržite.",
+              "src": "machine",
+              "h": "3d135d5521ad"
+            },
+            "helpResultsTitle": {
+              "t": "Čitanje rezultata",
+              "src": "machine",
+              "h": "68993609ed8d"
+            },
+            "helpResults1": {
+              "t": "Poklapa se: redovi za koje je geokoder pronašao mjesto.",
+              "src": "machine",
+              "h": "2701f8fcf9b8"
+            },
+            "helpResults2": {
+              "t": "Neusporedive: redovi nisu mogli postaviti, ili staviti s premalo samopouzdanja. Male oznake ispod ukupno kažu zašto: nizak rezultat, nema podudaranja, prazna adresa ili greška u servisu.",
+              "src": "machine",
+              "h": "3c68d7a781e0"
+            },
+            "helpResults3": {
+              "t": "Stopa podudaranja: odgovara redovima kao udio u cijeloj datoteci. Iznad 90 posto je dobra datoteka.",
+              "src": "machine",
+              "h": "3cdedb4e18f2"
+            },
+            "helpResults4": {
+              "t": "Pregled neuparen otvara puni popis redova koji nisu uspjeli, s razlogom za svaki. Filtriraj ga s razlogom ili ga pretraži, a zatim preuzmi ono što je na zaslonu kao CSV. Preuzimanje neuparen sprema cijeli popis u jednom kliku.",
+              "src": "machine",
+              "h": "624b3f0646d6"
+            },
+            "helpCheckTitle": {
+              "t": "Provjeravam popis adresa",
+              "src": "machine",
+              "h": "3ba5066d924f"
+            },
+            "helpCheckIntro": {
+              "t": "Grafički element se udvostručuje kao provjera adrese: govori vam koji su redovi u lokatoru adrese, a koji nisu.",
+              "src": "machine",
+              "h": "1a163f69f5a8"
+            },
+            "helpCheck1": {
+              "t": "Učitajte popis i pritisnite Geocode. Usklađeni znači da je lokator pronašao adresu.",
+              "src": "machine",
+              "h": "fdbe979b4628"
+            },
+            "helpCheck2": {
+              "t": "Pod 4. Izvoz, izaberite Neusporedivi, zatim CSV ili Excel. Dobivate samo redove kojima je potreban pogled, svaki sa svojim razlogom u stupcu FAIL_REASON.",
+              "src": "machine",
+              "h": "784f7a31b9bd"
+            },
+            "helpCheck3": {
+              "t": "Nizak rezultat: lokator pronašao nešto blizu, ali ne dovoljno blizu. MATCH_ADR pokazuje ono što je pronašao, što obično ukazuje na tipfeler, pogrešan sufiks ili nedostaje jedinica.",
+              "src": "machine",
+              "h": "3bec7d84c14d"
+            },
+            "helpCheck4": {
+              "t": "Nema poklapanja: lokator nije našao ništa. Prazna adresa: red nema adresu u mapiranim stupcima. Servisna greška: zahtjev nije uspio, pa pokrenite datoteku ponovo.",
+              "src": "machine",
+              "h": "ac755292d7de"
+            },
+            "helpCheck5": {
+              "t": "Utakmica (zavezana) znači dva kandidata zabio isti. To se računa kao podudaranje, ali to vrijedi drugi pogled.",
+              "src": "machine",
+              "h": "3d283fb25f0d"
+            },
+            "helpCheck6": {
+              "t": "Odaberite sve redove umjesto da biste dobili cijelu datoteku natrag s MATCH_STATUS na svakom redu. Excel zatim dodaje Neuparen i podudaranje listova i sažetak listova s ukupno.",
+              "src": "machine",
+              "h": "8febb73f4927"
+            },
+            "helpExportTitle": {
+              "t": "Preuzimanje kopije",
+              "src": "machine",
+              "h": "f18312690607"
+            },
+            "helpExportIntro": {
+              "t": "Dvije vrste downloada: tablica vaših redova, ili mapa datoteke podudaranja točaka.",
+              "src": "machine",
+              "h": "ed3cdb1d764b"
+            },
+            "helpExport1": {
+              "t": "Tablica provjere adresa: CSV ili Excel, za sve redove, samo one neusporedive, ili samo one koje se podudaraju. Svaki originalni stupac se čuva, uz dodan rezultat utakmice na desnoj strani.",
+              "src": "machine",
+              "h": "a4a0829d155a"
+            },
+            "helpExport2": {
+              "t": "Karta datoteka: GeoJSON za web karte i ArcGIS Online, KML za Google Earth, ili oblik datoteka ZIP za ArcGIS Pro. Usklađene točke samo, jer neuparen red nema mjesta za crtanje.",
+              "src": "machine",
+              "h": "0f7a8af5989e"
+            },
+            "helpExport3": {
+              "t": "Excel otvara CSV s naglašenim slovima netaknutim, a vrijednost koja počinje s = ili + se čuva kao tekst, nikada pokrenuti kao formula.",
+              "src": "machine",
+              "h": "169aa9fd7964"
+            },
+            "helpExport4": {
+              "t": "Datoteka slijeće u vašu mapu za preuzimanje, nazvanu po vašoj datoteci s datumom i vremenom.",
+              "src": "machine",
+              "h": "ed85a85549b3"
+            },
+            "helpTroubleTitle": {
+              "t": "Ako nešto izgleda loše",
+              "src": "machine",
+              "h": "6f7fec3ff1e0"
+            },
+            "helpTrouble1": {
+              "t": "Ne pojavljuju se točke: karta nije povezana s ovim widgetom. Provjera i izvoz tablice još uvijek rade. Pitajte GIS odjel za povezivanje karte ako vam je potrebno bodove nacrtan.",
+              "src": "machine",
+              "h": "3caa81f14005"
+            },
+            "helpTrouble2": {
+              "t": "Ništa se nije dogodilo nakon što ste odabrali datoteku: datoteka nije imala čitljive redove. Provjerite da je red jedan naslova stupca i da je barem jedan red ispod njega.",
+              "src": "machine",
+              "h": "2f0106727764"
+            },
+            "helpTrouble3": {
+              "t": "Sve je neusporedivo: stupci se podudaraju s pogrešnim stvarima. Vratite se na 2. Polja za adresu karte i provjerite svaki okvir.",
+              "src": "machine",
+              "h": "12efe06626e8"
+            },
+            "helpTrouble4": {
+              "t": "Mnogi redovi kažu nizak rezultat: adrese su blizu, ali ne dovoljno blizu. Pravopis, nedostaje grad ili nedostaje ZIP su uobičajeni razlozi.",
+              "src": "machine",
+              "h": "03e716cc1b5a"
+            },
+            "helpTrouble5": {
+              "t": "Bodovi su sletjeli u krivom dijelu zemlje: grad ili državna kolona je prazna, tako da je geokoder pogodio. Popunite te stupce u i pokrenuti ga opet.",
+              "src": "machine",
+              "h": "91510f78e177"
+            },
+            "helpTrouble6": {
+              "t": "Sloj je nestao: kartica preglednika je zatvorena ili ponovno učitana. Pokrenite datoteku ili donesite kopiju koju ste izvezli.",
+              "src": "machine",
+              "h": "7d7985f203e3"
+            },
+            "helpTroubleContact": {
+              "t": "Još uvijek zaglavi? Kontaktirajte GIS Division i spomenuti CSV Geocoder ime i ovu aplikaciju.",
+              "src": "machine",
+              "h": "778d90a8fb03"
+            },
+            "helpTipsTitle": {
+              "t": "Dobro je znati.",
+              "src": "machine",
+              "h": "79fc372dc790"
+            },
+            "helpTips1": {
+              "t": "Čiste adrese pobijediti. Izvadite brojeve apartmana i bilješke kao što jeiza škole prije nego što počnete.",
+              "src": "machine",
+              "h": "fbfa45500dea"
+            },
+            "helpTips2": {
+              "t": "Veliki dosje je u redu. Bar pokazuje koliko je daleko, a Otkaži ga zaustavlja.",
+              "src": "machine",
+              "h": "559766f937f5"
+            },
+            "helpTips3": {
+              "t": "Isprazni formular tako da možeš početi s drugom datotekom.",
+              "src": "machine",
+              "h": "29e81f9cc15f"
+            },
+            "helpTips5": {
+              "t": "Redovi sa praznom adresom se nikada ne šalju na lokator, tako da ništa ne koštaju i pojavljuju se kao Blank adresa.",
+              "src": "machine",
+              "h": "2747e49773c4"
+            },
+            "helpTips4": {
+              "t": "Ova aplikacija koristi Esri je svjetski adresa pronalazač, koji troši kredite na velike staze. Provjerite s GIS Division prije trčanje desetke tisuća redova.",
+              "src": "machine",
+              "h": "c74119ad9ac0"
+            },
+            "addressCheckTable": {
+              "t": "Tabela provjere adrese",
+              "src": "machine",
+              "h": "8efee4b265c2"
+            },
+            "aSpreadsheetOfYourRowsWith": {
+              "t": "Tabela Vaših redova s MATCH_STATUS, MATCH_SCORE, adresa koju ste poslali, adresa lokator odgovara, vrsta adrese, jednostavan razlog za svaki red koji nije odgovarao, i koordinate za svaki red koji je poslao. Otvorite je u Excel i filter na MATCH_STATUS.",
+              "src": "machine",
+              "h": "689ba7e04841"
+            },
+            "rowsToInclude": {
+              "t": "Redovi koje treba uključiti",
+              "src": "machine",
+              "h": "bcc561c451fb"
+            },
+            "exportScopeWordAsLabel": {
+              "t": "Izvoz {scopeWord} kao {label}",
+              "src": "machine",
+              "h": "5515fbefad4b"
+            },
+            "thereAreNoScopeWordToExport": {
+              "t": "Nema {scopeWord} za izvoz. Odaberite drugu opciju iznad.",
+              "src": "machine",
+              "h": "3160cb3219e0"
+            },
+            "mapFileExport": {
+              "t": "Izvoz datoteke mape",
+              "src": "machine",
+              "h": "f5b4331d7bad"
+            },
+            "mapFile": {
+              "t": "Datoteka mape",
+              "src": "machine",
+              "h": "544d7d4466a2"
+            },
+            "matchedPointsOnlySinceARow": {
+              "t": "Odgovarajući bodovi samo, jer red bez lokacije nema ništa za crtanje. GeoJSON za web karte i ArcGIS Online, KML za Google Earth, zipped Shapefile za ArcGIS Pro.",
+              "src": "machine",
+              "h": "1f4d581d92c2"
+            },
+            "matchedCountMatchedPoint": {
+              "t": "{matchedCount} odgovara točki.",
+              "src": "machine",
+              "h": "38f14cc49017"
+            },
+            "matchedCountMatchedPoints": {
+              "t": "{matchedCount} odgovara bodovima.",
+              "src": "machine",
+              "h": "658e9923bb3d"
+            },
+            "aZippedShapefile": {
+              "t": "a zipped shapefile",
+              "src": "machine",
+              "h": "e557d2803b94"
+            },
+            "exportMatchedPointsAsId": {
+              "t": "Izvoz odgovara točkama kao {id}",
+              "src": "machine",
+              "h": "08119ce037a1"
+            },
+            "noMatchedPointsToExportRe": {
+              "t": "Nema odgovarajućih bodova za izvoz. Ponovno pokrenuto geokodiranje s nižim minimalnim rezultatom poklapanja, ili provjerite da li su polja adrese ispravno mapirana.",
+              "src": "machine",
+              "h": "eeee350354ec"
+            },
+            "downloaded": {
+              "t": "Preuzeto",
+              "src": "machine",
+              "h": "c61970292546"
+            },
+            "backToGeocodingResults": {
+              "t": "Povratak na rezultate geokodiranja",
+              "src": "machine",
+              "h": "aa7fb5e6cd2b"
+            },
+            "reviewUnmatched": {
+              "t": "Pregled neuparen",
+              "src": "machine",
+              "h": "f43ce1f45148"
+            },
+            "failuresCountRecordDidNotProduceAn": {
+              "t": "{failuresCount}zapis nije proizveo prihvaćenu utakmicu.",
+              "src": "machine",
+              "h": "f4fa2b70d0ae"
+            },
+            "failuresCountRecordsDidNotProduceAn": {
+              "t": "{failuresCount}zapisi nisu proizveli prihvaćenu podudarnost.",
+              "src": "machine",
+              "h": "aae88211ed81"
+            },
+            "recordDid": {
+              "t": "Rekord je to učinio.",
+              "src": "machine",
+              "h": "dadc6956c4cd"
+            },
+            "recordsDid": {
+              "t": "Zapisi jesu.",
+              "src": "machine",
+              "h": "c4285de53546"
+            },
+            "searchUnmatchedRecords": {
+              "t": "Traži neuparene zapise",
+              "src": "machine",
+              "h": "45172e49a231"
+            },
+            "addressRowNumberReasonOrField": {
+              "t": "Adresa, broj retka, razlog ili vrijednost polja",
+              "src": "machine",
+              "h": "5d80fe6cbc23"
+            },
+            "reason": {
+              "t": "Obrazloženje",
+              "src": "machine",
+              "h": "f219cc0614ae"
+            },
+            "anyReasonFailuresCount": {
+              "t": "Svaki razlog ({failuresCount})",
+              "src": "machine",
+              "h": "b7723a4a68cc"
+            },
+            "showingFilteredFailuresCountOfFailuresCountUnmatchedRecord": {
+              "t": "Prikaz {filteredFailuresCount} od {failuresCount} neuparen zapis.",
+              "src": "machine",
+              "h": "49f46814a131"
+            },
+            "showingFilteredFailuresCountOfFailuresCountUnmatchedRecords": {
+              "t": "Prikazujem {filteredFailuresCount} od {failuresCount} neuparene zapise.",
+              "src": "machine",
+              "h": "3e8e290d3407"
+            },
+            "recordObjectIdSourceRowObjectId2": {
+              "t": "Zapis {objectId} · izvorni red {objectId2}",
+              "src": "machine",
+              "h": "ff343450bd4f"
+            },
+            "noScore": {
+              "t": "Nema rezultata",
+              "src": "machine",
+              "h": "1d55e538b5b4"
+            },
+            "submittedAddress": {
+              "t": "Priložena adresa",
+              "src": "machine",
+              "h": "dee7ed9fded0"
+            },
+            "closestLocatorCandidate": {
+              "t": "Najblizi kandidat za lokator",
+              "src": "machine",
+              "h": "8e6ed2a071f6"
+            },
+            "originalRowFields": {
+              "t": "Izvorna polja reda",
+              "src": "machine",
+              "h": "4aa0a17d0e3e"
+            },
+            "noUnmatchedRecordsMatchThisSearch": {
+              "t": "Nema neusporedivih zapisa koji odgovaraju ovoj potrazi. Očistite pretragu ili izaberite bilo koji razlog da ih sve prikažete.",
+              "src": "machine",
+              "h": "ce7cd798db92"
+            },
+            "backToResults": {
+              "t": "Povratak na rezultate",
+              "src": "machine",
+              "h": "48d51d7a2aad"
+            },
+            "downloadFilteredFailuresCountAsCsv": {
+              "t": "Preuzmi {filteredFailuresCount} kao CSV",
+              "src": "machine",
+              "h": "247bd21d90a0"
+            },
+            "downloadTheFilteredFailuresCountRecordsShownAs": {
+              "t": "Preuzmite {filteredFailuresCount} zapise prikazane kao CSV",
+              "src": "machine",
+              "h": "7e553e9e4c4c"
+            },
+            "addressFieldMapping": {
+              "t": "Mapiranje polja adrese",
+              "src": "machine",
+              "h": "6dc96b53b8f5"
+            },
+            "addressMappingMode": {
+              "t": "Način mapiranja adrese",
+              "src": "machine",
+              "h": "d23ceb629e31"
+            },
+            "separateColumns": {
+              "t": "Odvojivi stupci",
+              "src": "machine",
+              "h": "81eb49b8a57c"
+            },
+            "singleFullAddress": {
+              "t": "Jedna puna adresa",
+              "src": "machine",
+              "h": "530ac112e394"
+            },
+            "addressColumn": {
+              "t": "Stupac za adresu",
+              "src": "machine",
+              "h": "5b23d6ee92ac"
+            },
+            "theColumnContainingTheCompleteAddress": {
+              "t": "Stupac koji sadrži kompletnu adresu kao jedan niz, npr.100 Main St, Springfield, IL 62701",
+              "src": "machine",
+              "h": "f465354480e9"
+            },
+            "selectColumn": {
+              "t": "(Odabir stupaca)",
+              "src": "machine",
+              "h": "138f1de5c565"
+            },
+            "csvgMKey": {
+              "t": "csvg-m-{key}",
+              "src": "machine",
+              "h": "cc6146c1447f"
+            },
+            "fieldIdHelp": {
+              "t": "{fieldId}-pomoć",
+              "src": "machine",
+              "h": "56485761fc90"
+            },
+            "none": {
+              "t": "(ništa)",
+              "src": "machine",
+              "h": "3c6b183d348f"
+            },
+            "dropAFileHere": {
+              "t": "Baci datoteku ovdje",
+              "src": "machine",
+              "h": "5b8427061e17"
+            },
+            "csvTsvTxtXlsxXlsOds": {
+              "t": "CSV · TSV · TXT · XLSX · XLS · ODS",
+              "src": "machine",
+              "h": "d1f5db0fe71a"
+            },
+            "chooseADifferentFile": {
+              "t": "Odaberite drugu datoteku",
+              "src": "machine",
+              "h": "7c1920bd7a2c"
+            },
+            "browseForAFile": {
+              "t": "Traži datoteku",
+              "src": "machine",
+              "h": "64c9ae16f63c"
+            },
+            "fileDetectedDropToUpload": {
+              "t": "Datoteka otkrivena, ispustiti za upload.",
+              "src": "machine",
+              "h": "67d01fbc74d4"
+            },
+            "addressGeocoder": {
+              "t": "Geokoder adrese",
+              "src": "machine",
+              "h": "329d79f7e834"
+            },
+            "_1ChooseAFile": {
+              "t": "1. Odaberite datoteku",
+              "src": "machine",
+              "h": "384ed04ab030"
+            },
+            "supportedFormatsCsvTsvTxtXlsx": {
+              "t": "Podržani formati: CSV, TSV, TXT, XLSX, XLS, ODS. Prvi red se koristi kao zaglavlje stupca.",
+              "src": "machine",
+              "h": "72ec95f15c5b"
+            },
+            "_2MapAddressFields": {
+              "t": "2. Polja za adresu mape",
+              "src": "machine",
+              "h": "19f374d0ad5c"
+            },
+            "pickWhichColumnSHoldThe": {
+              "t": "Odaberite koji stupac sadrži adresu. KoristiteSamu punu adresu ako jedan stupac ima cijelu adresu, iliOdvojite stupce za mapiranje pojedinih dijelova.",
+              "src": "machine",
+              "h": "a6212c4a5d60"
+            },
+            "rowsCountRowsFieldsCountColumns": {
+              "t": "{rowsCount} redovi · {fieldsCount} stupci",
+              "src": "machine",
+              "h": "caf9687a36ee"
+            },
+            "dismissErrorMessage": {
+              "t": "Poruke o grešci",
+              "src": "machine",
+              "h": "c095cffe057b"
+            },
+            "noMapWidgetIsConnectedAddresses": {
+              "t": "Nema Mapa widget je povezan. Adrese se još uvijek mogu provjeriti i izvoziti kao tabela; spojiti Map widget u postavke ovog widget-a da bi se također nacrtale usklađene točke.",
+              "src": "machine",
+              "h": "f8ad5e71d7a8"
+            },
+            "geocodingProgress": {
+              "t": "Napredak geokodiranja",
+              "src": "machine",
+              "h": "ee826d10447f"
+            },
+            "_3Results": {
+              "t": "3. Rezultati",
+              "src": "machine",
+              "h": "d47578d534cc"
+            },
+            "geocodingResultsSummary": {
+              "t": "Sažetak rezultata geokodiranja",
+              "src": "machine",
+              "h": "c5c34575cd6c"
+            },
+            "unmatchedRowsByReason": {
+              "t": "Neupareni redovi po razumu",
+              "src": "machine",
+              "h": "1bf7e9b0c57d"
+            },
+            "matchedWithATie": {
+              "t": "Poklapa se s kravatom.",
+              "src": "machine",
+              "h": "82bfc5e9eee0"
+            },
+            "matchedButTheLocatorFoundMore": {
+              "t": "Odgovara, ali lokator je pronašao više od jednog jednako dobrog kandidata.",
+              "src": "machine",
+              "h": "f72117d442bd"
+            },
+            "addedToTheMapAs": {
+              "t": "Dodano na kartu kao",
+              "src": "machine",
+              "h": "fcf2ca591fee"
+            },
+            "openItFromTheMapS": {
+              "t": ". Otvorite ga s popisa sloja karte da biste vidjeli tablicu.",
+              "src": "machine",
+              "h": "f7c0bc31c242"
+            },
+            "removeFromMap": {
+              "t": "Ukloni s mape",
+              "src": "machine",
+              "h": "a0d4bef8a6eb"
+            },
+            "reviewUnmatchedFailureCount": {
+              "t": "Pregled neuparen ({failureCount})",
+              "src": "machine",
+              "h": "4dc7b46bcf09"
+            },
+            "downloadUnmatched": {
+              "t": "Preuzimanje nije upareno",
+              "src": "machine",
+              "h": "9618d357785a"
+            },
+            "downloadTheFailureCountUnmatchedRowsAs": {
+              "t": "Preuzmite {failureCount} neuparene redove kao CSV",
+              "src": "machine",
+              "h": "83d95eb75fc4"
+            },
+            "_4Export": {
+              "t": "4. Izvoz",
+              "src": "machine",
+              "h": "10ef575bbbeb"
+            },
+            "addressCheckTableEveryRowWith": {
+              "t": "Tablica provjere adresa: svaki red sa svojim rezultatom poklapanja, kao CSV ili Excel, za sve redove, samo one neuparene, ili samo one koje se podudaraju. Karta datoteka: podudaraju točke kao GeoJSON, KML ili zipped Shapefile.",
+              "src": "machine",
+              "h": "599a96da5bd8"
+            },
+            "noMapIsConnectedSoResults": {
+              "t": "Karta nije povezana, pa se rezultati provjeravaju i mogu se izvoziti kao tablica ali se ne crtaju.",
+              "src": "machine",
+              "h": "670de8d9468a"
+            },
+            "uiWorkflowProgress": {
+              "t": "Napredak radnog toka",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "od",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "Excel",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "shapefile": {
+              "t": "Oblik datoteke",
+              "src": "machine",
+              "h": "1e21d10d2150"
+            },
+            "allRows": {
+              "t": "Svi redovi",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Ne mogu izvoziti {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linija 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Država / regija",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Poštanski broj",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "Prikaži pomoć",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Odgovarajuće (zavezano)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Nema poklapanja.",
+              "src": "machine",
+              "h": "3518dffe0672"
+            },
+            "unknownError": {
+              "t": "nepoznata greška",
+              "src": "machine",
+              "h": "af6321ca7a8b"
+            },
+            "unserializableError": {
+              "t": "Neserijalizacijska greška",
+              "src": "machine",
+              "h": "76e73551597a"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Samo redovi koji se ne poklapaju, s razlogom svakog. Predajte ovaj popis onome tko provjerava adrese.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Samo su se redovi podudarali, s adresom na koju ih je lokator usporedio.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Svaki red iz datoteke s dodanim rezultatom poklapanja. Excel također dobiva neuparene i uparene listove.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Zamijeni datoteku. Trenutni: {fileName}. Pritisnite Enter ili Space da odaberete drugu datoteku.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Bacite datoteku ovdje, ili pritisnite Enter ili Space za otvaranje birača datoteka.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(izvorni redak nedostupan)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(prazna adresa)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Čitam datoteku.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "Datoteka učitana. {toLocaleString} redovi spremni za mapu.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geokodiranje {toLocaleString} od {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base} Dodano na kartu kao {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokodiranje dovršeno. {toLocaleString} od {toLocaleString2} podudaranje.",
+              "src": "machine",
+              "h": "37ad723d24d9"
+            }
+          }
         },
         "hu": {
           "file": "0df7210221d1",
@@ -23940,18 +25677,889 @@
           }
         },
         "sr": {
-          "file": "45db792a5127",
+          "file": "567e77472277",
           "counts": {
             "esri": 17,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 0,
+            "machine": 174,
             "stale": 0,
-            "missing": 175
+            "missing": 1
           },
-          "entries": {}
+          "entries": {
+            "_widgetLabel": {
+              "t": "Adresa Geocoder",
+              "src": "machine",
+              "h": "b358ed6f0f9d"
+            },
+            "mapFields": {
+              "t": "Polja adrese mape",
+              "src": "machine",
+              "h": "ee65858c3362"
+            },
+            "geocode": {
+              "t": "Geocode",
+              "src": "machine",
+              "h": "b305bd57abc9"
+            },
+            "matched": {
+              "t": "Poklapa se.",
+              "src": "machine",
+              "h": "1bf3ec5bf8dd"
+            },
+            "failed": {
+              "t": "NEUPARENO",
+              "src": "machine",
+              "h": "c625b458a027"
+            },
+            "matchRate": {
+              "t": "Stopa poklapanja",
+              "src": "machine",
+              "h": "270807f9f2ca"
+            },
+            "selectMapWidget": {
+              "t": "Odaberite grafički element mape u postavkama ovog grafičkog elementa za prikazivanje tačaka.",
+              "src": "machine",
+              "h": "698db2d58305"
+            },
+            "helpIntro": {
+              "t": "Ovaj grafički element uzima listu adresa iz tabele, proverava svaku u odnosu na lokator adrese, i stavlja šibice na mapu.",
+              "src": "machine",
+              "h": "f1e6c17cc0a6"
+            },
+            "helpSearchPlaceholder": {
+              "t": "Pretraži vodiè (pokušajsloj ilineupariv",
+              "src": "machine",
+              "h": "ad0405405571"
+            },
+            "helpNoMatches": {
+              "t": "Ništa u vodièu ne odgovara toj reèi.",
+              "src": "machine",
+              "h": "3fe179f75330"
+            },
+            "firstRunTitle": {
+              "t": "Novi ovde?",
+              "src": "machine",
+              "h": "b81f2e17e001"
+            },
+            "firstRunBody": {
+              "t": "Odaberite tabelu adresa, proverite kolone koje je vidžet pogodio i pritisnite Geocode.",
+              "src": "machine",
+              "h": "23fdf1491ce9"
+            },
+            "firstRunHelpLink": {
+              "t": "Otvori vodiè.",
+              "src": "machine",
+              "h": "2447dd6134ea"
+            },
+            "firstRunDismiss": {
+              "t": "Otpustite ovaj savet.",
+              "src": "machine",
+              "h": "1b6bbfcee88b"
+            },
+            "helpStartTitle": {
+              "t": "Poènite ovde: tri koraka.",
+              "src": "machine",
+              "h": "789320b4831d"
+            },
+            "helpStart1": {
+              "t": "Pod 1. Odaberite datoteku, pritisnite Pregledajte datoteku i izaberite tabelu. CSV ili Excel datoteka oba rada.",
+              "src": "machine",
+              "h": "ac1ce74653ef"
+            },
+            "helpStart2": {
+              "t": "Ispod 2. polja za mapu, proverite kolone. Vidžet ih pogaða iz vašeg kursa, tako da veæinu vremena nema šta da se promeni.",
+              "src": "machine",
+              "h": "5d0d106741da"
+            },
+            "helpStart3": {
+              "t": "Pritisnite Geocode i saèekajte da se bar popuni.",
+              "src": "machine",
+              "h": "c516a98bc599"
+            },
+            "helpFileTitle": {
+              "t": "Datoteka koju donosiš",
+              "src": "machine",
+              "h": "4831b2785f8a"
+            },
+            "helpFileIntro": {
+              "t": "Skoro svaka adresa sa tabele radi.",
+              "src": "machine",
+              "h": "9825d2bee268"
+            },
+            "helpFile1": {
+              "t": "Прихваћени типови: CSV, TSV, TXT, XLSX, XLS и ODS.",
+              "src": "machine",
+              "h": "6cb583847b50"
+            },
+            "helpFile2": {
+              "t": "Prvi red mora biti kolona, jedan pravac po koloni.",
+              "src": "machine",
+              "h": "554bbacf3c8c"
+            },
+            "helpFile3": {
+              "t": "Samo prvi list Excel radne knjige se èita, pa stavite svoje adrese tamo.",
+              "src": "machine",
+              "h": "ddd50eafb1d1"
+            },
+            "helpFile4": {
+              "t": "Svaka druga kolona dolazi na vožnju, imena, telefonski brojevi, beleške, sve se slete na mapu sa poentom.",
+              "src": "machine",
+              "h": "fac7b0465ce5"
+            },
+            "helpFile5": {
+              "t": "Da biste zamenili fajlove, pritisnite drugi fajl.",
+              "src": "machine",
+              "h": "f6f86a49bc54"
+            },
+            "helpColumnsTitle": {
+              "t": "Poklapaju se sa vašim kolumnama.",
+              "src": "machine",
+              "h": "80ef985f0cf1"
+            },
+            "helpColumnsIntro": {
+              "t": "Vidžet mora da zna koja od vaših kolona drži adresu.",
+              "src": "machine",
+              "h": "c201a776b30a"
+            },
+            "helpColumns1": {
+              "t": "Odvojene kolone: izaberite kolonu za ulicu, grad, državu i ZIP. Koristite ovo kada se adresa podeli, što je uobičajen slučaj.",
+              "src": "machine",
+              "h": "75868d604893"
+            },
+            "helpColumns2": {
+              "t": "Jedna puna adresa: izaberite jednu kolonu koja sama drži celu adresu, kao -250 N 5th St, Grand Junction, CO 81501",
+              "src": "machine",
+              "h": "0187bbfcd085"
+            },
+            "helpColumns3": {
+              "t": "Pretpostavka je popunjena iz vaših smjerova.",
+              "src": "machine",
+              "h": "3f5b29508809"
+            },
+            "helpColumns4": {
+              "t": "Ulica i grad su dve koje su najbitnije.",
+              "src": "machine",
+              "h": "373aa0321dd0"
+            },
+            "helpLayerTitle": {
+              "t": "Sloj na mapi",
+              "src": "machine",
+              "h": "a0f75377f433"
+            },
+            "helpLayerIntro": {
+              "t": "Poklapane adrese postaju pravi sloj mape, tako da nema šta da se skida i dodaje nazad.",
+              "src": "machine",
+              "h": "680a303444f2"
+            },
+            "helpLayer1": {
+              "t": "Sloj je nazvan po vašem fajlu, dovedite hidrante, a sloj se zove Hidranti.",
+              "src": "machine",
+              "h": "9041017bb3ff"
+            },
+            "helpLayer2": {
+              "t": "Pojavljuje se u listi slojeva mape kao i svaki drugi sloj. Uključite i isključite, otvorite njen sto i kliknite na tačku da vidite ceo red iz svog fajla.",
+              "src": "machine",
+              "h": "9968a0013587"
+            },
+            "helpLayer3": {
+              "t": "Ostatak aplikacije može da ga koristi takođe: filtriraj ga, izaberi iz njega, stavi ga u grafikon ili tabelu.",
+              "src": "machine",
+              "h": "3ac3b42b19c3"
+            },
+            "helpLayer4": {
+              "t": "Karta se pomera da bi odgovarala taèkama kada se geokodiranje završi.",
+              "src": "machine",
+              "h": "e086a66cdb76"
+            },
+            "helpLayer5": {
+              "t": "Pritiskanjem Geocode ponovo se zamenjuje sloj sa vaše poslednje runde, tako da se mapa ne popunjava dok popravljate fajl i pokušate ponovo.",
+              "src": "machine",
+              "h": "1d84b5444e70"
+            },
+            "helpLayer5Keep": {
+              "t": "Pritiskajući Geocode ponovo dodaje još jedan sloj pored prvog, numerisan (2), (3) i tako dalje.",
+              "src": "machine",
+              "h": "4b5f29dffc8f"
+            },
+            "helpLayer6": {
+              "t": "Ukloni sa mape ponovo skida sloj. Čisto ne: prazni oblik i ostavlja vaše slojeve same.",
+              "src": "machine",
+              "h": "fe1381b21ad9"
+            },
+            "helpLayer7": {
+              "t": "Sloj traje sve dok aplikacija ostaje otvorena. Zatvorite karticu i nema je, pa koristite 4. Izvoz ako je potrebno da je zadržite.",
+              "src": "machine",
+              "h": "3d135d5521ad"
+            },
+            "helpResultsTitle": {
+              "t": "Èitam rezultate.",
+              "src": "machine",
+              "h": "68993609ed8d"
+            },
+            "helpResults1": {
+              "t": "Poklapa se: redovi za koje je geokoder našao mesto.",
+              "src": "machine",
+              "h": "2701f8fcf9b8"
+            },
+            "helpResults2": {
+              "t": "Neusporedivi: redovi koji nisu mogli da se plasiraju, ili postavljeni sa premalo samopouzdanja. Male oznake ispod ukupnih oznaka kažu zašto: nizak rezultat, nema poklapanja, prazne adrese ili greške u servisu.",
+              "src": "machine",
+              "h": "3c68d7a781e0"
+            },
+            "helpResults3": {
+              "t": "Stopa poklapanja: poklapaju se redovi kao deo celog fajla.",
+              "src": "machine",
+              "h": "3cdedb4e18f2"
+            },
+            "helpResults4": {
+              "t": "Recenzija neusporediva otvara punu listu redova koji nisu uspeli, sa razlogom za svaku. Filtriraj je po razlogu ili pretraži, zatim preuzmi ono što je na ekranu kao CSV. Preuzimanje neuparene štedi celu listu u jednom kliku.",
+              "src": "machine",
+              "h": "624b3f0646d6"
+            },
+            "helpCheckTitle": {
+              "t": "Provjeravam popis adresa",
+              "src": "machine",
+              "h": "3ba5066d924f"
+            },
+            "helpCheckIntro": {
+              "t": "Vidžet se udvostručuje kao provera adrese: govori vam koji su redovi u lokatoru adrese, a koji nisu.",
+              "src": "machine",
+              "h": "1a163f69f5a8"
+            },
+            "helpCheck1": {
+              "t": "Uèitaj listu i pritisni Geocode.",
+              "src": "machine",
+              "h": "fdbe979b4628"
+            },
+            "helpCheck2": {
+              "t": "Pod 4. Izvoz, izaberite Neusporedivi, zatim CSV ili Excel. Dobijate samo redove kojima je potreban pogled, svaki sa svojim razlogom u koloni FAIL_REASON.",
+              "src": "machine",
+              "h": "784f7a31b9bd"
+            },
+            "helpCheck3": {
+              "t": "Nizak rezultat: lokator je našao nešto blizu, ali nedovoljno blizu. MATCH_ADR pokazuje šta je našao, što obično ukazuje na tip-tip, pogrešan sufiks ili nestalu jedinicu.",
+              "src": "machine",
+              "h": "3bec7d84c14d"
+            },
+            "helpCheck4": {
+              "t": "Nema poklapanja: lokator nije našao ništa. Prazna adresa: red nema adresu u mapiranim kolonama. Servisna greška: zahtev nije uspeo, pa ponovo pokrenite fajl.",
+              "src": "machine",
+              "h": "ac755292d7de"
+            },
+            "helpCheck5": {
+              "t": "Međusobno (zavezano) znači da su dva kandidata dobila isti rezultat. Ubraja se u meč, ali vredi još jednom pogledati.",
+              "src": "machine",
+              "h": "3d283fb25f0d"
+            },
+            "helpCheck6": {
+              "t": "Odaberite sve redove umesto toga da biste vratili ceo fajl sa MATCH_STATUS u svakom redu. Excel zatim dodaje Neuparene i Uparene listove i Sažetak list sa ukupnim brojevima.",
+              "src": "machine",
+              "h": "8febb73f4927"
+            },
+            "helpExportTitle": {
+              "t": "Preuzimanje kopije",
+              "src": "machine",
+              "h": "f18312690607"
+            },
+            "helpExportIntro": {
+              "t": "Dve vrste preuzimanja: tabela vaših redova, ili mapa tačaka poklapanja.",
+              "src": "machine",
+              "h": "ed3cdb1d764b"
+            },
+            "helpExport1": {
+              "t": "Tabela provere adrese: CSV ili Excel, za sve redove, samo one neuparene, ili samo one koje se poklapaju. Svaka originalna kolona se čuva, sa dodatim rezultatom meča na desnoj strani.",
+              "src": "machine",
+              "h": "a4a0829d155a"
+            },
+            "helpExport2": {
+              "t": "Map file: GeoJSON for web maps and ArcGIS Online, KML for Google Earth, or a Shapefile ZIP for ArcGIS Pro. Matched points only, пошто неупарен ред нема где да црта.",
+              "src": "machine",
+              "h": "0f7a8af5989e"
+            },
+            "helpExport3": {
+              "t": "Excel otvara CSV sa nedirnutim akcentnim slovima, a vrednost koja počinje sa = ili + se čuva kao tekst, nikada se ne pokreće kao formula.",
+              "src": "machine",
+              "h": "169aa9fd7964"
+            },
+            "helpExport4": {
+              "t": "Dosije se nalazi u vašoj fascikli za skidanje, nazvanoj po vašem fajlu sa datumom i vremenom.",
+              "src": "machine",
+              "h": "ed85a85549b3"
+            },
+            "helpTroubleTitle": {
+              "t": "Ako nešto nije u redu",
+              "src": "machine",
+              "h": "6f7fec3ff1e0"
+            },
+            "helpTrouble1": {
+              "t": "Ne pojavljuju se tačke: ni jedna mapa nije povezana sa ovim grafičkim elementom. Provjera i izvoz tabele i dalje radi. Pitajte GIS diviziju da poveže mapu ako vam trebaju iscrtane tačke.",
+              "src": "machine",
+              "h": "3caa81f14005"
+            },
+            "helpTrouble2": {
+              "t": "Ništa se nije dogodilo nakon što ste izabrali datoteku: datoteka nije imala čitljive redove. Provjerite da je red jedan kolona naslova i da je barem jedan red ispod njega.",
+              "src": "machine",
+              "h": "2f0106727764"
+            },
+            "helpTrouble3": {
+              "t": "Sve je neusporedivo, kolone se poklapaju sa pogrešnim stvarima.",
+              "src": "machine",
+              "h": "12efe06626e8"
+            },
+            "helpTrouble4": {
+              "t": "Mnogi redovi kažu da je nizak rezultat: adrese su blizu, ali nisu dovoljno blizu. Pravopis, nedostaje grad ili nedostaje ZIP su uobičajeni razlozi.",
+              "src": "machine",
+              "h": "03e716cc1b5a"
+            },
+            "helpTrouble5": {
+              "t": "Taèke su sletele u pogrešnom delu zemlje: gradska ili državna kolona je prazna, tako da je geokoder pogodio.",
+              "src": "machine",
+              "h": "91510f78e177"
+            },
+            "helpTrouble6": {
+              "t": "Sloj je nestao: kartica pretraživača je zatvorena ili ponovo učitana. Ponovo pokrenite datoteku ili donesite kopiju koju ste izvezli.",
+              "src": "machine",
+              "h": "7d7985f203e3"
+            },
+            "helpTroubleContact": {
+              "t": "Kontaktirajte GIS diviziju i pomenite ime CSV Geocodera i ovu aplikaciju.",
+              "src": "machine",
+              "h": "778d90a8fb03"
+            },
+            "helpTipsTitle": {
+              "t": "Dobro je znati.",
+              "src": "machine",
+              "h": "79fc372dc790"
+            },
+            "helpTips1": {
+              "t": "Èiste adrese pobeðuju, vade brojeve stanova i beleške kao iza škole, pre nego što poèneš.",
+              "src": "machine",
+              "h": "fbfa45500dea"
+            },
+            "helpTips2": {
+              "t": "Bar pokazuje koliko je daleko, a Otkaži ga.",
+              "src": "machine",
+              "h": "559766f937f5"
+            },
+            "helpTips3": {
+              "t": "Isprazni formular tako da možeš da poèneš sa drugim fajlom.",
+              "src": "machine",
+              "h": "29e81f9cc15f"
+            },
+            "helpTips5": {
+              "t": "Redovi sa praznom adresom se nikada ne šalju na lokator, tako da ništa ne koštaju i prikazuju se kao Blank adresa.",
+              "src": "machine",
+              "h": "2747e49773c4"
+            },
+            "helpTips4": {
+              "t": "Ova aplikacija koristi Esrijev pronalazač adresa širom sveta, koji troši kredite na velike trke. Proverite sa GIS divizijom pre nego što pokrenete desetine hiljada redova.",
+              "src": "machine",
+              "h": "c74119ad9ac0"
+            },
+            "addressCheckTable": {
+              "t": "Tabela za proveru adrese",
+              "src": "machine",
+              "h": "8efee4b265c2"
+            },
+            "aSpreadsheetOfYourRowsWith": {
+              "t": "Tabela vaših redova sa MATCH_STATUS, MATCH_SCORE, adresa koju ste poslali, adresa lokator se poklapala, tip adrese, jednostavan razlog za svaki red koji se nije poklapao, i koordinate za svaki red koji je to uradio. Otvorite je u Excel-u i filtrirajte na MATCH_STATUS-u.",
+              "src": "machine",
+              "h": "689ba7e04841"
+            },
+            "rowsToInclude": {
+              "t": "Redovi za uključivanje",
+              "src": "machine",
+              "h": "bcc561c451fb"
+            },
+            "exportScopeWordAsLabel": {
+              "t": "Izvoz {scopeWord} kao {label}",
+              "src": "machine",
+              "h": "5515fbefad4b"
+            },
+            "thereAreNoScopeWordToExport": {
+              "t": "Nema {scopeWord} za izvoz. Izaberi drugu opciju iznad.",
+              "src": "machine",
+              "h": "3160cb3219e0"
+            },
+            "mapFileExport": {
+              "t": "Извоз фајла мапе@ info: whatsthis",
+              "src": "machine",
+              "h": "f5b4331d7bad"
+            },
+            "mapFile": {
+              "t": "Mapa datoteka",
+              "src": "machine",
+              "h": "544d7d4466a2"
+            },
+            "matchedPointsOnlySinceARow": {
+              "t": "Samo poklopljene tačke, pošto red bez lokacije nema šta da crta. GeoJSON za veb mape i ArcGIS Online, KML za Google Earth, zipped Shapefile za ArcGIS Pro.",
+              "src": "machine",
+              "h": "1f4d581d92c2"
+            },
+            "matchedCountMatchedPoint": {
+              "t": "{matchedCount} odgovara tački.",
+              "src": "machine",
+              "h": "38f14cc49017"
+            },
+            "matchedCountMatchedPoints": {
+              "t": "{matchedCount} odgovara bodovima.",
+              "src": "machine",
+              "h": "658e9923bb3d"
+            },
+            "aZippedShapefile": {
+              "t": "zipped shapefile",
+              "src": "machine",
+              "h": "e557d2803b94"
+            },
+            "exportMatchedPointsAsId": {
+              "t": "Izvoz odgovara tačkama kao {id}",
+              "src": "machine",
+              "h": "08119ce037a1"
+            },
+            "noMatchedPointsToExportRe": {
+              "t": "Nema poklapanja sa izvozom.Ponovno pokrenut geokodiranje sa nižim minimalnim rezultatom, ili proverite da li su polja adrese ispravno mapirana.",
+              "src": "machine",
+              "h": "eeee350354ec"
+            },
+            "downloaded": {
+              "t": "Preuzeto.",
+              "src": "machine",
+              "h": "c61970292546"
+            },
+            "backToGeocodingResults": {
+              "t": "Nazad na rezultate geokodiranja",
+              "src": "machine",
+              "h": "aa7fb5e6cd2b"
+            },
+            "reviewUnmatched": {
+              "t": "Pregled neuparen",
+              "src": "machine",
+              "h": "f43ce1f45148"
+            },
+            "failuresCountRecordDidNotProduceAn": {
+              "t": "{failuresCount} rekord nije proizveo prihvaćeni meč.",
+              "src": "machine",
+              "h": "f4fa2b70d0ae"
+            },
+            "failuresCountRecordsDidNotProduceAn": {
+              "t": "{failuresCount}zapisi nisu proizveli prihvaćeni meč.",
+              "src": "machine",
+              "h": "aae88211ed81"
+            },
+            "recordDid": {
+              "t": "Rekord jeste.",
+              "src": "machine",
+              "h": "dadc6956c4cd"
+            },
+            "recordsDid": {
+              "t": "Zapisi jesu.",
+              "src": "machine",
+              "h": "c4285de53546"
+            },
+            "searchUnmatchedRecords": {
+              "t": "Traži neuparene zapise",
+              "src": "machine",
+              "h": "45172e49a231"
+            },
+            "addressRowNumberReasonOrField": {
+              "t": "Adresa, broj reda, razlog ili vrednost polja",
+              "src": "machine",
+              "h": "5d80fe6cbc23"
+            },
+            "reason": {
+              "t": "Razlog",
+              "src": "machine",
+              "h": "f219cc0614ae"
+            },
+            "anyReasonFailuresCount": {
+              "t": "Bilo koji razlog ({failuresCount})",
+              "src": "machine",
+              "h": "b7723a4a68cc"
+            },
+            "showingFilteredFailuresCountOfFailuresCountUnmatchedRecord": {
+              "t": "Prikazujem {filteredFailuresCount} od {failuresCount} neuparen zapis.",
+              "src": "machine",
+              "h": "49f46814a131"
+            },
+            "showingFilteredFailuresCountOfFailuresCountUnmatchedRecords": {
+              "t": "Prikazujem {filteredFailuresCount} od {failuresCount} neuparene zapise.",
+              "src": "machine",
+              "h": "3e8e290d3407"
+            },
+            "recordObjectIdSourceRowObjectId2": {
+              "t": "Запис {objectId}· изворни ред {objectId2}",
+              "src": "machine",
+              "h": "ff343450bd4f"
+            },
+            "scoreScore": {
+              "t": "Rezultat {score}",
+              "src": "machine",
+              "h": "be9b6e16da0b"
+            },
+            "noScore": {
+              "t": "Nema rezultata.",
+              "src": "machine",
+              "h": "1d55e538b5b4"
+            },
+            "submittedAddress": {
+              "t": "Priložena adresa",
+              "src": "machine",
+              "h": "dee7ed9fded0"
+            },
+            "closestLocatorCandidate": {
+              "t": "Najbliži kandidat za lociranje.",
+              "src": "machine",
+              "h": "8e6ed2a071f6"
+            },
+            "originalRowFields": {
+              "t": "Originalna polja reda",
+              "src": "machine",
+              "h": "4aa0a17d0e3e"
+            },
+            "noUnmatchedRecordsMatchThisSearch": {
+              "t": "Nema neusporedivih podataka koji odgovaraju ovoj potrazi, oèistite pretragu ili izaberite bilo koji razlog da ih sve pokažete.",
+              "src": "machine",
+              "h": "ce7cd798db92"
+            },
+            "backToResults": {
+              "t": "Nazad na rezultate.",
+              "src": "machine",
+              "h": "48d51d7a2aad"
+            },
+            "downloadFilteredFailuresCountAsCsv": {
+              "t": "Preuzmite {filteredFailuresCount} kao CSV",
+              "src": "machine",
+              "h": "247bd21d90a0"
+            },
+            "downloadTheFilteredFailuresCountRecordsShownAs": {
+              "t": "Preuzmite {filteredFailuresCount} zapise prikazane kao CSV",
+              "src": "machine",
+              "h": "7e553e9e4c4c"
+            },
+            "addressFieldMapping": {
+              "t": "Mapiranje polja adrese",
+              "src": "machine",
+              "h": "6dc96b53b8f5"
+            },
+            "addressMappingMode": {
+              "t": "Način mapiranja adrese",
+              "src": "machine",
+              "h": "d23ceb629e31"
+            },
+            "separateColumns": {
+              "t": "Odvojene kolone",
+              "src": "machine",
+              "h": "81eb49b8a57c"
+            },
+            "singleFullAddress": {
+              "t": "Jedna puna adresa.",
+              "src": "machine",
+              "h": "530ac112e394"
+            },
+            "addressColumn": {
+              "t": "Kolona sa adresom",
+              "src": "machine",
+              "h": "5b23d6ee92ac"
+            },
+            "theColumnContainingTheCompleteAddress": {
+              "t": "Kolona koja sadrži kompletnu adresu kao jedan string, npr.100 Main St, Springfield, IL 62701",
+              "src": "machine",
+              "h": "f465354480e9"
+            },
+            "selectColumn": {
+              "t": "(Izaberite kolonu)",
+              "src": "machine",
+              "h": "138f1de5c565"
+            },
+            "csvgMKey": {
+              "t": "csvg-m-{key}",
+              "src": "machine",
+              "h": "cc6146c1447f"
+            },
+            "fieldIdHelp": {
+              "t": "{fieldId}-помоћ",
+              "src": "machine",
+              "h": "56485761fc90"
+            },
+            "none": {
+              "t": "(None)",
+              "src": "machine",
+              "h": "3c6b183d348f"
+            },
+            "dropAFileHere": {
+              "t": "Baci fajl ovde.",
+              "src": "machine",
+              "h": "5b8427061e17"
+            },
+            "csvTsvTxtXlsxXlsOds": {
+              "t": "CSV TSV · TXT · XLSX · XLS · ODS",
+              "src": "machine",
+              "h": "d1f5db0fe71a"
+            },
+            "chooseADifferentFile": {
+              "t": "Izaberi drugi fajl.",
+              "src": "machine",
+              "h": "7c1920bd7a2c"
+            },
+            "browseForAFile": {
+              "t": "Traži datoteku",
+              "src": "machine",
+              "h": "64c9ae16f63c"
+            },
+            "fileDetectedDropToUpload": {
+              "t": "Datoteka otkrivena, ispustite na upload.",
+              "src": "machine",
+              "h": "67d01fbc74d4"
+            },
+            "addressGeocoder": {
+              "t": "Adresa geokoder",
+              "src": "machine",
+              "h": "329d79f7e834"
+            },
+            "_1ChooseAFile": {
+              "t": "1. Izaberite datoteku",
+              "src": "machine",
+              "h": "384ed04ab030"
+            },
+            "supportedFormatsCsvTsvTxtXlsx": {
+              "t": "Подржани формати: CSV, TSV, TXT, XLSX, XLS, ODS. Први ред се користи као заглавља колона.",
+              "src": "machine",
+              "h": "72ec95f15c5b"
+            },
+            "_2MapAddressFields": {
+              "t": "2. Polja za adresu mape",
+              "src": "machine",
+              "h": "19f374d0ad5c"
+            },
+            "pickWhichColumnSHoldThe": {
+              "t": "Odaberite koja kolona(i) drži adresu. KoristiteSamu punu adresu ako jedna kolona ima celu adresu, iliOdvojite kolone da mapirate pojedine delove.",
+              "src": "machine",
+              "h": "a6212c4a5d60"
+            },
+            "rowsCountRowsFieldsCountColumns": {
+              "t": "{rowsCount} redovi _ {fieldsCount} kolone",
+              "src": "machine",
+              "h": "caf9687a36ee"
+            },
+            "dismissErrorMessage": {
+              "t": "Odbaci poruku o grešci",
+              "src": "machine",
+              "h": "c095cffe057b"
+            },
+            "noMapWidgetIsConnectedAddresses": {
+              "t": "Nijedan grafički element mape nije povezan. Adrese se još uvijek mogu provjeriti i izvoziti kao tabela; povezati grafički grafički element mape u postavkama ovog grafičkog elementa da bi se takođe nacrtale usklađene tačke.",
+              "src": "machine",
+              "h": "f8ad5e71d7a8"
+            },
+            "geocodingProgress": {
+              "t": "Napredak geokodiranja",
+              "src": "machine",
+              "h": "ee826d10447f"
+            },
+            "_3Results": {
+              "t": "3. Rezultati",
+              "src": "machine",
+              "h": "d47578d534cc"
+            },
+            "geocodingResultsSummary": {
+              "t": "Sažetak rezultata geokodiranja",
+              "src": "machine",
+              "h": "c5c34575cd6c"
+            },
+            "unmatchedRowsByReason": {
+              "t": "Neupareni redovi po razumu",
+              "src": "machine",
+              "h": "1bf7e9b0c57d"
+            },
+            "matchedWithATie": {
+              "t": "Poklapa se sa kravatom.",
+              "src": "machine",
+              "h": "82bfc5e9eee0"
+            },
+            "matchedButTheLocatorFoundMore": {
+              "t": "Poklapa se, ali lokator je našao više jednako dobrih kandidata.",
+              "src": "machine",
+              "h": "f72117d442bd"
+            },
+            "addedToTheMapAs": {
+              "t": "Dodano na mapu kao",
+              "src": "machine",
+              "h": "fcf2ca591fee"
+            },
+            "openItFromTheMapS": {
+              "t": ". Otvorite ga sa liste slojeva mape da biste videli sto.",
+              "src": "machine",
+              "h": "f7c0bc31c242"
+            },
+            "removeFromMap": {
+              "t": "Ukloni sa mape",
+              "src": "machine",
+              "h": "a0d4bef8a6eb"
+            },
+            "reviewUnmatchedFailureCount": {
+              "t": "Pregled neuparen ({failureCount})",
+              "src": "machine",
+              "h": "4dc7b46bcf09"
+            },
+            "downloadUnmatched": {
+              "t": "Preuzimanje nije upareno",
+              "src": "machine",
+              "h": "9618d357785a"
+            },
+            "_4Export": {
+              "t": "4. Izvoz",
+              "src": "machine",
+              "h": "10ef575bbbeb"
+            },
+            "addressCheckTableEveryRowWith": {
+              "t": "Tabela provjere adresa: svaki red sa svojim rezultatom poklapanja, kao CSV ili Excel, za sve redove, samo one neuparene, ili samo one koje se poklapaju. Mapa datoteka: poklapaju se tačke kao GeoJSON, KML ili zipped Shapefile.",
+              "src": "machine",
+              "h": "599a96da5bd8"
+            },
+            "noMapIsConnectedSoResults": {
+              "t": "Nijedna mapa nije povezana, pa se rezultati proveravaju i mogu se izvoziti kao tabela ali se ne iscrtavaju.",
+              "src": "machine",
+              "h": "670de8d9468a"
+            },
+            "uiWorkflowProgress": {
+              "t": "Napredak radnog toka",
+              "src": "machine",
+              "h": "aa91107f6a7e"
+            },
+            "uiOf": {
+              "t": "od",
+              "src": "machine",
+              "h": "de04fa0e29f9"
+            },
+            "excel": {
+              "t": "ЕкселQShortcut",
+              "src": "machine",
+              "h": "a08e11119aef"
+            },
+            "geoJSON": {
+              "t": "GeoJSON",
+              "src": "machine",
+              "h": "97eeda258d4d"
+            },
+            "shapefile": {
+              "t": "ОбликDescription",
+              "src": "machine",
+              "h": "1e21d10d2150"
+            },
+            "allRows": {
+              "t": "Svi redovi",
+              "src": "machine",
+              "h": "83a3b2635989"
+            },
+            "couldNotExportValueValue2": {
+              "t": "Ne mogu da izvozim {value}: {value2}",
+              "src": "machine",
+              "h": "8128c66380b7"
+            },
+            "line2": {
+              "t": "Linija 2",
+              "src": "machine",
+              "h": "22342f78499f"
+            },
+            "stateRegion": {
+              "t": "Država / Region",
+              "src": "machine",
+              "h": "dc38323c89f9"
+            },
+            "postalCode": {
+              "t": "Poštanski broj",
+              "src": "machine",
+              "h": "d7432cda8e62"
+            },
+            "showHelp": {
+              "t": "-Pokaži pomoæ.",
+              "src": "machine",
+              "h": "d1cf52c9a6bf"
+            },
+            "matchedTied": {
+              "t": "Poklapa se (zavezano)",
+              "src": "machine",
+              "h": "3eb0eafd908f"
+            },
+            "noMatch": {
+              "t": "Nema poklapanja.",
+              "src": "machine",
+              "h": "3518dffe0672"
+            },
+            "unknownError": {
+              "t": "nepoznata greška",
+              "src": "machine",
+              "h": "af6321ca7a8b"
+            },
+            "unserializableError": {
+              "t": "Neserijalizacijska greška",
+              "src": "machine",
+              "h": "76e73551597a"
+            },
+            "onlyTheRowsThatDidNot": {
+              "t": "Samo redovi koji se ne poklapaju, sa razlogom svakog.",
+              "src": "machine",
+              "h": "d2c6607c59c8"
+            },
+            "onlyTheRowsThatMatchedWith": {
+              "t": "Samo redovi koji se poklapaju, sa adresom na kojoj ih je locirao.",
+              "src": "machine",
+              "h": "47a5a62b1171"
+            },
+            "everyRowFromYourFileWith": {
+              "t": "Svaki red iz vašeg fajla sa dodatim rezultatom meèa. Excel takoðe dobija neuparene i uparene listove.",
+              "src": "machine",
+              "h": "0c3f4709d26c"
+            },
+            "replaceFileCurrentFileNamePressEnter": {
+              "t": "Zamenite fajl. Trenutni: {fileName}. Pritisnite Enter ili Space da izaberete drugi fajl.",
+              "src": "machine",
+              "h": "7ae054e68a80"
+            },
+            "dropAFileHereOrPress": {
+              "t": "Bacite fajl ovde, ili pritisnite Enter ili Space da otvorite beraè datoteka.",
+              "src": "machine",
+              "h": "d3119549a543"
+            },
+            "sourceRowUnavailable": {
+              "t": "(Izvorni red nedostupan)",
+              "src": "machine",
+              "h": "846e2bd62f83"
+            },
+            "blankAddress": {
+              "t": "(prazna adresa)",
+              "src": "machine",
+              "h": "1ec754ff6075"
+            },
+            "readingFile": {
+              "t": "Èitam dosije.",
+              "src": "machine",
+              "h": "ce210cead331"
+            },
+            "fileLoadedToLocaleStringRowsReadyTo": {
+              "t": "File učitan. {toLocaleString} redovi spremni za mapu.",
+              "src": "machine",
+              "h": "8044e7e297d0"
+            },
+            "geocodingToLocaleStringOfToLocaleString2": {
+              "t": "Geocoding {toLocaleString} of {toLocaleString2}.",
+              "src": "machine",
+              "h": "865842b6ba9f"
+            },
+            "baseAddedToTheMapAs": {
+              "t": "{base}Dodano mapi kao {title}.",
+              "src": "machine",
+              "h": "82e4b3ba03a4"
+            },
+            "geocodingCompleteToLocaleStringOfToLocaleString2Matched": {
+              "t": "Geokodiranje završeno. {toLocaleString} {toLocaleString2} odgovara.",
+              "src": "machine",
+              "h": "37ad723d24d9"
+            }
+          }
         },
         "sv": {
           "file": "1638b15d41cd",
@@ -31004,18 +33612,134 @@
           }
         },
         "bs": {
-          "file": "c976390d42fe",
+          "file": "917812751e2b",
           "counts": {
             "esri": 4,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 0,
+            "machine": 23,
             "stale": 0,
-            "missing": 23
+            "missing": 0
           },
-          "entries": {}
+          "entries": {
+            "sectionBehaviour": {
+              "t": "Ponašanje",
+              "src": "machine",
+              "h": "171ca0385a0e"
+            },
+            "sectionLayer": {
+              "t": "Mapiraj sloj",
+              "src": "machine",
+              "h": "e82947479141"
+            },
+            "sectionSymbol": {
+              "t": "Simbol tačke",
+              "src": "machine",
+              "h": "f9e61f67b901"
+            },
+            "apiKey": {
+              "t": "API ključ / token (opcionalno)",
+              "src": "machine",
+              "h": "32496988f260"
+            },
+            "batchSize": {
+              "t": "Veličina datoteke",
+              "src": "machine",
+              "h": "672f784922db"
+            },
+            "minScore": {
+              "t": "Minimalni rezultat meča",
+              "src": "machine",
+              "h": "1c35f02356f4"
+            },
+            "defaultMode": {
+              "t": "Uobičajeni način adrese",
+              "src": "machine",
+              "h": "9156da556b29"
+            },
+            "zoomToResults": {
+              "t": "Uvećaj na rezultate",
+              "src": "machine",
+              "h": "710f5f3be7e4"
+            },
+            "layerTitle": {
+              "t": "Naslov sloja",
+              "src": "machine",
+              "h": "c4d21ef23da1"
+            },
+            "replacePreviousLayer": {
+              "t": "Zamijeni prethodni sloj pri novom pokretanju",
+              "src": "machine",
+              "h": "45783533e8e1"
+            },
+            "connectToAMapWidget": {
+              "t": "Spoji se na grafički element mape",
+              "src": "machine",
+              "h": "d14df08cb278"
+            },
+            "minimumMatchScore0To100": {
+              "t": "Minimalni rezultat utakmice (0 do 100)",
+              "src": "machine",
+              "h": "1a2005d6408d"
+            },
+            "separateColumns": {
+              "t": "Odvojene kolone",
+              "src": "machine",
+              "h": "81eb49b8a57c"
+            },
+            "singleFullAddress": {
+              "t": "Jedna puna adresa",
+              "src": "machine",
+              "h": "530ac112e394"
+            },
+            "leaveBlankToUseTheFile": {
+              "t": "Ostavi prazno za korištenje datoteke",
+              "src": "machine",
+              "h": "50c825290363"
+            },
+            "matchedPointsAreAddedToThe": {
+              "t": "Međusobne tačke se dodaju na povezanu mapu kao sloj, tako da niko ne mora preuzeti datoteku i vratiti je. Prazno znači da sloj uzima ime učitane datoteke.",
+              "src": "machine",
+              "h": "63cde00bef59"
+            },
+            "offEveryRunAddsAnotherLayer": {
+              "t": "Off: svaka runa dodaje još jedan sloj, numerisan (2), (3) i tako dalje.",
+              "src": "machine",
+              "h": "c2453311691d"
+            },
+            "fillColour": {
+              "t": "Popuni boju",
+              "src": "machine",
+              "h": "9c307613d98e"
+            },
+            "sizePx": {
+              "t": "Veličina (px)",
+              "src": "machine",
+              "h": "b8dfb517c7f6"
+            },
+            "outlineColour": {
+              "t": "Boja _pozadine:",
+              "src": "machine",
+              "h": "981f473aa731"
+            },
+            "outlineWidth": {
+              "t": "Širina linije",
+              "src": "machine",
+              "h": "928d9acc1733"
+            },
+            "showHelpGuide": {
+              "t": "Pokaži vodič za pomoć",
+              "src": "machine",
+              "h": "03e9f0b81336"
+            },
+            "showTheQuestionMarkButtonThat": {
+              "t": "Pokaži dugme sa znakom pitanja koje otvara vodič za pomoć grafičkog elementa",
+              "src": "machine",
+              "h": "62c4e81a84ca"
+            }
+          }
         },
         "ca": {
           "file": "a0096be2af9a",
@@ -32228,18 +34952,134 @@
           }
         },
         "hr": {
-          "file": "c976390d42fe",
+          "file": "b76c980eca35",
           "counts": {
             "esri": 4,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 0,
+            "machine": 23,
             "stale": 0,
-            "missing": 23
+            "missing": 0
           },
-          "entries": {}
+          "entries": {
+            "sectionBehaviour": {
+              "t": "Ponašanje",
+              "src": "machine",
+              "h": "171ca0385a0e"
+            },
+            "sectionLayer": {
+              "t": "Sloj mape",
+              "src": "machine",
+              "h": "e82947479141"
+            },
+            "sectionSymbol": {
+              "t": "Simbol točke",
+              "src": "machine",
+              "h": "f9e61f67b901"
+            },
+            "apiKey": {
+              "t": "API ključ / token (opcionalno)",
+              "src": "machine",
+              "h": "32496988f260"
+            },
+            "batchSize": {
+              "t": "Veličina spremnika",
+              "src": "machine",
+              "h": "672f784922db"
+            },
+            "minScore": {
+              "t": "Minimalni rezultat utakmice",
+              "src": "machine",
+              "h": "1c35f02356f4"
+            },
+            "defaultMode": {
+              "t": "Uobičajeni način adrese",
+              "src": "machine",
+              "h": "9156da556b29"
+            },
+            "zoomToResults": {
+              "t": "Uvećaj na rezultate",
+              "src": "machine",
+              "h": "710f5f3be7e4"
+            },
+            "layerTitle": {
+              "t": "Naslov sloja",
+              "src": "machine",
+              "h": "c4d21ef23da1"
+            },
+            "replacePreviousLayer": {
+              "t": "Zamijeni prethodni sloj prilikom novog pokretanja",
+              "src": "machine",
+              "h": "45783533e8e1"
+            },
+            "connectToAMapWidget": {
+              "t": "Spoji se na widget mape",
+              "src": "machine",
+              "h": "d14df08cb278"
+            },
+            "minimumMatchScore0To100": {
+              "t": "Minimalni rezultat utakmice (0 do 100)",
+              "src": "machine",
+              "h": "1a2005d6408d"
+            },
+            "separateColumns": {
+              "t": "Odvojivi stupci",
+              "src": "machine",
+              "h": "81eb49b8a57c"
+            },
+            "singleFullAddress": {
+              "t": "Jedna puna adresa",
+              "src": "machine",
+              "h": "530ac112e394"
+            },
+            "leaveBlankToUseTheFile": {
+              "t": "Ostavite prazno za korištenje imena datoteke",
+              "src": "machine",
+              "h": "50c825290363"
+            },
+            "matchedPointsAreAddedToThe": {
+              "t": "Poklopljene točke su dodane na povezanu kartu kao sloj, tako da nitko ne mora preuzeti datoteku i vratiti je. Blank znači da sloj uzima ime učitane datoteke.",
+              "src": "machine",
+              "h": "63cde00bef59"
+            },
+            "offEveryRunAddsAnotherLayer": {
+              "t": "Off: svaka vožnja dodaje još jedan sloj, numeriran (2), (3) i tako dalje.",
+              "src": "machine",
+              "h": "c2453311691d"
+            },
+            "fillColour": {
+              "t": "Boja ispune",
+              "src": "machine",
+              "h": "9c307613d98e"
+            },
+            "sizePx": {
+              "t": "Veličina (px)",
+              "src": "machine",
+              "h": "b8dfb517c7f6"
+            },
+            "outlineColour": {
+              "t": "Boja za crtanje",
+              "src": "machine",
+              "h": "981f473aa731"
+            },
+            "outlineWidth": {
+              "t": "Širina linije",
+              "src": "machine",
+              "h": "928d9acc1733"
+            },
+            "showHelpGuide": {
+              "t": "Prikaži vodič pomoći",
+              "src": "machine",
+              "h": "03e9f0b81336"
+            },
+            "showTheQuestionMarkButtonThat": {
+              "t": "Prikaži gumb s upitnikom koji otvara vodič za pomoć widgetu",
+              "src": "machine",
+              "h": "62c4e81a84ca"
+            }
+          }
         },
         "hu": {
           "file": "58fa61352f06",
@@ -34172,18 +37012,134 @@
           }
         },
         "sr": {
-          "file": "0d0b1cb28127",
+          "file": "f13a53a3d360",
           "counts": {
             "esri": 4,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 0,
+            "machine": 23,
             "stale": 0,
-            "missing": 23
+            "missing": 0
           },
-          "entries": {}
+          "entries": {
+            "sectionBehaviour": {
+              "t": "Ponašanje",
+              "src": "machine",
+              "h": "171ca0385a0e"
+            },
+            "sectionLayer": {
+              "t": "Mapa sloja",
+              "src": "machine",
+              "h": "e82947479141"
+            },
+            "sectionSymbol": {
+              "t": "Simbol tačke",
+              "src": "machine",
+              "h": "f9e61f67b901"
+            },
+            "apiKey": {
+              "t": "API ključ / token (opcionalno)",
+              "src": "machine",
+              "h": "32496988f260"
+            },
+            "batchSize": {
+              "t": "Veličina kućišta",
+              "src": "machine",
+              "h": "672f784922db"
+            },
+            "minScore": {
+              "t": "Najmanji rezultat u meèu",
+              "src": "machine",
+              "h": "1c35f02356f4"
+            },
+            "defaultMode": {
+              "t": "Подразум ијевани режим адресеQShortcut",
+              "src": "machine",
+              "h": "9156da556b29"
+            },
+            "zoomToResults": {
+              "t": "Zumiraj na rezultate",
+              "src": "machine",
+              "h": "710f5f3be7e4"
+            },
+            "layerTitle": {
+              "t": "Наслов слојаQShortcut",
+              "src": "machine",
+              "h": "c4d21ef23da1"
+            },
+            "replacePreviousLayer": {
+              "t": "Zameni prethodni sloj prilikom novog pokretanja",
+              "src": "machine",
+              "h": "45783533e8e1"
+            },
+            "connectToAMapWidget": {
+              "t": "Povežite se na grafički element mape",
+              "src": "machine",
+              "h": "d14df08cb278"
+            },
+            "minimumMatchScore0To100": {
+              "t": "Minimalni rezultat meča (0 do 100)",
+              "src": "machine",
+              "h": "1a2005d6408d"
+            },
+            "separateColumns": {
+              "t": "Odvojene kolone",
+              "src": "machine",
+              "h": "81eb49b8a57c"
+            },
+            "singleFullAddress": {
+              "t": "Jedna puna adresa.",
+              "src": "machine",
+              "h": "530ac112e394"
+            },
+            "leaveBlankToUseTheFile": {
+              "t": "Ostavite prazno da koristi ime datoteke",
+              "src": "machine",
+              "h": "50c825290363"
+            },
+            "matchedPointsAreAddedToThe": {
+              "t": "Međusobne tačke se dodaju na povezanu mapu kao sloj, tako da niko ne mora da skine datoteku i vrati je nazad. Blank znači da sloj uzima ime učitane datoteke.",
+              "src": "machine",
+              "h": "63cde00bef59"
+            },
+            "offEveryRunAddsAnotherLayer": {
+              "t": "Off: svaka runda dodaje još jedan sloj, numerisan (2), (3) i tako dalje.",
+              "src": "machine",
+              "h": "c2453311691d"
+            },
+            "fillColour": {
+              "t": "Popunite boju",
+              "src": "machine",
+              "h": "9c307613d98e"
+            },
+            "sizePx": {
+              "t": "Величина (px)",
+              "src": "machine",
+              "h": "b8dfb517c7f6"
+            },
+            "outlineColour": {
+              "t": "Боја сликеQShortcut",
+              "src": "machine",
+              "h": "981f473aa731"
+            },
+            "outlineWidth": {
+              "t": "Оутлајн ширинаQShortcut",
+              "src": "machine",
+              "h": "928d9acc1733"
+            },
+            "showHelpGuide": {
+              "t": "Pokaži vodič za pomoć",
+              "src": "machine",
+              "h": "03e9f0b81336"
+            },
+            "showTheQuestionMarkButtonThat": {
+              "t": "Prikaži dugme sa znakom pitanja koje otvara vodič za pomoć grafičkom elementu",
+              "src": "machine",
+              "h": "62c4e81a84ca"
+            }
+          }
         },
         "sv": {
           "file": "f157c2f8de34",
