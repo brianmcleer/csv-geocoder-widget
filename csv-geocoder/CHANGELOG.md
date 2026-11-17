@@ -2,6 +2,10 @@
 
 All notable changes to the CSV Geocoder widget. Newest first.
 
+## 1.2.1 (2026-11-17)
+
+- Dependencies: papaparse 5.7.0 to 5.7.1 (Dependabot PR #3). `package.json` floor raised to `^5.7.1`; `package-lock.json` and `pnpm-lock.yaml` updated in the EB source so `publish.ps1` does not mirror the old lockfiles back over it. No code change.
+
 ## 1.2.0 (2026-10-08)
 
 ### Added
